@@ -1,6 +1,7 @@
 package com.coolerpromc.moregears;
 
 import com.coolerpromc.moregears.block.MGBlocks;
+import com.coolerpromc.moregears.block.entity.MGBlockEntities;
 import com.coolerpromc.moregears.item.MGCreativeTab;
 import com.coolerpromc.moregears.item.MGItems;
 import net.neoforged.api.distmarker.Dist;
@@ -26,6 +27,7 @@ public class MoreGears
 
         MGItems.register(modEventBus);
         MGBlocks.register(modEventBus);
+        MGBlockEntities.register(modEventBus);
         MGCreativeTab.register(modEventBus);
 
         NeoForge.EVENT_BUS.register(this);
