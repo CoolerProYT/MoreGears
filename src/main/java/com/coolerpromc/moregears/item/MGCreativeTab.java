@@ -19,7 +19,7 @@ public class MGCreativeTab {
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MOD_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MoreGears.MODID);
 
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> MG_TAB = CREATIVE_MOD_TABS.register("more_gears",
-            () -> CreativeModeTab.builder().icon(() -> new ItemStack(MGBlocks.TIN_ORE))
+            () -> CreativeModeTab.builder().icon(() -> new ItemStack(MGBlocks.ALLOY_SMELTER))
                     .title(Component.translatable("creativetab.moregears"))
                     .displayItems((itemDisplayParameters, output) -> {
                         for (Field field : MGBlocks.class.getFields()){
