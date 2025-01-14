@@ -1,0 +1,40 @@
+{
+	"schemaVersion": 1,
+	"id": "moregears",
+	"version": "${version}",
+	"name": "More Gears",
+	"description": "This is an example description! Tell everyone what your mod is about!",
+	"authors": [
+		"CoolerProMC"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/CoolerProYT/MoreGears"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/moregears/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"com.coolerpromc.moregears.MoreGears"
+		],
+		"fabric-datagen": [
+			"com.coolerpromc.moregears.datagen.MoreGearsDataGenerator"
+		],
+		"client": [
+			"com.coolerpromc.moregears.MoreGearsClient"
+		]
+	},
+	"mixins": [
+		"moregears.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.16.10",
+		"minecraft": "~1.21.1",
+		"java": ">=21",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}
