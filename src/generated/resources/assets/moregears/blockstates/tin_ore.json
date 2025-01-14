@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "moregears:block/template_iron_ore"
+      "model": "moregears:block/tin_ore"
     }
   }
 }

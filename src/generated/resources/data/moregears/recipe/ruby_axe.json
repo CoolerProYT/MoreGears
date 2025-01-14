@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "X": {
+      "item": "moregears:ruby"
+    },
+    "s": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "XX",
+    "Xs",
+    " s"
+  ],
+  "result": {
+    "count": 1,
+    "id": "moregears:ruby_axe"
+  }
+}
