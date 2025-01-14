@@ -27,18 +27,6 @@ public class SteelAxe extends AxeItem {
     }
 
     @Override
-    public float getDestroySpeed(ItemStack stack, BlockState state) {
-        float originalSpeed = super.getDestroySpeed(stack, state);
-
-        Player player = Minecraft.getInstance().player;
-        if(player != null && player.isInWater()){
-            return originalSpeed * 2f;
-        }
-
-        return originalSpeed;
-    }
-
-    @Override
     public void inventoryTick(ItemStack stack, Level level, Entity entity, int slotId, boolean isSelected) {
         if(!(entity instanceof Player player)) return;
 
