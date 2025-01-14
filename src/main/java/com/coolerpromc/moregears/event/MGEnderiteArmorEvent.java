@@ -32,7 +32,7 @@ public class MGEnderiteArmorEvent {
 
         for (ItemStack armor : armorlist) {
             if (armor.getItem() == MGItems.ENDERITE_HELMET.get() || armor.getItem() == MGItems.ENDERITE_CHESTPLATE.get() || armor.getItem() == MGItems.ENDERITE_LEGGINGS.get() || armor.getItem() == MGItems.ENDERITE_BOOTS.get()) {
-                if (damageSource.is(DamageTypes.ON_FIRE) || damageSource.is(DamageTypes.IN_FIRE) || damageSource.is(DamageTypes.LAVA) || damageSource.is(DamageTypes.HOT_FLOOR)) {
+                if (damageSource.is(DamageTypes.ON_FIRE) || damageSource.is(DamageTypes.IN_FIRE) || damageSource.is(DamageTypes.LAVA)) {
                     event.getEntity().clearFire();
                     event.setNewDamage(0);
                 }
@@ -44,6 +44,12 @@ public class MGEnderiteArmorEvent {
                 }
                 if (damageSource.is(DamageTypes.DROWN)){
                     event.getEntity().setAirSupply(event.getEntity().getMaxAirSupply());
+                    event.setNewDamage(0);
+                }
+            }
+
+            if (armor.getItem() == MGItems.ENDERITE_BOOTS.get()) {
+                if (damageSource.is(DamageTypes.HOT_FLOOR)){
                     event.setNewDamage(0);
                 }
             }
