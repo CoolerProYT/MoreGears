@@ -53,7 +53,7 @@ public class SteelHoe extends HoeItem {
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
         super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
-        MGTooltip.itemSpecialEffect("Heavy (Walking speed is slower)");
-        MGTooltip.itemSpecialEffect("Faster attack speed");
+        tooltipComponents.add(MGTooltip.itemSpecialEffect("Heavy (Walking speed is slower)"));
+        tooltipComponents.add(MGTooltip.itemSpecialEffect("Faster attack speed"));
     }
 }
