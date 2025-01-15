@@ -215,7 +215,6 @@ public class AlloySmelterBlockEntity extends BlockEntity implements MenuProvider
         }
 
         if(fuelHandler.getStackInSlot(0).getBurnTime(RecipeType.BLASTING) > 0 || isBurning && energyStorage.getEnergyStored() < energyStorage.getMaxEnergyStored()){
-            System.out.println("Burn Progress: " + burnProgress + " Max Burn Progress: " + maxBurnProgress);
             if (burnProgress >= maxBurnProgress){
                 burnProgress = 0;
                 isBurning = false;
