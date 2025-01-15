@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "N": {
+      "item": "minecraft:blackstone"
+    },
+    "S": {
+      "item": "moregears:titanium_upgrade_smithing_template"
+    },
+    "X": {
+      "item": "minecraft:netherite_ingot"
+    }
+  },
+  "pattern": [
+    "XSX",
+    "XNX",
+    "XXX"
+  ],
+  "result": {
+    "count": 2,
+    "id": "moregears:titanium_upgrade_smithing_template"
+  }
+}

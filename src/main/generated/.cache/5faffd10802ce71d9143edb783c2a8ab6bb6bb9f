@@ -1,0 +1,8 @@
+// 1.21.1	2025-01-15T19:40:54.9988411	More Gears/Block Loot Tables
+5881a3a4151d031bfa7930196a8510500da3763c data\moregears\loot_table\blocks\end_enderite_ore.json
+5eb2b941ba6476d088e3c5e4e97e564196b0fe62 data\moregears\loot_table\blocks\ruby_ore.json
+8ae99b81bdca0e1cb12b9fea04829d41ad3e6c93 data\moregears\loot_table\blocks\tin_ore.json
+c3eba1992be67a53e5d34f485825fab88f45c11d data\moregears\loot_table\blocks\deepslate_ruby_ore.json
+377dbd60606bd6beae5e3cce2c4d71611a6c7121 data\moregears\loot_table\blocks\alloy_smelter.json
+49d8d53c147958e43bed9bad382236775583bf00 data\moregears\loot_table\blocks\nether_titanium_ore.json
+e91d8b9bc871f07ee4f5cacb261480a340cbf723 data\moregears\loot_table\blocks\deepslate_tin_ore.json

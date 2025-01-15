@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:alloy_smelting",
+  "ingredients": [
+    {
+      "item": "minecraft:iron_ingot"
+    },
+    {
+      "item": "minecraft:coal"
+    }
+  ],
+  "output": [
+    {
+      "count": 2,
+      "id": "moregears:steel_ingot"
+    }
+  ]
+}
