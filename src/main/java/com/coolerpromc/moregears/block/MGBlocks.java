@@ -37,7 +37,7 @@ public class MGBlocks {
     }
 
     private static <T extends Block> DeferredItem<BlockItem> registerBlockItem(String name, DeferredBlock<T> block){
-        return MGItems.ITEMS.registerItem(name, properties -> new BlockItem(block.get(), properties));
+        return MGItems.ITEMS.registerItem(name, properties -> new BlockItem(block.get(), properties.useBlockDescriptionPrefix()));
     }
 
     public static void register(IEventBus eventBus) {
