@@ -1,16 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "moregears:block/deepslate_ruby_ore",
-    "tints": [
-      {
-        "type": "minecraft:constant",
-        "value": -1
-      },
-      {
-        "type": "minecraft:constant",
-        "value": -2092705
-      }
-    ]
+    "model": "moregears:block/deepslate_ruby_ore"
   }
 }

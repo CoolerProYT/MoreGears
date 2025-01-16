@@ -34,12 +34,6 @@ import java.util.Optional;
 import java.util.stream.Stream;
 
 public class MGModelProvider extends ModelProvider {
-    public final ResourceLocation IRON_ORE_STYLE = blockLocation("template_iron_ore_tint");
-    public final ResourceLocation GOLD_ORE_STYLE = blockLocation("template_gold_ore_tint");
-    public final ResourceLocation DIAMOND_ORE_STYLE = blockLocation("template_diamond_ore_tint");
-    public final ResourceLocation EMERALD_ORE_STYLE = blockLocation("template_emerald_ore_tint");
-    public final ResourceLocation REDSTONE_ORE_STYLE = blockLocation("template_redstone_ore_tint");
-
     public final ResourceLocation RAW_ORE = itemLocation("template_raw_ore");
     public final ResourceLocation INGOT = itemLocation("template_ingot");
     public final ResourceLocation GEM = itemLocation("template_gem");
@@ -55,12 +49,12 @@ public class MGModelProvider extends ModelProvider {
     }
 
     private void registerBlockState(BlockModelGenerators blockModels){
-        simpleOreBlockWithItem(blockModels, MGBlocks.TIN_ORE, IRON_ORE_STYLE, MGOreTypes.STONE);
-        simpleOreBlockWithItem(blockModels, MGBlocks.DEEPSLATE_TIN_ORE, IRON_ORE_STYLE, MGOreTypes.DEEPSLATE);
-        simpleOreBlockWithItem(blockModels, MGBlocks.RUBY_ORE, EMERALD_ORE_STYLE, MGOreTypes.STONE);
-        simpleOreBlockWithItem(blockModels, MGBlocks.DEEPSLATE_RUBY_ORE, EMERALD_ORE_STYLE, MGOreTypes.DEEPSLATE);
-        simpleOreBlockWithItem(blockModels, MGBlocks.NETHER_TITANIUM_ORE, DIAMOND_ORE_STYLE, MGOreTypes.NETHER);
-        simpleOreBlockWithItem(blockModels, MGBlocks.END_ENDERITE_ORE, REDSTONE_ORE_STYLE, MGOreTypes.END);
+        simpleBlockWithItem(blockModels, MGBlocks.TIN_ORE);
+        simpleBlockWithItem(blockModels, MGBlocks.DEEPSLATE_TIN_ORE);
+        simpleBlockWithItem(blockModels, MGBlocks.RUBY_ORE);
+        simpleBlockWithItem(blockModels, MGBlocks.DEEPSLATE_RUBY_ORE);
+        simpleBlockWithItem(blockModels, MGBlocks.NETHER_TITANIUM_ORE);
+        simpleBlockWithItem(blockModels, MGBlocks.END_ENDERITE_ORE);
 
         horizontalRotationBlock(blockModels, MGBlocks.ALLOY_SMELTER);
     }
@@ -154,56 +148,8 @@ public class MGModelProvider extends ModelProvider {
         blockModels.registerSimpleItemModel(block.get(), blockLocation(getBlockName(block.get())));
     }
 
-    private <T extends Block> void simpleOreBlockWithItem(BlockModelGenerators blockModels, DeferredBlock<T> block, ResourceLocation texture, MGOreTypes type) {
-        ResourceLocation blockTexture = switch (type){
-            case MGOreTypes.STONE -> mcLoc("block/stone");
-            case MGOreTypes.DEEPSLATE -> mcLoc("block/deepslate");
-            case MGOreTypes.NETHER -> mcLoc("block/netherrack");
-            case MGOreTypes.END -> mcLoc("block/end_stone");
-        };
-
-        TextureMapping textureMapping = new TextureMapping();
-        textureMapping.put(TextureSlot.LAYER0, blockTexture);
-        textureMapping.put(TextureSlot.LAYER1, texture);
-        textureMapping.put(TextureSlot.PARTICLE, blockTexture);
-
-        ModelTemplate template = new ModelTemplate(
-                Optional.empty(),
-                Optional.empty(),
-                TextureSlot.LAYER0,
-                TextureSlot.LAYER1,
-                TextureSlot.PARTICLE
-        );
-
-        ResourceLocation model = template.extend()
-                .parent(ResourceLocation.withDefaultNamespace("block/block"))
-                .element(elementBuilder -> elementBuilder
-                        .from(0, 0, 0)
-                        .to(16, 16, 16)
-                        .allFaces((direction, faceBuilder) -> faceBuilder.uvs(0, 0, 16, 16).texture(TextureSlot.LAYER0).cullface(direction).tintindex(0))
-                )
-                .element(elementBuilder -> elementBuilder
-                        .from(0, 0, 0)
-                        .to(16, 16, 16)
-                        .allFaces((direction, faceBuilder) -> faceBuilder.uvs(0, 0, 16, 16).texture(TextureSlot.LAYER1).cullface(direction).tintindex(1))
-                )
-                .renderType("cutout")
-                .build()
-                .create(
-                        block.get(),
-                        textureMapping,
-                        blockModels.modelOutput
-                );
-
-        blockModels.blockStateOutput.accept(
-                MultiVariantGenerator.multiVariant(
-                        block.get(),
-                        Variant.variant().with(VariantProperties.MODEL, model)
-                )
-        );
-
-        MGOreBlock oreBlock = (MGOreBlock) block.get();
-        blockModels.itemModelOutput.accept(block.asItem(), new BlockModelWrapper.Unbaked(blockLocation(getBlockName(block.get())), List.of(ItemModelUtils.constantTint(-1), ItemModelUtils.constantTint(oreBlock.getColor()))));
+    private <T extends Block> void simpleBlockWithItem(BlockModelGenerators blockModels, DeferredBlock<T> block) {
+        blockModels.createTrivialCube(block.get());
     }
 
     // Item model methods
