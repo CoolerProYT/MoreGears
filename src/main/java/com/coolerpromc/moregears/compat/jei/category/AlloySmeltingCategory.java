@@ -1,3 +1,4 @@
+/*
 package com.coolerpromc.moregears.compat.jei.category;
 
 import com.coolerpromc.moregears.MoreGears;
@@ -79,3 +80,4 @@ public class AlloySmeltingCategory implements IRecipeCategory<AlloySmeltingRecip
         builder.addSlot(RecipeIngredientRole.OUTPUT, 101, 55).addItemStack(recipe.getOutput().getFirst());
     }
 }
+*/
