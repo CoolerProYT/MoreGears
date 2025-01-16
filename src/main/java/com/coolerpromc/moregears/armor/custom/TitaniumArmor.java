@@ -9,13 +9,14 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.equipment.ArmorType;
 import net.minecraft.world.level.Level;
 
 import java.util.List;
 
 public class TitaniumArmor extends ArmorItem {
-    public TitaniumArmor(Type type) {
-        super(MGArmorMaterials.TITANIUM_ARMOR_MATERIAL, type, new Properties().fireResistant().durability(type.getDurability(45)));
+    public TitaniumArmor(ArmorType type, Properties properties) {
+        super(MGArmorMaterials.TITANIUM_ARMOR_MATERIAL, type, properties.fireResistant().durability(type.getDurability(45)));
     }
 
     @Override

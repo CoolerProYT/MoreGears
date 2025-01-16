@@ -8,13 +8,14 @@ import net.minecraft.network.chat.Style;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
+import net.minecraft.world.item.equipment.ArmorType;
 import net.minecraft.world.level.Level;
 
 import java.util.List;
 
 public class CopperArmor extends ArmorItem {
-    public CopperArmor(Type type) {
-        super(MGArmorMaterials.COPPER_ARMOR_MATERIAL, type, new Item.Properties().durability(type.getDurability(15)));
+    public CopperArmor(ArmorType type, Properties properties) {
+        super(MGArmorMaterials.COPPER_ARMOR_MATERIAL, type, properties.durability(type.getDurability(15)));
     }
 
     @Override

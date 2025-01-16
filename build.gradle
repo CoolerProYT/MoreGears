@@ -64,7 +64,7 @@ neoForge {
         }
 
         data {
-            data()
+            clientData()
 
             programArguments.addAll '--mod', project.mod_id, '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath()
         }
@@ -90,8 +90,8 @@ configurations {
 }
 
 dependencies {
-    compileOnly "mezz.jei:jei-${minecraft_version}-common-api:${jei_version}"
-    compileOnly "mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}"
+//    compileOnly "mezz.jei:jei-${minecraft_version}-common-api:${jei_version}"
+//    compileOnly "mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}"
 
 //    localRuntime "mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}"
 

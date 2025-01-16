@@ -5,11 +5,12 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.equipment.ArmorType;
 import net.minecraft.world.level.Level;
 
 public class SteelArmor extends ArmorItem {
-    public SteelArmor(Type type) {
-        super(MGArmorMaterials.STEEL_ARMOR_MATERIAL, type, new Properties().durability(type.getDurability(30)));
+    public SteelArmor(ArmorType type, Properties properties) {
+        super(MGArmorMaterials.STEEL_ARMOR_MATERIAL, type, properties.durability(type.getDurability(30)));
     }
 
     @Override

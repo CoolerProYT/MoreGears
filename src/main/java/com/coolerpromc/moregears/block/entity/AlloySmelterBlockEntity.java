@@ -12,6 +12,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.Containers;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.SimpleContainer;
@@ -21,10 +22,13 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.RecipeAccess;
 import net.minecraft.world.item.crafting.RecipeHolder;
+import net.minecraft.world.item.crafting.RecipeManager;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.FuelValues;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.common.crafting.SizedIngredient;
 import net.neoforged.neoforge.items.ItemStackHandler;
@@ -41,7 +45,8 @@ public class AlloySmelterBlockEntity extends BlockEntity implements MenuProvider
     private final ItemStackHandler fuelHandler = new ItemStackHandler(1){
         @Override
         public boolean isItemValid(int slot, ItemStack stack) {
-            return stack.getBurnTime(RecipeType.BLASTING) > 0;
+            assert level != null;
+            return stack.getBurnTime(RecipeType.BLASTING, level.fuelValues()) > 0;
         }
 
         @Override
@@ -210,11 +215,12 @@ public class AlloySmelterBlockEntity extends BlockEntity implements MenuProvider
     }
 
     private void generateEnergy(){
-        if (fuelHandler.getStackInSlot(0).getBurnTime(RecipeType.BLASTING) > 0 && !isBurning){
-            maxBurnProgress = Math.max(fuelHandler.getStackInSlot(0).getBurnTime(RecipeType.BLASTING), 0);
+        assert level != null;
+        if (fuelHandler.getStackInSlot(0).getBurnTime(RecipeType.BLASTING, level.fuelValues()) > 0 && !isBurning){
+            maxBurnProgress = Math.max(fuelHandler.getStackInSlot(0).getBurnTime(RecipeType.BLASTING, level.fuelValues()), 0);
         }
 
-        if(fuelHandler.getStackInSlot(0).getBurnTime(RecipeType.BLASTING) > 0 || isBurning && energyStorage.getEnergyStored() < energyStorage.getMaxEnergyStored()){
+        if(fuelHandler.getStackInSlot(0).getBurnTime(RecipeType.BLASTING, level.fuelValues()) > 0 || isBurning && energyStorage.getEnergyStored() < energyStorage.getMaxEnergyStored()){
             if (burnProgress >= maxBurnProgress){
                 burnProgress = 0;
                 isBurning = false;
@@ -368,7 +374,11 @@ public class AlloySmelterBlockEntity extends BlockEntity implements MenuProvider
             inputs.add(this.inputHandler.getStackInSlot(i));
         }
 
-        return this.level.getRecipeManager().getRecipeFor(MGRecipes.ALLOY_SMELTING_TYPE.get(), new MultipleRecipeInput(inputs), level);
+        ServerLevel serverLevel = (ServerLevel) level;
+        assert serverLevel != null;
+        RecipeManager recipeManager = serverLevel.recipeAccess();
+
+        return recipeManager.getRecipeFor(MGRecipes.ALLOY_SMELTING_TYPE.get(), new MultipleRecipeInput(inputs), level);
     }
 
     private boolean canInsertAmountIntoOutputSlot(ItemStack result) {

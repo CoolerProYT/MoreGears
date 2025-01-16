@@ -13,13 +13,14 @@ import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.component.Unbreakable;
+import net.minecraft.world.item.equipment.ArmorType;
 import net.minecraft.world.level.Level;
 
 import java.util.List;
 
 public class EnderiteArmor extends ArmorItem {
-    public EnderiteArmor(Type type) {
-        super(MGArmorMaterials.ENDERITE_ARMOR_MATERIAL, type, new Properties().fireResistant().durability(Integer.MAX_VALUE).component(DataComponents.UNBREAKABLE, new Unbreakable(true)));
+    public EnderiteArmor(ArmorType type, Properties properties) {
+        super(MGArmorMaterials.ENDERITE_ARMOR_MATERIAL, type, properties.fireResistant().durability(Integer.MAX_VALUE).component(DataComponents.UNBREAKABLE, new Unbreakable(true)));
     }
 
     @Override

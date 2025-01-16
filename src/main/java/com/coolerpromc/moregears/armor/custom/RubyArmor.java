@@ -5,11 +5,12 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.equipment.ArmorType;
 import net.minecraft.world.level.Level;
 
 public class RubyArmor extends ArmorItem {
-    public RubyArmor(Type type) {
-        super(MGArmorMaterials.RUBY_ARMOR_MATERIAL, type, new Properties().durability(type.getDurability(28)));
+    public RubyArmor(ArmorType type, Properties properties) {
+        super(MGArmorMaterials.RUBY_ARMOR_MATERIAL, type, properties.durability(type.getDurability(28)));
     }
 
     @Override
