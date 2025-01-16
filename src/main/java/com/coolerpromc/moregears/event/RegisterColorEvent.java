@@ -26,13 +26,6 @@ public class RegisterColorEvent {
         registerBlockColor(event, getBlocks());
     }
 
-    @SubscribeEvent
-    public static void onRegisterColorHandlers(RegisterColorHandlersEvent.Item event) {
-        registerBlockItemColor(event, getBlocks());
-        registerRawOreColor(event, getRawOres());
-        registerIngotColor(event, getIngots());
-    }
-
     private static void registerBlockColor(RegisterColorHandlersEvent.Block event, Block... blocks) {
         event.register((blockState, blockAndTintGetter, blockPos, i) -> {
             if (blockState.getBlock() instanceof MGOreBlock mgOreBlock) {
@@ -42,41 +35,6 @@ public class RegisterColorEvent {
             }
             return -1;
         }, blocks);
-    }
-
-    private static void registerBlockItemColor(RegisterColorHandlersEvent.Item event, Block... blocks) {
-        event.register((itemStack, i) -> {
-            if (itemStack.getItem() instanceof BlockItem blockItem) {
-                if (blockItem.getBlock() instanceof MGOreBlock mgOreBlock) {
-                    if (i == 1) {
-                        return mgOreBlock.getColor();
-                    }
-                }
-            }
-            return -1;
-        }, blocks);
-    }
-
-    private static void registerRawOreColor(RegisterColorHandlersEvent.Item event, Item... items) {
-        event.register((itemStack, i) -> {
-            if (itemStack.getItem() instanceof MGRawOre mgRawOre) {
-                if (i == 0) {
-                    return mgRawOre.getColor();
-                }
-            }
-            return -1;
-        }, items);
-    }
-
-    private static void registerIngotColor(RegisterColorHandlersEvent.Item event, Item... items) {
-        event.register((itemStack, i) -> {
-            if (itemStack.getItem() instanceof MGIngot mgIngot) {
-                if (i == 0) {
-                    return mgIngot.getColor();
-                }
-            }
-            return -1;
-        }, items);
     }
 
     private static Block[] getBlocks(){
@@ -97,45 +55,5 @@ public class RegisterColorEvent {
         }
 
         return blocks.toArray(new Block[0]);
-    }
-
-    private static Item[] getRawOres(){
-        var items = new ArrayList<Item>();
-
-        for (Field field : MGItems.class.getFields()){
-            try{
-                if (Supplier.class.isAssignableFrom(field.getType())){
-                    Supplier<?> supplier = (Supplier<?>) field.get(null);
-                    if (supplier.get() instanceof MGRawOre item){
-                        items.add(item);
-                    }
-                }
-            }
-            catch (IllegalAccessException e){
-                e.printStackTrace();
-            }
-        }
-
-        return items.toArray(new Item[0]);
-    }
-
-    private static Item[] getIngots(){
-        var items = new ArrayList<Item>();
-
-        for (Field field : MGItems.class.getFields()){
-            try{
-                if (Supplier.class.isAssignableFrom(field.getType())){
-                    Supplier<?> supplier = (Supplier<?>) field.get(null);
-                    if (supplier.get() instanceof MGIngot item){
-                        items.add(item);
-                    }
-                }
-            }
-            catch (IllegalAccessException e){
-                e.printStackTrace();
-            }
-        }
-
-        return items.toArray(new Item[0]);
     }
 }
