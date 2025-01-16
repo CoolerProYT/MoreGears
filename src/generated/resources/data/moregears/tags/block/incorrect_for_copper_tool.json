@@ -1,0 +1,12 @@
+{
+  "remove": [
+    "#moregears:needs_copper_tool"
+  ],
+  "values": [
+    {
+      "id": "#minecraft:needs_iron_tool",
+      "required": true
+    },
+    "#moregears:needs_bronze_tool"
+  ]
+}

@@ -4,6 +4,8 @@ import com.coolerpromc.moregears.block.MGBlocks;
 import com.coolerpromc.moregears.block.entity.MGBlockEntities;
 import com.coolerpromc.moregears.item.MGCreativeTab;
 import com.coolerpromc.moregears.item.MGItems;
+import com.coolerpromc.moregears.recipe.MGRecipes;
+import com.coolerpromc.moregears.screen.MGMenuTypes;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -29,6 +31,9 @@ public class MoreGears
         MGBlocks.register(modEventBus);
         MGBlockEntities.register(modEventBus);
         MGCreativeTab.register(modEventBus);
+
+        MGRecipes.register(modEventBus);
+        MGMenuTypes.register(modEventBus);
 
         NeoForge.EVENT_BUS.register(this);
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);

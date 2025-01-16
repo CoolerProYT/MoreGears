@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "X": "moregears:bronze_ingot",
+    "s": "minecraft:stick"
+  },
+  "pattern": [
+    "XXX",
+    " s ",
+    " s "
+  ],
+  "result": {
+    "count": 1,
+    "id": "moregears:bronze_pickaxe"
+  }
+}

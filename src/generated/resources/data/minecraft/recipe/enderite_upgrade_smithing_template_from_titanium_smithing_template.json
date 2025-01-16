@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "N": "moregears:enderite_ingot",
+    "S": "moregears:titanium_upgrade_smithing_template",
+    "X": "moregears:titanium_ingot"
+  },
+  "pattern": [
+    "XSX",
+    "XNX",
+    "XXX"
+  ],
+  "result": {
+    "count": 1,
+    "id": "moregears:enderite_upgrade_smithing_template"
+  }
+}
