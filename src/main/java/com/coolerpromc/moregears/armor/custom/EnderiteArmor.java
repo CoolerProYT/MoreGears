@@ -1,5 +1,6 @@
 package com.coolerpromc.moregears.armor.custom;
 
+import com.coolerpromc.moregears.armor.MGArmorItem;
 import com.coolerpromc.moregears.armor.MGArmorMaterials;
 import com.coolerpromc.moregears.util.MGTooltip;
 import net.minecraft.core.component.DataComponents;
@@ -18,7 +19,7 @@ import net.minecraft.world.level.Level;
 
 import java.util.List;
 
-public class EnderiteArmor extends ArmorItem {
+public class EnderiteArmor extends MGArmorItem {
     public EnderiteArmor(ArmorType type, Properties properties) {
         super(MGArmorMaterials.ENDERITE_ARMOR_MATERIAL, type, properties.fireResistant().durability(Integer.MAX_VALUE).component(DataComponents.UNBREAKABLE, new Unbreakable(true)));
     }

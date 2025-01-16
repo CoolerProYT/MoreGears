@@ -3,7 +3,10 @@
     "#moregears:needs_copper_tool"
   ],
   "values": [
-    "#minecraft:needs_iron_tool",
+    {
+      "id": "#minecraft:needs_iron_tool",
+      "required": true
+    },
     "#moregears:needs_bronze_tool"
   ]
 }

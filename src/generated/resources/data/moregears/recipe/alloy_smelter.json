@@ -2,15 +2,9 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "A": {
-      "item": "minecraft:deepslate"
-    },
-    "N": {
-      "item": "minecraft:gunpowder"
-    },
-    "X": {
-      "item": "minecraft:furnace"
-    }
+    "A": "minecraft:deepslate",
+    "N": "minecraft:gunpowder",
+    "X": "minecraft:furnace"
   },
   "pattern": [
     "XAX",

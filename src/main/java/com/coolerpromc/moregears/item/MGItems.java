@@ -1,6 +1,7 @@
 package com.coolerpromc.moregears.item;
 
 import com.coolerpromc.moregears.MoreGears;
+import com.coolerpromc.moregears.armor.MGArmorItem;
 import com.coolerpromc.moregears.armor.MGArmorMaterials;
 import com.coolerpromc.moregears.armor.custom.*;
 import com.coolerpromc.moregears.item.custom.MGIngot;
@@ -45,10 +46,10 @@ public class MGItems {
     public static final DeferredItem<MGIngot> TITANIUM_INGOT = registerItem("titanium_ingot", properties -> new MGIngot(properties, MGColors.TITANIUM_COLOR));
     public static final DeferredItem<MGIngot> ENDERITE_INGOT = registerItem("enderite_ingot", properties -> new MGIngot(properties, MGColors.ENDERITE_COLOR));
 
-    public static final DeferredItem<ArmorItem> COPPER_HELMET = registerItem("copper_helmet", properties -> new CopperArmor(ArmorType.HELMET, properties));
-    public static final DeferredItem<ArmorItem> COPPER_CHESTPLATE = registerItem("copper_chestplate", properties -> new CopperArmor(ArmorType.CHESTPLATE, properties));
-    public static final DeferredItem<ArmorItem> COPPER_LEGGINGS = registerItem("copper_leggings", properties -> new CopperArmor(ArmorType.LEGGINGS, properties));
-    public static final DeferredItem<ArmorItem> COPPER_BOOTS = registerItem("copper_boots", properties -> new CopperArmor(ArmorType.BOOTS, properties));
+    public static final DeferredItem<MGArmorItem> COPPER_HELMET = registerItem("copper_helmet", properties -> new CopperArmor(ArmorType.HELMET, properties));
+    public static final DeferredItem<MGArmorItem> COPPER_CHESTPLATE = registerItem("copper_chestplate", properties -> new CopperArmor(ArmorType.CHESTPLATE, properties));
+    public static final DeferredItem<MGArmorItem> COPPER_LEGGINGS = registerItem("copper_leggings", properties -> new CopperArmor(ArmorType.LEGGINGS, properties));
+    public static final DeferredItem<MGArmorItem> COPPER_BOOTS = registerItem("copper_boots", properties -> new CopperArmor(ArmorType.BOOTS, properties));
 
     public static final DeferredItem<SwordItem> COPPER_SWORD = registerItem("copper_sword", properties -> new SwordItem(MGToolMaterials.COPPER_TIER, 3, -2.4F, properties));
     public static final DeferredItem<PickaxeItem> COPPER_PICKAXE = registerItem("copper_pickaxe", properties -> new PickaxeItem(MGToolMaterials.COPPER_TIER, 1, -2.8f, properties));
@@ -56,10 +57,10 @@ public class MGItems {
     public static final DeferredItem<AxeItem> COPPER_AXE = registerItem("copper_axe", properties -> new AxeItem(MGToolMaterials.COPPER_TIER,  7, -3.2f, properties));
     public static final DeferredItem<HoeItem> COPPER_HOE = registerItem("copper_hoe", properties -> new HoeItem(MGToolMaterials.COPPER_TIER,  -1f, -1.5f, properties));
 
-    public static final DeferredItem<ArmorItem> BRONZE_HELMET = registerItem("bronze_helmet", properties -> new BronzeArmor(ArmorType.HELMET, properties));
-    public static final DeferredItem<ArmorItem> BRONZE_CHESTPLATE = registerItem("bronze_chestplate", properties -> new BronzeArmor(ArmorType.CHESTPLATE, properties));
-    public static final DeferredItem<ArmorItem> BRONZE_LEGGINGS = registerItem("bronze_leggings", properties -> new BronzeArmor(ArmorType.LEGGINGS, properties));
-    public static final DeferredItem<ArmorItem> BRONZE_BOOTS = registerItem("bronze_boots", properties -> new BronzeArmor(ArmorType.BOOTS, properties));
+    public static final DeferredItem<MGArmorItem> BRONZE_HELMET = registerItem("bronze_helmet", properties -> new BronzeArmor(ArmorType.HELMET, properties));
+    public static final DeferredItem<MGArmorItem> BRONZE_CHESTPLATE = registerItem("bronze_chestplate", properties -> new BronzeArmor(ArmorType.CHESTPLATE, properties));
+    public static final DeferredItem<MGArmorItem> BRONZE_LEGGINGS = registerItem("bronze_leggings", properties -> new BronzeArmor(ArmorType.LEGGINGS, properties));
+    public static final DeferredItem<MGArmorItem> BRONZE_BOOTS = registerItem("bronze_boots", properties -> new BronzeArmor(ArmorType.BOOTS, properties));
 
     public static final DeferredItem<SwordItem> BRONZE_SWORD = registerItem("bronze_sword", properties -> new SwordItem(MGToolMaterials.BRONZE_TIER, 3, -2.4F, properties));
     public static final DeferredItem<PickaxeItem> BRONZE_PICKAXE = registerItem("bronze_pickaxe", properties -> new BronzePickaxe(MGToolMaterials.BRONZE_TIER, 1, -2.8f, properties));
@@ -67,10 +68,10 @@ public class MGItems {
     public static final DeferredItem<AxeItem> BRONZE_AXE = registerItem("bronze_axe", properties -> new BronzeAxe(MGToolMaterials.BRONZE_TIER,  5.5f, -3.0f, properties));
     public static final DeferredItem<HoeItem> BRONZE_HOE = registerItem("bronze_hoe", properties -> new BronzeHoe(MGToolMaterials.BRONZE_TIER,  -2.5f, -0.5f, properties));
 
-    public static final DeferredItem<ArmorItem> STEEL_HELMET = registerItem("steel_helmet", properties -> new SteelArmor(ArmorType.HELMET, properties));
-    public static final DeferredItem<ArmorItem> STEEL_CHESTPLATE = registerItem("steel_chestplate", properties -> new SteelArmor(ArmorType.CHESTPLATE, properties));
-    public static final DeferredItem<ArmorItem> STEEL_LEGGINGS = registerItem("steel_leggings", properties -> new SteelArmor(ArmorType.LEGGINGS, properties));
-    public static final DeferredItem<ArmorItem> STEEL_BOOTS = registerItem("steel_boots", properties -> new SteelArmor(ArmorType.BOOTS, properties));
+    public static final DeferredItem<MGArmorItem> STEEL_HELMET = registerItem("steel_helmet", properties -> new SteelArmor(ArmorType.HELMET, properties));
+    public static final DeferredItem<MGArmorItem> STEEL_CHESTPLATE = registerItem("steel_chestplate", properties -> new SteelArmor(ArmorType.CHESTPLATE, properties));
+    public static final DeferredItem<MGArmorItem> STEEL_LEGGINGS = registerItem("steel_leggings", properties -> new SteelArmor(ArmorType.LEGGINGS, properties));
+    public static final DeferredItem<MGArmorItem> STEEL_BOOTS = registerItem("steel_boots", properties -> new SteelArmor(ArmorType.BOOTS, properties));
 
     public static final DeferredItem<SwordItem> STEEL_SWORD = registerItem("steel_sword", properties -> new SteelSword(MGToolMaterials.STEEL_TIER, 3, -1.4F, properties));
     public static final DeferredItem<PickaxeItem> STEEL_PICKAXE = registerItem("steel_pickaxe", properties -> new SteelPickaxe(MGToolMaterials.STEEL_TIER, 1, -1.8f, properties));
@@ -78,10 +79,10 @@ public class MGItems {
     public static final DeferredItem<AxeItem> STEEL_AXE = registerItem("steel_axe", properties -> new SteelAxe(MGToolMaterials.STEEL_TIER, 6, -2f, properties));
     public static final DeferredItem<HoeItem> STEEL_HOE = registerItem("steel_hoe", properties -> new SteelHoe(MGToolMaterials.STEEL_TIER, -2f, 0.0f, properties));
 
-    public static final DeferredItem<ArmorItem> RUBY_HELMET = registerItem("ruby_helmet", properties -> new RubyArmor(ArmorType.HELMET, properties));
-    public static final DeferredItem<ArmorItem> RUBY_CHESTPLATE = registerItem("ruby_chestplate", properties -> new RubyArmor(ArmorType.CHESTPLATE, properties));
-    public static final DeferredItem<ArmorItem> RUBY_LEGGINGS = registerItem("ruby_leggings", properties -> new RubyArmor(ArmorType.LEGGINGS, properties));
-    public static final DeferredItem<ArmorItem> RUBY_BOOTS = registerItem("ruby_boots", properties -> new RubyArmor(ArmorType.BOOTS, properties));
+    public static final DeferredItem<MGArmorItem> RUBY_HELMET = registerItem("ruby_helmet", properties -> new RubyArmor(ArmorType.HELMET, properties));
+    public static final DeferredItem<MGArmorItem> RUBY_CHESTPLATE = registerItem("ruby_chestplate", properties -> new RubyArmor(ArmorType.CHESTPLATE, properties));
+    public static final DeferredItem<MGArmorItem> RUBY_LEGGINGS = registerItem("ruby_leggings", properties -> new RubyArmor(ArmorType.LEGGINGS, properties));
+    public static final DeferredItem<MGArmorItem> RUBY_BOOTS = registerItem("ruby_boots", properties -> new RubyArmor(ArmorType.BOOTS, properties));
 
     public static final DeferredItem<SwordItem> RUBY_SWORD = registerItem("ruby_sword", properties -> new SwordItem(MGToolMaterials.RUBY_TIER, 3, -2.4F, properties));
     public static final DeferredItem<PickaxeItem> RUBY_PICKAXE = registerItem("ruby_pickaxe", properties -> new PickaxeItem(MGToolMaterials.RUBY_TIER, 1f, -2.8f, properties));
@@ -89,10 +90,10 @@ public class MGItems {
     public static final DeferredItem<AxeItem> RUBY_AXE = registerItem("ruby_axe", properties -> new AxeItem(MGToolMaterials.RUBY_TIER, 4, -3.2f, properties));
     public static final DeferredItem<HoeItem> RUBY_HOE = registerItem("ruby_hoe", properties -> new HoeItem(MGToolMaterials.RUBY_TIER, -3f, 0f, properties));
 
-    public static final DeferredItem<ArmorItem> TITANIUM_HELMET = registerItem("titanium_helmet", properties -> new TitaniumArmor(ArmorType.HELMET, properties));
-    public static final DeferredItem<ArmorItem> TITANIUM_CHESTPLATE = registerItem("titanium_chestplate", properties -> new TitaniumArmor(ArmorType.CHESTPLATE, properties));
-    public static final DeferredItem<ArmorItem> TITANIUM_LEGGINGS = registerItem("titanium_leggings", properties -> new TitaniumArmor(ArmorType.LEGGINGS, properties));
-    public static final DeferredItem<ArmorItem> TITANIUM_BOOTS = registerItem("titanium_boots", properties -> new TitaniumArmor(ArmorType.BOOTS, properties));
+    public static final DeferredItem<MGArmorItem> TITANIUM_HELMET = registerItem("titanium_helmet", properties -> new TitaniumArmor(ArmorType.HELMET, properties));
+    public static final DeferredItem<MGArmorItem> TITANIUM_CHESTPLATE = registerItem("titanium_chestplate", properties -> new TitaniumArmor(ArmorType.CHESTPLATE, properties));
+    public static final DeferredItem<MGArmorItem> TITANIUM_LEGGINGS = registerItem("titanium_leggings", properties -> new TitaniumArmor(ArmorType.LEGGINGS, properties));
+    public static final DeferredItem<MGArmorItem> TITANIUM_BOOTS = registerItem("titanium_boots", properties -> new TitaniumArmor(ArmorType.BOOTS, properties));
 
     public static final DeferredItem<SwordItem> TITANIUM_SWORD = registerItem("titanium_sword", properties -> new SwordItem(MGToolMaterials.TITANIUM_TIER, 5, -1.5F, properties));
     public static final DeferredItem<PickaxeItem> TITANIUM_PICKAXE = registerItem("titanium_pickaxe", properties -> new PickaxeItem(MGToolMaterials.TITANIUM_TIER, 2, -2f, properties));
@@ -100,10 +101,10 @@ public class MGItems {
     public static final DeferredItem<AxeItem> TITANIUM_AXE = registerItem("titanium_axe", properties -> new AxeItem(MGToolMaterials.TITANIUM_TIER, 6, -2.2f, properties));
     public static final DeferredItem<HoeItem> TITANIUM_HOE = registerItem("titanium_hoe", properties -> new HoeItem(MGToolMaterials.TITANIUM_TIER, -2f, 0.0f, properties));
 
-    public static final DeferredItem<ArmorItem> ENDERITE_HELMET = registerItem("enderite_helmet", properties -> new EnderiteArmor(ArmorType.HELMET, properties));
-    public static final DeferredItem<ArmorItem> ENDERITE_CHESTPLATE = registerItem("enderite_chestplate", properties -> new EnderiteArmor(ArmorType.CHESTPLATE, properties));
-    public static final DeferredItem<ArmorItem> ENDERITE_LEGGINGS = registerItem("enderite_leggings", properties -> new EnderiteArmor(ArmorType.LEGGINGS, properties));
-    public static final DeferredItem<ArmorItem> ENDERITE_BOOTS = registerItem("enderite_boots", properties -> new EnderiteArmor(ArmorType.BOOTS, properties));
+    public static final DeferredItem<MGArmorItem> ENDERITE_HELMET = registerItem("enderite_helmet", properties -> new EnderiteArmor(ArmorType.HELMET, properties));
+    public static final DeferredItem<MGArmorItem> ENDERITE_CHESTPLATE = registerItem("enderite_chestplate", properties -> new EnderiteArmor(ArmorType.CHESTPLATE, properties));
+    public static final DeferredItem<MGArmorItem> ENDERITE_LEGGINGS = registerItem("enderite_leggings", properties -> new EnderiteArmor(ArmorType.LEGGINGS, properties));
+    public static final DeferredItem<MGArmorItem> ENDERITE_BOOTS = registerItem("enderite_boots", properties -> new EnderiteArmor(ArmorType.BOOTS, properties));
 
     public static final DeferredItem<SwordItem> ENDERITE_SWORD = registerItem("enderite_sword",
             properties -> new SwordItem(MGToolMaterials.ENDERITE_TIER, 8, -1F, properties.fireResistant().component(DataComponents.UNBREAKABLE, new Unbreakable(true))));

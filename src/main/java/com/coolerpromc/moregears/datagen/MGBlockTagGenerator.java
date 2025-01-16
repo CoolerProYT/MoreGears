@@ -4,19 +4,19 @@ import com.coolerpromc.moregears.MoreGears;
 import com.coolerpromc.moregears.block.MGBlocks;
 import com.coolerpromc.moregears.util.MGTags;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.world.level.block.Blocks;
+import net.minecraft.tags.TagKey;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
-import net.neoforged.neoforge.common.data.ExistingFileHelper;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.concurrent.CompletableFuture;
 
 public class MGBlockTagGenerator extends BlockTagsProvider {
-    public MGBlockTagGenerator(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, @Nullable ExistingFileHelper existingFileHelper) {
-        super(output, lookupProvider, MoreGears.MODID, existingFileHelper);
+    public MGBlockTagGenerator(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider) {
+        super(output, lookupProvider, MoreGears.MODID, null);
     }
 
     @Override
@@ -74,7 +74,7 @@ public class MGBlockTagGenerator extends BlockTagsProvider {
         );
 
         this.tag(MGTags.Blocks.INCORRECT_FOR_COPPER_TOOL)
-                .addTag(BlockTags.NEEDS_IRON_TOOL)
+                .addOptionalTag(BlockTags.NEEDS_IRON_TOOL)
                 .addTag(MGTags.Blocks.NEEDS_BRONZE_TOOL)
                 .remove(MGTags.Blocks.NEEDS_COPPER_TOOL);
 

@@ -1,4 +1,4 @@
-// 1.21.1	2025-01-13T19:14:05.4089544	Tags for minecraft:block mod id moregears
+// 1.21.4	2025-01-16T12:23:11.7027344	Tags for minecraft:block mod id moregears
 fcd6b6733a46174eaa9640815630a8846d10daf8 data/c/tags/block/ores/enderite.json
 fa47e71294cea8e19c34859c8ecbef08c4ee5a41 data/c/tags/block/ores/ruby.json
 880c497077877c25dd74b2c557ab38fabb8150b9 data/c/tags/block/ores/tin.json
@@ -11,7 +11,7 @@ f412859b8c0aba65e46f531e030e7f98d20783e3 data/minecraft/tags/block/incorrect_for
 f412859b8c0aba65e46f531e030e7f98d20783e3 data/minecraft/tags/block/incorrect_for_wooden_tool.json
 f5e62198f71008b84da5e85945679a875d8babe2 data/minecraft/tags/block/mineable/pickaxe.json
 22dfe3e47453a23b10198b06bd8b1b89082809ab data/moregears/tags/block/incorrect_for_bronze_tool.json
-e710d42a1ab985cae846f81254929288b607ba12 data/moregears/tags/block/incorrect_for_copper_tool.json
+1831b806d88e8f2868d3104be7ea299ec0fa39c4 data/moregears/tags/block/incorrect_for_copper_tool.json
 4f476a42a62a333dd089c3058c376997f61d5b2a data/moregears/tags/block/incorrect_for_enderite_tool.json
 c7a3962c682f41633002bf9d713d4735d5ae3bee data/moregears/tags/block/incorrect_for_ruby_tool.json
 050d70ec4df08986e615f775ee8d5dcd176fef1f data/moregears/tags/block/incorrect_for_steel_tool.json

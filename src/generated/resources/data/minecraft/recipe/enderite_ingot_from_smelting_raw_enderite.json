@@ -4,9 +4,7 @@
   "cookingtime": 200,
   "experience": 1.0,
   "group": "enderite_ingot",
-  "ingredient": {
-    "item": "moregears:raw_enderite"
-  },
+  "ingredient": "moregears:raw_enderite",
   "result": {
     "count": 1,
     "id": "moregears:enderite_ingot"

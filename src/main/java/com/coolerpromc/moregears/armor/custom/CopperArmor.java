@@ -1,5 +1,6 @@
 package com.coolerpromc.moregears.armor.custom;
 
+import com.coolerpromc.moregears.armor.MGArmorItem;
 import com.coolerpromc.moregears.armor.MGArmorMaterials;
 import com.coolerpromc.moregears.util.MGTooltip;
 import net.minecraft.core.Holder;
@@ -13,7 +14,7 @@ import net.minecraft.world.level.Level;
 
 import java.util.List;
 
-public class CopperArmor extends ArmorItem {
+public class CopperArmor extends MGArmorItem {
     public CopperArmor(ArmorType type, Properties properties) {
         super(MGArmorMaterials.COPPER_ARMOR_MATERIAL, type, properties.durability(type.getDurability(15)));
     }

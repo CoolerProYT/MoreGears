@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
   "key": {
-    "X": {
-      "item": "moregears:ruby"
-    }
+    "X": "moregears:ruby"
   },
   "pattern": [
     "XXX",

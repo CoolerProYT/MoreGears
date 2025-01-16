@@ -1,5 +1,6 @@
 package com.coolerpromc.moregears.armor.custom;
 
+import com.coolerpromc.moregears.armor.MGArmorItem;
 import com.coolerpromc.moregears.armor.MGArmorMaterials;
 import com.coolerpromc.moregears.util.MGTooltip;
 import net.minecraft.network.chat.Component;
@@ -14,7 +15,7 @@ import net.minecraft.world.level.Level;
 
 import java.util.List;
 
-public class TitaniumArmor extends ArmorItem {
+public class TitaniumArmor extends MGArmorItem {
     public TitaniumArmor(ArmorType type, Properties properties) {
         super(MGArmorMaterials.TITANIUM_ARMOR_MATERIAL, type, properties.fireResistant().durability(type.getDurability(45)));
     }
