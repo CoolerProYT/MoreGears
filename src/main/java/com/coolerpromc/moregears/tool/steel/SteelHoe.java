@@ -19,8 +19,9 @@ import java.util.List;
 
 public class SteelHoe extends HoeItem {
     private static final ResourceLocation modifierId = ResourceLocation.fromNamespaceAndPath(MoreGears.MODID, "steel_hoe_slow_speed");
-    public SteelHoe(Tier p_42961_, Properties p_42964_) {
-        super(p_42961_, p_42964_);
+
+    public SteelHoe(ToolMaterial material, float attackDamage, float attackSpeed, Properties properties) {
+        super(material, attackDamage, attackSpeed, properties);
     }
 
     @Override

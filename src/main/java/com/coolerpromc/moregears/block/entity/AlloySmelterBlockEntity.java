@@ -22,13 +22,11 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.RecipeAccess;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.RecipeManager;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.FuelValues;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.common.crafting.SizedIngredient;
 import net.neoforged.neoforge.items.ItemStackHandler;
@@ -244,12 +242,12 @@ public class AlloySmelterBlockEntity extends BlockEntity implements MenuProvider
     private void craftItem() {
         Optional<RecipeHolder<AlloySmeltingRecipe>> recipe = getCurrentRecipe();
         if (recipe.isPresent()) {
-            List<ItemStack> results = recipe.get().value().getOutput();
+            List<ItemStack> results = recipe.get().value().output();
 
             int extractFromSlot0 = 0;
             int extractFromSlot1 = 0;
 
-            for (SizedIngredient ingredient : recipe.get().value().getInputItems()) {
+            for (SizedIngredient ingredient : recipe.get().value().inputItems()) {
                 if (ingredient.test(inputHandler.getStackInSlot(0))) {
                     extractFromSlot0 += Math.min(inputHandler.getStackInSlot(0).getCount(), ingredient.count());
                 } else if (ingredient.test(inputHandler.getStackInSlot(1))) {
@@ -298,8 +296,8 @@ public class AlloySmelterBlockEntity extends BlockEntity implements MenuProvider
 
         // Retrieve recipe inputs and outputs
         AlloySmeltingRecipe currentRecipe = recipe.get().value();
-        List<SizedIngredient> recipeIngredients = currentRecipe.getInputItems();
-        List<ItemStack> outputResults = currentRecipe.getOutput();
+        List<SizedIngredient> recipeIngredients = currentRecipe.inputItems();
+        List<ItemStack> outputResults = currentRecipe.output();
 
         // Create a mutable copy of the user inputs
         List<ItemStack> userInputs = new ArrayList<>();

@@ -13,6 +13,7 @@ import me.shedaniel.rei.api.common.util.EntryStacks;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.events.GuiEventListener;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 
@@ -56,18 +57,18 @@ public class AlloySmeltingCategory implements DisplayCategory<AlloySmeltingRecip
         widgets.add(new Widget() {
             @Override
             public void render(GuiGraphics guiGraphics, int i, int i1, float v) {
-                Minecraft.getInstance().getTextureManager().bindForSetup(TEXTURE);
+                Minecraft.getInstance().getTextureManager().getTexture(TEXTURE);
 
                 tickCount++;
 
                 int arrowHeight = (tickCount % 600) * 25 / 600;
-                guiGraphics.blit(TEXTURE, startPoint.x + 99, startPoint.y + 30, 176, 18, 20, arrowHeight);
+                guiGraphics.blit(RenderType::guiTextured, TEXTURE, startPoint.x + 99, startPoint.y + 30, 176, 18, 20, arrowHeight, 256, 256);
 
                 int energyScaled = (int) Math.ceil((double) 1000 / 100000 * 58);
-                guiGraphics.blit(TEXTURE, startPoint.x + 9, startPoint.y + 13 + (58 - energyScaled), 176, 101 - energyScaled, 14, energyScaled);
+                guiGraphics.blit(RenderType::guiTextured, TEXTURE, startPoint.x + 9, startPoint.y + 13 + (58 - energyScaled), 176, 101 - energyScaled, 14, energyScaled, 256, 256);
 
                 int energyGeneration = (tickCount % 2000) * 18 / 2000;
-                guiGraphics.blit(TEXTURE, startPoint.x + 33, startPoint.y + 44 + energyGeneration, 176, energyGeneration, 12, 18 - energyGeneration);
+                guiGraphics.blit(RenderType::guiTextured, TEXTURE, startPoint.x + 33, startPoint.y + 44 + energyGeneration, 176, energyGeneration, 12, 18 - energyGeneration, 256, 256);
             }
 
             @Override

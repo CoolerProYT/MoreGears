@@ -19,8 +19,8 @@ import java.util.List;
 import java.util.UUID;
 
 public class BronzeAxe extends AxeItem {
-    public BronzeAxe(Tier p_42961_, Properties p_42964_) {
-        super(p_42961_, p_42964_);
+    public BronzeAxe(ToolMaterial material, float attackDamage, float attackSpeed, Properties properties) {
+        super(material, attackDamage, attackSpeed, properties);
     }
 
     @Override

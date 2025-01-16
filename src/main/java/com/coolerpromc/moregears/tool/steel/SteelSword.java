@@ -19,8 +19,9 @@ import java.util.List;
 
 public class SteelSword extends SwordItem {
     private static final ResourceLocation modifierId = ResourceLocation.fromNamespaceAndPath(MoreGears.MODID, "steel_hoe_slow_speed");
-    public SteelSword(Tier p_42961_, Properties p_42964_) {
-        super(p_42961_, p_42964_);
+
+    public SteelSword(ToolMaterial material, float attackDamage, float attackSpeed, Properties properties) {
+        super(material, attackDamage, attackSpeed, properties);
     }
 
     @Override

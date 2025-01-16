@@ -19,8 +19,9 @@ import java.util.List;
 
 public class SteelPickaxe extends PickaxeItem {
     private static final ResourceLocation modifierId = ResourceLocation.fromNamespaceAndPath(MoreGears.MODID, "steel_pickaxe_slow_speed");
-    public SteelPickaxe(Tier p_42961_, Properties p_42964_) {
-        super(p_42961_, p_42964_);
+
+    public SteelPickaxe(ToolMaterial material, float attackDamage, float attackSpeed, Properties properties) {
+        super(material, attackDamage, attackSpeed, properties);
     }
 
     @Override

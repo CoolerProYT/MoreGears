@@ -5,15 +5,11 @@ import com.coolerpromc.moregears.recipe.custom.MultipleRecipeInput;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.HolderLookup;
-import net.minecraft.core.NonNullList;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.crafting.Recipe;
-import net.minecraft.world.item.crafting.RecipeSerializer;
-import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
 import net.neoforged.neoforge.common.crafting.SizedIngredient;
 
@@ -21,19 +17,12 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class AlloySmeltingRecipe implements Recipe<MultipleRecipeInput> {
-    private final List<SizedIngredient> inputItems;
-    private final List<ItemStack> output;
-
-    public AlloySmeltingRecipe(List<SizedIngredient> inputItems, List<ItemStack> output) {
-        this.inputItems = inputItems;
-        this.output = output;
-    }
+public record AlloySmeltingRecipe(List<SizedIngredient> inputItems, List<ItemStack> output) implements Recipe<MultipleRecipeInput> {
 
     @Override
     public boolean matches(MultipleRecipeInput multipleRecipeInput, Level level) {
         List<ItemStack> inputItems = multipleRecipeInput.inputItems();
-        List<SizedIngredient> remainingIngredients  = new ArrayList<>(this.inputItems);
+        List<SizedIngredient> remainingIngredients = new ArrayList<>(this.inputItems);
 
         for (ItemStack itemStack : inputItems) {
             if (itemStack.isEmpty()) {
@@ -66,40 +55,36 @@ public class AlloySmeltingRecipe implements Recipe<MultipleRecipeInput> {
     }
 
     @Override
-    public boolean canCraftInDimensions(int i, int i1) {
-        return true;
+    public RecipeSerializer<? extends Recipe<MultipleRecipeInput>> getSerializer() {
+        return (RecipeSerializer<? extends Recipe<MultipleRecipeInput>>) MGRecipes.ALLOY_SMELTING_SERIALIZER.get();
     }
 
     @Override
-    public ItemStack getResultItem(HolderLookup.Provider provider) {
-        return output.isEmpty() ? ItemStack.EMPTY : output.get(0).copy();
-    }
-
-    @Override
-    public RecipeSerializer<?> getSerializer() {
-        return MGRecipes.ALLOY_SMELTING_SERIALIZER.get();
-    }
-
-    @Override
-    public RecipeType<?> getType() {
+    public RecipeType<? extends Recipe<MultipleRecipeInput>> getType() {
         return MGRecipes.ALLOY_SMELTING_TYPE.get();
     }
 
-    public List<SizedIngredient> getInputItems() {
-        return inputItems;
+    @Override
+    public PlacementInfo placementInfo() {
+        List<Ingredient> ingredients = new ArrayList<>();
+        for (SizedIngredient inputItem : inputItems) {
+            ingredients.add(inputItem.ingredient());
+        }
+        return PlacementInfo.create(ingredients);
     }
 
-    public List<ItemStack> getOutput() {
-        return output;
+    @Override
+    public RecipeBookCategory recipeBookCategory() {
+        return null;
     }
 
-    public static class Serializer implements RecipeSerializer<AlloySmeltingRecipe>{
+    public static class Serializer implements RecipeSerializer<AlloySmeltingRecipe> {
         public static final AlloySmeltingRecipe.Serializer INSTANCE = new AlloySmeltingRecipe.Serializer();
         public static final ResourceLocation ID = ResourceLocation.fromNamespaceAndPath(MoreGears.MODID, "alloy_smelting");
 
         private final MapCodec<AlloySmeltingRecipe> CODEC = RecordCodecBuilder.mapCodec(alloySmeltingRecipeInstance -> alloySmeltingRecipeInstance.group(
-                SizedIngredient.FLAT_CODEC.listOf().fieldOf("ingredients").forGetter(AlloySmeltingRecipe::getInputItems),
-                ItemStack.CODEC.listOf().fieldOf("output").forGetter(AlloySmeltingRecipe::getOutput)
+                SizedIngredient.NESTED_CODEC.listOf().fieldOf("ingredients").forGetter(AlloySmeltingRecipe::inputItems),
+                ItemStack.CODEC.listOf().fieldOf("output").forGetter(AlloySmeltingRecipe::output)
         ).apply(alloySmeltingRecipeInstance, AlloySmeltingRecipe::new));
 
         public static final StreamCodec<RegistryFriendlyByteBuf, AlloySmeltingRecipe> STREAM_CODEC = StreamCodec.of(

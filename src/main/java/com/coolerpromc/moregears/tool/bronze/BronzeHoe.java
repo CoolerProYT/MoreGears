@@ -10,8 +10,8 @@ import net.minecraft.world.level.block.state.BlockState;
 import java.util.List;
 
 public class BronzeHoe extends HoeItem {
-    public BronzeHoe(Tier p_42961_, Properties p_42964_) {
-        super(p_42961_, p_42964_);
+    public BronzeHoe(ToolMaterial material, float attackDamage, float attackSpeed, Properties properties) {
+        super(material, attackDamage, attackSpeed, properties);
     }
 
     @Override

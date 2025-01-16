@@ -6,15 +6,15 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.PickaxeItem;
-import net.minecraft.world.item.Tier;
+import net.minecraft.world.item.ToolMaterial;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.block.state.BlockState;
 
 import java.util.List;
 
 public class BronzePickaxe extends PickaxeItem {
-    public BronzePickaxe(Tier p_42961_, Properties p_42964_) {
-        super(p_42961_, p_42964_);
+    public BronzePickaxe(ToolMaterial material, float attackDamage, float attackSpeed, Properties properties) {
+        super(material, attackDamage, attackSpeed, properties);
     }
 
     @Override
