@@ -23,53 +23,19 @@ public class MGBlockStateProvider extends BlockStateProvider {
 
     @Override
     protected void registerStatesAndModels() {
-        final ResourceLocation IRON_ORE_STYLE = textureLoc("template_iron_ore_tint");
-        final ResourceLocation GOLD_ORE_STYLE = textureLoc("template_gold_ore_tint");
-        final ResourceLocation DIAMOND_ORE_STYLE = textureLoc("template_diamond_ore_tint");
-        final ResourceLocation EMERALD_ORE_STYLE = textureLoc("template_emerald_ore_tint");
-        final ResourceLocation REDSTONE_ORE_STYLE = textureLoc("template_redstone_ore_tint");
-
-        simpleOreBlockWithItem(MGBlocks.TIN_ORE, IRON_ORE_STYLE, MGOreTypes.STONE);
-        simpleOreBlockWithItem(MGBlocks.DEEPSLATE_TIN_ORE, IRON_ORE_STYLE, MGOreTypes.DEEPSLATE);
-        simpleOreBlockWithItem(MGBlocks.RUBY_ORE, EMERALD_ORE_STYLE, MGOreTypes.STONE);
-        simpleOreBlockWithItem(MGBlocks.DEEPSLATE_RUBY_ORE, EMERALD_ORE_STYLE, MGOreTypes.DEEPSLATE);
-        simpleOreBlockWithItem(MGBlocks.NETHER_TITANIUM_ORE, DIAMOND_ORE_STYLE, MGOreTypes.NETHER);
-        simpleOreBlockWithItem(MGBlocks.END_ENDERITE_ORE, REDSTONE_ORE_STYLE, MGOreTypes.END);
+        simpleBlockWithItem(MGBlocks.TIN_ORE);
+        simpleBlockWithItem(MGBlocks.DEEPSLATE_TIN_ORE);
+        simpleBlockWithItem(MGBlocks.RUBY_ORE);
+        simpleBlockWithItem(MGBlocks.DEEPSLATE_RUBY_ORE);
+        simpleBlockWithItem(MGBlocks.NETHER_TITANIUM_ORE);
+        simpleBlockWithItem(MGBlocks.END_ENDERITE_ORE);
 
         horizontalBlock(MGBlocks.ALLOY_SMELTER.get(), new ModelFile.UncheckedModelFile(modLoc("block/alloy_smelter")));
         simpleBlockItem(MGBlocks.ALLOY_SMELTER.get(), new ModelFile.UncheckedModelFile(modLoc("block/alloy_smelter")));
     }
 
-    private <T extends Block> void simpleOreBlockWithItem(DeferredBlock<T> block, ResourceLocation texture, MGOreTypes types){
-        ResourceLocation blockTexture = switch (types){
-            case MGOreTypes.STONE -> mcLoc("block/stone");
-            case MGOreTypes.DEEPSLATE -> mcLoc("block/deepslate");
-            case MGOreTypes.NETHER -> mcLoc("block/netherrack");
-            case MGOreTypes.END -> mcLoc("block/end_stone");
-        };
-
-        simpleBlockWithItem(block.get(), models().withExistingParent("block/" + block.getId().getPath(), mcLoc("block/block"))
-                .renderType("cutout")
-                .texture("layer0", blockTexture)
-                .texture("layer1", texture)
-                .texture("particle", blockTexture)
-                .element().from(0,0,0).to(16,16,16)
-                .face(Direction.NORTH).uvs(0,0,16,16).texture("#layer0").cullface(Direction.NORTH).tintindex(0).end()
-                .face(Direction.EAST).uvs(0,0,16,16).texture("#layer0").cullface(Direction.EAST).tintindex(0).end()
-                .face(Direction.SOUTH).uvs(0,0,16,16).texture("#layer0").cullface(Direction.SOUTH).tintindex(0).end()
-                .face(Direction.WEST).uvs(0,0,16,16).texture("#layer0").cullface(Direction.WEST).tintindex(0).end()
-                .face(Direction.UP).uvs(0,0,16,16).texture("#layer0").cullface(Direction.UP).tintindex(0).end()
-                .face(Direction.DOWN).uvs(0,0,16,16).texture("#layer0").cullface(Direction.DOWN).tintindex(0).end()
-                .end()
-                .element().from(0,0,0).to(16,16,16)
-                .face(Direction.NORTH).uvs(0,0,16,16).texture("#layer1").cullface(Direction.NORTH).tintindex(1).end()
-                .face(Direction.EAST).uvs(0,0,16,16).texture("#layer1").cullface(Direction.EAST).tintindex(1).end()
-                .face(Direction.SOUTH).uvs(0,0,16,16).texture("#layer1").cullface(Direction.SOUTH).tintindex(1).end()
-                .face(Direction.WEST).uvs(0,0,16,16).texture("#layer1").cullface(Direction.WEST).tintindex(1).end()
-                .face(Direction.UP).uvs(0,0,16,16).texture("#layer1").cullface(Direction.UP).tintindex(1).end()
-                .face(Direction.DOWN).uvs(0,0,16,16).texture("#layer1").cullface(Direction.DOWN).tintindex(1).end()
-                .end()
-        );
+    private void simpleBlockWithItem(DeferredBlock<?> deferredBlock) {
+        simpleBlockWithItem(deferredBlock.get(), cubeAll(deferredBlock.get()));
     }
 
     private ResourceLocation textureLoc(String location){
