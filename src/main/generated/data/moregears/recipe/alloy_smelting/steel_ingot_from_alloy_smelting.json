@@ -1,12 +1,8 @@
 {
   "type": "minecraft:alloy_smelting",
   "ingredients": [
-    {
-      "item": "minecraft:iron_ingot"
-    },
-    {
-      "item": "minecraft:coal"
-    }
+    "minecraft:iron_ingot",
+    "minecraft:coal"
   ],
   "output": [
     {

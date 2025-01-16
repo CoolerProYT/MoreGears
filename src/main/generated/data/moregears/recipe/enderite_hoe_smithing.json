@@ -1,16 +1,10 @@
 {
   "type": "minecraft:smithing_transform",
-  "addition": {
-    "item": "moregears:enderite_ingot"
-  },
-  "base": {
-    "item": "moregears:titanium_hoe"
-  },
+  "addition": "moregears:enderite_ingot",
+  "base": "moregears:titanium_hoe",
   "result": {
     "count": 1,
     "id": "moregears:enderite_hoe"
   },
-  "template": {
-    "item": "moregears:enderite_upgrade_smithing_template"
-  }
+  "template": "moregears:enderite_upgrade_smithing_template"
 }

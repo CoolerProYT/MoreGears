@@ -1,3 +1,4 @@
+/*
 package com.coolerpromc.moregears.compat.jei;
 
 import com.coolerpromc.moregears.MoreGears;
@@ -44,3 +45,4 @@ public class JEIPlugin implements IModPlugin {
         registration.addRecipeClickArea(AlloySmelterScreen.class, 100, 31, 18, 23, AlloySmeltingCategory.ALLOY_SMELTING_TYPE);
     }
 }
+*/

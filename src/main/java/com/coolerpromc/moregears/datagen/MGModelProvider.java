@@ -1,18 +1,22 @@
 package com.coolerpromc.moregears.datagen;
 
 import com.coolerpromc.moregears.MoreGears;
+import com.coolerpromc.moregears.armor.MGArmorItem;
+import com.coolerpromc.moregears.armor.MGArmorMaterials;
 import com.coolerpromc.moregears.block.MGBlocks;
 import com.coolerpromc.moregears.item.MGItems;
+import com.coolerpromc.moregears.item.custom.MGIngot;
+import com.coolerpromc.moregears.item.custom.MGRawOre;
+import net.fabricmc.fabric.api.client.datagen.v1.provider.FabricModelProvider;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
-import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 import net.minecraft.block.Block;
-import net.minecraft.data.client.*;
+import net.minecraft.client.data.*;
+import net.minecraft.client.render.item.model.BasicItemModel;
 import net.minecraft.item.Item;
-import net.minecraft.registry.Registries;
+import net.minecraft.item.equipment.ArmorMaterial;
 import net.minecraft.util.Identifier;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 
 public class MGModelProvider extends FabricModelProvider {
     public final Identifier RAW_ORE = itemTextureLoc("template_raw_ore");
@@ -49,35 +53,35 @@ public class MGModelProvider extends FabricModelProvider {
         withExistingTexture(itemModelGenerator, MGItems.TITANIUM_INGOT, INGOT);
         withExistingTexture(itemModelGenerator, MGItems.ENDERITE_INGOT, INGOT);
 
-        itemModelGenerator.registerArmor(MGItems.COPPER_HELMET);
-        itemModelGenerator.registerArmor(MGItems.COPPER_CHESTPLATE);
-        itemModelGenerator.registerArmor(MGItems.COPPER_LEGGINGS);
-        itemModelGenerator.registerArmor(MGItems.COPPER_BOOTS);
+        trimmedArmorItem(itemModelGenerator, MGItems.COPPER_HELMET, MGArmorMaterials.COPPER_ARMOR_MATERIAL);
+        trimmedArmorItem(itemModelGenerator, MGItems.COPPER_CHESTPLATE, MGArmorMaterials.COPPER_ARMOR_MATERIAL);
+        trimmedArmorItem(itemModelGenerator, MGItems.COPPER_LEGGINGS, MGArmorMaterials.COPPER_ARMOR_MATERIAL);
+        trimmedArmorItem(itemModelGenerator, MGItems.COPPER_BOOTS, MGArmorMaterials.COPPER_ARMOR_MATERIAL);
 
-        itemModelGenerator.registerArmor(MGItems.BRONZE_HELMET);
-        itemModelGenerator.registerArmor(MGItems.BRONZE_CHESTPLATE);
-        itemModelGenerator.registerArmor(MGItems.BRONZE_LEGGINGS);
-        itemModelGenerator.registerArmor(MGItems.BRONZE_BOOTS);
+        trimmedArmorItem(itemModelGenerator, MGItems.BRONZE_HELMET, MGArmorMaterials.BRONZE_ARMOR_MATERIAL);
+        trimmedArmorItem(itemModelGenerator, MGItems.BRONZE_CHESTPLATE, MGArmorMaterials.BRONZE_ARMOR_MATERIAL);
+        trimmedArmorItem(itemModelGenerator, MGItems.BRONZE_LEGGINGS, MGArmorMaterials.BRONZE_ARMOR_MATERIAL);
+        trimmedArmorItem(itemModelGenerator, MGItems.BRONZE_BOOTS, MGArmorMaterials.BRONZE_ARMOR_MATERIAL);
 
-        itemModelGenerator.registerArmor(MGItems.STEEL_HELMET);
-        itemModelGenerator.registerArmor(MGItems.STEEL_CHESTPLATE);
-        itemModelGenerator.registerArmor(MGItems.STEEL_LEGGINGS);
-        itemModelGenerator.registerArmor(MGItems.STEEL_BOOTS);
+        trimmedArmorItem(itemModelGenerator, MGItems.STEEL_HELMET, MGArmorMaterials.STEEL_ARMOR_MATERIAL);
+        trimmedArmorItem(itemModelGenerator, MGItems.STEEL_CHESTPLATE, MGArmorMaterials.STEEL_ARMOR_MATERIAL);
+        trimmedArmorItem(itemModelGenerator, MGItems.STEEL_LEGGINGS, MGArmorMaterials.STEEL_ARMOR_MATERIAL);
+        trimmedArmorItem(itemModelGenerator, MGItems.STEEL_BOOTS, MGArmorMaterials.STEEL_ARMOR_MATERIAL);
 
-        itemModelGenerator.registerArmor(MGItems.RUBY_HELMET);
-        itemModelGenerator.registerArmor(MGItems.RUBY_CHESTPLATE);
-        itemModelGenerator.registerArmor(MGItems.RUBY_LEGGINGS);
-        itemModelGenerator.registerArmor(MGItems.RUBY_BOOTS);
+        trimmedArmorItem(itemModelGenerator, MGItems.RUBY_HELMET, MGArmorMaterials.RUBY_ARMOR_MATERIAL);
+        trimmedArmorItem(itemModelGenerator, MGItems.RUBY_CHESTPLATE, MGArmorMaterials.RUBY_ARMOR_MATERIAL);
+        trimmedArmorItem(itemModelGenerator, MGItems.RUBY_LEGGINGS, MGArmorMaterials.RUBY_ARMOR_MATERIAL);
+        trimmedArmorItem(itemModelGenerator, MGItems.RUBY_BOOTS, MGArmorMaterials.RUBY_ARMOR_MATERIAL);
 
-        itemModelGenerator.registerArmor(MGItems.TITANIUM_HELMET);
-        itemModelGenerator.registerArmor(MGItems.TITANIUM_CHESTPLATE);
-        itemModelGenerator.registerArmor(MGItems.TITANIUM_LEGGINGS);
-        itemModelGenerator.registerArmor(MGItems.TITANIUM_BOOTS);
+        trimmedArmorItem(itemModelGenerator, MGItems.TITANIUM_HELMET, MGArmorMaterials.TITANIUM_ARMOR_MATERIAL);
+        trimmedArmorItem(itemModelGenerator, MGItems.TITANIUM_CHESTPLATE, MGArmorMaterials.TITANIUM_ARMOR_MATERIAL);
+        trimmedArmorItem(itemModelGenerator, MGItems.TITANIUM_LEGGINGS, MGArmorMaterials.TITANIUM_ARMOR_MATERIAL);
+        trimmedArmorItem(itemModelGenerator, MGItems.TITANIUM_BOOTS, MGArmorMaterials.TITANIUM_ARMOR_MATERIAL);
 
-        itemModelGenerator.registerArmor(MGItems.ENDERITE_HELMET);
-        itemModelGenerator.registerArmor(MGItems.ENDERITE_CHESTPLATE);
-        itemModelGenerator.registerArmor(MGItems.ENDERITE_LEGGINGS);
-        itemModelGenerator.registerArmor(MGItems.ENDERITE_BOOTS);
+        trimmedArmorItem(itemModelGenerator, MGItems.ENDERITE_HELMET, MGArmorMaterials.ENDERITE_ARMOR_MATERIAL);
+        trimmedArmorItem(itemModelGenerator, MGItems.ENDERITE_CHESTPLATE, MGArmorMaterials.ENDERITE_ARMOR_MATERIAL);
+        trimmedArmorItem(itemModelGenerator, MGItems.ENDERITE_LEGGINGS, MGArmorMaterials.ENDERITE_ARMOR_MATERIAL);
+        trimmedArmorItem(itemModelGenerator, MGItems.ENDERITE_BOOTS, MGArmorMaterials.ENDERITE_ARMOR_MATERIAL);
 
         itemModelGenerator.register(MGItems.TITANIUM_UPGRADE_SMITHING_TEMPLATE, Models.GENERATED);
         itemModelGenerator.register(MGItems.ENDERITE_UPGRADE_SMITHING_TEMPLATE, Models.GENERATED);
@@ -120,12 +124,26 @@ public class MGModelProvider extends FabricModelProvider {
     }
 
     private <T extends Item> void withExistingTexture(ItemModelGenerator itemModelGenerator, T item, Identifier texture){
-        Map<TextureKey, Identifier> textureMapConverted = new HashMap<>();
-        textureMapConverted.put(TextureKey.LAYER0, texture);
+        TextureMap textureMap = new TextureMap();
+        textureMap.put(TextureKey.LAYER0, texture);
 
-        itemModelGenerator.writer.accept(itemTextureLoc(Registries.ITEM.getId(item).getPath()), () -> Models.GENERATED.createJson(itemTextureLoc(Registries.ITEM.getId(item).getPath()), textureMapConverted));
+        int color = -1;
+
+        if(item instanceof MGRawOre mgRawOre){
+            color = mgRawOre.getColor();
+        }
+
+        if (item instanceof MGIngot mgIngot){
+            color = mgIngot.getColor();
+        }
+
+        itemModelGenerator.output.accept(item, new BasicItemModel.Unbaked(Models.GENERATED.upload(item, textureMap, itemModelGenerator.modelCollector), List.of(ItemModels.constantTintSource(color))));
     }
 
+    private void trimmedArmorItem(ItemModelGenerator itemModels, MGArmorItem item, ArmorMaterial armorMaterial){
+        itemModels.registerArmor(item, armorMaterial.assetId(), item.getType().getName(), false);
+    }
+    
     private <T extends Block> void simpleBlockWithItem(BlockStateModelGenerator blockStateModelGenerator, T block){
         blockStateModelGenerator.registerSimpleCubeAll(block);
     }

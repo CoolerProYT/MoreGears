@@ -4,9 +4,7 @@
   "cookingtime": 200,
   "experience": 1.0,
   "group": "titanium_ingot",
-  "ingredient": {
-    "item": "moregears:nether_titanium_ore"
-  },
+  "ingredient": "moregears:nether_titanium_ore",
   "result": {
     "id": "moregears:titanium_ingot"
   }

@@ -1,0 +1,12 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "moregears:item/ruby",
+    "tints": [
+      {
+        "type": "minecraft:constant",
+        "value": -2092705
+      }
+    ]
+  }
+}

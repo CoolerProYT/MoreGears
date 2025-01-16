@@ -13,24 +13,25 @@ import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
-import net.minecraft.loot.context.LootContextParameterSet;
 import net.minecraft.loot.context.LootContextParameters;
+import net.minecraft.loot.context.LootWorldContext;
 import net.minecraft.state.StateManager;
-import net.minecraft.state.property.DirectionProperty;
+import net.minecraft.state.property.EnumProperty;
 import net.minecraft.state.property.Properties;
+import net.minecraft.util.ActionResult;
 import net.minecraft.util.BlockMirror;
 import net.minecraft.util.BlockRotation;
 import net.minecraft.util.Hand;
-import net.minecraft.util.ItemActionResult;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
 public class AlloySmelterBlock extends BlockWithEntity {
-    public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
+    public static final EnumProperty<Direction> FACING = Properties.HORIZONTAL_FACING;
 
     public AlloySmelterBlock(Settings settings) {
         super(settings);
@@ -69,7 +70,7 @@ public class AlloySmelterBlock extends BlockWithEntity {
     }
 
     @Override
-    protected List<ItemStack> getDroppedStacks(BlockState state, LootContextParameterSet.Builder builder) {
+    protected List<ItemStack> getDroppedStacks(BlockState state, LootWorldContext.Builder builder) {
         List<ItemStack> drops = super.getDroppedStacks(state, builder);
         BlockEntity blockEntity = builder.getOptional(LootContextParameters.BLOCK_ENTITY);
 
@@ -85,7 +86,7 @@ public class AlloySmelterBlock extends BlockWithEntity {
     }
 
     @Override
-    protected ItemActionResult onUseWithItem(ItemStack stack, BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
+    protected ActionResult onUseWithItem(ItemStack stack, BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         if (!world.isClient){
             BlockEntity entity = world.getBlockEntity(pos);
             if (entity instanceof AlloySmelterBlockEntity alloySmelterBlockEntity){
@@ -93,7 +94,7 @@ public class AlloySmelterBlock extends BlockWithEntity {
             }
         }
 
-        return ItemActionResult.SUCCESS;
+        return ActionResult.SUCCESS;
     }
 
     @Nullable

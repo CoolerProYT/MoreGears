@@ -24,10 +24,12 @@ import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.recipe.RecipeEntry;
+import net.minecraft.recipe.RecipeManager;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.screen.PropertyDelegate;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.text.Text;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
@@ -176,7 +178,8 @@ public class AlloySmelterBlockEntity extends BlockEntity implements ExtendedScre
     @Override
     public boolean canInsert(int slot, ItemStack stack, @Nullable Direction side) {
         if (slot == FUEL_SLOT && side == Direction.UP) {
-            return AbstractFurnaceBlockEntity.canUseAsFuel(stack);
+            assert world != null;
+            return world.getFuelRegistry().isFuel(stack);
         } else return slot == INPUT_SLOT[0] || slot == INPUT_SLOT[1] && side != Direction.UP && side != Direction.DOWN;
     }
 
@@ -244,9 +247,9 @@ public class AlloySmelterBlockEntity extends BlockEntity implements ExtendedScre
 
             for (Ingredient ingredient : recipe.get().value().getInputItems()) {
                 if (ingredient.test(inventory.get(INPUT_SLOT[0]))) {
-                    extractFromSlot0 += Math.min(inventory.get(INPUT_SLOT[0]).getCount(), ingredient.getMatchingStacks()[0].getCount());
+                    extractFromSlot0 += Math.min(inventory.get(INPUT_SLOT[0]).getCount(), 1);
                 } else if (ingredient.test(inventory.get(INPUT_SLOT[1]))) {
-                    extractFromSlot1 += Math.min(inventory.get(INPUT_SLOT[1]).getCount(), ingredient.getMatchingStacks()[0].getCount());
+                    extractFromSlot1 += Math.min(inventory.get(INPUT_SLOT[1]).getCount(), 1);
                 }
             }
 
@@ -306,7 +309,7 @@ public class AlloySmelterBlockEntity extends BlockEntity implements ExtendedScre
             while (userInputIterator.hasNext()) {
                 ItemStack userInput = userInputIterator.next();
 
-                if (recipeIngredient.test(userInput) && userInput.getCount() >= recipeIngredient.getMatchingStacks()[0].getCount()) {
+                if (recipeIngredient.test(userInput) && userInput.getCount() >= 1) {
                     // Match found; remove the input to avoid duplicate matches
                     userInputIterator.remove();
                     ingredientMatched = true;
@@ -365,7 +368,10 @@ public class AlloySmelterBlockEntity extends BlockEntity implements ExtendedScre
             inputs.add(this.inventory.get(i));
         }
 
-        return this.world.getRecipeManager().getFirstMatch(MGRecipes.ALLOY_SMELTING_TYPE, new MultipleRecipeInput(inputs), world);
+        ServerWorld serverWorld = (ServerWorld) this.world;
+
+        assert serverWorld != null;
+        return serverWorld.getRecipeManager().getFirstMatch(MGRecipes.ALLOY_SMELTING_TYPE, new MultipleRecipeInput(inputs), world);
     }
 
     private boolean canInsertAmountIntoOutputSlot(ItemStack result) {
@@ -403,7 +409,8 @@ public class AlloySmelterBlockEntity extends BlockEntity implements ExtendedScre
             return 0;
         } else {
             Item item = fuel.getItem();
-            return (Integer) AbstractFurnaceBlockEntity.createFuelTimeMap().getOrDefault(item, 0);
+            assert world != null;
+            return (Integer) world.getFuelRegistry().getFuelTicks(new ItemStack(item));
         }
     }
 }

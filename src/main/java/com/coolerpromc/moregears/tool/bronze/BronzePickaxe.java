@@ -14,8 +14,9 @@ import net.minecraft.text.Text;
 import java.util.List;
 
 public class BronzePickaxe extends PickaxeItem {
-    public BronzePickaxe(ToolMaterial p_42961_, Item.Settings p_42964_) {
-        super(p_42961_, p_42964_);
+
+    public BronzePickaxe(ToolMaterial material, float attackDamage, float attackSpeed, Settings settings) {
+        super(material, attackDamage, attackSpeed, settings);
     }
 
     @Override

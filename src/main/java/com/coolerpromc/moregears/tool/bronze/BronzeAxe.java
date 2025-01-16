@@ -13,8 +13,9 @@ import net.minecraft.text.Text;
 import java.util.List;
 
 public class BronzeAxe extends AxeItem {
-    public BronzeAxe(ToolMaterial p_42961_, Settings p_42964_) {
-        super(p_42961_, p_42964_);
+
+    public BronzeAxe(ToolMaterial material, float attackDamage, float attackSpeed, Settings settings) {
+        super(material, attackDamage, attackSpeed, settings);
     }
 
     @Override

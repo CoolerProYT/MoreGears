@@ -7,10 +7,8 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.RegistryByteBuf;
 import net.minecraft.network.codec.PacketCodec;
-import net.minecraft.recipe.Ingredient;
-import net.minecraft.recipe.Recipe;
-import net.minecraft.recipe.RecipeSerializer;
-import net.minecraft.recipe.RecipeType;
+import net.minecraft.recipe.*;
+import net.minecraft.recipe.book.RecipeBookCategory;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.World;
@@ -64,23 +62,23 @@ public class AlloySmeltingRecipe implements Recipe<MultipleRecipeInput>{
     }
 
     @Override
-    public boolean fits(int width, int height) {
-        return true;
+    public RecipeSerializer<? extends Recipe<MultipleRecipeInput>> getSerializer() {
+        return (RecipeSerializer<? extends Recipe<MultipleRecipeInput>>) MGRecipes.ALLOY_SMELTING_SERIALIZER;
     }
 
     @Override
-    public ItemStack getResult(RegistryWrapper.WrapperLookup registriesLookup) {
-        return output.isEmpty() ? ItemStack.EMPTY : output.get(0).copy();
-    }
-
-    @Override
-    public RecipeSerializer<?> getSerializer() {
-        return MGRecipes.ALLOY_SMELTING_SERIALIZER;
-    }
-
-    @Override
-    public RecipeType<?> getType() {
+    public RecipeType<? extends Recipe<MultipleRecipeInput>> getType() {
         return MGRecipes.ALLOY_SMELTING_TYPE;
+    }
+
+    @Override
+    public IngredientPlacement getIngredientPlacement() {
+        return IngredientPlacement.forShapeless(inputItems);
+    }
+
+    @Override
+    public RecipeBookCategory getRecipeBookCategory() {
+        return null;
     }
 
     public List<Ingredient> getInputItems() {
@@ -96,7 +94,7 @@ public class AlloySmeltingRecipe implements Recipe<MultipleRecipeInput>{
         public static final Identifier ID = Identifier.of(MoreGears.MODID, "alloy_smelting");
 
         private final MapCodec<AlloySmeltingRecipe> CODEC = RecordCodecBuilder.mapCodec(alloySmeltingRecipeInstance -> alloySmeltingRecipeInstance.group(
-                Ingredient.DISALLOW_EMPTY_CODEC.listOf().fieldOf("ingredients").forGetter(AlloySmeltingRecipe::getInputItems),
+                Ingredient.CODEC.listOf().fieldOf("ingredients").forGetter(AlloySmeltingRecipe::getInputItems),
                 ItemStack.CODEC.listOf().fieldOf("output").forGetter(AlloySmeltingRecipe::getOutput)
         ).apply(alloySmeltingRecipeInstance, AlloySmeltingRecipe::new));
 

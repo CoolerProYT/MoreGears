@@ -14,8 +14,9 @@ import net.minecraft.text.Text;
 import java.util.List;
 
 public class BronzeHoe extends HoeItem {
-    public BronzeHoe(ToolMaterial p_42961_, Item.Settings p_42964_) {
-        super(p_42961_, p_42964_);
+
+    public BronzeHoe(ToolMaterial material, float attackDamage, float attackSpeed, Settings settings) {
+        super(material, attackDamage, attackSpeed, settings);
     }
 
     @Override

@@ -5,12 +5,14 @@ import net.minecraft.advancement.Advancement;
 import net.minecraft.advancement.AdvancementCriterion;
 import net.minecraft.advancement.AdvancementRequirements;
 import net.minecraft.advancement.criterion.RecipeUnlockedCriterion;
-import net.minecraft.data.server.recipe.CraftingRecipeJsonBuilder;
-import net.minecraft.data.server.recipe.RecipeExporter;
+import net.minecraft.data.recipe.CraftingRecipeJsonBuilder;
+import net.minecraft.data.recipe.RecipeExporter;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.recipe.Ingredient;
+import net.minecraft.recipe.Recipe;
+import net.minecraft.registry.RegistryKey;
 import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.Nullable;
 
@@ -62,14 +64,14 @@ public class AlloySmeltingRecipeBuilder implements CraftingRecipeJsonBuilder {
     }
 
     @Override
-    public void offerTo(RecipeExporter exporter, Identifier recipeId) {
+    public void offerTo(RecipeExporter exporter, RegistryKey<Recipe<?>> recipeKey) {
         Advancement.Builder advancement = exporter.getAdvancementBuilder()
-                .criterion("has_the_recipe", RecipeUnlockedCriterion.create(recipeId))
+                .criterion("has_the_recipe", RecipeUnlockedCriterion.create(recipeKey))
                 .criteriaMerger(AdvancementRequirements.CriterionMerger.OR);
         this.criteria.forEach(advancement::criterion);
 
         AlloySmeltingRecipe recipe = new AlloySmeltingRecipe(this.ingredients, this.outputs);
 
-        exporter.accept(recipeId, recipe, advancement.build(recipeId.withPrefixedPath("recipes/")));
+        exporter.accept(recipeKey, recipe, advancement.build(Identifier.of(recipeKey.getRegistry().getNamespace(), "recipes/" + recipeKey.getRegistry().getPath())));
     }
 }

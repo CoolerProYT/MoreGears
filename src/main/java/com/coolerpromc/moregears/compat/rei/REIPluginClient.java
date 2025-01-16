@@ -21,11 +21,6 @@ public class REIPluginClient implements REIClientPlugin {
     }
 
     @Override
-    public void registerDisplays(DisplayRegistry registry) {
-        registry.registerRecipeFiller(AlloySmeltingRecipe.class, MGRecipes.ALLOY_SMELTING_TYPE, AlloySmeltingRecipeDisplay::new);
-    }
-
-    @Override
     public void registerScreens(ScreenRegistry registry) {
         registry.registerClickArea(screen -> new Rectangle(((screen.width - 176) / 2) + 100, ((screen.height - 166) / 2) + 31, 18, 23), AlloySmelterScreen.class, AlloySmeltingCategory.ALLOY_SMELTING);
     }

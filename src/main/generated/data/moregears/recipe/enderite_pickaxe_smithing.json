@@ -1,16 +1,10 @@
 {
   "type": "minecraft:smithing_transform",
-  "addition": {
-    "item": "moregears:enderite_ingot"
-  },
-  "base": {
-    "item": "moregears:titanium_pickaxe"
-  },
+  "addition": "moregears:enderite_ingot",
+  "base": "moregears:titanium_pickaxe",
   "result": {
     "count": 1,
     "id": "moregears:enderite_pickaxe"
   },
-  "template": {
-    "item": "moregears:enderite_upgrade_smithing_template"
-  }
+  "template": "moregears:enderite_upgrade_smithing_template"
 }

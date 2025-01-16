@@ -1,12 +1,8 @@
 {
   "type": "minecraft:alloy_smelting",
   "ingredients": [
-    {
-      "item": "minecraft:copper_ingot"
-    },
-    {
-      "item": "moregears:tin_ingot"
-    }
+    "minecraft:copper_ingot",
+    "moregears:tin_ingot"
   ],
   "output": [
     {

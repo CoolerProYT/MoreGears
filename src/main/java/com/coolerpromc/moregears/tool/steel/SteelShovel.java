@@ -22,8 +22,8 @@ import java.util.List;
 public class SteelShovel extends ShovelItem {
     private static final Identifier modifierId = Identifier.of(MoreGears.MODID, "steel_shovel_slow_speed");
 
-    public SteelShovel(ToolMaterial p_42961_, Item.Settings p_42964_) {
-        super(p_42961_, p_42964_);
+    public SteelShovel(ToolMaterial material, float attackDamage, float attackSpeed, Settings settings) {
+        super(material, attackDamage, attackSpeed, settings);
     }
 
     @Override
@@ -32,7 +32,7 @@ public class SteelShovel extends ShovelItem {
 
         boolean shouldSlow = player.getStackInHand(Hand.MAIN_HAND).getItem() == this || player.getStackInHand(Hand.OFF_HAND).getItem() == this;
 
-        EntityAttributeInstance movementSpeed = player.getAttributeInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED);
+        EntityAttributeInstance movementSpeed = player.getAttributeInstance(EntityAttributes.MOVEMENT_SPEED);
         if(movementSpeed == null) return;
 
         EntityAttributeModifier existingModifier = movementSpeed.getModifier(modifierId);

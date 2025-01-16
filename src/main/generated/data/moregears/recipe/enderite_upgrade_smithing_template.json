@@ -2,15 +2,9 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "N": {
-      "item": "minecraft:end_stone"
-    },
-    "S": {
-      "item": "moregears:enderite_upgrade_smithing_template"
-    },
-    "X": {
-      "item": "moregears:titanium_ingot"
-    }
+    "N": "minecraft:end_stone",
+    "S": "moregears:enderite_upgrade_smithing_template",
+    "X": "moregears:titanium_ingot"
   },
   "pattern": [
     "XSX",

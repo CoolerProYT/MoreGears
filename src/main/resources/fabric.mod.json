@@ -24,11 +24,11 @@
 		"client": [
 			"com.coolerpromc.moregears.MoreGearsClient"
 		],
-		"jei_mod_plugin": [
-			"com.coolerpromc.moregears.compat.jei.JEIPlugin"
-		],
 		"rei_client": [
 			"com.coolerpromc.moregears.compat.rei.REIPluginClient"
+		],
+		"rei_common": [
+			"com.coolerpromc.moregears.compat.rei.REIPluginServer"
 		]
 	},
 	"depends": {

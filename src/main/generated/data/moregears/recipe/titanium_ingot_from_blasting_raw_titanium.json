@@ -4,9 +4,7 @@
   "cookingtime": 200,
   "experience": 1.0,
   "group": "titanium_ingot",
-  "ingredient": {
-    "item": "moregears:raw_titanium"
-  },
+  "ingredient": "moregears:raw_titanium",
   "result": {
     "id": "moregears:titanium_ingot"
   }

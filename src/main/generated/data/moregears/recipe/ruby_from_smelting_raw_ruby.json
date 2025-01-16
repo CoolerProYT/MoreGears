@@ -4,9 +4,7 @@
   "cookingtime": 200,
   "experience": 0.7,
   "group": "ruby",
-  "ingredient": {
-    "item": "moregears:raw_ruby"
-  },
+  "ingredient": "moregears:raw_ruby",
   "result": {
     "id": "moregears:ruby"
   }

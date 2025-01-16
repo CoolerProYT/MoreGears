@@ -22,9 +22,10 @@ import java.util.List;
 public class SteelSword extends SwordItem {
     private static final Identifier modifierId = Identifier.of(MoreGears.MODID, "steel_sword_slow_speed");
 
-    public SteelSword(ToolMaterial p_42961_, Item.Settings p_42964_) {
-        super(p_42961_, p_42964_);
+    public SteelSword(ToolMaterial material, float attackDamage, float attackSpeed, Settings settings) {
+        super(material, attackDamage, attackSpeed, settings);
     }
+
 
     @Override
     public void inventoryTick(ItemStack stack, World level, Entity entity, int slotId, boolean isSelected) {
@@ -32,7 +33,7 @@ public class SteelSword extends SwordItem {
 
         boolean shouldSlow = player.getStackInHand(Hand.MAIN_HAND).getItem() == this || player.getStackInHand(Hand.OFF_HAND).getItem() == this;
 
-        EntityAttributeInstance movementSpeed = player.getAttributeInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED);
+        EntityAttributeInstance movementSpeed = player.getAttributeInstance(EntityAttributes.MOVEMENT_SPEED);
         if(movementSpeed == null) return;
 
         EntityAttributeModifier existingModifier = movementSpeed.getModifier(modifierId);

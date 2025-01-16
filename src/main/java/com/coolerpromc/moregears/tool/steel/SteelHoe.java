@@ -22,8 +22,8 @@ import java.util.List;
 public class SteelHoe extends HoeItem {
     private static final Identifier modifierId = Identifier.of(MoreGears.MODID, "steel_hoe_slow_speed");
 
-    public SteelHoe(ToolMaterial p_42961_, Item.Settings p_42964_) {
-        super(p_42961_, p_42964_);
+    public SteelHoe(ToolMaterial material, float attackDamage, float attackSpeed, Settings settings) {
+        super(material, attackDamage, attackSpeed, settings);
     }
 
     @Override
@@ -32,7 +32,7 @@ public class SteelHoe extends HoeItem {
 
         boolean shouldSlow = player.getStackInHand(Hand.MAIN_HAND).getItem() == this || player.getStackInHand(Hand.OFF_HAND).getItem() == this;
 
-        EntityAttributeInstance movementSpeed = player.getAttributeInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED);
+        EntityAttributeInstance movementSpeed = player.getAttributeInstance(EntityAttributes.MOVEMENT_SPEED);
         if(movementSpeed == null) return;
 
         EntityAttributeModifier existingModifier = movementSpeed.getModifier(modifierId);

@@ -6,6 +6,7 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
 import net.minecraft.client.render.GameRenderer;
+import net.minecraft.client.render.RenderLayer;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
@@ -27,14 +28,13 @@ public class AlloySmelterScreen extends HandledScreen<AlloySmelterMenu> {
 
     @Override
     protected void drawBackground(DrawContext pGuiGraphics, float delta, int mouseX, int mouseY) {
-        RenderSystem.setShader(GameRenderer::getPositionTexProgram);
         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
         RenderSystem.setShaderTexture(0, TEXTURE);
 
         int x = (width - backgroundWidth) / 2;
         int y = (height - backgroundHeight) / 2;
 
-        pGuiGraphics.drawTexture(TEXTURE, x, y, 0, 0, backgroundWidth, backgroundHeight);
+        pGuiGraphics.drawTexture(RenderLayer::getGuiTextured, TEXTURE, x, y, 0, 0, backgroundWidth, backgroundHeight, 256, 256);
 
         renderEnergyBar(pGuiGraphics, x, y);
         renderProgressArrow(pGuiGraphics, x, y);
@@ -43,18 +43,18 @@ public class AlloySmelterScreen extends HandledScreen<AlloySmelterMenu> {
 
     private void renderEnergyBar(DrawContext guiGraphics, int x, int y) {
         int energyScaled = handler.getEnergyStoredScaled();
-        guiGraphics.drawTexture(TEXTURE, x + 9, y + 13 + (58 - energyScaled), 176, 101 - energyScaled, 14, energyScaled);
+        guiGraphics.drawTexture(RenderLayer::getGuiTextured, TEXTURE, x + 9, y + 13 + (58 - energyScaled), 176, 101 - energyScaled, 14, energyScaled, 256, 256);
     }
 
     private void renderProgressArrow(DrawContext guiGraphics, int x, int y) {
         if(handler.isCrafting()) {
-            guiGraphics.drawTexture(TEXTURE, x + 99, y + 30, 176, 18, 20, handler.getScaledProgress());
+            guiGraphics.drawTexture(RenderLayer::getGuiTextured, TEXTURE, x + 99, y + 30, 176, 18, 20, handler.getScaledProgress(), 256, 256);
         }
     }
 
     private void renderEnergyGeneration(DrawContext guiGraphics, int x, int y) {
         if(handler.isGeneratingEnergy()) {
-            guiGraphics.drawTexture(TEXTURE, x + 33, y + 44 + handler.getEnergyProgress(), 176, handler.getEnergyProgress(), 12, 18 - handler.getEnergyProgress());
+            guiGraphics.drawTexture(RenderLayer::getGuiTextured, TEXTURE, x + 33, y + 44 + handler.getEnergyProgress(), 176, handler.getEnergyProgress(), 12, 18 - handler.getEnergyProgress(), 256, 256);
         }
     }
 

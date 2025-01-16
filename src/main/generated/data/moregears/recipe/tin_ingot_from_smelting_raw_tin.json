@@ -4,9 +4,7 @@
   "cookingtime": 200,
   "experience": 0.7,
   "group": "tin_ingot",
-  "ingredient": {
-    "item": "moregears:raw_tin"
-  },
+  "ingredient": "moregears:raw_tin",
   "result": {
     "id": "moregears:tin_ingot"
   }
