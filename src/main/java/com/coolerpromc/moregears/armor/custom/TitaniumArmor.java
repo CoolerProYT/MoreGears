@@ -11,6 +11,6 @@ import net.minecraft.util.Identifier;
 
 public class TitaniumArmor extends MGArmorItem {
     public TitaniumArmor(EquipmentType type, String name) {
-        super(MGArmorMaterials.STEEL_ARMOR_MATERIAL, type, new Settings().fireproof().maxDamage(type.getMaxDamage(45)).registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(MoreGears.MODID, name))));
+        super(MGArmorMaterials.TITANIUM_ARMOR_MATERIAL, type, new Settings().fireproof().maxDamage(type.getMaxDamage(45)).registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(MoreGears.MODID, name))));
     }
 }
