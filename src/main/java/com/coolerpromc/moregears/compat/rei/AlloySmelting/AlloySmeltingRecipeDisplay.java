@@ -6,19 +6,18 @@ import me.shedaniel.rei.api.common.display.basic.BasicDisplay;
 import me.shedaniel.rei.api.common.util.EntryIngredients;
 import net.minecraft.item.Items;
 import net.minecraft.recipe.Ingredient;
-import net.minecraft.recipe.RecipeEntry;
 
 import java.util.List;
 
 public class AlloySmeltingRecipeDisplay extends BasicDisplay {
-    public AlloySmeltingRecipeDisplay(RecipeEntry<AlloySmeltingRecipe> recipe) {
+    public AlloySmeltingRecipeDisplay(AlloySmeltingRecipe recipe) {
         super(
                 List.of(
                         EntryIngredients.ofIngredient(Ingredient.ofItems(Items.COAL)),
-                        EntryIngredients.ofIngredient(recipe.value().getInputItems().get(0)),
-                        EntryIngredients.ofIngredient(recipe.value().getInputItems().get(1))
+                        EntryIngredients.ofIngredient(recipe.getInputItems().get(0)),
+                        EntryIngredients.ofIngredient(recipe.getInputItems().get(1))
                 ),
-                List.of(EntryIngredients.of(recipe.value().getOutput().get(0)))
+                List.of(EntryIngredients.of(recipe.getOutput()))
         );
     }
 

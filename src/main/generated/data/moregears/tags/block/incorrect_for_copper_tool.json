@@ -1,9 +1,0 @@
-{
-  "values": [
-    "#moregears:needs_bronze_tool",
-    {
-      "id": "#minecraft:needs_iron_tool",
-      "required": false
-    }
-  ]
-}

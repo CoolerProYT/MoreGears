@@ -1,7 +1,7 @@
 package com.coolerpromc.moregears.tool.steel;
 
-import com.coolerpromc.moregears.MoreGears;
 import com.coolerpromc.moregears.util.MGTooltip;
+import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.attribute.EntityAttributeInstance;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
@@ -10,20 +10,21 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.AxeItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ToolMaterial;
-import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.text.Text;
 import net.minecraft.util.Hand;
-import net.minecraft.util.Identifier;
 import net.minecraft.world.World;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
+import java.util.UUID;
 
 public class SteelAxe extends AxeItem {
-    private static final Identifier modifierId = Identifier.of(MoreGears.MODID, "steel_axe_slow_speed");
+    private static final UUID modifierId = UUID.fromString("123e4567-e89b-12d3-a456-426614174000");
 
-    public SteelAxe(ToolMaterial p_42961_, Settings p_42964_) {
-        super(p_42961_, p_42964_);
+    public SteelAxe(ToolMaterial material, float attackDamage, float attackSpeed, Settings settings) {
+        super(material, attackDamage, attackSpeed, settings);
     }
+
 
     @Override
     public void inventoryTick(ItemStack stack, World level, Entity entity, int slotId, boolean isSelected) {
@@ -40,8 +41,9 @@ public class SteelAxe extends AxeItem {
             if(existingModifier == null){
                 EntityAttributeModifier speedModifier = new EntityAttributeModifier(
                         modifierId,
+                        modifierId.toString(),
                         -0.02f,
-                        EntityAttributeModifier.Operation.ADD_VALUE
+                        EntityAttributeModifier.Operation.ADDITION
                 );
                 movementSpeed.addTemporaryModifier(speedModifier);
             }
@@ -53,8 +55,7 @@ public class SteelAxe extends AxeItem {
     }
 
     @Override
-    public void appendTooltip(ItemStack stack, TooltipContext context, List<Text> tooltip, TooltipType type) {
-        super.appendTooltip(stack, context, tooltip, type);
+    public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
         tooltip.add(MGTooltip.itemSpecialEffect("Heavy (Walking speed is slower)"));
         tooltip.add(MGTooltip.itemSpecialEffect("Faster attack speed"));
     }

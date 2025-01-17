@@ -9,7 +9,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 
 public class MGMenuTypes {
-    public static final ScreenHandlerType<AlloySmelterMenu> ALLOY_SMELTER_MENU = Registry.register(Registries.SCREEN_HANDLER, Identifier.of(MoreGears.MODID, "alloy_smelter_menu"), new ExtendedScreenHandlerType<>(AlloySmelterMenu::new, BlockPos.PACKET_CODEC));
+    public static final ScreenHandlerType<AlloySmelterMenu> ALLOY_SMELTER_MENU = Registry.register(Registries.SCREEN_HANDLER, Identifier.of(MoreGears.MODID, "alloy_smelter_menu"), new ExtendedScreenHandlerType<>(AlloySmelterMenu::new));
 
     public static void init() {
 

@@ -60,7 +60,7 @@ public class AlloySmelterScreen extends HandledScreen<AlloySmelterMenu> {
 
     @Override
     public void render(DrawContext pGuiGraphics, int pMouseX, int pMouseY, float pPartialTick) {
-        super.renderBackground(pGuiGraphics, pMouseX, pMouseY, pPartialTick);
+        super.renderBackground(pGuiGraphics);
         super.render(pGuiGraphics, pMouseX, pMouseY, pPartialTick);
         super.drawMouseoverTooltip(pGuiGraphics, pMouseX, pMouseY);
 

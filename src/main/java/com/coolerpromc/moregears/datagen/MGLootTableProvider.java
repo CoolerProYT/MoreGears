@@ -10,7 +10,7 @@ import java.util.concurrent.CompletableFuture;
 
 public class MGLootTableProvider extends FabricBlockLootTableProvider {
     protected MGLootTableProvider(FabricDataOutput dataOutput, CompletableFuture<RegistryWrapper.WrapperLookup> registryLookup) {
-        super(dataOutput, registryLookup);
+        super(dataOutput);
     }
 
     @Override

@@ -1,36 +1,39 @@
 package com.coolerpromc.moregears.recipe;
 
 import com.coolerpromc.moregears.MoreGears;
-import com.coolerpromc.moregears.recipe.custom.MultipleRecipeInput;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.ItemStack;
-import net.minecraft.network.RegistryByteBuf;
-import net.minecraft.network.codec.PacketCodec;
-import net.minecraft.recipe.Ingredient;
-import net.minecraft.recipe.Recipe;
-import net.minecraft.recipe.RecipeSerializer;
-import net.minecraft.recipe.RecipeType;
-import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.network.PacketByteBuf;
+import net.minecraft.recipe.*;
+import net.minecraft.registry.DynamicRegistryManager;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.JsonHelper;
+import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.world.World;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class AlloySmeltingRecipe implements Recipe<MultipleRecipeInput>{
+public class AlloySmeltingRecipe implements Recipe<SimpleInventory>{
     private final List<Ingredient> inputItems;
-    private final List<ItemStack> output;
+    private final ItemStack output;
+    private final Identifier id;
 
-    public AlloySmeltingRecipe(List<Ingredient> inputItems, List<ItemStack> output) {
+    public AlloySmeltingRecipe(List<Ingredient> inputItems, ItemStack output, Identifier id) {
         this.inputItems = inputItems;
         this.output = output;
+        this.id = id;
     }
 
     @Override
-    public boolean matches(MultipleRecipeInput input, World world) {
-        List<ItemStack> inputItems = input.inputItems();
+    public boolean matches(SimpleInventory input, World world) {
+        List<ItemStack> inputItems = List.of(input.getStack(0), input.getStack(1));
+
         List<Ingredient> remainingIngredients  = new ArrayList<>(this.inputItems);
 
         for (ItemStack itemStack : inputItems) {
@@ -59,8 +62,8 @@ public class AlloySmeltingRecipe implements Recipe<MultipleRecipeInput>{
     }
 
     @Override
-    public ItemStack craft(MultipleRecipeInput input, RegistryWrapper.WrapperLookup lookup) {
-        return output.isEmpty() ? ItemStack.EMPTY : output.get(0).copy();
+    public ItemStack craft(SimpleInventory inventory, DynamicRegistryManager registryManager) {
+        return output.isEmpty() ? ItemStack.EMPTY : output.copy();
     }
 
     @Override
@@ -69,78 +72,78 @@ public class AlloySmeltingRecipe implements Recipe<MultipleRecipeInput>{
     }
 
     @Override
-    public ItemStack getResult(RegistryWrapper.WrapperLookup registriesLookup) {
-        return output.isEmpty() ? ItemStack.EMPTY : output.get(0).copy();
+    public ItemStack getOutput(DynamicRegistryManager registryManager) {
+        return output.isEmpty() ? ItemStack.EMPTY : output.copy();
+    }
+
+    @Override
+    public Identifier getId() {
+        return id;
     }
 
     @Override
     public RecipeSerializer<?> getSerializer() {
-        return MGRecipes.ALLOY_SMELTING_SERIALIZER;
+        return Serializer.INSTANCE;
     }
 
     @Override
     public RecipeType<?> getType() {
-        return MGRecipes.ALLOY_SMELTING_TYPE;
+        return Type.INSTANCE;
     }
 
     public List<Ingredient> getInputItems() {
         return inputItems;
     }
 
-    public List<ItemStack> getOutput() {
+    public ItemStack getOutput() {
         return output;
+    }
+
+    public static class Type implements RecipeType<AlloySmeltingRecipe> {
+        public static final AlloySmeltingRecipe.Type INSTANCE = new AlloySmeltingRecipe.Type();
+        public static final Identifier ID = Identifier.of(MoreGears.MODID, "alloy_smelting");
     }
 
     public static class Serializer implements RecipeSerializer<AlloySmeltingRecipe>{
         public static final AlloySmeltingRecipe.Serializer INSTANCE = new AlloySmeltingRecipe.Serializer();
-        public static final Identifier ID = Identifier.of(MoreGears.MODID, "alloy_smelting");
-
-        private final MapCodec<AlloySmeltingRecipe> CODEC = RecordCodecBuilder.mapCodec(alloySmeltingRecipeInstance -> alloySmeltingRecipeInstance.group(
-                Ingredient.DISALLOW_EMPTY_CODEC.listOf().fieldOf("ingredients").forGetter(AlloySmeltingRecipe::getInputItems),
-                ItemStack.CODEC.listOf().fieldOf("output").forGetter(AlloySmeltingRecipe::getOutput)
-        ).apply(alloySmeltingRecipeInstance, AlloySmeltingRecipe::new));
-
-        public static final PacketCodec<RegistryByteBuf, AlloySmeltingRecipe> STREAM_CODEC = PacketCodec.ofStatic(
-                AlloySmeltingRecipe.Serializer::toNetwork, AlloySmeltingRecipe.Serializer::fromNetwork
-        );
+        public static final String ID = "alloy_smelting";
 
         @Override
-        public MapCodec<AlloySmeltingRecipe> codec() {
-            return CODEC;
+        public AlloySmeltingRecipe read(Identifier id, JsonObject jsonObject) {
+            JsonArray ingredients = JsonHelper.getArray(jsonObject, "ingredients");
+            DefaultedList<Ingredient> inputItems = DefaultedList.ofSize(ingredients.size(), Ingredient.EMPTY);
+
+            for (int i = 0; i < ingredients.size(); i++) {
+                inputItems.set(i, Ingredient.fromJson(ingredients.get(i)));
+            }
+
+            ItemStack output = ShapedRecipe.outputFromJson(JsonHelper.getObject(jsonObject, "output"));
+
+            return new AlloySmeltingRecipe(inputItems, output, id);
         }
 
         @Override
-        public PacketCodec<RegistryByteBuf, AlloySmeltingRecipe> packetCodec() {
-            return STREAM_CODEC;
-        }
+        public AlloySmeltingRecipe read(Identifier id, PacketByteBuf buffer) {
+            DefaultedList<Ingredient> inputItems = DefaultedList.ofSize(buffer.readInt(), Ingredient.EMPTY);
 
-        private static AlloySmeltingRecipe fromNetwork(RegistryByteBuf buffer) {
-            int ingredientCount = buffer.readVarInt();
-            List<Ingredient> inputItems = new ArrayList<>(ingredientCount);
-            for (int i = 0; i < ingredientCount; i++) {
-                inputItems.add(Ingredient.PACKET_CODEC.decode(buffer));
+            for (int i = 0; i < inputItems.size(); i++) {
+                inputItems.set(i, Ingredient.fromPacket(buffer));
             }
 
-            int outputCount = buffer.readVarInt();
-            List<ItemStack> result = new ArrayList<>(outputCount);
-            for (int i = 0; i < outputCount; i++) {
-                result.add(ItemStack.PACKET_CODEC.decode(buffer));
-            }
+            ItemStack output = buffer.readItemStack();
 
-            return new AlloySmeltingRecipe(inputItems, result);
+            return new AlloySmeltingRecipe(inputItems, output, id);
         }
 
-        private static void toNetwork(RegistryByteBuf buffer, AlloySmeltingRecipe recipe) {
-            buffer.writeVarInt(recipe.inputItems.size());
+        @Override
+        public void write(PacketByteBuf buffer, AlloySmeltingRecipe recipe) {
+            buffer.writeInt(recipe.inputItems.size());
+
             for (Ingredient ingredient : recipe.inputItems) {
-                Ingredient.PACKET_CODEC.encode(buffer, ingredient);
+                ingredient.write(buffer);
             }
 
-            buffer.writeVarInt(recipe.output.size());
-            for (ItemStack itemStack : recipe.output) {
-                ItemStack.PACKET_CODEC.encode(buffer, itemStack);
-            }
-
+            buffer.writeItemStack(recipe.getOutput(null));
         }
     }
 }

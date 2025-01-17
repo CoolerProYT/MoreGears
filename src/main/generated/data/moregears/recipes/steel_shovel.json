@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "X": {
+      "item": "moregears:steel_ingot"
+    },
+    "s": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "X",
+    "s",
+    "s"
+  ],
+  "result": {
+    "item": "moregears:steel_shovel"
+  },
+  "show_notification": true
+}

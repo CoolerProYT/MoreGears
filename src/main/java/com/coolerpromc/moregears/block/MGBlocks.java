@@ -4,6 +4,7 @@ import com.coolerpromc.moregears.MoreGears;
 import com.coolerpromc.moregears.block.custom.AlloySmelterBlock;
 import com.coolerpromc.moregears.block.custom.MGOreBlock;
 import com.coolerpromc.moregears.util.MGColors;
+import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
@@ -16,7 +17,7 @@ import net.minecraft.util.Identifier;
 public class MGBlocks {
     public static final Block ALLOY_SMELTER = registerBlock("alloy_smelter", new AlloySmelterBlock(AbstractBlock.Settings.copy(Blocks.STONE)));
 
-    public static final MGOreBlock TIN_ORE = registerBlock("tin_ore",  new MGOreBlock(AbstractBlock.Settings.copy(Blocks.IRON_ORE), MGColors.TIN_COLOR));
+    public static final MGOreBlock TIN_ORE = registerBlock("tin_ore",  new MGOreBlock(FabricBlockSettings.copyOf(Blocks.IRON_ORE), MGColors.TIN_COLOR));
     public static final MGOreBlock DEEPSLATE_TIN_ORE = registerBlock("deepslate_tin_ore",  new MGOreBlock(AbstractBlock.Settings.copy(Blocks.DEEPSLATE_IRON_ORE), MGColors.TIN_COLOR));
     public static final MGOreBlock RUBY_ORE = registerBlock("ruby_ore",  new MGOreBlock(AbstractBlock.Settings.copy(Blocks.EMERALD_ORE), MGColors.RUBY_COLOR));
     public static final MGOreBlock DEEPSLATE_RUBY_ORE = registerBlock("deepslate_ruby_ore",  new MGOreBlock(AbstractBlock.Settings.copy(Blocks.DEEPSLATE_EMERALD_ORE), MGColors.RUBY_COLOR));

@@ -5,6 +5,6 @@ import net.minecraft.item.ArmorItem;
 
 public class TitaniumArmor extends ArmorItem {
     public TitaniumArmor(Type type) {
-        super(MGArmorMaterials.TITANIUM, type, new Settings().fireproof().maxDamage(type.getMaxDamage(45)));
+        super(MGArmorMaterials.TITANIUM, type, new Settings());
     }
 }

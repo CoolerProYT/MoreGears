@@ -11,7 +11,6 @@ import mezz.jei.api.registration.IGuiHandlerRegistration;
 import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.recipe.RecipeEntry;
 import net.minecraft.recipe.RecipeManager;
 import net.minecraft.util.Identifier;
 
@@ -33,10 +32,9 @@ public class JEIPlugin implements IModPlugin {
     public void registerRecipes(IRecipeRegistration registration) {
         RecipeManager recipeManager = MinecraftClient.getInstance().world.getRecipeManager();
 
-        List<RecipeEntry<AlloySmeltingRecipe>> meltingRecipes = recipeManager.listAllOfType(MGRecipes.ALLOY_SMELTING_TYPE);
-        List<AlloySmeltingRecipe> meltingRecipeList = meltingRecipes.stream().map(RecipeEntry::value).toList();
+        List<AlloySmeltingRecipe> meltingRecipes = recipeManager.listAllOfType(AlloySmeltingRecipe.Type.INSTANCE);
 
-        registration.addRecipes(AlloySmeltingCategory.ALLOY_SMELTING_TYPE, meltingRecipeList);
+        registration.addRecipes(AlloySmeltingCategory.ALLOY_SMELTING_TYPE, meltingRecipes);
     }
 
     @Override

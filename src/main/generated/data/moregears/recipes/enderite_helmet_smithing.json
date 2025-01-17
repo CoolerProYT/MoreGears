@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "moregears:enderite_ingot"
+  },
+  "base": {
+    "item": "moregears:titanium_helmet"
+  },
+  "result": {
+    "item": "moregears:enderite_helmet"
+  },
+  "template": {
+    "item": "moregears:enderite_upgrade_smithing_template"
+  }
+}

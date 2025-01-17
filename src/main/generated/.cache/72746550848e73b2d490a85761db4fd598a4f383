@@ -1,18 +1,8 @@
-// 1.21.1	2025-01-15T19:40:54.9998413	More Gears/Tags for minecraft:item
-80fb7151c4a29773efc7931458da0ed63dcd4f50 data\minecraft\tags\item\enchantable\foot_armor.json
-87da9564fd343a50b8656cc725dc3ef7831d2a84 data\minecraft\tags\item\enchantable\leg_armor.json
-d3431e43ea8478dec55031712c073d7f8a22686c data\minecraft\tags\item\enchantable\chest_armor.json
-71c863b7d42072d7be7f3647ff173bfbaceb14b5 data\minecraft\tags\item\enchantable\head_armor.json
-58be9d520b2f4964785c1741c976d8016f027a16 data\minecraft\tags\item\hoes.json
-88845b607b2825d953c4c9211cb49b9c5ce80574 data\minecraft\tags\item\axes.json
-87da9564fd343a50b8656cc725dc3ef7831d2a84 data\minecraft\tags\item\leg_armor.json
-71c863b7d42072d7be7f3647ff173bfbaceb14b5 data\minecraft\tags\item\head_armor.json
-1dc72e0423511b4ae146a927b4a3d8d10494d19c data\minecraft\tags\item\trim_materials.json
-f375209587d367af0e27a8dca0d926b218b2e91e data\minecraft\tags\item\trimmable_armor.json
-df44cbf81355492c38229f01261f32d7b1f1f40d data\minecraft\tags\item\shovels.json
-80fb7151c4a29773efc7931458da0ed63dcd4f50 data\minecraft\tags\item\foot_armor.json
-f375209587d367af0e27a8dca0d926b218b2e91e data\minecraft\tags\item\enchantable\armor.json
-f375209587d367af0e27a8dca0d926b218b2e91e data\minecraft\tags\item\enchantable\equippable.json
-9750a871be387c23058e7991724e6bd1e13c0d67 data\minecraft\tags\item\pickaxes.json
-dcf3ff4dad887998c71bc9d792907b4a153ef94c data\minecraft\tags\item\swords.json
-d3431e43ea8478dec55031712c073d7f8a22686c data\minecraft\tags\item\chest_armor.json
+// 1.20.1	2025-01-17T22:40:59.2967658	More Gears/Tags for minecraft:item
+43548a39984f91b9a323108c996e744f50e16596 data\minecraft\tags\items\swords.json
+32c4e1a2efb4831b78cc0408954110ea8354927f data\minecraft\tags\items\axes.json
+514d866ecf04d4d69cccd03b861a73d97e1a72b9 data\minecraft\tags\items\pickaxes.json
+2ae66a9bc013704956f2c1bfbcedd040995cee07 data\minecraft\tags\items\trimmable_armor.json
+d156f1e8c3ee4de5783fc46df05b7ad944745184 data\minecraft\tags\items\shovels.json
+a3b1c6e89ca61d129692ec3be702f81633145ba7 data\minecraft\tags\items\hoes.json
+ae172c65a5c8d4711601fbcb825d8cf6735c68b3 data\minecraft\tags\items\trim_materials.json

@@ -1,8 +1,6 @@
 package com.coolerpromc.moregears.block.entity;
 
 import com.coolerpromc.moregears.recipe.AlloySmeltingRecipe;
-import com.coolerpromc.moregears.recipe.MGRecipes;
-import com.coolerpromc.moregears.recipe.custom.MultipleRecipeInput;
 import com.coolerpromc.moregears.screen.AlloySmelterMenu;
 import com.coolerpromc.moregears.util.ImplementedInventory;
 import com.coolerpromc.moregears.util.MGEnergyStorage;
@@ -15,16 +13,15 @@ import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventories;
-import net.minecraft.inventory.SidedInventory;
+import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.network.PacketByteBuf;
 import net.minecraft.network.listener.ClientPlayPacketListener;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket;
 import net.minecraft.recipe.Ingredient;
-import net.minecraft.recipe.RecipeEntry;
-import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.screen.PropertyDelegate;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.server.network.ServerPlayerEntity;
@@ -40,13 +37,13 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 
-public class AlloySmelterBlockEntity extends BlockEntity implements ExtendedScreenHandlerFactory<BlockPos>, ImplementedInventory {
-    private final MGEnergyStorage energyStorage = new MGEnergyStorage(100000, 1000, 0){
+public class AlloySmelterBlockEntity extends BlockEntity implements ExtendedScreenHandlerFactory, ImplementedInventory {
+    private final MGEnergyStorage energyStorage = new MGEnergyStorage(100000, 1000, 0) {
         @Override
         protected void onFinalCommit() {
             super.onFinalCommit();
             markDirty();
-            if(world != null)
+            if (world != null)
                 world.updateListeners(pos, getCachedState(), getCachedState(), Block.NOTIFY_ALL);
         }
 
@@ -113,6 +110,7 @@ public class AlloySmelterBlockEntity extends BlockEntity implements ExtendedScre
     public Text getDisplayName() {
         return Text.translatable("block.moregears.alloy_smelter");
     }
+
     @Nullable
     @Override
     public ScreenHandler createMenu(int syncId, PlayerInventory playerInventory, PlayerEntity player) {
@@ -120,13 +118,8 @@ public class AlloySmelterBlockEntity extends BlockEntity implements ExtendedScre
     }
 
     @Override
-    public BlockPos getScreenOpeningData(ServerPlayerEntity serverPlayerEntity) {
-        return this.pos;
-    }
-
-    @Override
-    protected void writeNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
-        Inventories.writeNbt(nbt, inventory, registryLookup);
+    protected void writeNbt(NbtCompound nbt) {
+        Inventories.writeNbt(nbt, inventory);
         nbt.putInt("energy", energyStorage.amount);
 
         nbt.putInt("progress", progress);
@@ -134,14 +127,14 @@ public class AlloySmelterBlockEntity extends BlockEntity implements ExtendedScre
         nbt.putInt("maxBurnProgress", maxBurnProgress);
         nbt.putBoolean("isBurning", isBurning);
 
-        super.writeNbt(nbt, registryLookup);
+        super.writeNbt(nbt);
     }
 
     @Override
-    protected void readNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
-        super.readNbt(nbt, registryLookup);
+    public void readNbt(NbtCompound nbt) {
+        super.readNbt(nbt);
 
-        Inventories.readNbt(nbt, inventory, registryLookup);
+        Inventories.readNbt(nbt, inventory);
         energyStorage.setEnergy(nbt.getInt("energy"));
 
         progress = nbt.getInt("progress");
@@ -162,9 +155,9 @@ public class AlloySmelterBlockEntity extends BlockEntity implements ExtendedScre
     }
 
     @Override
-    public NbtCompound toInitialChunkDataNbt(RegistryWrapper.WrapperLookup registryLookup) {
-        var nbt = super.toInitialChunkDataNbt(registryLookup);
-        writeNbt(nbt, registryLookup);
+    public NbtCompound toInitialChunkDataNbt() {
+        var nbt = super.toInitialChunkDataNbt();
+        writeNbt(nbt);
         return nbt;
     }
 
@@ -180,21 +173,21 @@ public class AlloySmelterBlockEntity extends BlockEntity implements ExtendedScre
         } else return slot == INPUT_SLOT[0] || slot == INPUT_SLOT[1] && side != Direction.UP && side != Direction.DOWN;
     }
 
-    public void tick(World world, BlockPos pos, BlockState state){
+    public void tick(World world, BlockPos pos, BlockState state) {
         generateEnergy();
         markDirty();
-        if(world != null)
+        if (world != null)
             world.updateListeners(pos, getCachedState(), getCachedState(), Block.NOTIFY_ALL);
 
-        if(hasRecipe() && energyStorage.amount >= 1){
+        if (hasRecipe() && energyStorage.amount >= 1) {
             increaseCraftingProgress();
-            try (Transaction transaction = Transaction.openOuter()){
+            try (Transaction transaction = Transaction.openOuter()) {
                 energyStorage.extract(10, transaction);
                 transaction.commit();
             }
             markDirty(world, pos, state);
 
-            if(hasProgressFinished()) {
+            if (hasProgressFinished()) {
                 craftItem();
                 resetProgress();
                 markDirty(world, pos, state);
@@ -205,24 +198,24 @@ public class AlloySmelterBlockEntity extends BlockEntity implements ExtendedScre
         }
     }
 
-    private void generateEnergy(){
-        if (getFuelTime(inventory.get(FUEL_SLOT)) > 0 && !isBurning){
+    private void generateEnergy() {
+        if (getFuelTime(inventory.get(FUEL_SLOT)) > 0 && !isBurning) {
             maxBurnProgress = Math.max(getFuelTime(inventory.get(FUEL_SLOT)), 0);
         }
 
-        if(getFuelTime(inventory.get(FUEL_SLOT)) > 0 || isBurning && energyStorage.amount < energyStorage.capacity){
-            if (burnProgress >= maxBurnProgress){
+        if (getFuelTime(inventory.get(FUEL_SLOT)) > 0 || isBurning && energyStorage.amount < energyStorage.capacity) {
+            if (burnProgress >= maxBurnProgress) {
                 burnProgress = 0;
                 isBurning = false;
                 return;
             }
 
-            if (burnProgress == 0){
+            if (burnProgress == 0) {
                 this.removeStack(FUEL_SLOT, 1);
                 isBurning = true;
             }
 
-            try(Transaction transaction = Transaction.openOuter()){
+            try (Transaction transaction = Transaction.openOuter()) {
                 energyStorage.insert(100, transaction);
                 transaction.commit();
             }
@@ -235,14 +228,14 @@ public class AlloySmelterBlockEntity extends BlockEntity implements ExtendedScre
     }
 
     private void craftItem() {
-        Optional<RecipeEntry<AlloySmeltingRecipe>> recipe = getCurrentRecipe();
+        Optional<AlloySmeltingRecipe> recipe = getCurrentRecipe();
         if (recipe.isPresent()) {
-            List<ItemStack> results = recipe.get().value().getOutput();
+            ItemStack results = recipe.get().getOutput();
 
             int extractFromSlot0 = 0;
             int extractFromSlot1 = 0;
 
-            for (Ingredient ingredient : recipe.get().value().getInputItems()) {
+            for (Ingredient ingredient : recipe.get().getInputItems()) {
                 if (ingredient.test(inventory.get(INPUT_SLOT[0]))) {
                     extractFromSlot0 += Math.min(inventory.get(INPUT_SLOT[0]).getCount(), ingredient.getMatchingStacks()[0].getCount());
                 } else if (ingredient.test(inventory.get(INPUT_SLOT[1]))) {
@@ -257,19 +250,17 @@ public class AlloySmelterBlockEntity extends BlockEntity implements ExtendedScre
                 this.removeStack(INPUT_SLOT[1], extractFromSlot1);
             }
 
-            for (ItemStack result : results) {
-                int outputSlot = findSuitableOutputSlot(result);
-                if (outputSlot != -1) {
-                    this.inventory.set(outputSlot, new ItemStack(result.getItem(), this.inventory.get(outputSlot).getCount() + result.getCount()));
-                } else {
-                    System.err.println("No suitable output slot found for item: " + result);
-                }
+            int outputSlot = findSuitableOutputSlot(results);
+            if (outputSlot != -1) {
+                this.inventory.set(outputSlot, new ItemStack(results.getItem(), this.inventory.get(outputSlot).getCount() + results.getCount()));
+            } else {
+                System.err.println("No suitable output slot found for item: " + results);
             }
         }
     }
 
     private int findSuitableOutputSlot(ItemStack result) {
-        for (int i : OUTPUT_SLOT){
+        for (int i : OUTPUT_SLOT) {
             ItemStack stackInSlot = this.inventory.get(i);
             if (stackInSlot.isEmpty() || (stackInSlot.getItem() == result.getItem() && stackInSlot.getCount() + result.getCount() <= stackInSlot.getMaxCount())) {
                 return i;
@@ -281,19 +272,19 @@ public class AlloySmelterBlockEntity extends BlockEntity implements ExtendedScre
 
     private boolean hasRecipe() {
         // Get the current recipe, return false if not present
-        Optional<RecipeEntry<AlloySmeltingRecipe>> recipe = getCurrentRecipe();
+        Optional<AlloySmeltingRecipe> recipe = getCurrentRecipe();
         if (recipe.isEmpty()) {
             return false;
         }
 
         // Retrieve recipe inputs and outputs
-        AlloySmeltingRecipe currentRecipe = recipe.get().value();
+        AlloySmeltingRecipe currentRecipe = recipe.get();
         List<Ingredient> recipeIngredients = currentRecipe.getInputItems();
-        List<ItemStack> outputResults = currentRecipe.getOutput();
+        ItemStack outputResults = currentRecipe.getOutput();
 
         // Create a mutable copy of the user inputs
         List<ItemStack> userInputs = new ArrayList<>();
-        for(int inputSlot : INPUT_SLOT){
+        for (int inputSlot : INPUT_SLOT) {
             userInputs.add(this.inventory.get(inputSlot));
         }
 
@@ -321,10 +312,8 @@ public class AlloySmelterBlockEntity extends BlockEntity implements ExtendedScre
         }
 
         // Check if outputs can fit into the output slots
-        for (ItemStack result : outputResults) {
-            if (!canInsertAmountIntoOutputSlot(result) || !canInsertItemIntoOutputSlot(result.getItem())) {
-                return false;
-            }
+        if (!canInsertAmountIntoOutputSlot(outputResults) || !canInsertItemIntoOutputSlot(outputResults.getItem())) {
+            return false;
         }
 
         // Final validation of the slots (if any additional checks are required)
@@ -332,25 +321,20 @@ public class AlloySmelterBlockEntity extends BlockEntity implements ExtendedScre
     }
 
 
-    private boolean checkSlot(List<ItemStack> results){
+    private boolean checkSlot(ItemStack results) {
         int count = 0;
         int emptyCount = 0;
-        for (ItemStack result : results){
-            count++;
-        }
+        count++;
 
-        for (int i : OUTPUT_SLOT){
+        for (int i : OUTPUT_SLOT) {
             ItemStack stackInSlot = this.inventory.get(i);
-            if(!stackInSlot.isEmpty()){
-                for (ItemStack result : results){
-                    if(stackInSlot.getItem() == result.getItem()){
-                        if(stackInSlot.getCount() + result.getCount() <= 64){
-                            emptyCount++;
-                        }
+            if (!stackInSlot.isEmpty()) {
+                if (stackInSlot.getItem() == results.getItem()) {
+                    if (stackInSlot.getCount() + results.getCount() <= 64) {
+                        emptyCount++;
                     }
                 }
-            }
-            else {
+            } else {
                 emptyCount++;
             }
         }
@@ -358,18 +342,18 @@ public class AlloySmelterBlockEntity extends BlockEntity implements ExtendedScre
         return emptyCount >= count;
     }
 
-    private Optional<RecipeEntry<AlloySmeltingRecipe>> getCurrentRecipe(){
-        List<ItemStack> inputs = new ArrayList<>();
+    private Optional<AlloySmeltingRecipe> getCurrentRecipe() {
+        ItemStack[] inputs = new ItemStack[2];
 
-        for (int i : INPUT_SLOT){
-            inputs.add(this.inventory.get(i));
+        for (int i : INPUT_SLOT) {
+            inputs[i - 1] = this.inventory.get(i);
         }
 
-        return this.world.getRecipeManager().getFirstMatch(MGRecipes.ALLOY_SMELTING_TYPE, new MultipleRecipeInput(inputs), world);
+        return this.world.getRecipeManager().getFirstMatch(AlloySmeltingRecipe.Type.INSTANCE, new SimpleInventory(inputs), world);
     }
 
     private boolean canInsertAmountIntoOutputSlot(ItemStack result) {
-        for (int i : OUTPUT_SLOT){
+        for (int i : OUTPUT_SLOT) {
             ItemStack stackInSlot = this.inventory.get(i);
             if (stackInSlot.isEmpty() || (stackInSlot.getItem() == result.getItem() && stackInSlot.getCount() + result.getCount() <= stackInSlot.getMaxCount())) {
                 return true;
@@ -380,7 +364,7 @@ public class AlloySmelterBlockEntity extends BlockEntity implements ExtendedScre
     }
 
     private boolean canInsertItemIntoOutputSlot(Item item) {
-        for (int i : OUTPUT_SLOT){
+        for (int i : OUTPUT_SLOT) {
             ItemStack stackInSlot = this.inventory.get(i);
             if (stackInSlot.isEmpty() || stackInSlot.getItem() == item) {
                 return true;
@@ -405,5 +389,10 @@ public class AlloySmelterBlockEntity extends BlockEntity implements ExtendedScre
             Item item = fuel.getItem();
             return (Integer) AbstractFurnaceBlockEntity.createFuelTimeMap().getOrDefault(item, 0);
         }
+    }
+
+    @Override
+    public void writeScreenOpeningData(ServerPlayerEntity serverPlayerEntity, PacketByteBuf packetByteBuf) {
+        packetByteBuf.writeBlockPos(pos);
     }
 }

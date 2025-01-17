@@ -10,23 +10,12 @@ import net.minecraft.util.Identifier;
 
 public class MGTags {
     public static class Blocks {
-        public static final TagKey<Block> NEEDS_COPPER_TOOL = modTag("needs_copper_tool");
-        public static final TagKey<Block> INCORRECT_FOR_COPPER_TOOL = modTag("incorrect_for_copper_tool");
-
-        public static final TagKey<Block> NEEDS_BRONZE_TOOL = modTag("needs_bronze_tool");
-        public static final TagKey<Block> INCORRECT_FOR_BRONZE_TOOL = modTag("incorrect_for_bronze_tool");
-
-        public static final TagKey<Block> NEEDS_STEEL_TOOL = modTag("needs_steel_tool");
-        public static final TagKey<Block> INCORRECT_FOR_STEEL_TOOL = modTag("incorrect_for_steel_tool");
-
-        public static final TagKey<Block> NEEDS_RUBY_TOOL = modTag("needs_ruby_tool");
-        public static final TagKey<Block> INCORRECT_FOR_RUBY_TOOL = modTag("incorrect_for_ruby_tool");
-
-        public static final TagKey<Block> NEEDS_TITANIUM_TOOL = modTag("needs_titanium_tool");
-        public static final TagKey<Block> INCORRECT_FOR_TITANIUM_TOOL = modTag("incorrect_for_titanium_tool");
-
-        public static final TagKey<Block> NEEDS_ENDERITE_TOOL = modTag("needs_enderite_tool");
-        public static final TagKey<Block> INCORRECT_FOR_ENDERITE_TOOL = modTag("incorrect_for_enderite_tool");
+        public static final TagKey<Block> NEEDS_TOOL_LEVEL_0 = fabric("needs_tool_level_0");
+        public static final TagKey<Block> NEEDS_TOOL_LEVEL_1 = fabric("needs_tool_level_1");
+        public static final TagKey<Block> NEEDS_TOOL_LEVEL_2 = fabric("needs_tool_level_2");
+        public static final TagKey<Block> NEEDS_TOOL_LEVEL_3 = fabric("needs_tool_level_3");
+        public static final TagKey<Block> NEEDS_TOOL_LEVEL_4 = fabric("needs_tool_level_4");
+        public static final TagKey<Block> NEEDS_TOOL_LEVEL_5 = fabric("needs_tool_level_5");
 
         public static final TagKey<Block> ORES_TIN = commonTag("ores/tin");
         public static final TagKey<Block> ORES_RUBY = commonTag("ores/ruby");
@@ -37,8 +26,8 @@ public class MGTags {
             return TagKey.of(RegistryKeys.BLOCK, Identifier.of("c", name));
         }
 
-        private static TagKey<Block> modTag(String name){
-            return TagKey.of(RegistryKeys.BLOCK, Identifier.of(MoreGears.MODID, name));
+        private static TagKey<Block> fabric(String name){
+            return TagKey.of(RegistryKeys.BLOCK, Identifier.of("fabric", name));
         }
     }
 

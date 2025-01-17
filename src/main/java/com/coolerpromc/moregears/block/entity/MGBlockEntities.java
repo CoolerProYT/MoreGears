@@ -9,7 +9,7 @@ import net.minecraft.util.Identifier;
 import team.reborn.energy.api.EnergyStorage;
 
 public class MGBlockEntities {
-    public static final BlockEntityType<AlloySmelterBlockEntity> ALLOY_SMELTER_BE = register("alloy_smelter_be", BlockEntityType.Builder.create(AlloySmelterBlockEntity::new, MGBlocks.ALLOY_SMELTER).build());
+    public static final BlockEntityType<AlloySmelterBlockEntity> ALLOY_SMELTER_BE = register("alloy_smelter_be", BlockEntityType.Builder.create(AlloySmelterBlockEntity::new, MGBlocks.ALLOY_SMELTER).build(null));
 
     public static <T extends BlockEntityType<?>> T register(String name, T blockEntityType) {
         return Registry.register(Registries.BLOCK_ENTITY_TYPE, Identifier.of(MoreGears.MODID, name), blockEntityType);

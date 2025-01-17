@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "moregears:copper_hoe",
+    "moregears:bronze_hoe",
+    "moregears:steel_hoe",
+    "moregears:ruby_hoe",
+    "moregears:titanium_hoe",
+    "moregears:enderite_hoe"
+  ]
+}

@@ -6,7 +6,7 @@ import com.coolerpromc.moregears.datagen.builder.AlloySmeltingRecipeBuilder;
 import com.coolerpromc.moregears.item.MGItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
-import net.minecraft.data.server.recipe.RecipeExporter;
+import net.minecraft.data.server.recipe.RecipeJsonProvider;
 import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
 import net.minecraft.data.server.recipe.SmithingTransformRecipeJsonBuilder;
 import net.minecraft.item.ItemConvertible;
@@ -19,14 +19,15 @@ import net.minecraft.util.Identifier;
 
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
+import java.util.function.Consumer;
 
 public class MGRecipeProvider extends FabricRecipeProvider {
     public MGRecipeProvider(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
-        super(output, registriesFuture);
+        super(output);
     }
 
     @Override
-    public void generate(RecipeExporter recipeOutput) {
+    public void generate(Consumer<RecipeJsonProvider> recipeOutput) {
         alloySmeltingRecipe(recipeOutput, Ingredient.ofStacks(new ItemStack(Items.COPPER_INGOT, 1)), Ingredient.ofStacks(new ItemStack(MGItems.TIN_INGOT, 1)), MGItems.BRONZE_INGOT, 2);
         alloySmeltingRecipe(recipeOutput, Ingredient.ofStacks(new ItemStack(Items.IRON_INGOT, 1)), Ingredient.ofStacks(new ItemStack(Items.COAL, 1)), MGItems.STEEL_INGOT, 2);
 
@@ -115,7 +116,7 @@ public class MGRecipeProvider extends FabricRecipeProvider {
                 .offerTo(recipeOutput);
     }
 
-    protected static void armorSetRecipe(RecipeExporter recipeOutput, ItemConvertible material, ItemConvertible helmet, ItemConvertible chestplate, ItemConvertible leggings, ItemConvertible boots){
+    protected static void armorSetRecipe(Consumer<RecipeJsonProvider> recipeOutput, ItemConvertible material, ItemConvertible helmet, ItemConvertible chestplate, ItemConvertible leggings, ItemConvertible boots){
         ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, boots)
                 .input('X', material)
                 .pattern("X X")
@@ -147,7 +148,7 @@ public class MGRecipeProvider extends FabricRecipeProvider {
                 .offerTo(recipeOutput);
     }
 
-    protected static void toolSetRecipe(RecipeExporter recipeOutput, ItemConvertible material, ItemConvertible sword, ItemConvertible pickaxe, ItemConvertible axe, ItemConvertible shovel, ItemConvertible hoe){
+    protected static void toolSetRecipe(Consumer<RecipeJsonProvider> recipeOutput, ItemConvertible material, ItemConvertible sword, ItemConvertible pickaxe, ItemConvertible axe, ItemConvertible shovel, ItemConvertible hoe){
         ShapedRecipeJsonBuilder.create(RecipeCategory.TOOLS, hoe)
                 .input('X', material)
                 .input('s', Items.STICK)
@@ -194,7 +195,7 @@ public class MGRecipeProvider extends FabricRecipeProvider {
                 .offerTo(recipeOutput);
     }
 
-    protected static void titaniumSmithing(RecipeExporter recipeOutput, ItemConvertible ingredientItem, RecipeCategory category, ItemConvertible resultItem) {
+    protected static void titaniumSmithing(Consumer<RecipeJsonProvider> recipeOutput, ItemConvertible ingredientItem, RecipeCategory category, ItemConvertible resultItem) {
         SmithingTransformRecipeJsonBuilder.create(
                 Ingredient.ofItems(MGItems.TITANIUM_UPGRADE_SMITHING_TEMPLATE),
                 Ingredient.ofItems(ingredientItem), Ingredient.ofItems(MGItems.TITANIUM_INGOT),
@@ -203,7 +204,7 @@ public class MGRecipeProvider extends FabricRecipeProvider {
         ).criterion(hasItem(MGItems.TITANIUM_INGOT), conditionsFromItem(MGItems.TITANIUM_INGOT)).offerTo(recipeOutput, getItemPath(resultItem) + "_smithing");
     }
 
-    protected static void enderiteSmithing(RecipeExporter recipeOutput, ItemConvertible ingredientItem, RecipeCategory category, ItemConvertible resultItem) {
+    protected static void enderiteSmithing(Consumer<RecipeJsonProvider> recipeOutput, ItemConvertible ingredientItem, RecipeCategory category, ItemConvertible resultItem) {
         SmithingTransformRecipeJsonBuilder.create(
                 Ingredient.ofItems(MGItems.ENDERITE_UPGRADE_SMITHING_TEMPLATE),
                 Ingredient.ofItems(ingredientItem), Ingredient.ofItems(MGItems.ENDERITE_INGOT),
@@ -212,12 +213,12 @@ public class MGRecipeProvider extends FabricRecipeProvider {
         ).criterion(hasItem(MGItems.ENDERITE_INGOT), conditionsFromItem(MGItems.ENDERITE_INGOT)).offerTo(recipeOutput, getItemPath(resultItem) + "_smithing");
     }
 
-    protected static void oreCooking(RecipeExporter recipeOutput, List<ItemConvertible> ingredients, RecipeCategory category, ItemConvertible result, float experience, int cookingTime, String group) {
+    protected static void oreCooking(Consumer<RecipeJsonProvider> recipeOutput, List<ItemConvertible> ingredients, RecipeCategory category, ItemConvertible result, float experience, int cookingTime, String group) {
         offerSmelting(recipeOutput, ingredients, category, result, experience, cookingTime, group);
         offerBlasting(recipeOutput, ingredients, category, result, experience, cookingTime, group);
     }
 
-    protected static void alloySmeltingRecipe(RecipeExporter recipeOutput, Ingredient ingredients1, Ingredient ingredients2, ItemConvertible result, int outputCount){
+    protected static void alloySmeltingRecipe(Consumer<RecipeJsonProvider> recipeOutput, Ingredient ingredients1, Ingredient ingredients2, ItemConvertible result, int outputCount){
         AlloySmeltingRecipeBuilder.alloySmeltingRecipe()
                 .addIngredient(ingredients1)
                 .addIngredient(ingredients2)
