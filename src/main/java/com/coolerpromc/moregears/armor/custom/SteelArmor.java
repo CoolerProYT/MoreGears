@@ -5,6 +5,6 @@ import net.minecraft.item.ArmorItem;
 
 public class SteelArmor extends ArmorItem {
     public SteelArmor(Type type) {
-        super(MGArmorMaterials.STEEL_ARMOR_MATERIAL, type, new Settings().maxDamage(type.getMaxDamage(30)));
+        super(MGArmorMaterials.STEEL, type, new Settings());
     }
 }

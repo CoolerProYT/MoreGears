@@ -7,6 +7,6 @@ import net.minecraft.registry.entry.RegistryEntry;
 
 public class BronzeArmor extends ArmorItem {
     public BronzeArmor(Type type) {
-        super(MGArmorMaterials.BRONZE_ARMOR_MATERIAL, type, new Settings().maxDamage(type.getMaxDamage(22)));
+        super(MGArmorMaterials.BRONZE, type, new Settings());
     }
 }

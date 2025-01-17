@@ -17,100 +17,73 @@ import java.util.EnumMap;
 import java.util.List;
 import java.util.function.Supplier;
 
-public class MGArmorMaterials {
-    public static final RegistryEntry<ArmorMaterial> COPPER_ARMOR_MATERIAL = register("copper", Util.make(new EnumMap<>(ArmorItem.Type.class), map -> {
-                map.put(ArmorItem.Type.BOOTS, 2);
-                map.put(ArmorItem.Type.LEGGINGS, 4);
-                map.put(ArmorItem.Type.CHESTPLATE, 6);
-                map.put(ArmorItem.Type.HELMET, 2);
-                map.put(ArmorItem.Type.BODY, 4);
-            }),
-            12,
-            SoundEvents.ITEM_ARMOR_EQUIP_IRON,
-            () -> Ingredient.fromTag(MGTags.Items.INGOTS_COPPER),
-            0,
-            0
-    );
+public enum MGArmorMaterials implements ArmorMaterial {
+    COPPER("copper", 15, new int[]{2, 4, 6, 2}, 12, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0, 0, () -> Ingredient.fromTag(MGTags.Items.INGOTS_COPPER)),
+    BRONZE("bronze", 22, new int[]{3, 5, 7, 2}, 9, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0, 0, () -> Ingredient.fromTag(MGTags.Items.INGOTS_BRONZE)),
+    STEEL("steel", 30, new int[]{3, 6, 8, 3}, 10, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 1.5f, 0, () -> Ingredient.fromTag(MGTags.Items.INGOTS_STEEL)),
+    RUBY("ruby", 28, new int[]{3, 6, 7, 3}, 10, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 1f, 0, () -> Ingredient.fromTag(MGTags.Items.GEMS_RUBY)),
+    TITANIUM("titanium", 45, new int[]{4, 7, 9, 4}, 18, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 4f, 0.5f, () -> Ingredient.fromTag(MGTags.Items.INGOTS_TITANIUM)),
+    ENDERITE("enderite", Integer.MAX_VALUE, new int[]{5, 8, 10, 5}, 20, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 5f, 1f, () -> Ingredient.fromTag(MGTags.Items.INGOTS_ENDERITE));
 
-    public static final RegistryEntry<ArmorMaterial> BRONZE_ARMOR_MATERIAL = register("bronze", Util.make(new EnumMap<>(ArmorItem.Type.class), map -> {
-                map.put(ArmorItem.Type.BOOTS, 3);
-                map.put(ArmorItem.Type.LEGGINGS, 5);
-                map.put(ArmorItem.Type.CHESTPLATE, 7);
-                map.put(ArmorItem.Type.HELMET, 2);
-                map.put(ArmorItem.Type.BODY, 7);
-            }),
-            9,
-            SoundEvents.ITEM_ARMOR_EQUIP_IRON,
-            () -> Ingredient.fromTag(MGTags.Items.INGOTS_BRONZE),
-            0,
-            0
-    );
+    private final String name;
+    private final int durabilityMultiplier;
+    private final int[] protectionAmounts;
+    private final int enchantmentValue;
+    private final SoundEvent equipSound;
+    private final float toughness;
+    private final float knockbackResistance;
+    private final Supplier<Ingredient> repairIngredient;
 
-    public static final RegistryEntry<ArmorMaterial> STEEL_ARMOR_MATERIAL = register("steel", Util.make(new EnumMap<>(ArmorItem.Type.class), map -> {
-                map.put(ArmorItem.Type.BOOTS, 3);
-                map.put(ArmorItem.Type.LEGGINGS, 6);
-                map.put(ArmorItem.Type.CHESTPLATE, 8);
-                map.put(ArmorItem.Type.HELMET, 3);
-                map.put(ArmorItem.Type.BODY, 10);
-            }),
-            10,
-            SoundEvents.ITEM_ARMOR_EQUIP_IRON,
-            () -> Ingredient.fromTag(MGTags.Items.INGOTS_STEEL),
-            1.5f,
-            0
-    );
+    private static final int[] BASE_DURABILITY = {11, 16, 16, 13};
 
-    public static final RegistryEntry<ArmorMaterial> RUBY_ARMOR_MATERIAL = register("ruby", Util.make(new EnumMap<>(ArmorItem.Type.class), map -> {
-                map.put(ArmorItem.Type.BOOTS, 3);
-                map.put(ArmorItem.Type.LEGGINGS, 6);
-                map.put(ArmorItem.Type.CHESTPLATE, 7);
-                map.put(ArmorItem.Type.HELMET, 3);
-                map.put(ArmorItem.Type.BODY, 9);
-            }),
-            10,
-            SoundEvents.ITEM_ARMOR_EQUIP_IRON,
-            () -> Ingredient.fromTag(MGTags.Items.GEMS_RUBY),
-            1f,
-            0
-    );
+    MGArmorMaterials(String name, int durabilityMultiplier, int[] protectionAmounts, int enchantmentValue, SoundEvent equipSound, float toughness, float knockbackResistance, Supplier<Ingredient> repairIngredient) {
+        this.name = name;
+        this.durabilityMultiplier = durabilityMultiplier;
+        this.protectionAmounts = protectionAmounts;
+        this.enchantmentValue = enchantmentValue;
+        this.equipSound = equipSound;
+        this.toughness = toughness;
+        this.knockbackResistance = knockbackResistance;
+        this.repairIngredient = repairIngredient;
+    }
 
-    public static final RegistryEntry<ArmorMaterial> TITANIUM_ARMOR_MATERIAL = register("titanium", Util.make(new EnumMap<>(ArmorItem.Type.class), map -> {
-                map.put(ArmorItem.Type.BOOTS, 4);
-                map.put(ArmorItem.Type.LEGGINGS, 7);
-                map.put(ArmorItem.Type.CHESTPLATE, 9);
-                map.put(ArmorItem.Type.HELMET, 4);
-                map.put(ArmorItem.Type.BODY, 12);
-            }),
-            18,
-            SoundEvents.ITEM_ARMOR_EQUIP_IRON,
-            () -> Ingredient.fromTag(MGTags.Items.INGOTS_TITANIUM),
-            4f,
-            0.5f
-    );
+    @Override
+    public int getDurability(ArmorItem.Type pType) {
+        return BASE_DURABILITY[pType.ordinal()] * this.durabilityMultiplier;
+    }
 
-    public static final RegistryEntry<ArmorMaterial> ENDERITE_ARMOR_MATERIAL = register("enderite", Util.make(new EnumMap<>(ArmorItem.Type.class), map -> {
-                map.put(ArmorItem.Type.BOOTS, 5);
-                map.put(ArmorItem.Type.LEGGINGS, 8);
-                map.put(ArmorItem.Type.CHESTPLATE, 10);
-                map.put(ArmorItem.Type.HELMET, 5);
-                map.put(ArmorItem.Type.BODY, 13);
-            }),
-            20,
-            SoundEvents.ITEM_ARMOR_EQUIP_IRON,
-            () -> Ingredient.fromTag(MGTags.Items.INGOTS_ENDERITE),
-            5f,
-            1f
-    );
+    @Override
+    public int getProtection(ArmorItem.Type pType) {
+        return this.protectionAmounts[pType.ordinal()];
+    }
 
-    private static RegistryEntry<ArmorMaterial> register(String name, EnumMap<ArmorItem.Type, Integer> typeProtection, int enchantmentValue, RegistryEntry<SoundEvent> equipSound, Supplier<Ingredient> ingredient, float toughness, float knockbackResistance){
-        Identifier location = Identifier.of(MoreGears.MODID, name);
-        List<ArmorMaterial.Layer> layers = List.of(new ArmorMaterial.Layer(location));
+    @Override
+    public int getEnchantability() {
+        return enchantmentValue;
+    }
 
-        EnumMap<ArmorItem.Type, Integer> typeMap = new EnumMap<>(ArmorItem.Type.class);
-        for (ArmorItem.Type type : ArmorItem.Type.values()) {
-            typeMap.put(type, typeProtection.get(type));
-        }
+    @Override
+    public SoundEvent getEquipSound() {
+        return this.equipSound;
+    }
 
-        return Registry.registerReference(Registries.ARMOR_MATERIAL, location, new ArmorMaterial(typeMap, enchantmentValue, equipSound, ingredient, layers, toughness, knockbackResistance));
+    @Override
+    public Ingredient getRepairIngredient() {
+        return this.repairIngredient.get();
+    }
+
+    @Override
+    public String getName() {
+        return MoreGears.MODID + ":" + this.name;
+    }
+
+    @Override
+    public float getToughness() {
+        return this.toughness;
+    }
+
+    @Override
+    public float getKnockbackResistance() {
+        return this.knockbackResistance;
     }
 }
