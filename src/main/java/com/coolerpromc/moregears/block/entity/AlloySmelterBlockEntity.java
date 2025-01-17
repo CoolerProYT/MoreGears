@@ -1,12 +1,10 @@
 package com.coolerpromc.moregears.block.entity;
 
 import com.coolerpromc.moregears.recipe.AlloySmeltingRecipe;
-import com.coolerpromc.moregears.recipe.MGRecipes;
-import com.coolerpromc.moregears.recipe.custom.MultipleRecipeInput;
 import com.coolerpromc.moregears.screen.AlloySmelterMenu;
 import com.coolerpromc.moregears.util.MGEnergyStorage;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.HolderLookup;
+import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.Packet;
@@ -21,15 +19,19 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.RecipeHolder;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.entity.AbstractFurnaceBlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.neoforged.neoforge.common.crafting.SizedIngredient;
-import net.neoforged.neoforge.items.ItemStackHandler;
-import org.jetbrains.annotations.Nullable;
+import net.minecraftforge.common.ForgeHooks;
+import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.capabilities.ForgeCapabilities;
+import net.minecraftforge.common.util.LazyOptional;
+import net.minecraftforge.items.ItemStackHandler;
 
+import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -41,7 +43,7 @@ public class AlloySmelterBlockEntity extends BlockEntity implements MenuProvider
     private final ItemStackHandler fuelHandler = new ItemStackHandler(1){
         @Override
         public boolean isItemValid(int slot, ItemStack stack) {
-            return stack.getBurnTime(RecipeType.BLASTING) > 0;
+            return ForgeHooks.getBurnTime(stack, RecipeType.SMELTING) > 0;
         }
 
         @Override
@@ -73,6 +75,10 @@ public class AlloySmelterBlockEntity extends BlockEntity implements MenuProvider
             setChanged();
         }
     };
+
+    private final LazyOptional<ItemStackHandler> fuelHandlerCap = LazyOptional.of(() -> fuelHandler);
+    private final LazyOptional<ItemStackHandler> inputHandlerCap = LazyOptional.of(() -> inputHandler);
+    private final LazyOptional<ItemStackHandler> outputHandlerCap = LazyOptional.of(() -> outputHandler);
 
     protected final ContainerData data;
     private int progress = 0;
@@ -134,6 +140,26 @@ public class AlloySmelterBlockEntity extends BlockEntity implements MenuProvider
     }
 
     @Override
+    public <T> LazyOptional<T> getCapability(Capability<T> cap, Direction side) {
+        if (cap == ForgeCapabilities.ENERGY){
+            return LazyOptional.of(() -> energyStorage).cast();
+        }
+        else{
+            if (side == Direction.DOWN){
+                return outputHandlerCap.cast();
+            }
+            else if (side == Direction.UP){
+                return fuelHandlerCap.cast();
+            }
+            else if (side == Direction.NORTH || side == Direction.SOUTH || side == Direction.EAST || side == Direction.WEST){
+                return inputHandlerCap.cast();
+            }
+        }
+
+        return super.getCapability(cap, side);
+    }
+
+    @Override
     public void onLoad() {
         super.onLoad();
     }
@@ -160,10 +186,10 @@ public class AlloySmelterBlockEntity extends BlockEntity implements MenuProvider
     }
 
     @Override
-    protected void saveAdditional(CompoundTag tag, HolderLookup.Provider registries) {
-        tag.put("fuel", fuelHandler.serializeNBT(registries));
-        tag.put("input", inputHandler.serializeNBT(registries));
-        tag.put("output", outputHandler.serializeNBT(registries));
+    protected void saveAdditional(CompoundTag tag) {
+        tag.put("fuel", fuelHandler.serializeNBT());
+        tag.put("input", inputHandler.serializeNBT());
+        tag.put("output", outputHandler.serializeNBT());
         tag.putInt("energy", energyStorage.getEnergyStored());
 
         tag.putInt("progress", progress);
@@ -171,16 +197,16 @@ public class AlloySmelterBlockEntity extends BlockEntity implements MenuProvider
         tag.putInt("maxBurnProgress", maxBurnProgress);
         tag.putBoolean("isBurning", isBurning);
 
-        super.saveAdditional(tag, registries);
+        super.saveAdditional(tag);
     }
 
     @Override
-    protected void loadAdditional(CompoundTag tag, HolderLookup.Provider registries) {
-        super.loadAdditional(tag, registries);
+    public void load(CompoundTag tag) {
+        super.load(tag);
 
-        fuelHandler.deserializeNBT(registries, tag.getCompound("fuel"));
-        inputHandler.deserializeNBT(registries, tag.getCompound("input"));
-        outputHandler.deserializeNBT(registries, tag.getCompound("output"));
+        fuelHandler.deserializeNBT(tag.getCompound("fuel"));
+        inputHandler.deserializeNBT(tag.getCompound("input"));
+        outputHandler.deserializeNBT(tag.getCompound("output"));
         energyStorage.setEnergy(tag.getInt("energy"));
 
         progress = tag.getInt("progress");
@@ -210,11 +236,11 @@ public class AlloySmelterBlockEntity extends BlockEntity implements MenuProvider
     }
 
     private void generateEnergy(){
-        if (fuelHandler.getStackInSlot(0).getBurnTime(RecipeType.BLASTING) > 0 && !isBurning){
-            maxBurnProgress = Math.max(fuelHandler.getStackInSlot(0).getBurnTime(RecipeType.BLASTING), 0);
+        if (ForgeHooks.getBurnTime(fuelHandler.getStackInSlot(0), RecipeType.SMELTING) > 0 && !isBurning){
+            maxBurnProgress = Math.max(ForgeHooks.getBurnTime(fuelHandler.getStackInSlot(0), RecipeType.SMELTING), 0);
         }
 
-        if(fuelHandler.getStackInSlot(0).getBurnTime(RecipeType.BLASTING) > 0 || isBurning && energyStorage.getEnergyStored() < energyStorage.getMaxEnergyStored()){
+        if(ForgeHooks.getBurnTime(fuelHandler.getStackInSlot(0), RecipeType.SMELTING) > 0 || isBurning && energyStorage.getEnergyStored() < energyStorage.getMaxEnergyStored()){
             if (burnProgress >= maxBurnProgress){
                 burnProgress = 0;
                 isBurning = false;
@@ -236,18 +262,18 @@ public class AlloySmelterBlockEntity extends BlockEntity implements MenuProvider
     }
 
     private void craftItem() {
-        Optional<RecipeHolder<AlloySmeltingRecipe>> recipe = getCurrentRecipe();
+        Optional<AlloySmeltingRecipe> recipe = getCurrentRecipe();
         if (recipe.isPresent()) {
-            List<ItemStack> results = recipe.get().value().getOutput();
+            ItemStack results = recipe.get().getOutput();
 
             int extractFromSlot0 = 0;
             int extractFromSlot1 = 0;
 
-            for (SizedIngredient ingredient : recipe.get().value().getInputItems()) {
+            for (Ingredient ingredient : recipe.get().getInputItems()) {
                 if (ingredient.test(inputHandler.getStackInSlot(0))) {
-                    extractFromSlot0 += Math.min(inputHandler.getStackInSlot(0).getCount(), ingredient.count());
+                    extractFromSlot0 += Math.min(inputHandler.getStackInSlot(0).getCount(), ingredient.getItems()[0].getCount());
                 } else if (ingredient.test(inputHandler.getStackInSlot(1))) {
-                    extractFromSlot1 += Math.min(inputHandler.getStackInSlot(1).getCount(), ingredient.count());
+                    extractFromSlot1 += Math.min(inputHandler.getStackInSlot(1).getCount(), ingredient.getItems()[0].getCount());
                 }
             }
 
@@ -258,15 +284,12 @@ public class AlloySmelterBlockEntity extends BlockEntity implements MenuProvider
                 inputHandler.extractItem(1, extractFromSlot1, false);
             }
 
-            for (ItemStack result : results) {
-                int outputSlot = findSuitableOutputSlot(result);
-                if (outputSlot != -1) {
-                    this.outputHandler.setStackInSlot(outputSlot, new ItemStack(result.getItem(),
-                            this.outputHandler.getStackInSlot(outputSlot).getCount() + result.getCount()));
+            int outputSlot = findSuitableOutputSlot(results);
+            if (outputSlot != -1) {
+                this.outputHandler.setStackInSlot(outputSlot, new ItemStack(results.getItem(), this.outputHandler.getStackInSlot(outputSlot).getCount() + results.getCount()));
 
-                } else {
-                    System.err.println("No suitable output slot found for item: " + result);
-                }
+            } else {
+                System.err.println("No suitable output slot found for item: " + results);
             }
         }
     }
@@ -285,15 +308,15 @@ public class AlloySmelterBlockEntity extends BlockEntity implements MenuProvider
 
     private boolean hasRecipe() {
         // Get the current recipe, return false if not present
-        Optional<RecipeHolder<AlloySmeltingRecipe>> recipe = getCurrentRecipe();
+        Optional<AlloySmeltingRecipe> recipe = getCurrentRecipe();
         if (recipe.isEmpty()) {
             return false;
         }
 
         // Retrieve recipe inputs and outputs
-        AlloySmeltingRecipe currentRecipe = recipe.get().value();
-        List<SizedIngredient> recipeIngredients = currentRecipe.getInputItems();
-        List<ItemStack> outputResults = currentRecipe.getOutput();
+        AlloySmeltingRecipe currentRecipe = recipe.get();
+        List<Ingredient> recipeIngredients = currentRecipe.getInputItems();
+        ItemStack outputResults = currentRecipe.getOutput();
 
         // Create a mutable copy of the user inputs
         List<ItemStack> userInputs = new ArrayList<>();
@@ -301,7 +324,7 @@ public class AlloySmelterBlockEntity extends BlockEntity implements MenuProvider
         userInputs.add(this.inputHandler.getStackInSlot(1));
 
         // Check if all recipe ingredients are matched with user inputs
-        for (SizedIngredient recipeIngredient : recipeIngredients) {
+        for (Ingredient recipeIngredient : recipeIngredients) {
             boolean ingredientMatched = false;
 
             // Try to match the ingredient with one of the user inputs
@@ -309,7 +332,7 @@ public class AlloySmelterBlockEntity extends BlockEntity implements MenuProvider
             while (userInputIterator.hasNext()) {
                 ItemStack userInput = userInputIterator.next();
 
-                if (recipeIngredient.ingredient().test(userInput) && userInput.getCount() >= recipeIngredient.count()) {
+                if (recipeIngredient.test(userInput) && userInput.getCount() >= recipeIngredient.getItems()[0].getCount()) {
                     // Match found; remove the input to avoid duplicate matches
                     userInputIterator.remove();
                     ingredientMatched = true;
@@ -324,10 +347,8 @@ public class AlloySmelterBlockEntity extends BlockEntity implements MenuProvider
         }
 
         // Check if outputs can fit into the output slots
-        for (ItemStack result : outputResults) {
-            if (!canInsertAmountIntoOutputSlot(result) || !canInsertItemIntoOutputSlot(result.getItem())) {
-                return false;
-            }
+        if (!canInsertAmountIntoOutputSlot(outputResults) || !canInsertItemIntoOutputSlot(outputResults.getItem())) {
+            return false;
         }
 
         // Final validation of the slots (if any additional checks are required)
@@ -335,21 +356,17 @@ public class AlloySmelterBlockEntity extends BlockEntity implements MenuProvider
     }
 
 
-    private boolean checkSlot(List<ItemStack> results){
+    private boolean checkSlot(ItemStack results){
         int count = 0;
         int emptyCount = 0;
-        for (ItemStack result : results){
-            count++;
-        }
+        count++;
 
         for (int i = 0; i < this.outputHandler.getSlots(); i++) {
             ItemStack stackInSlot = this.outputHandler.getStackInSlot(i);
             if(!stackInSlot.isEmpty()){
-                for (ItemStack result : results){
-                    if(stackInSlot.getItem() == result.getItem()){
-                        if(stackInSlot.getCount() + result.getCount() <= 64){
-                            emptyCount++;
-                        }
+                if(stackInSlot.getItem() == results.getItem()){
+                    if(stackInSlot.getCount() + results.getCount() <= 64){
+                        emptyCount++;
                     }
                 }
             }
@@ -361,14 +378,13 @@ public class AlloySmelterBlockEntity extends BlockEntity implements MenuProvider
         return emptyCount >= count;
     }
 
-    private Optional<RecipeHolder<AlloySmeltingRecipe>> getCurrentRecipe(){
-        List<ItemStack> inputs = new ArrayList<>();
+    private Optional<AlloySmeltingRecipe> getCurrentRecipe(){
+        ItemStack[] inputs = new ItemStack[this.inputHandler.getSlots()];
 
         for (int i = 0; i < this.inputHandler.getSlots(); i++) {
-            inputs.add(this.inputHandler.getStackInSlot(i));
+            inputs[i] = this.inputHandler.getStackInSlot(i);
         }
-
-        return this.level.getRecipeManager().getRecipeFor(MGRecipes.ALLOY_SMELTING_TYPE.get(), new MultipleRecipeInput(inputs), level);
+        return this.level.getRecipeManager().getRecipeFor(AlloySmeltingRecipe.Type.INSTANCE, new SimpleContainer(inputs), level);
     }
 
     private boolean canInsertAmountIntoOutputSlot(ItemStack result) {
@@ -391,7 +407,6 @@ public class AlloySmelterBlockEntity extends BlockEntity implements MenuProvider
         return false;
     }
 
-
     private boolean hasProgressFinished() {
         return progress >= maxProgress;
     }
@@ -407,7 +422,7 @@ public class AlloySmelterBlockEntity extends BlockEntity implements MenuProvider
     }
 
     @Override
-    public CompoundTag getUpdateTag(HolderLookup.Provider pRegistries) {
-        return saveWithoutMetadata(pRegistries);
+    public CompoundTag getUpdateTag() {
+        return saveWithoutMetadata();
     }
 }

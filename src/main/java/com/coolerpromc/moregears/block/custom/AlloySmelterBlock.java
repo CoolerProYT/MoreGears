@@ -4,10 +4,9 @@ import com.coolerpromc.moregears.block.entity.AlloySmelterBlockEntity;
 import com.coolerpromc.moregears.block.entity.MGBlockEntities;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.ItemInteractionResult;
-import net.minecraft.world.MenuProvider;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -25,7 +24,9 @@ import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jetbrains.annotations.Nullable;
+import net.minecraftforge.network.NetworkHooks;
+
+import javax.annotation.Nullable;
 
 public class AlloySmelterBlock extends BaseEntityBlock {
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
@@ -35,17 +36,12 @@ public class AlloySmelterBlock extends BaseEntityBlock {
     }
 
     @Override
-    protected MapCodec<? extends BaseEntityBlock> codec() {
-        return simpleCodec(AlloySmelterBlock::new);
-    }
-
-    @Override
-    protected VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
+    public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
         return Block.box(0, 0, 0, 16, 16, 16);
     }
 
     @Override
-    protected RenderShape getRenderShape(BlockState state) {
+    public RenderShape getRenderShape(BlockState state) {
         return RenderShape.MODEL;
     }
 
@@ -55,7 +51,7 @@ public class AlloySmelterBlock extends BaseEntityBlock {
         pBuilder.add(FACING);
     }
     @Override
-    protected void onRemove(BlockState pState, Level pLevel, BlockPos pPos, BlockState pNewState, boolean pMovedByPiston) {
+    public void onRemove(BlockState pState, Level pLevel, BlockPos pPos, BlockState pNewState, boolean pMovedByPiston) {
         if (pState.getBlock() != pNewState.getBlock()){
             BlockEntity blockEntity = pLevel.getBlockEntity(pPos);
             if (blockEntity instanceof AlloySmelterBlockEntity alloySmelterBlockEntity){
@@ -67,17 +63,17 @@ public class AlloySmelterBlock extends BaseEntityBlock {
     }
 
     @Override
-    protected ItemInteractionResult useItemOn(ItemStack pStack, BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHitResult) {
-        if (!pLevel.isClientSide()) {
-            BlockEntity entity = pLevel.getBlockEntity(pPos);
+    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+        if (!level.isClientSide()) {
+            BlockEntity entity = level.getBlockEntity(pos);
             if (entity instanceof AlloySmelterBlockEntity alloySmelterBlockEntity) {
-                pPlayer.openMenu(alloySmelterBlockEntity, pPos);
+                NetworkHooks.openScreen((ServerPlayer) player, alloySmelterBlockEntity, pos);
             } else {
                 throw new IllegalStateException("Our Container provider is missing!");
             }
         }
 
-        return ItemInteractionResult.sidedSuccess(pLevel.isClientSide());
+        return InteractionResult.sidedSuccess(level.isClientSide());
     }
 
     @Nullable

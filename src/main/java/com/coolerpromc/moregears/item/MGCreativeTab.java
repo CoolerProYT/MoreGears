@@ -8,9 +8,9 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
-import net.neoforged.bus.api.IEventBus;
-import net.neoforged.neoforge.registries.DeferredHolder;
-import net.neoforged.neoforge.registries.DeferredRegister;
+import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.RegistryObject;
 
 import java.lang.reflect.Field;
 import java.util.function.Supplier;
@@ -18,8 +18,8 @@ import java.util.function.Supplier;
 public class MGCreativeTab {
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MOD_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MoreGears.MODID);
 
-    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> MG_TAB = CREATIVE_MOD_TABS.register("more_gears",
-            () -> CreativeModeTab.builder().icon(() -> new ItemStack(MGBlocks.ALLOY_SMELTER))
+    public static final RegistryObject<CreativeModeTab> MG_TAB = CREATIVE_MOD_TABS.register("more_gears",
+            () -> CreativeModeTab.builder().icon(() -> new ItemStack(MGBlocks.ALLOY_SMELTER.get()))
                     .title(Component.translatable("creativetab.moregears"))
                     .displayItems((itemDisplayParameters, output) -> {
                         for (Field field : MGBlocks.class.getFields()){

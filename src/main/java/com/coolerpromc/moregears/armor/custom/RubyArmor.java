@@ -9,7 +9,7 @@ import net.minecraft.world.level.Level;
 
 public class RubyArmor extends ArmorItem {
     public RubyArmor(Type type) {
-        super(MGArmorMaterials.RUBY_ARMOR_MATERIAL, type, new Properties().durability(type.getDurability(28)));
+        super(MGArmorMaterials.RUBY, type, new Properties());
     }
 
     @Override

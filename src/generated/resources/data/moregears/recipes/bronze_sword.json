@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "X": {
+      "item": "moregears:bronze_ingot"
+    },
+    "s": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "X",
+    "X",
+    "s"
+  ],
+  "result": {
+    "item": "moregears:bronze_sword"
+  },
+  "show_notification": true
+}

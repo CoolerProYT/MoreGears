@@ -1,39 +1,41 @@
 package com.coolerpromc.moregears.recipe;
 
 import com.coolerpromc.moregears.MoreGears;
-import com.coolerpromc.moregears.recipe.custom.MultipleRecipeInput;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
+import net.minecraft.core.RegistryAccess;
+import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.GsonHelper;
+import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.crafting.Recipe;
-import net.minecraft.world.item.crafting.RecipeSerializer;
-import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
-import net.neoforged.neoforge.common.crafting.SizedIngredient;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class AlloySmeltingRecipe implements Recipe<MultipleRecipeInput> {
-    private final List<SizedIngredient> inputItems;
-    private final List<ItemStack> output;
+public class AlloySmeltingRecipe implements Recipe<SimpleContainer> {
+    private final List<Ingredient> inputItems;
+    private final ItemStack output;
+    private final ResourceLocation id;
 
-    public AlloySmeltingRecipe(List<SizedIngredient> inputItems, List<ItemStack> output) {
+    public AlloySmeltingRecipe(List<Ingredient> inputItems, ItemStack output, ResourceLocation id) {
         this.inputItems = inputItems;
         this.output = output;
+        this.id = id;
     }
 
     @Override
-    public boolean matches(MultipleRecipeInput multipleRecipeInput, Level level) {
-        List<ItemStack> inputItems = multipleRecipeInput.inputItems();
-        List<SizedIngredient> remainingIngredients  = new ArrayList<>(this.inputItems);
+    public boolean matches(SimpleContainer multipleRecipeInput, Level level) {
+        List<ItemStack> inputItems = List.of(multipleRecipeInput.getItem(0), multipleRecipeInput.getItem(1));
+
+        List<Ingredient> remainingIngredients  = new ArrayList<>(this.inputItems);
 
         for (ItemStack itemStack : inputItems) {
             if (itemStack.isEmpty()) {
@@ -41,11 +43,11 @@ public class AlloySmeltingRecipe implements Recipe<MultipleRecipeInput> {
             }
 
             boolean ingredientFound = false;
-            Iterator<SizedIngredient> iterator = remainingIngredients.iterator();
+            Iterator<Ingredient> iterator = remainingIngredients.iterator();
 
             while (iterator.hasNext()) {
-                SizedIngredient ingredient = iterator.next();
-                if (ingredient.ingredient().test(itemStack)) {
+                Ingredient ingredient = iterator.next();
+                if (ingredient.test(itemStack)) {
                     iterator.remove();
                     ingredientFound = true;
                     break;
@@ -61,8 +63,8 @@ public class AlloySmeltingRecipe implements Recipe<MultipleRecipeInput> {
     }
 
     @Override
-    public ItemStack assemble(MultipleRecipeInput multipleRecipeInput, HolderLookup.Provider provider) {
-        return output.isEmpty() ? ItemStack.EMPTY : output.get(0).copy();
+    public ItemStack assemble(SimpleContainer simpleContainer, RegistryAccess registryAccess) {
+        return output.isEmpty() ? ItemStack.EMPTY : output.copy();
     }
 
     @Override
@@ -71,8 +73,13 @@ public class AlloySmeltingRecipe implements Recipe<MultipleRecipeInput> {
     }
 
     @Override
-    public ItemStack getResultItem(HolderLookup.Provider provider) {
-        return output.isEmpty() ? ItemStack.EMPTY : output.get(0).copy();
+    public ItemStack getResultItem(RegistryAccess registryAccess) {
+        return output.isEmpty() ? ItemStack.EMPTY : output.copy();
+    }
+
+    @Override
+    public ResourceLocation getId() {
+        return id;
     }
 
     @Override
@@ -82,67 +89,62 @@ public class AlloySmeltingRecipe implements Recipe<MultipleRecipeInput> {
 
     @Override
     public RecipeType<?> getType() {
-        return MGRecipes.ALLOY_SMELTING_TYPE.get();
+        return Type.INSTANCE;
     }
 
-    public List<SizedIngredient> getInputItems() {
+    public List<Ingredient> getInputItems() {
         return inputItems;
     }
 
-    public List<ItemStack> getOutput() {
+    public ItemStack getOutput() {
         return output;
+    }
+
+    public static class Type implements RecipeType<AlloySmeltingRecipe>{
+        public static final AlloySmeltingRecipe.Type INSTANCE = new AlloySmeltingRecipe.Type();
+        public static final String ID = "alloy_smelting";
     }
 
     public static class Serializer implements RecipeSerializer<AlloySmeltingRecipe>{
         public static final AlloySmeltingRecipe.Serializer INSTANCE = new AlloySmeltingRecipe.Serializer();
-        public static final ResourceLocation ID = ResourceLocation.fromNamespaceAndPath(MoreGears.MODID, "alloy_smelting");
-
-        private final MapCodec<AlloySmeltingRecipe> CODEC = RecordCodecBuilder.mapCodec(alloySmeltingRecipeInstance -> alloySmeltingRecipeInstance.group(
-                SizedIngredient.FLAT_CODEC.listOf().fieldOf("ingredients").forGetter(AlloySmeltingRecipe::getInputItems),
-                ItemStack.CODEC.listOf().fieldOf("output").forGetter(AlloySmeltingRecipe::getOutput)
-        ).apply(alloySmeltingRecipeInstance, AlloySmeltingRecipe::new));
-
-        public static final StreamCodec<RegistryFriendlyByteBuf, AlloySmeltingRecipe> STREAM_CODEC = StreamCodec.of(
-                AlloySmeltingRecipe.Serializer::toNetwork, AlloySmeltingRecipe.Serializer::fromNetwork
-        );
+        public static final ResourceLocation ID = new ResourceLocation(MoreGears.MODID, "alloy_smelting");
 
         @Override
-        public MapCodec<AlloySmeltingRecipe> codec() {
-            return CODEC;
+        public AlloySmeltingRecipe fromJson(ResourceLocation resourceLocation, JsonObject jsonObject) {
+            JsonArray ingredients = GsonHelper.getAsJsonArray(jsonObject, "ingredients");
+            NonNullList<Ingredient> inputItems = NonNullList.withSize(ingredients.size(), Ingredient.EMPTY);
+
+            for (int i = 0; i < ingredients.size(); i++) {
+                inputItems.set(i, Ingredient.fromJson(ingredients.get(i)));
+            }
+
+            ItemStack output = ShapedRecipe.itemStackFromJson(GsonHelper.getAsJsonObject(jsonObject, "output"));
+
+            return new AlloySmeltingRecipe(inputItems, output, resourceLocation);
         }
 
         @Override
-        public StreamCodec<RegistryFriendlyByteBuf, AlloySmeltingRecipe> streamCodec() {
-            return STREAM_CODEC;
+        public AlloySmeltingRecipe fromNetwork(ResourceLocation resourceLocation, FriendlyByteBuf buffer) {
+            NonNullList<Ingredient> inputItems = NonNullList.withSize(buffer.readInt(), Ingredient.EMPTY);
+
+            for (int i = 0; i < inputItems.size(); i++) {
+                inputItems.set(i, Ingredient.fromNetwork(buffer));
+            }
+
+            ItemStack output = buffer.readItem();
+
+            return new AlloySmeltingRecipe(inputItems, output, resourceLocation);
         }
 
-        private static AlloySmeltingRecipe fromNetwork(RegistryFriendlyByteBuf buffer) {
-            int ingredientCount = buffer.readVarInt();
-            List<SizedIngredient> inputItems = new ArrayList<>(ingredientCount);
-            for (int i = 0; i < ingredientCount; i++) {
-                inputItems.add(SizedIngredient.STREAM_CODEC.decode(buffer));
+        @Override
+        public void toNetwork(FriendlyByteBuf buffer, AlloySmeltingRecipe recipe) {
+            buffer.writeInt(recipe.inputItems.size());
+
+            for (Ingredient ingredient : recipe.inputItems) {
+                ingredient.toNetwork(buffer);
             }
 
-            int outputCount = buffer.readVarInt();
-            List<ItemStack> result = new ArrayList<>(outputCount);
-            for (int i = 0; i < outputCount; i++) {
-                result.add(ItemStack.STREAM_CODEC.decode(buffer));
-            }
-
-            return new AlloySmeltingRecipe(inputItems, result);
-        }
-
-        private static void toNetwork(RegistryFriendlyByteBuf buffer, AlloySmeltingRecipe recipe) {
-            buffer.writeVarInt(recipe.inputItems.size());
-            for (SizedIngredient ingredient : recipe.inputItems) {
-                SizedIngredient.STREAM_CODEC.encode(buffer, ingredient);
-            }
-
-            buffer.writeVarInt(recipe.output.size());
-            for (ItemStack itemStack : recipe.output) {
-                ItemStack.STREAM_CODEC.encode(buffer, itemStack);
-            }
-
+            buffer.writeItemStack(recipe.getResultItem(null), false);
         }
     }
 }

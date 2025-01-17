@@ -11,7 +11,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 
 public class AlloySmelterScreen extends AbstractContainerScreen<AlloySmelterMenu> {
-    private static final ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath(MoreGears.MODID, "textures/gui/alloy_smelter_gui.png");
+    private static final ResourceLocation TEXTURE = new ResourceLocation(MoreGears.MODID, "textures/gui/alloy_smelter_gui.png");
 
     public AlloySmelterScreen(AlloySmelterMenu pMenu, Inventory pPlayerInventory, Component pTitle) {
         super(pMenu, pPlayerInventory, pTitle);
@@ -60,7 +60,7 @@ public class AlloySmelterScreen extends AbstractContainerScreen<AlloySmelterMenu
 
     @Override
     public void render(GuiGraphics pGuiGraphics, int pMouseX, int pMouseY, float pPartialTick) {
-        super.renderBackground(pGuiGraphics, pMouseX, pMouseY, pPartialTick);
+        super.renderBackground(pGuiGraphics);
         super.render(pGuiGraphics, pMouseX, pMouseY, pPartialTick);
         super.renderTooltip(pGuiGraphics, pMouseX, pMouseY);
 

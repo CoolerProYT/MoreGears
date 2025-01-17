@@ -2,13 +2,12 @@ package com.coolerpromc.moregears.datagen;
 
 import com.coolerpromc.moregears.MoreGears;
 import com.coolerpromc.moregears.item.MGItems;
-import com.coolerpromc.moregears.util.MGTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.level.block.Block;
-import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import net.minecraftforge.common.data.ExistingFileHelper;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -44,132 +43,6 @@ public class MGItemTagGenerator extends ItemTagsProvider {
                 MGItems.ENDERITE_CHESTPLATE.get(),
                 MGItems.ENDERITE_HELMET.get(),
                 MGItems.ENDERITE_LEGGINGS.get()
-        );
-
-        this.tag(ItemTags.ARMOR_ENCHANTABLE).add(
-                MGItems.COPPER_BOOTS.get(),
-                MGItems.COPPER_CHESTPLATE.get(),
-                MGItems.COPPER_HELMET.get(),
-                MGItems.COPPER_LEGGINGS.get(),
-                MGItems.BRONZE_BOOTS.get(),
-                MGItems.BRONZE_CHESTPLATE.get(),
-                MGItems.BRONZE_HELMET.get(),
-                MGItems.BRONZE_LEGGINGS.get(),
-                MGItems.STEEL_BOOTS.get(),
-                MGItems.STEEL_CHESTPLATE.get(),
-                MGItems.STEEL_HELMET.get(),
-                MGItems.STEEL_LEGGINGS.get(),
-                MGItems.RUBY_BOOTS.get(),
-                MGItems.RUBY_CHESTPLATE.get(),
-                MGItems.RUBY_HELMET.get(),
-                MGItems.RUBY_LEGGINGS.get(),
-                MGItems.TITANIUM_BOOTS.get(),
-                MGItems.TITANIUM_CHESTPLATE.get(),
-                MGItems.TITANIUM_HELMET.get(),
-                MGItems.TITANIUM_LEGGINGS.get(),
-                MGItems.ENDERITE_BOOTS.get(),
-                MGItems.ENDERITE_CHESTPLATE.get(),
-                MGItems.ENDERITE_HELMET.get(),
-                MGItems.ENDERITE_LEGGINGS.get()
-        );
-
-        this.tag(ItemTags.EQUIPPABLE_ENCHANTABLE).add(
-                MGItems.COPPER_BOOTS.get(),
-                MGItems.COPPER_CHESTPLATE.get(),
-                MGItems.COPPER_HELMET.get(),
-                MGItems.COPPER_LEGGINGS.get(),
-                MGItems.BRONZE_BOOTS.get(),
-                MGItems.BRONZE_CHESTPLATE.get(),
-                MGItems.BRONZE_HELMET.get(),
-                MGItems.BRONZE_LEGGINGS.get(),
-                MGItems.STEEL_BOOTS.get(),
-                MGItems.STEEL_CHESTPLATE.get(),
-                MGItems.STEEL_HELMET.get(),
-                MGItems.STEEL_LEGGINGS.get(),
-                MGItems.RUBY_BOOTS.get(),
-                MGItems.RUBY_CHESTPLATE.get(),
-                MGItems.RUBY_HELMET.get(),
-                MGItems.RUBY_LEGGINGS.get(),
-                MGItems.TITANIUM_BOOTS.get(),
-                MGItems.TITANIUM_CHESTPLATE.get(),
-                MGItems.TITANIUM_HELMET.get(),
-                MGItems.TITANIUM_LEGGINGS.get(),
-                MGItems.ENDERITE_BOOTS.get(),
-                MGItems.ENDERITE_CHESTPLATE.get(),
-                MGItems.ENDERITE_HELMET.get(),
-                MGItems.ENDERITE_LEGGINGS.get()
-        );
-
-        this.tag(ItemTags.HEAD_ARMOR).add(
-                MGItems.COPPER_HELMET.get(),
-                MGItems.BRONZE_HELMET.get(),
-                MGItems.STEEL_HELMET.get(),
-                MGItems.RUBY_HELMET.get(),
-                MGItems.TITANIUM_HELMET.get(),
-                MGItems.ENDERITE_HELMET.get()
-        );
-
-        this.tag(ItemTags.HEAD_ARMOR_ENCHANTABLE).add(
-                MGItems.COPPER_HELMET.get(),
-                MGItems.BRONZE_HELMET.get(),
-                MGItems.STEEL_HELMET.get(),
-                MGItems.RUBY_HELMET.get(),
-                MGItems.TITANIUM_HELMET.get(),
-                MGItems.ENDERITE_HELMET.get()
-        );
-
-        this.tag(ItemTags.CHEST_ARMOR).add(
-                MGItems.COPPER_CHESTPLATE.get(),
-                MGItems.BRONZE_CHESTPLATE.get(),
-                MGItems.STEEL_CHESTPLATE.get(),
-                MGItems.RUBY_CHESTPLATE.get(),
-                MGItems.TITANIUM_CHESTPLATE.get(),
-                MGItems.ENDERITE_CHESTPLATE.get()
-        );
-
-        this.tag(ItemTags.CHEST_ARMOR_ENCHANTABLE).add(
-                MGItems.COPPER_CHESTPLATE.get(),
-                MGItems.BRONZE_CHESTPLATE.get(),
-                MGItems.STEEL_CHESTPLATE.get(),
-                MGItems.RUBY_CHESTPLATE.get(),
-                MGItems.TITANIUM_CHESTPLATE.get(),
-                MGItems.ENDERITE_CHESTPLATE.get()
-        );
-
-        this.tag(ItemTags.LEG_ARMOR).add(
-                MGItems.COPPER_LEGGINGS.get(),
-                MGItems.BRONZE_LEGGINGS.get(),
-                MGItems.STEEL_LEGGINGS.get(),
-                MGItems.RUBY_LEGGINGS.get(),
-                MGItems.TITANIUM_LEGGINGS.get(),
-                MGItems.ENDERITE_LEGGINGS.get()
-        );
-
-        this.tag(ItemTags.LEG_ARMOR_ENCHANTABLE).add(
-                MGItems.COPPER_LEGGINGS.get(),
-                MGItems.BRONZE_LEGGINGS.get(),
-                MGItems.STEEL_LEGGINGS.get(),
-                MGItems.RUBY_LEGGINGS.get(),
-                MGItems.TITANIUM_LEGGINGS.get(),
-                MGItems.ENDERITE_LEGGINGS.get()
-        );
-
-        this.tag(ItemTags.FOOT_ARMOR).add(
-                MGItems.COPPER_BOOTS.get(),
-                MGItems.BRONZE_BOOTS.get(),
-                MGItems.STEEL_BOOTS.get(),
-                MGItems.RUBY_BOOTS.get(),
-                MGItems.TITANIUM_BOOTS.get(),
-                MGItems.ENDERITE_BOOTS.get()
-        );
-
-        this.tag(ItemTags.FOOT_ARMOR_ENCHANTABLE).add(
-                MGItems.COPPER_BOOTS.get(),
-                MGItems.BRONZE_BOOTS.get(),
-                MGItems.STEEL_BOOTS.get(),
-                MGItems.RUBY_BOOTS.get(),
-                MGItems.TITANIUM_BOOTS.get(),
-                MGItems.ENDERITE_BOOTS.get()
         );
 
         this.tag(ItemTags.SWORDS).add(

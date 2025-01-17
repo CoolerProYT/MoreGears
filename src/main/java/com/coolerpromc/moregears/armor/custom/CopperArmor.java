@@ -14,7 +14,7 @@ import java.util.List;
 
 public class CopperArmor extends ArmorItem {
     public CopperArmor(Type type) {
-        super(MGArmorMaterials.COPPER_ARMOR_MATERIAL, type, new Item.Properties().durability(type.getDurability(15)));
+        super(MGArmorMaterials.COPPER, type, new Item.Properties());
     }
 
     @Override
@@ -28,7 +28,7 @@ public class CopperArmor extends ArmorItem {
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
+    public void appendHoverText(ItemStack stack, Level level, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
         tooltipComponents.add(MGTooltip.itemSpecialEffect("Immune to lightning strikes when full set is worn."));
     }
 }

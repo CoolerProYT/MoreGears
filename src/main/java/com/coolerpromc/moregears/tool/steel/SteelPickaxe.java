@@ -16,11 +16,13 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 
 import java.util.List;
+import java.util.UUID;
 
 public class SteelPickaxe extends PickaxeItem {
-    private static final ResourceLocation modifierId = ResourceLocation.fromNamespaceAndPath(MoreGears.MODID, "steel_pickaxe_slow_speed");
-    public SteelPickaxe(Tier p_42961_, Properties p_42964_) {
-        super(p_42961_, p_42964_);
+    private static final UUID modifierId = UUID.fromString("123e4567-e89b-12d3-a456-426614174002");
+
+    public SteelPickaxe(Tier tier, int attackDamageModifier, float attackSpeedModifier, Properties properties) {
+        super(tier, attackDamageModifier, attackSpeedModifier, properties);
     }
 
     @Override
@@ -38,8 +40,9 @@ public class SteelPickaxe extends PickaxeItem {
             if(existingModifier == null){
                 AttributeModifier speedModifier = new AttributeModifier(
                         modifierId,
+                        modifierId.toString(),
                         -0.02f,
-                        AttributeModifier.Operation.ADD_VALUE
+                        AttributeModifier.Operation.ADDITION
                 );
                 movementSpeed.addTransientModifier(speedModifier);
             }
@@ -51,7 +54,7 @@ public class SteelPickaxe extends PickaxeItem {
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
+    public void appendHoverText(ItemStack stack, Level context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
         super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
         tooltipComponents.add(MGTooltip.itemSpecialEffect("Heavy (Walking speed is slower)"));
         tooltipComponents.add(MGTooltip.itemSpecialEffect("Faster attack speed"));

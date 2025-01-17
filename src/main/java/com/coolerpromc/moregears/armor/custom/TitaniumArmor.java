@@ -2,6 +2,7 @@ package com.coolerpromc.moregears.armor.custom;
 
 import com.coolerpromc.moregears.armor.MGArmorMaterials;
 import com.coolerpromc.moregears.util.MGTooltip;
+import me.shedaniel.rei.api.client.gui.widgets.TooltipContext;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
@@ -15,7 +16,7 @@ import java.util.List;
 
 public class TitaniumArmor extends ArmorItem {
     public TitaniumArmor(Type type) {
-        super(MGArmorMaterials.TITANIUM_ARMOR_MATERIAL, type, new Properties().fireResistant().durability(type.getDurability(45)));
+        super(MGArmorMaterials.TITANIUM, type, new Properties().fireResistant());
     }
 
     @Override
@@ -34,8 +35,8 @@ public class TitaniumArmor extends ArmorItem {
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
-        super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
+    public void appendHoverText(ItemStack stack, Level level, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
+        super.appendHoverText(stack, level, tooltipComponents, tooltipFlag);
         MGTooltip.itemSpecialEffect("Fire Resistance");
     }
 }

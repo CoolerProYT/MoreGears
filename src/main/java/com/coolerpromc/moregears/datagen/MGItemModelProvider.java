@@ -11,10 +11,11 @@ import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.armortrim.TrimMaterial;
 import net.minecraft.world.item.armortrim.TrimMaterials;
-import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
-import net.neoforged.neoforge.client.model.generators.ModelFile;
-import net.neoforged.neoforge.common.data.ExistingFileHelper;
-import net.neoforged.neoforge.registries.DeferredItem;
+import net.minecraftforge.client.model.generators.ItemModelBuilder;
+import net.minecraftforge.client.model.generators.ItemModelProvider;
+import net.minecraftforge.client.model.generators.ModelFile;
+import net.minecraftforge.common.data.ExistingFileHelper;
+import net.minecraftforge.registries.RegistryObject;
 
 import java.util.LinkedHashMap;
 
@@ -88,44 +89,44 @@ public class MGItemModelProvider extends ItemModelProvider {
         basicItem(MGItems.TITANIUM_UPGRADE_SMITHING_TEMPLATE.get());
         basicItem(MGItems.ENDERITE_UPGRADE_SMITHING_TEMPLATE.get());
 
-        handheldItem(MGItems.COPPER_SWORD.get());
-        handheldItem(MGItems.COPPER_SHOVEL.get());
-        handheldItem(MGItems.COPPER_PICKAXE.get());
-        handheldItem(MGItems.COPPER_AXE.get());
-        handheldItem(MGItems.COPPER_HOE.get());
+        handheldItem(MGItems.COPPER_SWORD);
+        handheldItem(MGItems.COPPER_SHOVEL);
+        handheldItem(MGItems.COPPER_PICKAXE);
+        handheldItem(MGItems.COPPER_AXE);
+        handheldItem(MGItems.COPPER_HOE);
 
-        handheldItem(MGItems.BRONZE_SWORD.get());
-        handheldItem(MGItems.BRONZE_SHOVEL.get());
-        handheldItem(MGItems.BRONZE_PICKAXE.get());
-        handheldItem(MGItems.BRONZE_AXE.get());
-        handheldItem(MGItems.BRONZE_HOE.get());
+        handheldItem(MGItems.BRONZE_SWORD);
+        handheldItem(MGItems.BRONZE_SHOVEL);
+        handheldItem(MGItems.BRONZE_PICKAXE);
+        handheldItem(MGItems.BRONZE_AXE);
+        handheldItem(MGItems.BRONZE_HOE);
 
-        handheldItem(MGItems.STEEL_SWORD.get());
-        handheldItem(MGItems.STEEL_SHOVEL.get());
-        handheldItem(MGItems.STEEL_PICKAXE.get());
-        handheldItem(MGItems.STEEL_AXE.get());
-        handheldItem(MGItems.STEEL_HOE.get());
+        handheldItem(MGItems.STEEL_SWORD);
+        handheldItem(MGItems.STEEL_SHOVEL);
+        handheldItem(MGItems.STEEL_PICKAXE);
+        handheldItem(MGItems.STEEL_AXE);
+        handheldItem(MGItems.STEEL_HOE);
 
-        handheldItem(MGItems.RUBY_SWORD.get());
-        handheldItem(MGItems.RUBY_SHOVEL.get());
-        handheldItem(MGItems.RUBY_PICKAXE.get());
-        handheldItem(MGItems.RUBY_AXE.get());
-        handheldItem(MGItems.RUBY_HOE.get());
+        handheldItem(MGItems.RUBY_SWORD);
+        handheldItem(MGItems.RUBY_SHOVEL);
+        handheldItem(MGItems.RUBY_PICKAXE);
+        handheldItem(MGItems.RUBY_AXE);
+        handheldItem(MGItems.RUBY_HOE);
 
-        handheldItem(MGItems.TITANIUM_SWORD.get());
-        handheldItem(MGItems.TITANIUM_SHOVEL.get());
-        handheldItem(MGItems.TITANIUM_PICKAXE.get());
-        handheldItem(MGItems.TITANIUM_AXE.get());
-        handheldItem(MGItems.TITANIUM_HOE.get());
+        handheldItem(MGItems.TITANIUM_SWORD);
+        handheldItem(MGItems.TITANIUM_SHOVEL);
+        handheldItem(MGItems.TITANIUM_PICKAXE);
+        handheldItem(MGItems.TITANIUM_AXE);
+        handheldItem(MGItems.TITANIUM_HOE);
 
-        handheldItem(MGItems.ENDERITE_SWORD.get());
-        handheldItem(MGItems.ENDERITE_SHOVEL.get());
-        handheldItem(MGItems.ENDERITE_PICKAXE.get());
-        handheldItem(MGItems.ENDERITE_AXE.get());
-        handheldItem(MGItems.ENDERITE_HOE.get());
+        handheldItem(MGItems.ENDERITE_SWORD);
+        handheldItem(MGItems.ENDERITE_SHOVEL);
+        handheldItem(MGItems.ENDERITE_PICKAXE);
+        handheldItem(MGItems.ENDERITE_AXE);
+        handheldItem(MGItems.ENDERITE_HOE);
     }
 
-    private <T extends Item> void withExistingTexture(DeferredItem<T> item, ResourceLocation texture){
+    private <T extends Item> void withExistingTexture(RegistryObject<T> item, ResourceLocation texture){
         withExistingParent("item/" + item.getId().getPath(), mcLoc("item/generated"))
                 .texture("layer0", texture)
                 .element().from(0, 0, 0).to(16, 16, 16)
@@ -138,15 +139,25 @@ public class MGItemModelProvider extends ItemModelProvider {
                 .end();
     }
 
+    private <T extends Item> ItemModelBuilder handheldItem(RegistryObject<T> item) {
+        return withExistingParent(item.getId().getPath(),
+                new ResourceLocation("item/handheld")).texture("layer0",
+                new ResourceLocation(MoreGears.MODID,"item/" + item.getId().getPath()));
+    }
+
     private ResourceLocation textureLoc(String location){
         return this.modLoc("item/" + location);
     }
 
-    private void trimmedArmorItem(DeferredItem<ArmorItem> itemDeferredItem) {
-        final String MOD_ID = MoreGears.MODID;
-        if(itemDeferredItem.get() instanceof ArmorItem armorItem) {
-            trimMaterials.forEach((trimMaterial, value) -> {
-                float trimValue = value;
+    private <T extends Item> void trimmedArmorItem(RegistryObject<T> itemRegistryObject) {
+        final String MOD_ID = MoreGears.MODID; // Change this to your mod id
+
+        if(itemRegistryObject.get() instanceof ArmorItem armorItem) {
+            trimMaterials.entrySet().forEach(entry -> {
+
+                ResourceKey<TrimMaterial> trimMaterial = entry.getKey();
+                float trimValue = entry.getValue();
+
                 String armorType = switch (armorItem.getEquipmentSlot()) {
                     case HEAD -> "helmet";
                     case CHEST -> "chestplate";
@@ -155,24 +166,32 @@ public class MGItemModelProvider extends ItemModelProvider {
                     default -> "";
                 };
 
-                String armorItemPath = armorItem.toString();
+                String armorItemPath = "item/" + armorItem;
                 String trimPath = "trims/items/" + armorType + "_trim_" + trimMaterial.location().getPath();
                 String currentTrimName = armorItemPath + "_" + trimMaterial.location().getPath() + "_trim";
-                ResourceLocation armorItemResLoc = ResourceLocation.parse(armorItemPath);
-                ResourceLocation trimResLoc = ResourceLocation.parse(trimPath);
-                ResourceLocation trimNameResLoc = ResourceLocation.parse(currentTrimName);
+                ResourceLocation armorItemResLoc = new ResourceLocation(MOD_ID, armorItemPath);
+                ResourceLocation trimResLoc = new ResourceLocation(trimPath); // minecraft namespace
+                ResourceLocation trimNameResLoc = new ResourceLocation(MOD_ID, currentTrimName);
+
+                // This is used for making the ExistingFileHelper acknowledge that this texture exist, so this will
+                // avoid an IllegalArgumentException
                 existingFileHelper.trackGenerated(trimResLoc, PackType.CLIENT_RESOURCES, ".png", "textures");
 
+                // Trimmed armorItem files
                 getBuilder(currentTrimName)
                         .parent(new ModelFile.UncheckedModelFile("item/generated"))
-                        .texture("layer0", armorItemResLoc.getNamespace() + ":item/" + armorItemResLoc.getPath())
+                        .texture("layer0", armorItemResLoc)
                         .texture("layer1", trimResLoc);
 
-                this.withExistingParent(itemDeferredItem.getId().getPath(), mcLoc("item/generated"))
+                // Non-trimmed armorItem file (normal variant)
+                this.withExistingParent(itemRegistryObject.getId().getPath(),
+                                mcLoc("item/generated"))
                         .override()
-                        .model(new ModelFile.UncheckedModelFile(trimNameResLoc.getNamespace()  + ":item/" + trimNameResLoc.getPath()))
+                        .model(new ModelFile.UncheckedModelFile(trimNameResLoc))
                         .predicate(mcLoc("trim_type"), trimValue).end()
-                        .texture("layer0", ResourceLocation.fromNamespaceAndPath(MOD_ID, "item/" + itemDeferredItem.getId().getPath()));
+                        .texture("layer0",
+                                new ResourceLocation(MOD_ID,
+                                        "item/" + itemRegistryObject.getId().getPath()));
             });
         }
     }

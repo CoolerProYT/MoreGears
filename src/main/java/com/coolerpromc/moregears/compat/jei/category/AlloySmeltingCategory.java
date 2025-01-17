@@ -3,7 +3,6 @@ package com.coolerpromc.moregears.compat.jei.category;
 import com.coolerpromc.moregears.MoreGears;
 import com.coolerpromc.moregears.block.MGBlocks;
 import com.coolerpromc.moregears.recipe.AlloySmeltingRecipe;
-import com.coolerpromc.moregears.util.MGEnergyStorage;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;
@@ -19,11 +18,12 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import org.jetbrains.annotations.Nullable;
+
+import javax.annotation.Nullable;
 
 public class AlloySmeltingCategory implements IRecipeCategory<AlloySmeltingRecipe> {
-    public static final ResourceLocation UID = ResourceLocation.fromNamespaceAndPath(MoreGears.MODID, "alloy_smelting");
-    public static final ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath(MoreGears.MODID, "textures/gui/compat/alloy_smelter_gui.png");
+    public static final ResourceLocation UID = new ResourceLocation(MoreGears.MODID, "alloy_smelting");
+    public static final ResourceLocation TEXTURE = new ResourceLocation(MoreGears.MODID, "textures/gui/compat/alloy_smelter_gui.png");
     public static final RecipeType<AlloySmeltingRecipe> ALLOY_SMELTING_TYPE = new RecipeType<>(UID, AlloySmeltingRecipe.class);
     private int tickCount = 0;
 
@@ -74,8 +74,8 @@ public class AlloySmeltingCategory implements IRecipeCategory<AlloySmeltingRecip
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, AlloySmeltingRecipe recipe, IFocusGroup focuses) {
         builder.addSlot(RecipeIngredientRole.INPUT, 31, 23).addItemStack(new ItemStack(Items.COAL));
-        builder.addSlot(RecipeIngredientRole.INPUT, 83, 23).addItemStack(new ItemStack(recipe.getInputItems().get(0).getItems()[0].getItem(), recipe.getInputItems().get(0).count()));
-        builder.addSlot(RecipeIngredientRole.INPUT, 119, 23).addItemStack(new ItemStack(recipe.getInputItems().get(1).getItems()[0].getItem(), recipe.getInputItems().get(1).count()));
-        builder.addSlot(RecipeIngredientRole.OUTPUT, 101, 55).addItemStack(recipe.getOutput().getFirst());
+        builder.addSlot(RecipeIngredientRole.INPUT, 83, 23).addItemStack(new ItemStack(recipe.getInputItems().get(0).getItems()[0].getItem(), recipe.getInputItems().get(0).getItems()[0].getCount()));
+        builder.addSlot(RecipeIngredientRole.INPUT, 119, 23).addItemStack(new ItemStack(recipe.getInputItems().get(1).getItems()[0].getItem(), recipe.getInputItems().get(1).getItems()[0].getCount()));
+        builder.addSlot(RecipeIngredientRole.OUTPUT, 101, 55).addItemStack(recipe.getOutput());
     }
 }

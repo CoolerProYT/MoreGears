@@ -5,11 +5,11 @@ import com.coolerpromc.moregears.item.MGItems;
 import net.minecraft.core.NonNullList;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.neoforge.event.entity.EntityStruckByLightningEvent;
+import net.minecraftforge.event.entity.EntityStruckByLightningEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
 
-@EventBusSubscriber(modid = MoreGears.MODID)
+@Mod.EventBusSubscriber(modid = MoreGears.MODID)
 public class MGCopperArmorEvent {
     @SubscribeEvent
     public static void onEntityStruckByLightning(EntityStruckByLightningEvent event) {

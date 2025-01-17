@@ -1,8 +1,8 @@
-// 1.21.1	2025-01-14T19:12:29.7794305	Registries
-769577da6f03eeeb516e6de11306f2b3a489b637 data/moregears/neoforge/biome_modifier/add_end_enderite_ore.json
-0c65cfefdc1d62cab6ad4267ebd69be2fc0ca22c data/moregears/neoforge/biome_modifier/add_nether_titanium_ore.json
-3aa8d0c30caaed65d5dc712a56c088f2c39f159d data/moregears/neoforge/biome_modifier/add_ruby_ore.json
-e6a24300784ae6ac57e9ac992073cf579c4618c2 data/moregears/neoforge/biome_modifier/add_tin_ore.json
+// 1.20.1	2025-01-17T17:01:05.8100275	Registries
+d53ed369b72ab1dc07cd432dc34b2db01453ced2 data/moregears/forge/biome_modifier/add_end_enderite_ore.json
+f363f59128250485647ea0b2c3609dd1d307c6b6 data/moregears/forge/biome_modifier/add_nether_titanium_ore.json
+99710ae9bcc7d8d3ebdd4fa4e219ff7298f30fde data/moregears/forge/biome_modifier/add_ruby_ore.json
+d0add43f2152cafd72e3b2f3ae7454dc7b658ff6 data/moregears/forge/biome_modifier/add_tin_ore.json
 a6eb42ba68c20391e7652d872e8c83fa9078458a data/moregears/worldgen/configured_feature/end_enderite_ore.json
 d3659a41d8d519f4a87ffe0d25711a487efef802 data/moregears/worldgen/configured_feature/nether_titanium_ore.json
 250ae663c175e8cba2ae1ad591e4d34718301244 data/moregears/worldgen/configured_feature/ruby_ore.json

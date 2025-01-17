@@ -14,8 +14,9 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public class MGBlockLootTables extends BlockLootSubProvider {
-    public MGBlockLootTables(HolderLookup.Provider registries) {
-        super(Set.of(), FeatureFlags.REGISTRY.allFlags(), registries);
+    public MGBlockLootTables() {
+        super(Set.of(), FeatureFlags.REGISTRY.allFlags());
+
     }
 
     @Override

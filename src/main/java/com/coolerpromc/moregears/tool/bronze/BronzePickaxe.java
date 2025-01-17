@@ -8,13 +8,14 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.PickaxeItem;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 
 import java.util.List;
 
 public class BronzePickaxe extends PickaxeItem {
-    public BronzePickaxe(Tier p_42961_, Properties p_42964_) {
-        super(p_42961_, p_42964_);
+    public BronzePickaxe(Tier tier, int attackDamageModifier, float attackSpeedModifier, Properties properties) {
+        super(tier, attackDamageModifier, attackSpeedModifier, properties);
     }
 
     @Override
@@ -30,7 +31,7 @@ public class BronzePickaxe extends PickaxeItem {
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
+    public void appendHoverText(ItemStack stack, Level context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
         super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
         tooltipComponents.add(MGTooltip.itemSpecialEffect("Faster mining under water"));
     }

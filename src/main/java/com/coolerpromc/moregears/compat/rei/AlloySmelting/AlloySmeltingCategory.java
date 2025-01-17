@@ -16,13 +16,14 @@ import net.minecraft.client.gui.components.events.GuiEventListener;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 
+import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
 public class AlloySmeltingCategory implements DisplayCategory<AlloySmeltingRecipeDisplay> {
     public static final CategoryIdentifier<? extends AlloySmeltingRecipeDisplay> ALLOY_SMELTING = CategoryIdentifier.of(MoreGears.MODID, "alloy_smelting");
-    public static final ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath(MoreGears.MODID, "textures/gui/compat/alloy_smelter_gui.png");
+    public static final ResourceLocation TEXTURE = new ResourceLocation(MoreGears.MODID, "textures/gui/compat/alloy_smelter_gui.png");
     private int tickCount = 0;
 
     @Override
@@ -51,7 +52,7 @@ public class AlloySmeltingCategory implements DisplayCategory<AlloySmeltingRecip
         widgets.add(Widgets.createSlot(new Point(startPoint.x + 83, startPoint.y + 23)).entries(display.getInputEntries().get(1)).markInput());
         widgets.add(Widgets.createSlot(new Point(startPoint.x + 119, startPoint.y + 23)).entries(display.getInputEntries().get(2)).markInput());
 
-        widgets.add(Widgets.createSlot(new Point(startPoint.x + 101, startPoint.y + 55)).entries(display.getOutputEntries().getFirst()).markOutput());
+        widgets.add(Widgets.createSlot(new Point(startPoint.x + 101, startPoint.y + 55)).entries(display.getOutputEntries().get(0)).markOutput());
 
         widgets.add(new Widget() {
             @Override
@@ -73,6 +74,27 @@ public class AlloySmeltingCategory implements DisplayCategory<AlloySmeltingRecip
             @Override
             public List<? extends GuiEventListener> children() {
                 return new ArrayList<>();
+            }
+
+            @Override
+            public boolean isDragging() {
+                return false;
+            }
+
+            @Override
+            public void setDragging(boolean b) {
+
+            }
+
+            @Nullable
+            @Override
+            public GuiEventListener getFocused() {
+                return null;
+            }
+
+            @Override
+            public void setFocused(@Nullable GuiEventListener guiEventListener) {
+
             }
         });
 

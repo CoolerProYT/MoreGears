@@ -1,6 +1,6 @@
 package com.coolerpromc.moregears.util;
 
-import net.neoforged.neoforge.energy.EnergyStorage;
+import net.minecraftforge.energy.EnergyStorage;
 
 public class MGEnergyStorage extends EnergyStorage {
     public MGEnergyStorage(int capacity) {

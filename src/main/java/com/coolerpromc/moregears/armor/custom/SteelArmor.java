@@ -9,7 +9,7 @@ import net.minecraft.world.level.Level;
 
 public class SteelArmor extends ArmorItem {
     public SteelArmor(Type type) {
-        super(MGArmorMaterials.STEEL_ARMOR_MATERIAL, type, new Properties().durability(type.getDurability(30)));
+        super(MGArmorMaterials.STEEL, type, new Properties());
     }
 
     @Override

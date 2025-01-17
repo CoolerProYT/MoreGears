@@ -24,7 +24,7 @@ public class REIPluginClient implements REIClientPlugin {
 
     @Override
     public void registerDisplays(DisplayRegistry registry) {
-        registry.registerRecipeFiller(AlloySmeltingRecipe.class, MGRecipes.ALLOY_SMELTING_TYPE.get(), AlloySmeltingRecipeDisplay::new);
+        registry.registerRecipeFiller(AlloySmeltingRecipe.class, AlloySmeltingRecipe.Type.INSTANCE, AlloySmeltingRecipeDisplay::new);
     }
 
     @Override

@@ -2,24 +2,20 @@ package com.coolerpromc.moregears.armor.custom;
 
 import com.coolerpromc.moregears.armor.MGArmorMaterials;
 import com.coolerpromc.moregears.util.MGTooltip;
-import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.item.component.Unbreakable;
 import net.minecraft.world.level.Level;
 
 import java.util.List;
 
 public class EnderiteArmor extends ArmorItem {
     public EnderiteArmor(Type type) {
-        super(MGArmorMaterials.ENDERITE_ARMOR_MATERIAL, type, new Properties().fireResistant().durability(Integer.MAX_VALUE).component(DataComponents.UNBREAKABLE, new Unbreakable(true)));
+        super(MGArmorMaterials.ENDERITE, type, new Properties().fireResistant());
     }
 
     @Override
@@ -40,8 +36,18 @@ public class EnderiteArmor extends ArmorItem {
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
-        super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
+    public boolean isDamageable(ItemStack stack) {
+        return false;
+    }
+
+    @Override
+    public boolean isEnchantable(ItemStack p_41456_) {
+        return true;
+    }
+
+    @Override
+    public void appendHoverText(ItemStack stack, Level level, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
+        super.appendHoverText(stack, level, tooltipComponents, tooltipFlag);
         tooltipComponents.add(MGTooltip.itemSpecialEffect("Indestructible"));
         tooltipComponents.add(MGTooltip.itemSpecialEffect("No Fall Damage"));
     }
