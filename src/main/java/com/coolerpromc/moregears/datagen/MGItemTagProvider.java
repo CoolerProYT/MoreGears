@@ -214,11 +214,6 @@ public class MGItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 MGItems.ENDERITE_HOE
         );
 
-        this.getOrCreateTagBuilder(ItemTags.TRIM_MATERIALS).add(
-                MGItems.TITANIUM_INGOT,
-                MGItems.ENDERITE_INGOT
-        );
-
         this.getOrCreateTagBuilder(MGTags.Items.INGOTS_BRONZE)
                 .add(MGItems.BRONZE_INGOT);
 
