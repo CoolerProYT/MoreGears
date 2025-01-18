@@ -217,9 +217,19 @@ public class MGItemTagGenerator extends ItemTagsProvider {
                 MGItems.ENDERITE_HOE.get()
         );
 
-        this.tag(ItemTags.TRIM_MATERIALS).add(
-                MGItems.TITANIUM_INGOT.get(),
-                MGItems.ENDERITE_INGOT.get()
-        );
+        this.tag(MGTags.Items.INGOTS_BRONZE)
+                .add(MGItems.BRONZE_INGOT.get());
+
+        this.tag(MGTags.Items.INGOTS_STEEL)
+                .add(MGItems.STEEL_INGOT.get());
+
+        this.tag(MGTags.Items.INGOTS_TITANIUM)
+                .add(MGItems.TITANIUM_INGOT.get());
+
+        this.tag(MGTags.Items.INGOTS_ENDERITE)
+                .add(MGItems.ENDERITE_INGOT.get());
+
+        this.tag(MGTags.Items.GEMS_RUBY)
+                .add(MGItems.RUBY_INGOT.get());
     }
 }
