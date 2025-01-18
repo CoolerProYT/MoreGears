@@ -1,6 +1,7 @@
 package com.coolerpromc.moregears.datagen;
 
 import com.coolerpromc.moregears.item.MGItems;
+import com.coolerpromc.moregears.util.MGTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.registry.RegistryWrapper;
@@ -213,9 +214,19 @@ public class MGItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 MGItems.ENDERITE_HOE
         );
 
-        this.getOrCreateTagBuilder(ItemTags.TRIM_MATERIALS).add(
-                MGItems.TITANIUM_INGOT,
-                MGItems.ENDERITE_INGOT
-        );
+        this.getOrCreateTagBuilder(MGTags.Items.INGOTS_BRONZE)
+                .add(MGItems.BRONZE_INGOT);
+
+        this.getOrCreateTagBuilder(MGTags.Items.INGOTS_STEEL)
+                .add(MGItems.STEEL_INGOT);
+
+        this.getOrCreateTagBuilder(MGTags.Items.INGOTS_TITANIUM)
+                .add(MGItems.TITANIUM_INGOT);
+
+        this.getOrCreateTagBuilder(MGTags.Items.INGOTS_ENDERITE)
+                .add(MGItems.ENDERITE_INGOT);
+
+        this.getOrCreateTagBuilder(MGTags.Items.GEMS_RUBY)
+                .add(MGItems.RUBY_INGOT);
     }
 }

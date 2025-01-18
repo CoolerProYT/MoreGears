@@ -1,5 +1,6 @@
 package com.coolerpromc.moregears.datagen.builder;
 
+import com.coolerpromc.moregears.MoreGears;
 import com.coolerpromc.moregears.recipe.AlloySmeltingRecipe;
 import net.minecraft.advancement.Advancement;
 import net.minecraft.advancement.AdvancementCriterion;
@@ -72,6 +73,6 @@ public class AlloySmeltingRecipeBuilder implements CraftingRecipeJsonBuilder {
 
         AlloySmeltingRecipe recipe = new AlloySmeltingRecipe(this.ingredients, this.outputs);
 
-        exporter.accept(recipeKey, recipe, advancement.build(Identifier.of(recipeKey.getRegistry().getNamespace(), "recipes/" + recipeKey.getRegistry().getPath())));
+        exporter.accept(recipeKey, recipe, advancement.build(Identifier.of(MoreGears.MODID, "recipes/" + recipeKey.getValue().getPath())));
     }
 }
