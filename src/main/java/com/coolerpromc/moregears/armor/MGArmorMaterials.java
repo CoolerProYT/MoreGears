@@ -2,6 +2,7 @@ package com.coolerpromc.moregears.armor;
 
 import com.coolerpromc.moregears.MoreGears;
 import com.coolerpromc.moregears.util.MGTags;
+import net.fabricmc.fabric.api.tag.convention.v2.ConventionalItemTags;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.equipment.ArmorMaterial;
@@ -35,7 +36,7 @@ public class MGArmorMaterials {
             }),
             12,
             SoundEvents.ITEM_ARMOR_EQUIP_IRON,
-            MGTags.Items.INGOTS_COPPER,
+            ConventionalItemTags.COPPER_INGOTS,
             0,
             0
     );
