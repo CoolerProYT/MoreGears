@@ -51,7 +51,7 @@ public class AlloySmeltingCategory implements DisplayCategory<AlloySmeltingRecip
         widgets.add(Widgets.createSlot(new Point(startPoint.x + 83, startPoint.y + 23)).entries(display.getInputEntries().get(1)).markInput());
         widgets.add(Widgets.createSlot(new Point(startPoint.x + 119, startPoint.y + 23)).entries(display.getInputEntries().get(2)).markInput());
 
-        widgets.add(Widgets.createSlot(new Point(startPoint.x + 101, startPoint.y + 55)).entries(display.getOutputEntries().getFirst()).markOutput());
+        widgets.add(Widgets.createSlot(new Point(startPoint.x + 101, startPoint.y + 55)).entries(display.getOutputEntries().get(0)).markOutput());
 
         widgets.add(new Widget() {
             @Override
