@@ -1,8 +1,8 @@
-// 1.20.1	2025-01-17T22:40:59.3037685	More Gears/Tags for minecraft:block
+// 1.20.1	2025-01-18T16:47:58.5034664	More Gears/Tags for minecraft:block
 c7b6f786001726c6d580e1a8d132aa1c2d5dcc0e data\fabric\tags\blocks\needs_tool_level_1.json
 f0da650622d06121e74f87820ecf6934433c8ada data\fabric\tags\blocks\needs_tool_level_4.json
-11ef4c108f0a3e5507d146f235171b5ec51744bd data\c\tags\blocks\ores\ruby.json
 a92603e83599492a7c5811bcbc775870c47cb38e data\fabric\tags\blocks\needs_tool_level_5.json
+11ef4c108f0a3e5507d146f235171b5ec51744bd data\c\tags\blocks\ores\ruby.json
 11ef4c108f0a3e5507d146f235171b5ec51744bd data\fabric\tags\blocks\needs_tool_level_2.json
 c7b6f786001726c6d580e1a8d132aa1c2d5dcc0e data\c\tags\blocks\ores\tin.json
 f0da650622d06121e74f87820ecf6934433c8ada data\c\tags\blocks\ores\titanium.json

@@ -1,4 +1,4 @@
-// 1.20.1	2025-01-17T22:40:59.3017684	More Gears/Recipes
+// 1.20.1	2025-01-18T16:47:58.5024547	More Gears/Recipes
 5c29d38565c00e342797e4b5f8a75a06d1273305 data\moregears\recipes\titanium_upgrade_smithing_template.json
 a8ac399b533af3324207198714c98f1c96f7400a data\moregears\recipes\tin_ingot_from_blasting_tin_ore.json
 921023bd011499bff4057718db94969049051f1f data\moregears\advancements\recipes\tools\tin_ingot_from_blasting_tin_ore.json
@@ -25,8 +25,8 @@ bee95998e079525b65dd71dfbb198e10a9b8b033 data\moregears\recipes\bronze_sword.jso
 a0913d74cb2f58b10e4ce95281620e3d44dc45bc data\moregears\recipes\ruby_from_blasting_ruby_ore.json
 fd27066d26b51c238a14074d41ef57a0aea7685f data\moregears\recipes\ruby_helmet.json
 b22cfca1c75008b85c526eb153dae23e87dfdc2b data\moregears\advancements\recipes\combat\steel_chestplate.json
-811225a2bb2ceeb2c836426faa06e7e7d11e937d data\moregears\advancements\recipes\tools\enderite_axe_smithing.json
 10f9ee4aaf968cea3b2168820466c6a08fda043f data\moregears\recipes\enderite_sword_smithing.json
+811225a2bb2ceeb2c836426faa06e7e7d11e937d data\moregears\advancements\recipes\tools\enderite_axe_smithing.json
 f71bb7adaa3e297c3b0ff62264781e7fb102d5ba data\moregears\recipes\tin_ingot_from_smelting_deepslate_tin_ore.json
 13f8f86a7eb16612324a4e5c3c18bdd52f437633 data\moregears\advancements\recipes\combat\copper_helmet.json
 f65603abe8305125a578935993a7a7978520baa6 data\moregears\recipes\tin_ingot_from_smelting_raw_tin.json

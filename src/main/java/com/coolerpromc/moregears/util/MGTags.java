@@ -32,7 +32,6 @@ public class MGTags {
     }
 
     public static class Items {
-        public static final TagKey<Item> INGOTS_COPPER = commonTag("ingots/copper");
         public static final TagKey<Item> INGOTS_BRONZE = commonTag("ingots/bronze");
         public static final TagKey<Item> INGOTS_STEEL = commonTag("ingots/steel");
         public static final TagKey<Item> INGOTS_TITANIUM = commonTag("ingots/titanium");

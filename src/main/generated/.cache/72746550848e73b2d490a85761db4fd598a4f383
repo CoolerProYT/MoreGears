@@ -1,8 +1,12 @@
-// 1.20.1	2025-01-17T22:40:59.2967658	More Gears/Tags for minecraft:item
+// 1.20.1	2025-01-18T16:47:58.4983694	More Gears/Tags for minecraft:item
+7832d785a94445bf6f2ddd035c3281f8faa84c1f data\c\tags\items\ingots\steel.json
+cd4d391a6f63686c371fa88040828a1c3d776fd1 data\c\tags\items\ingots\bronze.json
 43548a39984f91b9a323108c996e744f50e16596 data\minecraft\tags\items\swords.json
 32c4e1a2efb4831b78cc0408954110ea8354927f data\minecraft\tags\items\axes.json
-514d866ecf04d4d69cccd03b861a73d97e1a72b9 data\minecraft\tags\items\pickaxes.json
+77ced2bf7fa1b98503d60cd0c318f15f458e07be data\c\tags\items\ingots\titanium.json
 2ae66a9bc013704956f2c1bfbcedd040995cee07 data\minecraft\tags\items\trimmable_armor.json
+514d866ecf04d4d69cccd03b861a73d97e1a72b9 data\minecraft\tags\items\pickaxes.json
+30ec8574a4f0d1e8ed990061eaa2bf3b8577383d data\c\tags\items\gems\ruby.json
 d156f1e8c3ee4de5783fc46df05b7ad944745184 data\minecraft\tags\items\shovels.json
 a3b1c6e89ca61d129692ec3be702f81633145ba7 data\minecraft\tags\items\hoes.json
-ae172c65a5c8d4711601fbcb825d8cf6735c68b3 data\minecraft\tags\items\trim_materials.json
+57b591497d73995844a2e1ae9779a433a25055a9 data\c\tags\items\ingots\enderite.json

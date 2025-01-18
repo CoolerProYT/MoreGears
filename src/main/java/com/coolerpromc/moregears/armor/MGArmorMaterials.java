@@ -2,6 +2,7 @@ package com.coolerpromc.moregears.armor;
 
 import com.coolerpromc.moregears.MoreGears;
 import com.coolerpromc.moregears.util.MGTags;
+import net.fabricmc.fabric.api.tag.convention.v1.ConventionalItemTags;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ArmorMaterial;
 import net.minecraft.recipe.Ingredient;
@@ -18,7 +19,7 @@ import java.util.List;
 import java.util.function.Supplier;
 
 public enum MGArmorMaterials implements ArmorMaterial {
-    COPPER("copper", 15, new int[]{2, 4, 6, 2}, 12, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0, 0, () -> Ingredient.fromTag(MGTags.Items.INGOTS_COPPER)),
+    COPPER("copper", 15, new int[]{2, 4, 6, 2}, 12, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0, 0, () -> Ingredient.fromTag(ConventionalItemTags.COPPER_INGOTS)),
     BRONZE("bronze", 22, new int[]{3, 5, 7, 2}, 9, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0, 0, () -> Ingredient.fromTag(MGTags.Items.INGOTS_BRONZE)),
     STEEL("steel", 30, new int[]{3, 6, 8, 3}, 10, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 1.5f, 0, () -> Ingredient.fromTag(MGTags.Items.INGOTS_STEEL)),
     RUBY("ruby", 28, new int[]{3, 6, 7, 3}, 10, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 1f, 0, () -> Ingredient.fromTag(MGTags.Items.GEMS_RUBY)),

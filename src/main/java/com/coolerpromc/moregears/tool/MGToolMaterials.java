@@ -1,13 +1,14 @@
 package com.coolerpromc.moregears.tool;
 
 import com.coolerpromc.moregears.util.MGTags;
+import net.fabricmc.fabric.api.tag.convention.v1.ConventionalItemTags;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.recipe.Ingredient;
 
 import java.util.function.Supplier;
 
 public enum MGToolMaterials implements ToolMaterial {
-    COPPER_TIER(1, 200, 5f, 1.5f, 20, () -> Ingredient.fromTag(MGTags.Items.INGOTS_COPPER)),
+    COPPER_TIER(1, 200, 5f, 1.5f, 20, () -> Ingredient.fromTag(ConventionalItemTags.COPPER_INGOTS)),
     BRONZE_TIER(2, 700, 7f, 2.5f, 13, () -> Ingredient.fromTag(MGTags.Items.INGOTS_BRONZE)),
     STEEL_TIER (3, 1300, 8f, 3f, 12, () -> Ingredient.fromTag(MGTags.Items.INGOTS_STEEL)),
     RUBY_TIER(3, 1000, 7.5f, 2.75f, 11, () -> Ingredient.fromTag(MGTags.Items.GEMS_RUBY)),
