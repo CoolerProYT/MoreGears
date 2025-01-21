@@ -23,12 +23,14 @@ public class MGBlockTagGenerator extends FabricTagProvider.BlockTagProvider {
                 MGBlocks.RUBY_ORE,
                 MGBlocks.DEEPSLATE_RUBY_ORE,
                 MGBlocks.NETHER_TITANIUM_ORE,
-                MGBlocks.END_ENDERITE_ORE
+                MGBlocks.END_ENDERITE_ORE,
+                MGBlocks.ALLOY_SMELTER
         );
 
         this.getOrCreateTagBuilder(MGTags.Blocks.NEEDS_TOOL_LEVEL_1).add(
                 MGBlocks.TIN_ORE,
-                MGBlocks.DEEPSLATE_TIN_ORE
+                MGBlocks.DEEPSLATE_TIN_ORE,
+                MGBlocks.ALLOY_SMELTER
         );
 
         this.getOrCreateTagBuilder(MGTags.Blocks.NEEDS_TOOL_LEVEL_2).add(

@@ -1,6 +1,9 @@
 package com.coolerpromc.moregears.screen;
 
 import com.coolerpromc.moregears.block.entity.AlloySmelterBlockEntity;
+import com.coolerpromc.moregears.util.SlotItemHandler;
+import net.fabricmc.fabric.api.registry.FuelRegistry;
+import net.minecraft.block.entity.AbstractFurnaceBlockEntity;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
@@ -11,7 +14,6 @@ import net.minecraft.screen.ArrayPropertyDelegate;
 import net.minecraft.screen.PropertyDelegate;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.slot.Slot;
-import net.minecraft.util.math.BlockPos;
 
 public class AlloySmelterMenu extends ScreenHandler {
     public final AlloySmelterBlockEntity blockEntity;
@@ -29,10 +31,10 @@ public class AlloySmelterMenu extends ScreenHandler {
         this.inventory = (Inventory) blockEntity;
         this.data = propertyDelegate;
 
-        this.addSlot(new Slot(inventory, 0 ,31, 23));
-        this.addSlot(new Slot(inventory, 1 ,83, 23));
-        this.addSlot(new Slot(inventory, 2 ,119, 23));
-        this.addSlot(new Slot(inventory, 3 ,101, 55));
+        this.addSlot(new SlotItemHandler(inventory, 0 ,31, 23, AbstractFurnaceBlockEntity::canUseAsFuel));
+        this.addSlot(new SlotItemHandler(inventory, 1 ,83, 23, itemStack -> true));
+        this.addSlot(new SlotItemHandler(inventory, 2 ,119, 23, itemStack -> true));
+        this.addSlot(new SlotItemHandler(inventory, 3 ,101, 55, itemStack -> false));
 
         addPlayerHotbar(playerInventory);
         addPlayerInventory(playerInventory);
