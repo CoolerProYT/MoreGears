@@ -1,14 +1,14 @@
 package com.coolerpromc.moregears.armor;
 
-import net.minecraft.item.ArmorItem;
+import net.minecraft.item.Item;
 import net.minecraft.item.equipment.ArmorMaterial;
 import net.minecraft.item.equipment.EquipmentType;
 
-public class MGArmorItem extends ArmorItem {
+public class MGArmorItem extends Item {
     private final EquipmentType type;
 
     public MGArmorItem(ArmorMaterial material, EquipmentType type, Settings settings) {
-        super(material, type, settings);
+        super(settings.armor(material, type));
         this.type = type;
     }
 

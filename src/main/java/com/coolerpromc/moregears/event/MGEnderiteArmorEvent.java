@@ -15,7 +15,7 @@ public class MGEnderiteArmorEvent {
             if (livingEntity instanceof PlayerEntity player){
                 assert MinecraftClient.getInstance().world != null;
 
-                Iterable<ItemStack> armorlist = player.getArmorItems();
+                Iterable<ItemStack> armorlist = player.getInventory().armor;
                 DamageSources damageSources = MinecraftClient.getInstance().world.getDamageSources();
 
                 for (ItemStack armor : armorlist){

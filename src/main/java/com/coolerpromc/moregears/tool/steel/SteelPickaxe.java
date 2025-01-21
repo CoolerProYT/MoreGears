@@ -9,7 +9,6 @@ import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.PickaxeItem;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.text.Text;
@@ -19,11 +18,11 @@ import net.minecraft.world.World;
 
 import java.util.List;
 
-public class SteelPickaxe extends PickaxeItem {
+public class SteelPickaxe extends Item {
     private static final Identifier modifierId = Identifier.of(MoreGears.MODID, "steel_pickaxe_slow_speed");
 
     public SteelPickaxe(ToolMaterial material, float attackDamage, float attackSpeed, Settings settings) {
-        super(material, attackDamage, attackSpeed, settings);
+        super(settings.pickaxe(material, attackDamage, attackSpeed));
     }
 
     @Override

@@ -1,3 +1,4 @@
+/*
 package com.coolerpromc.moregears.compat.rei.AlloySmelting;
 
 import com.coolerpromc.moregears.recipe.AlloySmeltingRecipe;
@@ -56,4 +57,4 @@ public class AlloySmeltingRecipeDisplay extends BasicDisplay {
     public @Nullable DisplaySerializer<? extends Display> getSerializer() {
         return SERIALIZER;
     }
-}
+}*/

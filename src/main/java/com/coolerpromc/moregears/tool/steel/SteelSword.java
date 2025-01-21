@@ -9,7 +9,6 @@ import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.SwordItem;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.text.Text;
@@ -19,11 +18,11 @@ import net.minecraft.world.World;
 
 import java.util.List;
 
-public class SteelSword extends SwordItem {
+public class SteelSword extends Item {
     private static final Identifier modifierId = Identifier.of(MoreGears.MODID, "steel_sword_slow_speed");
 
     public SteelSword(ToolMaterial material, float attackDamage, float attackSpeed, Settings settings) {
-        super(material, attackDamage, attackSpeed, settings);
+        super(settings.sword(material, attackDamage, attackSpeed));
     }
 
 

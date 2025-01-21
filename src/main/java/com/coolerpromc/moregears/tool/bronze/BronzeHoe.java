@@ -24,7 +24,7 @@ public class BronzeHoe extends HoeItem {
         float originalSpeed = super.getMiningSpeed(stack, state);
 
         PlayerEntity player = MinecraftClient.getInstance().player;
-        if(player != null && player.isInsideWaterOrBubbleColumn()){
+        if(player != null && player.isTouchingWater()){
             return originalSpeed * 2f;
         }
 

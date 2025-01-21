@@ -1,3 +1,4 @@
+/*
 package com.coolerpromc.moregears.compat.rei;
 
 import com.coolerpromc.moregears.MoreGears;
@@ -19,4 +20,4 @@ public class REIPluginServer implements REICommonPlugin {
     public void registerDisplays(ServerDisplayRegistry registry) {
         registry.beginRecipeFiller(AlloySmeltingRecipe.class).filterType(MGRecipes.ALLOY_SMELTING_TYPE).fill(AlloySmeltingRecipeDisplay::new);
     }
-}
+}*/

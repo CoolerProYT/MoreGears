@@ -23,7 +23,7 @@ public class BronzeAxe extends AxeItem {
         float originalSpeed = super.getMiningSpeed(stack, state);
 
         PlayerEntity player = MinecraftClient.getInstance().player;
-        if(player != null && player.isInsideWaterOrBubbleColumn()){
+        if(player != null && player.isTouchingWater()){
             return originalSpeed * 2f;
         }
 

@@ -6,17 +6,16 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.PickaxeItem;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.text.Text;
 
 import java.util.List;
 
-public class BronzePickaxe extends PickaxeItem {
+public class BronzePickaxe extends Item {
 
     public BronzePickaxe(ToolMaterial material, float attackDamage, float attackSpeed, Settings settings) {
-        super(material, attackDamage, attackSpeed, settings);
+        super(settings.pickaxe(material, attackDamage, attackSpeed));
     }
 
     @Override
@@ -24,7 +23,7 @@ public class BronzePickaxe extends PickaxeItem {
         float originalSpeed = super.getMiningSpeed(stack, state);
 
         PlayerEntity player = MinecraftClient.getInstance().player;
-        if(player != null && player.isInsideWaterOrBubbleColumn()){
+        if(player != null && player.isTouchingWater()){
             return originalSpeed * 2f;
         }
 
