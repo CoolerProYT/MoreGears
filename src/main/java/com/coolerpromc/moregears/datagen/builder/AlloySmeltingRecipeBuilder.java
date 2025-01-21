@@ -2,6 +2,7 @@ package com.coolerpromc.moregears.datagen.builder;
 
 import com.coolerpromc.moregears.MoreGears;
 import com.coolerpromc.moregears.recipe.AlloySmeltingRecipe;
+import com.coolerpromc.moregears.recipe.custom.SizedIngredient;
 import net.minecraft.advancement.Advancement;
 import net.minecraft.advancement.AdvancementCriterion;
 import net.minecraft.advancement.AdvancementRequirements;
@@ -23,7 +24,7 @@ import java.util.List;
 import java.util.Map;
 
 public class AlloySmeltingRecipeBuilder implements CraftingRecipeJsonBuilder {
-    private final List<Ingredient> ingredients = new ArrayList<>();
+    private final List<SizedIngredient> ingredients = new ArrayList<>();
     private final List<ItemStack> outputs = new ArrayList<>();
     private final Map<String, AdvancementCriterion<?>> criteria = new LinkedHashMap<>();
     @Nullable
@@ -37,7 +38,7 @@ public class AlloySmeltingRecipeBuilder implements CraftingRecipeJsonBuilder {
         // Private constructor to enforce the use of the static factory method
     }
 
-    public AlloySmeltingRecipeBuilder addIngredient(Ingredient ingredient) {
+    public AlloySmeltingRecipeBuilder addIngredient(SizedIngredient ingredient) {
         this.ingredients.add(ingredient);
         return this;
     }

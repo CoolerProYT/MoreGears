@@ -3,6 +3,7 @@ package com.coolerpromc.moregears.block.entity;
 import com.coolerpromc.moregears.recipe.AlloySmeltingRecipe;
 import com.coolerpromc.moregears.recipe.MGRecipes;
 import com.coolerpromc.moregears.recipe.custom.MultipleRecipeInput;
+import com.coolerpromc.moregears.recipe.custom.SizedIngredient;
 import com.coolerpromc.moregears.screen.AlloySmelterMenu;
 import com.coolerpromc.moregears.util.ImplementedInventory;
 import com.coolerpromc.moregears.util.MGEnergyStorage;
@@ -245,11 +246,11 @@ public class AlloySmelterBlockEntity extends BlockEntity implements ExtendedScre
             int extractFromSlot0 = 0;
             int extractFromSlot1 = 0;
 
-            for (Ingredient ingredient : recipe.get().value().getInputItems()) {
+            for (SizedIngredient ingredient : recipe.get().value().getInputItems()) {
                 if (ingredient.test(inventory.get(INPUT_SLOT[0]))) {
-                    extractFromSlot0 += Math.min(inventory.get(INPUT_SLOT[0]).getCount(), 1);
+                    extractFromSlot0 += Math.min(inventory.get(INPUT_SLOT[0]).getCount(), ingredient.count());
                 } else if (ingredient.test(inventory.get(INPUT_SLOT[1]))) {
-                    extractFromSlot1 += Math.min(inventory.get(INPUT_SLOT[1]).getCount(), 1);
+                    extractFromSlot1 += Math.min(inventory.get(INPUT_SLOT[1]).getCount(), ingredient.count());
                 }
             }
 
@@ -291,7 +292,7 @@ public class AlloySmelterBlockEntity extends BlockEntity implements ExtendedScre
 
         // Retrieve recipe inputs and outputs
         AlloySmeltingRecipe currentRecipe = recipe.get().value();
-        List<Ingredient> recipeIngredients = currentRecipe.getInputItems();
+        List<SizedIngredient> recipeIngredients = currentRecipe.getInputItems();
         List<ItemStack> outputResults = currentRecipe.getOutput();
 
         // Create a mutable copy of the user inputs
@@ -301,7 +302,7 @@ public class AlloySmelterBlockEntity extends BlockEntity implements ExtendedScre
         }
 
         // Check if all recipe ingredients are matched with user inputs
-        for (Ingredient recipeIngredient : recipeIngredients) {
+        for (SizedIngredient recipeIngredient : recipeIngredients) {
             boolean ingredientMatched = false;
 
             // Try to match the ingredient with one of the user inputs
@@ -309,7 +310,7 @@ public class AlloySmelterBlockEntity extends BlockEntity implements ExtendedScre
             while (userInputIterator.hasNext()) {
                 ItemStack userInput = userInputIterator.next();
 
-                if (recipeIngredient.test(userInput) && userInput.getCount() >= 1) {
+                if (recipeIngredient.ingredient().test(userInput) && userInput.getCount() >= recipeIngredient.count()) {
                     // Match found; remove the input to avoid duplicate matches
                     userInputIterator.remove();
                     ingredientMatched = true;

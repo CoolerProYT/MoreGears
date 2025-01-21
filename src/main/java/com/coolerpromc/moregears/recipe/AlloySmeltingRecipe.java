@@ -2,6 +2,7 @@ package com.coolerpromc.moregears.recipe;
 
 import com.coolerpromc.moregears.MoreGears;
 import com.coolerpromc.moregears.recipe.custom.MultipleRecipeInput;
+import com.coolerpromc.moregears.recipe.custom.SizedIngredient;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.item.ItemStack;
@@ -18,10 +19,10 @@ import java.util.Iterator;
 import java.util.List;
 
 public class AlloySmeltingRecipe implements Recipe<MultipleRecipeInput>{
-    private final List<Ingredient> inputItems;
+    private final List<SizedIngredient> inputItems;
     private final List<ItemStack> output;
 
-    public AlloySmeltingRecipe(List<Ingredient> inputItems, List<ItemStack> output) {
+    public AlloySmeltingRecipe(List<SizedIngredient> inputItems, List<ItemStack> output) {
         this.inputItems = inputItems;
         this.output = output;
     }
@@ -29,7 +30,7 @@ public class AlloySmeltingRecipe implements Recipe<MultipleRecipeInput>{
     @Override
     public boolean matches(MultipleRecipeInput input, World world) {
         List<ItemStack> inputItems = input.inputItems();
-        List<Ingredient> remainingIngredients  = new ArrayList<>(this.inputItems);
+        List<SizedIngredient> remainingIngredients  = new ArrayList<>(this.inputItems);
 
         for (ItemStack itemStack : inputItems) {
             if (itemStack.isEmpty()) {
@@ -37,11 +38,11 @@ public class AlloySmeltingRecipe implements Recipe<MultipleRecipeInput>{
             }
 
             boolean ingredientFound = false;
-            Iterator<Ingredient> iterator = remainingIngredients.iterator();
+            Iterator<SizedIngredient> iterator = remainingIngredients.iterator();
 
             while (iterator.hasNext()) {
-                Ingredient ingredient = iterator.next();
-                if (ingredient.test(itemStack)) {
+                SizedIngredient ingredient = iterator.next();
+                if (ingredient.ingredient().test(itemStack)) {
                     iterator.remove();
                     ingredientFound = true;
                     break;
@@ -73,7 +74,11 @@ public class AlloySmeltingRecipe implements Recipe<MultipleRecipeInput>{
 
     @Override
     public IngredientPlacement getIngredientPlacement() {
-        return IngredientPlacement.forShapeless(inputItems);
+        List<Ingredient> ingredients = new ArrayList<>();
+        for (SizedIngredient ingredient : inputItems) {
+            ingredients.add(ingredient.ingredient());
+        }
+        return IngredientPlacement.forShapeless(ingredients);
     }
 
     @Override
@@ -81,7 +86,7 @@ public class AlloySmeltingRecipe implements Recipe<MultipleRecipeInput>{
         return null;
     }
 
-    public List<Ingredient> getInputItems() {
+    public List<SizedIngredient> getInputItems() {
         return inputItems;
     }
 
@@ -94,7 +99,7 @@ public class AlloySmeltingRecipe implements Recipe<MultipleRecipeInput>{
         public static final Identifier ID = Identifier.of(MoreGears.MODID, "alloy_smelting");
 
         private final MapCodec<AlloySmeltingRecipe> CODEC = RecordCodecBuilder.mapCodec(alloySmeltingRecipeInstance -> alloySmeltingRecipeInstance.group(
-                Ingredient.CODEC.listOf().fieldOf("ingredients").forGetter(AlloySmeltingRecipe::getInputItems),
+                SizedIngredient.NESTED_CODEC.listOf().fieldOf("ingredients").forGetter(AlloySmeltingRecipe::getInputItems),
                 ItemStack.CODEC.listOf().fieldOf("output").forGetter(AlloySmeltingRecipe::getOutput)
         ).apply(alloySmeltingRecipeInstance, AlloySmeltingRecipe::new));
 
@@ -114,9 +119,9 @@ public class AlloySmeltingRecipe implements Recipe<MultipleRecipeInput>{
 
         private static AlloySmeltingRecipe fromNetwork(RegistryByteBuf buffer) {
             int ingredientCount = buffer.readVarInt();
-            List<Ingredient> inputItems = new ArrayList<>(ingredientCount);
+            List<SizedIngredient> inputItems = new ArrayList<>(ingredientCount);
             for (int i = 0; i < ingredientCount; i++) {
-                inputItems.add(Ingredient.PACKET_CODEC.decode(buffer));
+                inputItems.add(SizedIngredient.STREAM_CODEC.decode(buffer));
             }
 
             int outputCount = buffer.readVarInt();
@@ -130,8 +135,8 @@ public class AlloySmeltingRecipe implements Recipe<MultipleRecipeInput>{
 
         private static void toNetwork(RegistryByteBuf buffer, AlloySmeltingRecipe recipe) {
             buffer.writeVarInt(recipe.inputItems.size());
-            for (Ingredient ingredient : recipe.inputItems) {
-                Ingredient.PACKET_CODEC.encode(buffer, ingredient);
+            for (SizedIngredient ingredient : recipe.inputItems) {
+                SizedIngredient.STREAM_CODEC.encode(buffer, ingredient);
             }
 
             buffer.writeVarInt(recipe.output.size());

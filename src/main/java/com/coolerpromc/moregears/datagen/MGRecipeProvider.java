@@ -4,6 +4,7 @@ import com.coolerpromc.moregears.MoreGears;
 import com.coolerpromc.moregears.block.MGBlocks;
 import com.coolerpromc.moregears.datagen.builder.AlloySmeltingRecipeBuilder;
 import com.coolerpromc.moregears.item.MGItems;
+import com.coolerpromc.moregears.recipe.custom.SizedIngredient;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.data.recipe.RecipeExporter;
@@ -37,8 +38,8 @@ public class MGRecipeProvider extends FabricRecipeProvider {
 
             @Override
             public void generate() {
-                alloySmeltingRecipe(recipeOutput, Ingredient.ofItems(Items.COPPER_INGOT), Ingredient.ofItems(MGItems.TIN_INGOT), MGItems.BRONZE_INGOT, 2);
-                alloySmeltingRecipe(recipeOutput, Ingredient.ofItems(Items.IRON_INGOT), Ingredient.ofItems(Items.COAL), MGItems.STEEL_INGOT, 2);
+                alloySmeltingRecipe(recipeOutput, SizedIngredient.of(Items.COPPER_INGOT,1), SizedIngredient.of(MGItems.TIN_INGOT, 1), MGItems.BRONZE_INGOT, 2);
+                alloySmeltingRecipe(recipeOutput, SizedIngredient.of(Items.IRON_INGOT,1), SizedIngredient.of(Items.COAL, 1), MGItems.STEEL_INGOT, 2);
 
                 oreCooking(recipeOutput, List.of(MGBlocks.TIN_ORE, MGBlocks.DEEPSLATE_TIN_ORE, MGItems.RAW_TIN), RecipeCategory.TOOLS, MGItems.TIN_INGOT, 0.7F, 200, "tin_ingot");
                 oreCooking(recipeOutput, List.of(MGBlocks.RUBY_ORE, MGBlocks.DEEPSLATE_RUBY_ORE, MGItems.RAW_RUBY), RecipeCategory.TOOLS, MGItems.RUBY_INGOT, 0.7F, 200, "ruby");
@@ -227,12 +228,12 @@ public class MGRecipeProvider extends FabricRecipeProvider {
                 offerBlasting(ingredients, category, result, experience, cookingTime, group);
             }
 
-            private void alloySmeltingRecipe(RecipeExporter recipeOutput, Ingredient ingredients1, Ingredient ingredients2, ItemConvertible result, int outputCount){
+            private void alloySmeltingRecipe(RecipeExporter recipeOutput, SizedIngredient ingredients1, SizedIngredient ingredients2, ItemConvertible result, int outputCount){
                 AlloySmeltingRecipeBuilder.alloySmeltingRecipe()
                         .addIngredient(ingredients1)
                         .addIngredient(ingredients2)
                         .addOutput(new ItemStack(result, outputCount))
-                        .criterion(hasItem(ingredients1.getMatchingItems().toList().get(0).value()), conditionsFromItem(ingredients1.getMatchingItems().toList().get(0).value()))
+                        .criterion(hasItem(ingredients1.ingredient().getMatchingItems().toList().get(0).value()), conditionsFromItem(ingredients1.ingredient().getMatchingItems().toList().get(0).value()))
                         .offerTo(recipeOutput, RegistryKey.of(RegistryKeys.RECIPE, Identifier.of(MoreGears.MODID, "alloy_smelting/" + getItemPath(result) + "_from_alloy_smelting")));
             }
         };
