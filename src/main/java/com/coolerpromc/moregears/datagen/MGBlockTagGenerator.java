@@ -26,12 +26,14 @@ public class MGBlockTagGenerator extends BlockTagsProvider {
                 MGBlocks.RUBY_ORE.get(),
                 MGBlocks.DEEPSLATE_RUBY_ORE.get(),
                 MGBlocks.NETHER_TITANIUM_ORE.get(),
-                MGBlocks.END_ENDERITE_ORE.get()
+                MGBlocks.END_ENDERITE_ORE.get(),
+                MGBlocks.ALLOY_SMELTER.get()
         );
 
         this.tag(MGTags.Blocks.NEEDS_COPPER_TOOL).add(
                 MGBlocks.TIN_ORE.get(),
-                MGBlocks.DEEPSLATE_TIN_ORE.get()
+                MGBlocks.DEEPSLATE_TIN_ORE.get(),
+                MGBlocks.ALLOY_SMELTER.get()
         );
 
         this.tag(MGTags.Blocks.NEEDS_BRONZE_TOOL).add(

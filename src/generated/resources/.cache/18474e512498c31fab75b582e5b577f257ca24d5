@@ -1,12 +1,12 @@
-// 1.20.1	2025-01-17T17:01:05.8080244	Tags for minecraft:block mod id moregears
+// 1.20.1	2025-01-21T18:00:42.1878152	Tags for minecraft:block mod id moregears
 fcd6b6733a46174eaa9640815630a8846d10daf8 data/c/tags/blocks/ores/enderite.json
 fa47e71294cea8e19c34859c8ecbef08c4ee5a41 data/c/tags/blocks/ores/ruby.json
 880c497077877c25dd74b2c557ab38fabb8150b9 data/c/tags/blocks/ores/tin.json
 c6bc7995ea73e3b61f17a7613c9188753f6cdb69 data/c/tags/blocks/ores/titanium.json
 c6bc7995ea73e3b61f17a7613c9188753f6cdb69 data/forge/tags/blocks/needs_netherite_tool.json
-f5e62198f71008b84da5e85945679a875d8babe2 data/minecraft/tags/blocks/mineable/pickaxe.json
+a9deff2915f25501638356542b8da699980ca8ba data/minecraft/tags/blocks/mineable/pickaxe.json
 fa47e71294cea8e19c34859c8ecbef08c4ee5a41 data/moregears/tags/blocks/needs_bronze_tool.json
-880c497077877c25dd74b2c557ab38fabb8150b9 data/moregears/tags/blocks/needs_copper_tool.json
+50055e5bf1ead0894e8e73aecf8d15e7e10d18dc data/moregears/tags/blocks/needs_copper_tool.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/moregears/tags/blocks/needs_enderite_tool.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/moregears/tags/blocks/needs_ruby_tool.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/moregears/tags/blocks/needs_steel_tool.json
