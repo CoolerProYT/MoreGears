@@ -3,7 +3,6 @@
   "addition": "moregears:enderite_ingot",
   "base": "moregears:titanium_boots",
   "result": {
-    "count": 1,
     "id": "moregears:enderite_boots"
   },
   "template": "moregears:enderite_upgrade_smithing_template"

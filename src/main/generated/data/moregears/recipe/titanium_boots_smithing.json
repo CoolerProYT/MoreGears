@@ -3,7 +3,6 @@
   "addition": "moregears:titanium_ingot",
   "base": "minecraft:netherite_boots",
   "result": {
-    "count": 1,
     "id": "moregears:titanium_boots"
   },
   "template": "moregears:titanium_upgrade_smithing_template"

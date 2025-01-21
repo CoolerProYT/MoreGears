@@ -1,6 +1,7 @@
 package com.coolerpromc.moregears.screen;
 
 import com.coolerpromc.moregears.block.entity.AlloySmelterBlockEntity;
+import com.coolerpromc.moregears.util.SlotItemHandler;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
@@ -28,10 +29,10 @@ public class AlloySmelterMenu extends ScreenHandler {
         this.inventory = (Inventory) blockEntity;
         this.data = propertyDelegate;
 
-        this.addSlot(new Slot(inventory, 0 ,31, 23));
-        this.addSlot(new Slot(inventory, 1 ,83, 23));
-        this.addSlot(new Slot(inventory, 2 ,119, 23));
-        this.addSlot(new Slot(inventory, 3 ,101, 55));
+        this.addSlot(new SlotItemHandler(inventory, 0 ,31, 23, itemStack -> (this.blockEntity.getFuelTime(itemStack) > 0)));
+        this.addSlot(new SlotItemHandler(inventory, 1 ,83, 23, itemStack -> true));
+        this.addSlot(new SlotItemHandler(inventory, 2 ,119, 23, itemStack -> true));
+        this.addSlot(new SlotItemHandler(inventory, 3 ,101, 55, itemStack -> false));
 
         addPlayerHotbar(playerInventory);
         addPlayerInventory(playerInventory);

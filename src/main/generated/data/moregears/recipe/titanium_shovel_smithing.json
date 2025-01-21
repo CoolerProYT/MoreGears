@@ -3,7 +3,6 @@
   "addition": "moregears:titanium_ingot",
   "base": "minecraft:netherite_shovel",
   "result": {
-    "count": 1,
     "id": "moregears:titanium_shovel"
   },
   "template": "moregears:titanium_upgrade_smithing_template"

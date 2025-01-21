@@ -3,7 +3,6 @@
   "addition": "moregears:titanium_ingot",
   "base": "minecraft:netherite_leggings",
   "result": {
-    "count": 1,
     "id": "moregears:titanium_leggings"
   },
   "template": "moregears:titanium_upgrade_smithing_template"

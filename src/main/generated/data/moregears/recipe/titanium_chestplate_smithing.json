@@ -3,7 +3,6 @@
   "addition": "moregears:titanium_ingot",
   "base": "minecraft:netherite_chestplate",
   "result": {
-    "count": 1,
     "id": "moregears:titanium_chestplate"
   },
   "template": "moregears:titanium_upgrade_smithing_template"

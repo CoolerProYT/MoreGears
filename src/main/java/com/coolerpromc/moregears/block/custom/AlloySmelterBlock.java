@@ -78,8 +78,6 @@ public class AlloySmelterBlock extends BlockWithEntity {
             for (int i = 0; i < alloySmelterBlockEntity.size(); i++) {
                 drops.add(alloySmelterBlockEntity.getStack(i));
             }
-
-            drops.add(new ItemStack(this));
         }
 
         return drops;
