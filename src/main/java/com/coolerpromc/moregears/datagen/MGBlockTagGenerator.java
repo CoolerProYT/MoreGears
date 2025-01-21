@@ -23,7 +23,8 @@ public class MGBlockTagGenerator extends FabricTagProvider.BlockTagProvider {
                 MGBlocks.RUBY_ORE,
                 MGBlocks.DEEPSLATE_RUBY_ORE,
                 MGBlocks.NETHER_TITANIUM_ORE,
-                MGBlocks.END_ENDERITE_ORE
+                MGBlocks.END_ENDERITE_ORE,
+                MGBlocks.ALLOY_SMELTER
         );
 
         this.getOrCreateTagBuilder(BlockTags.INCORRECT_FOR_WOODEN_TOOL)
@@ -66,7 +67,8 @@ public class MGBlockTagGenerator extends FabricTagProvider.BlockTagProvider {
 
         this.getOrCreateTagBuilder(MGTags.Blocks.NEEDS_COPPER_TOOL).add(
                 MGBlocks.TIN_ORE,
-                MGBlocks.DEEPSLATE_TIN_ORE
+                MGBlocks.DEEPSLATE_TIN_ORE,
+                MGBlocks.ALLOY_SMELTER
         );
 
         this.getOrCreateTagBuilder(MGTags.Blocks.INCORRECT_FOR_COPPER_TOOL)

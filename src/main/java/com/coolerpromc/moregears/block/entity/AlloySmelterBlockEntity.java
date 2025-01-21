@@ -404,7 +404,7 @@ public class AlloySmelterBlockEntity extends BlockEntity implements ExtendedScre
         progress++;
     }
 
-    protected int getFuelTime(ItemStack fuel) {
+    public int getFuelTime(ItemStack fuel) {
         if (fuel.isEmpty()) {
             return 0;
         } else {
