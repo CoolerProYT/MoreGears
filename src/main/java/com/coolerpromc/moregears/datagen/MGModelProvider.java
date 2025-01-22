@@ -141,7 +141,7 @@ public class MGModelProvider extends FabricModelProvider {
     }
 
     private void trimmedArmorItem(ItemModelGenerator itemModels, MGArmorItem item, ArmorMaterial armorMaterial){
-        itemModels.registerArmor(item, armorMaterial.assetId(), item.getType().getName(), false);
+        itemModels.registerArmor(item, armorMaterial.assetId(), Identifier.of("trims/items/" + item.getType().getName() + "_trim"), false);
     }
     
     private <T extends Block> void simpleBlockWithItem(BlockStateModelGenerator blockStateModelGenerator, T block){

@@ -13,7 +13,6 @@ import com.coolerpromc.moregears.tool.bronze.BronzeShovel;
 import com.coolerpromc.moregears.tool.steel.*;
 import com.coolerpromc.moregears.util.MGColors;
 import net.minecraft.component.DataComponentTypes;
-import net.minecraft.component.type.UnbreakableComponent;
 import net.minecraft.item.*;
 import net.minecraft.item.equipment.EquipmentType;
 import net.minecraft.registry.Registries;
@@ -24,6 +23,7 @@ import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.Unit;
 
 import java.util.List;
 
@@ -104,11 +104,11 @@ public class MGItems {
     public static final MGArmorItem ENDERITE_LEGGINGS = registerItem("enderite_leggings", new EnderiteArmor(EquipmentType.LEGGINGS, "enderite_leggings"));
     public static final MGArmorItem ENDERITE_BOOTS = registerItem("enderite_boots", new EnderiteArmor(EquipmentType.BOOTS, "enderite_boots"));
 
-    public static final Item ENDERITE_SWORD = registerItem("enderite_sword", new Item(new Item.Settings().fireproof().sword(MGToolMaterials.ENDERITE_TIER, 8, -1.0F).component(DataComponentTypes.UNBREAKABLE, new UnbreakableComponent(true)).registryKey(createItemKey("enderite_sword"))));
-    public static final Item ENDERITE_PICKAXE = registerItem("enderite_pickaxe", new Item(new Item.Settings().fireproof().pickaxe(MGToolMaterials.ENDERITE_TIER, 4, -1.3F).component(DataComponentTypes.UNBREAKABLE, new UnbreakableComponent(true)).registryKey(createItemKey("enderite_pickaxe"))));
-    public static final ShovelItem ENDERITE_SHOVEL = registerItem("enderite_shovel", new ShovelItem(MGToolMaterials.ENDERITE_TIER, 3.5F, -1.8F, new Item.Settings().fireproof().component(DataComponentTypes.UNBREAKABLE, new UnbreakableComponent(true)).registryKey(createItemKey("enderite_shovel"))));
-    public static final AxeItem ENDERITE_AXE = registerItem("enderite_axe", new AxeItem(MGToolMaterials.ENDERITE_TIER, 9, -1.5F, new Item.Settings().fireproof().component(DataComponentTypes.UNBREAKABLE, new UnbreakableComponent(true)).registryKey(createItemKey("enderite_axe"))));
-    public static final HoeItem ENDERITE_HOE = registerItem("enderite_hoe", new HoeItem(MGToolMaterials.ENDERITE_TIER, -1.0F, 0.0F, new Item.Settings().fireproof().component(DataComponentTypes.UNBREAKABLE, new UnbreakableComponent(true)).registryKey(createItemKey("enderite_hoe"))));
+    public static final Item ENDERITE_SWORD = registerItem("enderite_sword", new Item(new Item.Settings().fireproof().sword(MGToolMaterials.ENDERITE_TIER, 8, -1.0F).component(DataComponentTypes.UNBREAKABLE, Unit.INSTANCE).registryKey(createItemKey("enderite_sword"))));
+    public static final Item ENDERITE_PICKAXE = registerItem("enderite_pickaxe", new Item(new Item.Settings().fireproof().pickaxe(MGToolMaterials.ENDERITE_TIER, 4, -1.3F).component(DataComponentTypes.UNBREAKABLE, Unit.INSTANCE).registryKey(createItemKey("enderite_pickaxe"))));
+    public static final ShovelItem ENDERITE_SHOVEL = registerItem("enderite_shovel", new ShovelItem(MGToolMaterials.ENDERITE_TIER, 3.5F, -1.8F, new Item.Settings().fireproof().component(DataComponentTypes.UNBREAKABLE, Unit.INSTANCE).registryKey(createItemKey("enderite_shovel"))));
+    public static final AxeItem ENDERITE_AXE = registerItem("enderite_axe", new AxeItem(MGToolMaterials.ENDERITE_TIER, 9, -1.5F, new Item.Settings().fireproof().component(DataComponentTypes.UNBREAKABLE, Unit.INSTANCE).registryKey(createItemKey("enderite_axe"))));
+    public static final HoeItem ENDERITE_HOE = registerItem("enderite_hoe", new HoeItem(MGToolMaterials.ENDERITE_TIER, -1.0F, 0.0F, new Item.Settings().fireproof().component(DataComponentTypes.UNBREAKABLE, Unit.INSTANCE).registryKey(createItemKey("enderite_hoe"))));
 
     public static final SmithingTemplateItem TITANIUM_UPGRADE_SMITHING_TEMPLATE = registerItem("titanium_upgrade_smithing_template", new SmithingTemplateItem(
             Text.literal("Netherite Equipment").fillStyle(Style.EMPTY.withColor(Formatting.BLUE)),

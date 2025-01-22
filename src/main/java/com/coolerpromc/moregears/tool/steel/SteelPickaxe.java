@@ -2,6 +2,7 @@ package com.coolerpromc.moregears.tool.steel;
 
 import com.coolerpromc.moregears.MoreGears;
 import com.coolerpromc.moregears.util.MGTooltip;
+import net.minecraft.class_10712;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.attribute.EntityAttributeInstance;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
@@ -17,6 +18,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.world.World;
 
 import java.util.List;
+import java.util.function.Consumer;
 
 public class SteelPickaxe extends Item {
     private static final Identifier modifierId = Identifier.of(MoreGears.MODID, "steel_pickaxe_slow_speed");
@@ -53,9 +55,8 @@ public class SteelPickaxe extends Item {
     }
 
     @Override
-    public void appendTooltip(ItemStack stack, Item.TooltipContext context, List<Text> tooltip, TooltipType type) {
-        super.appendTooltip(stack, context, tooltip, type);
-        tooltip.add(MGTooltip.itemSpecialEffect("Heavy (Walking speed is slower)"));
-        tooltip.add(MGTooltip.itemSpecialEffect("Faster attack speed"));
+    public void method_67187(ItemStack itemStack, Item.TooltipContext tooltipContext, class_10712 arg, Consumer<Text> tooltip, TooltipType tooltipType) {
+        tooltip.accept(MGTooltip.itemSpecialEffect("Heavy (Walking speed is slower)"));
+        tooltip.accept(MGTooltip.itemSpecialEffect("Faster attack speed"));
     }
 }

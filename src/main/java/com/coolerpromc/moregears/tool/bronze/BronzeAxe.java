@@ -2,6 +2,7 @@ package com.coolerpromc.moregears.tool.bronze;
 
 import com.coolerpromc.moregears.util.MGTooltip;
 import net.minecraft.block.BlockState;
+import net.minecraft.class_10712;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.AxeItem;
@@ -11,6 +12,7 @@ import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.text.Text;
 
 import java.util.List;
+import java.util.function.Consumer;
 
 public class BronzeAxe extends AxeItem {
 
@@ -31,7 +33,7 @@ public class BronzeAxe extends AxeItem {
     }
 
     @Override
-    public void appendTooltip(ItemStack stack, TooltipContext context, List<Text> tooltip, TooltipType type) {
-        tooltip.add(MGTooltip.itemSpecialEffect("Faster mining under water"));
+    public void method_67187(ItemStack itemStack, TooltipContext tooltipContext, class_10712 arg, Consumer<Text> tooltip, TooltipType tooltipType) {
+        tooltip.accept(MGTooltip.itemSpecialEffect("Faster mining under water"));
     }
 }
