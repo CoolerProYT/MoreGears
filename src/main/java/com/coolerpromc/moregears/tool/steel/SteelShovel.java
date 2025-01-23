@@ -2,7 +2,7 @@ package com.coolerpromc.moregears.tool.steel;
 
 import com.coolerpromc.moregears.MoreGears;
 import com.coolerpromc.moregears.util.MGTooltip;
-import net.minecraft.class_10712;
+import net.minecraft.component.type.TooltipDisplayComponent;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.attribute.EntityAttributeInstance;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
@@ -18,7 +18,6 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.World;
 
-import java.util.List;
 import java.util.function.Consumer;
 
 public class SteelShovel extends ShovelItem {
@@ -56,7 +55,7 @@ public class SteelShovel extends ShovelItem {
     }
 
     @Override
-    public void method_67187(ItemStack itemStack, Item.TooltipContext tooltipContext, class_10712 arg, Consumer<Text> tooltip, TooltipType tooltipType) {
+    public void method_67187(ItemStack itemStack, Item.TooltipContext tooltipContext, TooltipDisplayComponent arg, Consumer<Text> tooltip, TooltipType tooltipType) {
         tooltip.accept(MGTooltip.itemSpecialEffect("Heavy (Walking speed is slower)"));
         tooltip.accept(MGTooltip.itemSpecialEffect("Faster attack speed"));
     }
