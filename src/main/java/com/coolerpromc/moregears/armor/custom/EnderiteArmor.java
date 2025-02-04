@@ -44,7 +44,7 @@ public class EnderiteArmor extends MGArmorItem {
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
         super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
-        tooltipComponents.add(MGTooltip.itemSpecialEffect("Indestructible"));
-        tooltipComponents.add(MGTooltip.itemSpecialEffect("No Fall Damage"));
+        tooltipComponents.add(MGTooltip.itemSpecialEffect("special_effect.moregears.indestructible"));
+        tooltipComponents.add(MGTooltip.itemSpecialEffect("special_effect.moregears.no_fall_damage"));
     }
 }
