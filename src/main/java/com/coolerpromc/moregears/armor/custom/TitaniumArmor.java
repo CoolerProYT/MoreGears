@@ -37,6 +37,6 @@ public class TitaniumArmor extends ArmorItem {
     @Override
     public void appendHoverText(ItemStack stack, Level level, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
         super.appendHoverText(stack, level, tooltipComponents, tooltipFlag);
-        MGTooltip.itemSpecialEffect("Fire Resistance");
+        tooltipComponents.add(MGTooltip.itemSpecialEffect("special_effect.moregears.fire_resistance"));
     }
 }

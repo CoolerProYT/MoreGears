@@ -5,7 +5,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
 
 public class MGTooltip {
-    public static Component itemSpecialEffect(String effect){
-        return Component.literal(effect).withStyle(Style.EMPTY.withColor(ChatFormatting.GRAY));
+    public static Component itemSpecialEffect(String effectTranslationId){
+        return Component.translatable(effectTranslationId).withStyle(Style.EMPTY.withColor(ChatFormatting.GRAY));
     }
 }

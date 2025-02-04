@@ -33,6 +33,6 @@ public class BronzePickaxe extends PickaxeItem {
     @Override
     public void appendHoverText(ItemStack stack, Level context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
         super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
-        tooltipComponents.add(MGTooltip.itemSpecialEffect("Faster mining under water"));
+        tooltipComponents.add(MGTooltip.itemSpecialEffect("special_effect.moregears.bronze_tools"));
     }
 }
