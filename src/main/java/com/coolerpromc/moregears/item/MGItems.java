@@ -147,7 +147,7 @@ public class MGItems {
                     Identifier.ofVanilla("item/empty_slot_pickaxe")
             ),
             List.of(Identifier.ofVanilla("item/empty_slot_ingot")),
-            new Item.Settings().registryKey(createItemKey("enderite_upgrade_smithing_template")).useBlockPrefixedTranslationKey()
+            new Item.Settings().registryKey(createItemKey("enderite_upgrade_smithing_template"))
     ));
 
     private static <T extends Item> T registerItem(String name, T item) {
