@@ -27,7 +27,7 @@ public class EnderiteArmor extends ArmorItem {
 
     @Override
     public void appendTooltip(ItemStack stack, World context, List<Text> tooltip, TooltipContext type) {
-        tooltip.add(MGTooltip.itemSpecialEffect("Indestructible"));
-        tooltip.add(MGTooltip.itemSpecialEffect("No Fall Damage"));
+        tooltip.add(MGTooltip.itemSpecialEffect("special_effect.moregears.indestructible"));
+        tooltip.add(MGTooltip.itemSpecialEffect("special_effect.moregears.no_fall_damage"));
     }
 }

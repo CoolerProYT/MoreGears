@@ -33,6 +33,6 @@ public class BronzeHoe extends HoeItem {
 
     @Override
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
-        tooltip.add(MGTooltip.itemSpecialEffect("Faster mining under water"));
+        tooltip.add(MGTooltip.itemSpecialEffect("special_effect.moregears.bronze_tools"));
     }
 }
