@@ -56,7 +56,7 @@ public class SteelPickaxe extends Item {
 
     @Override
     public void appendTooltip(ItemStack stack, TooltipContext context, TooltipDisplayComponent displayComponent, Consumer<Text> textConsumer, TooltipType type) {
-        textConsumer.accept(MGTooltip.itemSpecialEffect("Heavy (Walking speed is slower)"));
-        textConsumer.accept(MGTooltip.itemSpecialEffect("Faster attack speed"));
+        textConsumer.accept(MGTooltip.itemSpecialEffect("special_effect.moregears.heavy"));
+        textConsumer.accept(MGTooltip.itemSpecialEffect("special_effect.moregears.faster_attack_speed"));
     }
 }

@@ -111,10 +111,10 @@ public class MGItems {
     public static final HoeItem ENDERITE_HOE = registerItem("enderite_hoe", new HoeItem(MGToolMaterials.ENDERITE_TIER, -1.0F, 0.0F, new Item.Settings().fireproof().component(DataComponentTypes.UNBREAKABLE, Unit.INSTANCE).registryKey(createItemKey("enderite_hoe"))));
 
     public static final SmithingTemplateItem TITANIUM_UPGRADE_SMITHING_TEMPLATE = registerItem("titanium_upgrade_smithing_template", new SmithingTemplateItem(
-            Text.literal("Netherite Equipment").fillStyle(Style.EMPTY.withColor(Formatting.BLUE)),
-            Text.literal("Titanium Ingot").fillStyle(Style.EMPTY.withColor(Formatting.BLUE)),
-            Text.literal("Titanium Upgrade").fillStyle(Style.EMPTY.withColor(Formatting.GRAY)),
-            Text.literal("Add Titanium Ingot"),
+            Text.translatable("item.moregears.titanium_upgrade_smithing_template.equipment_info").fillStyle(Style.EMPTY.withColor(Formatting.BLUE)),
+            Text.translatable("item.moregears.titanium_upgrade_smithing_template.ingredient").fillStyle(Style.EMPTY.withColor(Formatting.BLUE)),
+            Text.translatable("item.moregears.titanium_upgrade_smithing_template.upgrade_description").fillStyle(Style.EMPTY.withColor(Formatting.GRAY)),
+            Text.translatable("item.moregears.titanium_upgrade_smithing_template.additions_slot_description"),
             List.of(
                     Identifier.ofVanilla("item/empty_armor_slot_helmet"),
                     Identifier.ofVanilla("item/empty_armor_slot_chestplate"),
@@ -131,10 +131,10 @@ public class MGItems {
     ));
 
     public static final SmithingTemplateItem ENDERITE_UPGRADE_SMITHING_TEMPLATE = registerItem("enderite_upgrade_smithing_template", new SmithingTemplateItem(
-            Text.literal("Titanium Equipment").fillStyle(Style.EMPTY.withColor(Formatting.BLUE)),
-            Text.literal("Enderite Ingot").fillStyle(Style.EMPTY.withColor(Formatting.BLUE)),
-            Text.literal("Enderite Upgrade").fillStyle(Style.EMPTY.withColor(Formatting.GRAY)),
-            Text.literal("Add Enderite Ingot"),
+            Text.translatable("item.moregears.enderite_upgrade_smithing_template.equipment_info").fillStyle(Style.EMPTY.withColor(Formatting.BLUE)),
+            Text.translatable("item.moregears.enderite_upgrade_smithing_template.ingredient").fillStyle(Style.EMPTY.withColor(Formatting.BLUE)),
+            Text.translatable("item.moregears.enderite_upgrade_smithing_template.upgrade_description").fillStyle(Style.EMPTY.withColor(Formatting.GRAY)),
+            Text.translatable("item.moregears.enderite_upgrade_smithing_template.additions_slot_description"),
             List.of(
                     Identifier.ofVanilla("item/empty_armor_slot_helmet"),
                     Identifier.ofVanilla("item/empty_armor_slot_chestplate"),
@@ -147,7 +147,7 @@ public class MGItems {
                     Identifier.ofVanilla("item/empty_slot_pickaxe")
             ),
             List.of(Identifier.ofVanilla("item/empty_slot_ingot")),
-            new Item.Settings().registryKey(createItemKey("enderite_upgrade_smithing_template")).useBlockPrefixedTranslationKey()
+            new Item.Settings().registryKey(createItemKey("enderite_upgrade_smithing_template"))
     ));
 
     private static <T extends Item> T registerItem(String name, T item) {

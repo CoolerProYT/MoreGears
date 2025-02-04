@@ -6,6 +6,6 @@ import net.minecraft.util.Formatting;
 
 public class MGTooltip {
     public static Text itemSpecialEffect(String effect){
-        return Text.literal(effect).fillStyle(Style.EMPTY.withColor(Formatting.GRAY));
+        return Text.translatable(effect).fillStyle(Style.EMPTY.withColor(Formatting.GRAY));
     }
 }

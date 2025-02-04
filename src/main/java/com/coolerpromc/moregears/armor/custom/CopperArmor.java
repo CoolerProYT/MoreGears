@@ -22,6 +22,6 @@ public class CopperArmor extends MGArmorItem {
 
     @Override
     public void appendTooltip(ItemStack stack, TooltipContext context, TooltipDisplayComponent displayComponent, Consumer<Text> textConsumer, TooltipType type) {
-        textConsumer.accept(MGTooltip.itemSpecialEffect("Immune to lightning strikes when full set is worn"));
+        textConsumer.accept(MGTooltip.itemSpecialEffect("special_effect.moregears.copper_armor"));
     }
 }
