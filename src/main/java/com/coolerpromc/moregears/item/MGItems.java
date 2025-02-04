@@ -115,11 +115,11 @@ public class MGItems {
             () -> new HoeItem(MGToolMaterials.ENDERITE_TIER, new Item.Properties().fireResistant().component(DataComponents.UNBREAKABLE, new Unbreakable(true)).attributes(HoeItem.createAttributes(MGToolMaterials.ENDERITE_TIER, -1f, 0.0f))));
 
     public static final DeferredItem<SmithingTemplateItem> TITANIUM_UPGRADE_SMITHING_TEMPLATE = registerItem("titanium_upgrade_smithing_template", () -> new SmithingTemplateItem(
-            Component.literal("Netherite Equipment").withStyle(ChatFormatting.BLUE),
-            Component.literal("Titanium Ingot").withStyle(ChatFormatting.BLUE),
-            Component.literal("Titanium Upgrade").withStyle(ChatFormatting.GRAY),
-            Component.literal("Add Netherite Armor, Weapon, or Tool"),
-            Component.literal("Add Titanium Ingot"),
+            Component.translatable("item.moregears.titanium_upgrade_smithing_template.equipment_info").withStyle(ChatFormatting.BLUE),
+            Component.translatable("item.moregears.titanium_upgrade_smithing_template.ingredient").withStyle(ChatFormatting.BLUE),
+            Component.translatable("item.moregears.titanium_upgrade_smithing_template.upgrade_description").withStyle(ChatFormatting.GRAY),
+            Component.translatable("item.moregears.titanium_upgrade_smithing_template.base_slot_description"),
+            Component.translatable("item.moregears.titanium_upgrade_smithing_template.additions_slot_description"),
             List.of(
                     ResourceLocation.withDefaultNamespace("item/empty_armor_slot_helmet"),
                     ResourceLocation.withDefaultNamespace("item/empty_armor_slot_chestplate"),
@@ -135,11 +135,11 @@ public class MGItems {
     ));
 
     public static final DeferredItem<SmithingTemplateItem> ENDERITE_UPGRADE_SMITHING_TEMPLATE = registerItem("enderite_upgrade_smithing_template", () -> new SmithingTemplateItem(
-            Component.literal("Titanium Equipment").withStyle(ChatFormatting.BLUE),
-            Component.literal("Enderite Ingot").withStyle(ChatFormatting.BLUE),
-            Component.literal("Enderite Upgrade").withStyle(ChatFormatting.GRAY),
-            Component.literal("Add Titanium Armor, Weapon, or Tool"),
-            Component.literal("Add Enderite Ingot"),
+            Component.translatable("item.moregears.enderite_upgrade_smithing_template.equipment_info").withStyle(ChatFormatting.BLUE),
+            Component.translatable("item.moregears.enderite_upgrade_smithing_template.ingredient").withStyle(ChatFormatting.BLUE),
+            Component.translatable("item.moregears.enderite_upgrade_smithing_template.upgrade_description").withStyle(ChatFormatting.GRAY),
+            Component.translatable("item.moregears.enderite_upgrade_smithing_template.base_slot_description"),
+            Component.translatable("item.moregears.enderite_upgrade_smithing_template.additions_slot_description"),
             List.of(
                     ResourceLocation.withDefaultNamespace("item/empty_armor_slot_helmet"),
                     ResourceLocation.withDefaultNamespace("item/empty_armor_slot_chestplate"),
