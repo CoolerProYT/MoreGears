@@ -55,7 +55,7 @@ public class SteelAxe extends AxeItem {
     @Override
     public void appendTooltip(ItemStack stack, TooltipContext context, List<Text> tooltip, TooltipType type) {
         super.appendTooltip(stack, context, tooltip, type);
-        tooltip.add(MGTooltip.itemSpecialEffect("Heavy (Walking speed is slower)"));
-        tooltip.add(MGTooltip.itemSpecialEffect("Faster attack speed"));
+        tooltip.add(MGTooltip.itemSpecialEffect("special_effect.moregears.heavy"));
+        tooltip.add(MGTooltip.itemSpecialEffect("special_effect.moregears.faster_attack_speed"));
     }
 }

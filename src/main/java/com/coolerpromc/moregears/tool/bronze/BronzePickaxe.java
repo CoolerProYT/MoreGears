@@ -32,6 +32,6 @@ public class BronzePickaxe extends PickaxeItem {
 
     @Override
     public void appendTooltip(ItemStack stack, Item.TooltipContext context, List<Text> tooltip, TooltipType type) {
-        tooltip.add(MGTooltip.itemSpecialEffect("Faster mining under water"));
+        tooltip.add(MGTooltip.itemSpecialEffect("special_effect.moregears.bronze_tools"));
     }
 }
