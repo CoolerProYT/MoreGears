@@ -55,8 +55,8 @@ public class SteelHoe extends HoeItem {
     }
 
     @Override
-    public void method_67187(ItemStack itemStack, Item.TooltipContext tooltipContext, TooltipDisplayComponent arg, Consumer<Text> tooltip, TooltipType tooltipType) {
-        tooltip.accept(MGTooltip.itemSpecialEffect("Heavy (Walking speed is slower)"));
-        tooltip.accept(MGTooltip.itemSpecialEffect("Faster attack speed"));
+    public void appendTooltip(ItemStack stack, TooltipContext context, TooltipDisplayComponent displayComponent, Consumer<Text> textConsumer, TooltipType type) {
+        textConsumer.accept(MGTooltip.itemSpecialEffect("Heavy (Walking speed is slower)"));
+        textConsumer.accept(MGTooltip.itemSpecialEffect("Faster attack speed"));
     }
 }

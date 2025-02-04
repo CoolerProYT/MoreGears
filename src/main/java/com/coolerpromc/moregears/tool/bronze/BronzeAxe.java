@@ -32,7 +32,8 @@ public class BronzeAxe extends AxeItem {
     }
 
     @Override
-    public void method_67187(ItemStack itemStack, TooltipContext tooltipContext, TooltipDisplayComponent arg, Consumer<Text> tooltip, TooltipType tooltipType) {
-        tooltip.accept(MGTooltip.itemSpecialEffect("Faster mining under water"));
+    public void appendTooltip(ItemStack stack, TooltipContext context, TooltipDisplayComponent displayComponent, Consumer<Text> textConsumer, TooltipType type) {
+        textConsumer.accept(MGTooltip.itemSpecialEffect("Faster mining under water"));
+
     }
 }
