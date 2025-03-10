@@ -11,21 +11,17 @@ import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
 import net.fabricmc.fabric.api.transfer.v1.transaction.Transaction;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.entity.AbstractFurnaceBlockEntity;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventories;
-import net.minecraft.inventory.SidedInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.listener.ClientPlayPacketListener;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket;
-import net.minecraft.recipe.Ingredient;
 import net.minecraft.recipe.RecipeEntry;
-import net.minecraft.recipe.RecipeManager;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.screen.PropertyDelegate;
 import net.minecraft.screen.ScreenHandler;
@@ -145,12 +141,12 @@ public class AlloySmelterBlockEntity extends BlockEntity implements ExtendedScre
         super.readNbt(nbt, registryLookup);
 
         Inventories.readNbt(nbt, inventory, registryLookup);
-        energyStorage.setEnergy(nbt.getInt("energy"));
+        energyStorage.setEnergy(nbt.getInt("energy", 0));
 
-        progress = nbt.getInt("progress");
-        burnProgress = nbt.getInt("burnProgress");
-        maxBurnProgress = nbt.getInt("maxBurnProgress");
-        isBurning = nbt.getBoolean("isBurning");
+        progress = nbt.getInt("progress", 0);
+        burnProgress = nbt.getInt("burnProgress", 0);
+        maxBurnProgress = nbt.getInt("maxBurnProgress", 0);
+        isBurning = nbt.getBoolean("isBurning", false);
     }
 
     @Override
@@ -306,7 +302,7 @@ public class AlloySmelterBlockEntity extends BlockEntity implements ExtendedScre
             boolean ingredientMatched = false;
 
             // Try to match the ingredient with one of the user inputs
-            Iterator<ItemStack> userInputIterator = userInputs.iterator();
+            java.util.Iterator<ItemStack> userInputIterator = userInputs.iterator();
             while (userInputIterator.hasNext()) {
                 ItemStack userInput = userInputIterator.next();
 

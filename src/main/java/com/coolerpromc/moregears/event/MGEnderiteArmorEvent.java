@@ -3,10 +3,12 @@ package com.coolerpromc.moregears.event;
 import com.coolerpromc.moregears.item.MGItems;
 import net.fabricmc.fabric.api.entity.event.v1.ServerLivingEntityEvents;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.damage.DamageSources;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 
+import java.util.List;
 import java.util.Objects;
 
 public class MGEnderiteArmorEvent {
@@ -15,7 +17,7 @@ public class MGEnderiteArmorEvent {
             if (livingEntity instanceof PlayerEntity player){
                 assert MinecraftClient.getInstance().world != null;
 
-                Iterable<ItemStack> armorlist = player.getInventory().armor;
+                List<ItemStack> armorlist = List.of(player.getEquippedStack(EquipmentSlot.FEET), player.getEquippedStack(EquipmentSlot.HEAD), player.getEquippedStack(EquipmentSlot.CHEST), player.getEquippedStack(EquipmentSlot.LEGS));
                 DamageSources damageSources = MinecraftClient.getInstance().world.getDamageSources();
 
                 for (ItemStack armor : armorlist){

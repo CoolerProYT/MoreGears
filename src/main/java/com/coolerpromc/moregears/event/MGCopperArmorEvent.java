@@ -3,6 +3,7 @@ package com.coolerpromc.moregears.event;
 import com.coolerpromc.moregears.item.MGItems;
 import net.fabricmc.fabric.api.entity.event.v1.ServerLivingEntityEvents;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 
@@ -23,7 +24,7 @@ public class MGCopperArmorEvent {
     }
 
     private static boolean isCopperArmor(PlayerEntity player){
-        List<ItemStack> armor = player.getInventory().armor;
+        List<ItemStack> armor = List.of(player.getEquippedStack(EquipmentSlot.FEET), player.getEquippedStack(EquipmentSlot.LEGS), player.getEquippedStack(EquipmentSlot.CHEST), player.getEquippedStack(EquipmentSlot.HEAD));
         return armor.get(0).getItem() == MGItems.COPPER_BOOTS &&
                 armor.get(1).getItem() == MGItems.COPPER_LEGGINGS &&
                 armor.get(2).getItem() == MGItems.COPPER_CHESTPLATE &&
