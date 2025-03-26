@@ -2,7 +2,6 @@ package com.coolerpromc.moregears.item;
 
 import com.coolerpromc.moregears.MoreGears;
 import com.coolerpromc.moregears.armor.MGArmorItem;
-import com.coolerpromc.moregears.armor.MGArmorMaterials;
 import com.coolerpromc.moregears.armor.custom.*;
 import com.coolerpromc.moregears.item.custom.MGIngot;
 import com.coolerpromc.moregears.item.custom.MGRawOre;
@@ -14,15 +13,12 @@ import com.coolerpromc.moregears.tool.bronze.BronzeShovel;
 import com.coolerpromc.moregears.tool.steel.*;
 import com.coolerpromc.moregears.util.MGColors;
 import net.minecraft.ChatFormatting;
-import net.minecraft.client.Minecraft;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.player.Player;
+import net.minecraft.util.Unit;
 import net.minecraft.world.item.*;
-import net.minecraft.world.item.component.Unbreakable;
 import net.minecraft.world.item.equipment.ArmorType;
-import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -51,8 +47,8 @@ public class MGItems {
     public static final DeferredItem<MGArmorItem> COPPER_LEGGINGS = registerItem("copper_leggings", properties -> new CopperArmor(ArmorType.LEGGINGS, properties));
     public static final DeferredItem<MGArmorItem> COPPER_BOOTS = registerItem("copper_boots", properties -> new CopperArmor(ArmorType.BOOTS, properties));
 
-    public static final DeferredItem<SwordItem> COPPER_SWORD = registerItem("copper_sword", properties -> new SwordItem(MGToolMaterials.COPPER_TIER, 3, -2.4F, properties));
-    public static final DeferredItem<PickaxeItem> COPPER_PICKAXE = registerItem("copper_pickaxe", properties -> new PickaxeItem(MGToolMaterials.COPPER_TIER, 1, -2.8f, properties));
+    public static final DeferredItem<Item> COPPER_SWORD = registerItem("copper_sword", properties -> new Item(properties.sword(MGToolMaterials.COPPER_TIER, 3, -2.4F)));
+    public static final DeferredItem<Item> COPPER_PICKAXE = registerItem("copper_pickaxe", properties -> new Item(properties.pickaxe(MGToolMaterials.COPPER_TIER, 1, -2.8f)));
     public static final DeferredItem<ShovelItem> COPPER_SHOVEL = registerItem("copper_shovel", properties -> new ShovelItem(MGToolMaterials.COPPER_TIER, 1.5f, -3f, properties));
     public static final DeferredItem<AxeItem> COPPER_AXE = registerItem("copper_axe", properties -> new AxeItem(MGToolMaterials.COPPER_TIER,  7, -3.2f, properties));
     public static final DeferredItem<HoeItem> COPPER_HOE = registerItem("copper_hoe", properties -> new HoeItem(MGToolMaterials.COPPER_TIER,  -1f, -1.5f, properties));
@@ -62,8 +58,8 @@ public class MGItems {
     public static final DeferredItem<MGArmorItem> BRONZE_LEGGINGS = registerItem("bronze_leggings", properties -> new BronzeArmor(ArmorType.LEGGINGS, properties));
     public static final DeferredItem<MGArmorItem> BRONZE_BOOTS = registerItem("bronze_boots", properties -> new BronzeArmor(ArmorType.BOOTS, properties));
 
-    public static final DeferredItem<SwordItem> BRONZE_SWORD = registerItem("bronze_sword", properties -> new SwordItem(MGToolMaterials.BRONZE_TIER, 3, -2.4F, properties));
-    public static final DeferredItem<PickaxeItem> BRONZE_PICKAXE = registerItem("bronze_pickaxe", properties -> new BronzePickaxe(MGToolMaterials.BRONZE_TIER, 1, -2.8f, properties));
+    public static final DeferredItem<Item> BRONZE_SWORD = registerItem("bronze_sword", properties -> new Item(properties.sword(MGToolMaterials.BRONZE_TIER, 3, -2.4F)));
+    public static final DeferredItem<Item> BRONZE_PICKAXE = registerItem("bronze_pickaxe", properties -> new BronzePickaxe(MGToolMaterials.BRONZE_TIER, 1, -2.8f, properties));
     public static final DeferredItem<ShovelItem> BRONZE_SHOVEL = registerItem("bronze_shovel", properties -> new BronzeShovel(MGToolMaterials.BRONZE_TIER, 1.5f, -3f, properties));
     public static final DeferredItem<AxeItem> BRONZE_AXE = registerItem("bronze_axe", properties -> new BronzeAxe(MGToolMaterials.BRONZE_TIER,  5.5f, -3.0f, properties));
     public static final DeferredItem<HoeItem> BRONZE_HOE = registerItem("bronze_hoe", properties -> new BronzeHoe(MGToolMaterials.BRONZE_TIER,  -2.5f, -0.5f, properties));
@@ -73,8 +69,8 @@ public class MGItems {
     public static final DeferredItem<MGArmorItem> STEEL_LEGGINGS = registerItem("steel_leggings", properties -> new SteelArmor(ArmorType.LEGGINGS, properties));
     public static final DeferredItem<MGArmorItem> STEEL_BOOTS = registerItem("steel_boots", properties -> new SteelArmor(ArmorType.BOOTS, properties));
 
-    public static final DeferredItem<SwordItem> STEEL_SWORD = registerItem("steel_sword", properties -> new SteelSword(MGToolMaterials.STEEL_TIER, 3, -1.4F, properties));
-    public static final DeferredItem<PickaxeItem> STEEL_PICKAXE = registerItem("steel_pickaxe", properties -> new SteelPickaxe(MGToolMaterials.STEEL_TIER, 1, -1.8f, properties));
+    public static final DeferredItem<Item> STEEL_SWORD = registerItem("steel_sword", properties -> new SteelSword(MGToolMaterials.STEEL_TIER, 3, -1.4F, properties));
+    public static final DeferredItem<Item> STEEL_PICKAXE = registerItem("steel_pickaxe", properties -> new SteelPickaxe(MGToolMaterials.STEEL_TIER, 1, -1.8f, properties));
     public static final DeferredItem<ShovelItem> STEEL_SHOVEL = registerItem("steel_shovel", properties -> new SteelShovel(MGToolMaterials.STEEL_TIER, 1.5f, -2f, properties));
     public static final DeferredItem<AxeItem> STEEL_AXE = registerItem("steel_axe", properties -> new SteelAxe(MGToolMaterials.STEEL_TIER, 6, -2f, properties));
     public static final DeferredItem<HoeItem> STEEL_HOE = registerItem("steel_hoe", properties -> new SteelHoe(MGToolMaterials.STEEL_TIER, -2f, 0.0f, properties));
@@ -84,8 +80,8 @@ public class MGItems {
     public static final DeferredItem<MGArmorItem> RUBY_LEGGINGS = registerItem("ruby_leggings", properties -> new RubyArmor(ArmorType.LEGGINGS, properties));
     public static final DeferredItem<MGArmorItem> RUBY_BOOTS = registerItem("ruby_boots", properties -> new RubyArmor(ArmorType.BOOTS, properties));
 
-    public static final DeferredItem<SwordItem> RUBY_SWORD = registerItem("ruby_sword", properties -> new SwordItem(MGToolMaterials.RUBY_TIER, 3, -2.4F, properties));
-    public static final DeferredItem<PickaxeItem> RUBY_PICKAXE = registerItem("ruby_pickaxe", properties -> new PickaxeItem(MGToolMaterials.RUBY_TIER, 1f, -2.8f, properties));
+    public static final DeferredItem<Item> RUBY_SWORD = registerItem("ruby_sword", properties -> new Item(properties.sword(MGToolMaterials.RUBY_TIER, 3, -2.4F)));
+    public static final DeferredItem<Item> RUBY_PICKAXE = registerItem("ruby_pickaxe", properties -> new Item(properties.pickaxe(MGToolMaterials.RUBY_TIER, 1f, -2.8f)));
     public static final DeferredItem<ShovelItem> RUBY_SHOVEL = registerItem("ruby_shovel", properties -> new ShovelItem(MGToolMaterials.RUBY_TIER, 1.5f, -3f, properties));
     public static final DeferredItem<AxeItem> RUBY_AXE = registerItem("ruby_axe", properties -> new AxeItem(MGToolMaterials.RUBY_TIER, 4, -3.2f, properties));
     public static final DeferredItem<HoeItem> RUBY_HOE = registerItem("ruby_hoe", properties -> new HoeItem(MGToolMaterials.RUBY_TIER, -3f, 0f, properties));
@@ -95,8 +91,8 @@ public class MGItems {
     public static final DeferredItem<MGArmorItem> TITANIUM_LEGGINGS = registerItem("titanium_leggings", properties -> new TitaniumArmor(ArmorType.LEGGINGS, properties));
     public static final DeferredItem<MGArmorItem> TITANIUM_BOOTS = registerItem("titanium_boots", properties -> new TitaniumArmor(ArmorType.BOOTS, properties));
 
-    public static final DeferredItem<SwordItem> TITANIUM_SWORD = registerItem("titanium_sword", properties -> new SwordItem(MGToolMaterials.TITANIUM_TIER, 5, -1.5F, properties));
-    public static final DeferredItem<PickaxeItem> TITANIUM_PICKAXE = registerItem("titanium_pickaxe", properties -> new PickaxeItem(MGToolMaterials.TITANIUM_TIER, 2, -2f, properties));
+    public static final DeferredItem<Item> TITANIUM_SWORD = registerItem("titanium_sword", properties -> new Item(properties.sword(MGToolMaterials.TITANIUM_TIER, 5, -1.5F)));
+    public static final DeferredItem<Item> TITANIUM_PICKAXE = registerItem("titanium_pickaxe", properties -> new Item(properties.pickaxe(MGToolMaterials.TITANIUM_TIER, 2, -2f)));
     public static final DeferredItem<ShovelItem> TITANIUM_SHOVEL = registerItem("titanium_shovel", properties -> new ShovelItem(MGToolMaterials.TITANIUM_TIER, 2f, -2f, properties));
     public static final DeferredItem<AxeItem> TITANIUM_AXE = registerItem("titanium_axe", properties -> new AxeItem(MGToolMaterials.TITANIUM_TIER, 6, -2.2f, properties));
     public static final DeferredItem<HoeItem> TITANIUM_HOE = registerItem("titanium_hoe", properties -> new HoeItem(MGToolMaterials.TITANIUM_TIER, -2f, 0.0f, properties));
@@ -106,16 +102,16 @@ public class MGItems {
     public static final DeferredItem<MGArmorItem> ENDERITE_LEGGINGS = registerItem("enderite_leggings", properties -> new EnderiteArmor(ArmorType.LEGGINGS, properties));
     public static final DeferredItem<MGArmorItem> ENDERITE_BOOTS = registerItem("enderite_boots", properties -> new EnderiteArmor(ArmorType.BOOTS, properties));
 
-    public static final DeferredItem<SwordItem> ENDERITE_SWORD = registerItem("enderite_sword",
-            properties -> new SwordItem(MGToolMaterials.ENDERITE_TIER, 8, -1F, properties.fireResistant().component(DataComponents.UNBREAKABLE, new Unbreakable(true))));
-    public static final DeferredItem<PickaxeItem> ENDERITE_PICKAXE = registerItem("enderite_pickaxe",
-            properties -> new PickaxeItem(MGToolMaterials.ENDERITE_TIER, 4, -1.3f, properties.fireResistant().component(DataComponents.UNBREAKABLE, new Unbreakable(true))));
+    public static final DeferredItem<Item> ENDERITE_SWORD = registerItem("enderite_sword",
+            properties -> new Item(properties.sword(MGToolMaterials.ENDERITE_TIER, 8, -1F).fireResistant().component(DataComponents.UNBREAKABLE, Unit.INSTANCE)));
+    public static final DeferredItem<Item> ENDERITE_PICKAXE = registerItem("enderite_pickaxe",
+            properties -> new Item(properties.pickaxe(MGToolMaterials.ENDERITE_TIER, 4, -1.3f).fireResistant().component(DataComponents.UNBREAKABLE, Unit.INSTANCE)));
     public static final DeferredItem<ShovelItem> ENDERITE_SHOVEL = registerItem("enderite_shovel",
-            properties -> new ShovelItem(MGToolMaterials.ENDERITE_TIER, 3.5f, -1.8f, properties.fireResistant().component(DataComponents.UNBREAKABLE, new Unbreakable(true))));
+            properties -> new ShovelItem(MGToolMaterials.ENDERITE_TIER, 3.5f, -1.8f, properties.fireResistant().component(DataComponents.UNBREAKABLE, Unit.INSTANCE)));
     public static final DeferredItem<AxeItem> ENDERITE_AXE = registerItem("enderite_axe",
-            properties -> new AxeItem(MGToolMaterials.ENDERITE_TIER, 9, -1.5f, properties.fireResistant().component(DataComponents.UNBREAKABLE, new Unbreakable(true))));
+            properties -> new AxeItem(MGToolMaterials.ENDERITE_TIER, 9, -1.5f, properties.fireResistant().component(DataComponents.UNBREAKABLE, Unit.INSTANCE)));
     public static final DeferredItem<HoeItem> ENDERITE_HOE = registerItem("enderite_hoe",
-            properties -> new HoeItem(MGToolMaterials.ENDERITE_TIER, -1f, 0.0f, properties.fireResistant().component(DataComponents.UNBREAKABLE, new Unbreakable(true))));
+            properties -> new HoeItem(MGToolMaterials.ENDERITE_TIER, -1f, 0.0f, properties.fireResistant().component(DataComponents.UNBREAKABLE, Unit.INSTANCE)));
 
     public static final DeferredItem<SmithingTemplateItem> TITANIUM_UPGRADE_SMITHING_TEMPLATE = registerItem("titanium_upgrade_smithing_template", properties -> new SmithingTemplateItem(
             Component.translatable("item.moregears.titanium_upgrade_smithing_template.equipment_info").withStyle(ChatFormatting.BLUE),
@@ -123,17 +119,17 @@ public class MGItems {
             Component.translatable("item.moregears.titanium_upgrade_smithing_template.upgrade_description").withStyle(ChatFormatting.GRAY),
             Component.translatable("item.moregears.titanium_upgrade_smithing_template.additions_slot_description"),
             List.of(
-                    ResourceLocation.withDefaultNamespace("item/empty_armor_slot_helmet"),
-                    ResourceLocation.withDefaultNamespace("item/empty_armor_slot_chestplate"),
-                    ResourceLocation.withDefaultNamespace("item/empty_armor_slot_leggings"),
-                    ResourceLocation.withDefaultNamespace("item/empty_armor_slot_boots"),
-                    ResourceLocation.withDefaultNamespace("item/empty_slot_hoe"),
-                    ResourceLocation.withDefaultNamespace("item/empty_slot_axe"),
-                    ResourceLocation.withDefaultNamespace("item/empty_slot_sword"),
-                    ResourceLocation.withDefaultNamespace("item/empty_slot_shovel"),
-                    ResourceLocation.withDefaultNamespace("item/empty_slot_pickaxe")
+                    ResourceLocation.withDefaultNamespace("container/slot/helmet"),
+                    ResourceLocation.withDefaultNamespace("container/slot/chestplate"),
+                    ResourceLocation.withDefaultNamespace("container/slot/leggings"),
+                    ResourceLocation.withDefaultNamespace("container/slot/boots"),
+                    ResourceLocation.withDefaultNamespace("container/slot/hoe"),
+                    ResourceLocation.withDefaultNamespace("container/slot/axe"),
+                    ResourceLocation.withDefaultNamespace("container/slot/sword"),
+                    ResourceLocation.withDefaultNamespace("container/slot/shovel"),
+                    ResourceLocation.withDefaultNamespace("container/slot/pickaxe")
             ),
-            List.of(ResourceLocation.withDefaultNamespace("item/empty_slot_ingot")),
+            List.of(ResourceLocation.withDefaultNamespace("container/slot/ingot")),
             properties
     ));
 
@@ -143,17 +139,17 @@ public class MGItems {
             Component.translatable("item.moregears.enderite_upgrade_smithing_template.upgrade_description").withStyle(ChatFormatting.GRAY),
             Component.translatable("item.moregears.enderite_upgrade_smithing_template.additions_slot_description"),
             List.of(
-                    ResourceLocation.withDefaultNamespace("item/empty_armor_slot_helmet"),
-                    ResourceLocation.withDefaultNamespace("item/empty_armor_slot_chestplate"),
-                    ResourceLocation.withDefaultNamespace("item/empty_armor_slot_leggings"),
-                    ResourceLocation.withDefaultNamespace("item/empty_armor_slot_boots"),
-                    ResourceLocation.withDefaultNamespace("item/empty_slot_hoe"),
-                    ResourceLocation.withDefaultNamespace("item/empty_slot_axe"),
-                    ResourceLocation.withDefaultNamespace("item/empty_slot_sword"),
-                    ResourceLocation.withDefaultNamespace("item/empty_slot_shovel"),
-                    ResourceLocation.withDefaultNamespace("item/empty_slot_pickaxe")
+                    ResourceLocation.withDefaultNamespace("container/slot/helmet"),
+                    ResourceLocation.withDefaultNamespace("container/slot/chestplate"),
+                    ResourceLocation.withDefaultNamespace("container/slot/leggings"),
+                    ResourceLocation.withDefaultNamespace("container/slot/boots"),
+                    ResourceLocation.withDefaultNamespace("container/slot/hoe"),
+                    ResourceLocation.withDefaultNamespace("container/slot/axe"),
+                    ResourceLocation.withDefaultNamespace("container/slot/sword"),
+                    ResourceLocation.withDefaultNamespace("container/slot/shovel"),
+                    ResourceLocation.withDefaultNamespace("container/slot/pickaxe")
             ),
-            List.of(ResourceLocation.withDefaultNamespace("item/empty_slot_ingot")),
+            List.of(ResourceLocation.withDefaultNamespace("container/slot/ingot")),
             properties
     ));
 

@@ -1,6 +1,5 @@
 package com.coolerpromc.moregears.datagen;
 
-import com.coolerpromc.moregears.MoreGears;
 import com.coolerpromc.moregears.item.MGItems;
 import com.coolerpromc.moregears.util.MGTags;
 import net.minecraft.core.HolderLookup;

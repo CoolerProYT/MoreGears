@@ -5,9 +5,10 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
+import net.minecraft.world.item.component.TooltipDisplay;
 import net.minecraft.world.level.block.state.BlockState;
 
-import java.util.List;
+import java.util.function.Consumer;
 
 public class BronzeHoe extends HoeItem {
     public BronzeHoe(ToolMaterial material, float attackDamage, float attackSpeed, Properties properties) {
@@ -27,8 +28,7 @@ public class BronzeHoe extends HoeItem {
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
-        super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
-        tooltipComponents.add(MGTooltip.itemSpecialEffect("special_effect.moregears.bronze_tools"));
+    public void appendHoverText(ItemStack p_41421_, TooltipContext p_339594_, TooltipDisplay p_399753_, Consumer<Component> p_399884_, TooltipFlag p_41424_) {
+        p_399884_.accept(MGTooltip.itemSpecialEffect("special_effect.moregears.bronze_tools"));
     }
 }

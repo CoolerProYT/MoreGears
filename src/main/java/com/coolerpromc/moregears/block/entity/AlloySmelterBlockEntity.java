@@ -181,15 +181,15 @@ public class AlloySmelterBlockEntity extends BlockEntity implements MenuProvider
     protected void loadAdditional(CompoundTag tag, HolderLookup.Provider registries) {
         super.loadAdditional(tag, registries);
 
-        fuelHandler.deserializeNBT(registries, tag.getCompound("fuel"));
-        inputHandler.deserializeNBT(registries, tag.getCompound("input"));
-        outputHandler.deserializeNBT(registries, tag.getCompound("output"));
-        energyStorage.setEnergy(tag.getInt("energy"));
+        fuelHandler.deserializeNBT(registries, tag.getCompoundOrEmpty("fuel"));
+        inputHandler.deserializeNBT(registries, tag.getCompoundOrEmpty("input"));
+        outputHandler.deserializeNBT(registries, tag.getCompoundOrEmpty("output"));
+        energyStorage.setEnergy(tag.getIntOr("energy", 0));
 
-        progress = tag.getInt("progress");
-        burnProgress = tag.getInt("burnProgress");
-        maxBurnProgress = tag.getInt("maxBurnProgress");
-        isBurning = tag.getBoolean("isBurning");
+        progress = tag.getIntOr("progress", 0);
+        burnProgress = tag.getIntOr("burnProgress", 0);
+        maxBurnProgress = tag.getIntOr("maxBurnProgress", 0);
+        isBurning = tag.getBooleanOr("isBurning", false);
     }
 
     public void tick(Level pLevel, BlockPos pPos, BlockState pState) {
@@ -417,5 +417,10 @@ public class AlloySmelterBlockEntity extends BlockEntity implements MenuProvider
     @Override
     public CompoundTag getUpdateTag(HolderLookup.Provider pRegistries) {
         return saveWithoutMetadata(pRegistries);
+    }
+
+    @Override
+    public void preRemoveSideEffects(BlockPos p_394577_, BlockState p_394161_) {
+        drops();
     }
 }

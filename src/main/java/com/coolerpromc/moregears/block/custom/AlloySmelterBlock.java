@@ -53,17 +53,6 @@ public class AlloySmelterBlock extends BaseEntityBlock {
         super.createBlockStateDefinition(pBuilder);
         pBuilder.add(FACING);
     }
-    @Override
-    protected void onRemove(BlockState pState, Level pLevel, BlockPos pPos, BlockState pNewState, boolean pMovedByPiston) {
-        if (pState.getBlock() != pNewState.getBlock()){
-            BlockEntity blockEntity = pLevel.getBlockEntity(pPos);
-            if (blockEntity instanceof AlloySmelterBlockEntity alloySmelterBlockEntity){
-                alloySmelterBlockEntity.drops();
-            }
-        }
-
-        super.onRemove(pState, pLevel, pPos, pNewState, pMovedByPiston);
-    }
 
     @Override
     protected InteractionResult useItemOn(ItemStack pStack, BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHitResult) {

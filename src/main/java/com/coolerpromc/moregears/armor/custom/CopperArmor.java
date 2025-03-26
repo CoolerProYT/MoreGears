@@ -3,16 +3,12 @@ package com.coolerpromc.moregears.armor.custom;
 import com.coolerpromc.moregears.armor.MGArmorItem;
 import com.coolerpromc.moregears.armor.MGArmorMaterials;
 import com.coolerpromc.moregears.util.MGTooltip;
-import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.Style;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
+import net.minecraft.world.item.component.TooltipDisplay;
 import net.minecraft.world.item.equipment.ArmorType;
-import net.minecraft.world.level.Level;
 
-import java.util.List;
+import java.util.function.Consumer;
 
 public class CopperArmor extends MGArmorItem {
     public CopperArmor(ArmorType type, Properties properties) {
@@ -20,17 +16,8 @@ public class CopperArmor extends MGArmorItem {
     }
 
     @Override
-    public void inventoryTick(ItemStack stack, Level level, Entity entity, int slotId, boolean isSelected) {
-        // 0 = boots, 1 = leggings, 2 = chestplate, 3 = helmet
-        if (!level.isClientSide){
-            if (entity instanceof Player player){
+    public void appendHoverText(ItemStack p_41421_, TooltipContext p_339594_, TooltipDisplay p_399753_, Consumer<Component> p_399884_, TooltipFlag p_41424_) {
+        p_399884_.accept(MGTooltip.itemSpecialEffect("special_effect.moregears.copper_armor"));
 
-            }
-        }
-    }
-
-    @Override
-    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
-        tooltipComponents.add(MGTooltip.itemSpecialEffect("special_effect.moregears.copper_armor"));
     }
 }

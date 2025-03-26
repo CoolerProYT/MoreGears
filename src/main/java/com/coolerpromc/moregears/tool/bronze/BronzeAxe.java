@@ -1,22 +1,14 @@
 package com.coolerpromc.moregears.tool.bronze;
 
-import com.coolerpromc.moregears.MoreGears;
 import com.coolerpromc.moregears.util.MGTooltip;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.ai.attributes.AttributeInstance;
-import net.minecraft.world.entity.ai.attributes.AttributeModifier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
-import net.minecraft.world.level.Level;
+import net.minecraft.world.item.component.TooltipDisplay;
 import net.minecraft.world.level.block.state.BlockState;
 
-import java.util.List;
-import java.util.UUID;
+import java.util.function.Consumer;
 
 public class BronzeAxe extends AxeItem {
     public BronzeAxe(ToolMaterial material, float attackDamage, float attackSpeed, Properties properties) {
@@ -36,8 +28,8 @@ public class BronzeAxe extends AxeItem {
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
-        super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
-        tooltipComponents.add(MGTooltip.itemSpecialEffect("special_effect.moregears.bronze_tools"));
+    public void appendHoverText(ItemStack p_41421_, TooltipContext p_339594_, TooltipDisplay p_399753_, Consumer<Component> p_399884_, TooltipFlag p_41424_) {
+        p_399884_.accept(MGTooltip.itemSpecialEffect("special_effect.moregears.bronze_tools"));
+
     }
 }

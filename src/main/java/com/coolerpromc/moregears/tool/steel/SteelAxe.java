@@ -2,11 +2,12 @@ package com.coolerpromc.moregears.tool.steel;
 
 import com.coolerpromc.moregears.MoreGears;
 import com.coolerpromc.moregears.util.MGTooltip;
-import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -15,9 +16,10 @@ import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ToolMaterial;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.level.Level;
+import net.minecraft.world.item.component.TooltipDisplay;
 
-import java.util.List;
+import javax.annotation.Nullable;
+import java.util.function.Consumer;
 
 public class SteelAxe extends AxeItem {
     private static final ResourceLocation modifierId = ResourceLocation.fromNamespaceAndPath(MoreGears.MODID, "steel_axe_slow_speed");
@@ -27,7 +29,7 @@ public class SteelAxe extends AxeItem {
     }
 
     @Override
-    public void inventoryTick(ItemStack stack, Level level, Entity entity, int slotId, boolean isSelected) {
+    public void inventoryTick(ItemStack stack, ServerLevel level, Entity entity, @Nullable EquipmentSlot slot) {
         if(!(entity instanceof Player player)) return;
 
         boolean shouldSlow = player.getItemInHand(InteractionHand.MAIN_HAND).getItem() == this || player.getItemInHand(InteractionHand.OFF_HAND).getItem() == this;
@@ -54,9 +56,8 @@ public class SteelAxe extends AxeItem {
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
-        super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
-        tooltipComponents.add(MGTooltip.itemSpecialEffect("special_effect.moregears.heavy"));
-        tooltipComponents.add(MGTooltip.itemSpecialEffect("special_effect.moregears.faster_attack_speed"));
+    public void appendHoverText(ItemStack p_41421_, TooltipContext p_339594_, TooltipDisplay p_399753_, Consumer<Component> p_399884_, TooltipFlag p_41424_) {
+        p_399884_.accept(MGTooltip.itemSpecialEffect("special_effect.moregears.heavy"));
+        p_399884_.accept(MGTooltip.itemSpecialEffect("special_effect.moregears.faster_attack_speed"));
     }
 }

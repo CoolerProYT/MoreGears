@@ -4,26 +4,19 @@ import com.coolerpromc.moregears.MoreGears;
 import com.coolerpromc.moregears.armor.MGArmorItem;
 import com.coolerpromc.moregears.armor.MGArmorMaterials;
 import com.coolerpromc.moregears.block.MGBlocks;
-import com.coolerpromc.moregears.block.custom.MGOreBlock;
 import com.coolerpromc.moregears.item.MGItems;
 import com.coolerpromc.moregears.item.custom.MGIngot;
 import com.coolerpromc.moregears.item.custom.MGRawOre;
-import com.coolerpromc.moregears.util.MGOreTypes;
 import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.client.data.models.ModelProvider;
-import net.minecraft.client.data.models.blockstates.MultiVariantGenerator;
-import net.minecraft.client.data.models.blockstates.Variant;
-import net.minecraft.client.data.models.blockstates.VariantProperties;
 import net.minecraft.client.data.models.model.*;
 import net.minecraft.client.renderer.item.BlockModelWrapper;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.equipment.ArmorMaterial;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.registries.DeferredBlock;
@@ -171,7 +164,7 @@ public class MGModelProvider extends ModelProvider {
     }
 
     private void trimmedArmorItem(ItemModelGenerators itemModels, DeferredItem<MGArmorItem> item, ArmorMaterial armorMaterial){
-        itemModels.generateTrimmableItem(item.get(), armorMaterial.assetId(), item.get().getArmorType().getName(), false);
+        itemModels.generateTrimmableItem(item.get(), armorMaterial.assetId(), ResourceLocation.parse("trims/items/" + item.get().getArmorType().getName() + "_trim"), false);
     }
 
     private <T extends Item> void basicItem(ItemModelGenerators itemModels, DeferredItem<T> item){
