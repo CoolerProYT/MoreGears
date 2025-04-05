@@ -116,17 +116,17 @@ public class MGItems {
             Text.translatable("item.moregears.titanium_upgrade_smithing_template.upgrade_description").fillStyle(Style.EMPTY.withColor(Formatting.GRAY)),
             Text.translatable("item.moregears.titanium_upgrade_smithing_template.additions_slot_description"),
             List.of(
-                    Identifier.ofVanilla("item/empty_armor_slot_helmet"),
-                    Identifier.ofVanilla("item/empty_armor_slot_chestplate"),
-                    Identifier.ofVanilla("item/empty_armor_slot_leggings"),
-                    Identifier.ofVanilla("item/empty_armor_slot_boots"),
-                    Identifier.ofVanilla("item/empty_slot_hoe"),
-                    Identifier.ofVanilla("item/empty_slot_axe"),
-                    Identifier.ofVanilla("item/empty_slot_sword"),
-                    Identifier.ofVanilla("item/empty_slot_shovel"),
-                    Identifier.ofVanilla("item/empty_slot_pickaxe")
+                    Identifier.ofVanilla("container/slot/helmet"),
+                    Identifier.ofVanilla("container/slot/chestplate"),
+                    Identifier.ofVanilla("container/slot/leggings"),
+                    Identifier.ofVanilla("container/slot/boots"),
+                    Identifier.ofVanilla("container/slot/hoe"),
+                    Identifier.ofVanilla("container/slot/axe"),
+                    Identifier.ofVanilla("container/slot/sword"),
+                    Identifier.ofVanilla("container/slot/shovel"),
+                    Identifier.ofVanilla("container/slot/pickaxe")
             ),
-            List.of(Identifier.ofVanilla("item/empty_slot_ingot")),
+            List.of(Identifier.ofVanilla("container/slot/ingot")),
             new Item.Settings().registryKey(createItemKey("titanium_upgrade_smithing_template"))
     ));
 
@@ -136,17 +136,17 @@ public class MGItems {
             Text.translatable("item.moregears.enderite_upgrade_smithing_template.upgrade_description").fillStyle(Style.EMPTY.withColor(Formatting.GRAY)),
             Text.translatable("item.moregears.enderite_upgrade_smithing_template.additions_slot_description"),
             List.of(
-                    Identifier.ofVanilla("item/empty_armor_slot_helmet"),
-                    Identifier.ofVanilla("item/empty_armor_slot_chestplate"),
-                    Identifier.ofVanilla("item/empty_armor_slot_leggings"),
-                    Identifier.ofVanilla("item/empty_armor_slot_boots"),
-                    Identifier.ofVanilla("item/empty_slot_hoe"),
-                    Identifier.ofVanilla("item/empty_slot_axe"),
-                    Identifier.ofVanilla("item/empty_slot_sword"),
-                    Identifier.ofVanilla("item/empty_slot_shovel"),
-                    Identifier.ofVanilla("item/empty_slot_pickaxe")
+                    Identifier.ofVanilla("container/slot/helmet"),
+                    Identifier.ofVanilla("container/slot/chestplate"),
+                    Identifier.ofVanilla("container/slot/leggings"),
+                    Identifier.ofVanilla("container/slot/boots"),
+                    Identifier.ofVanilla("container/slot/hoe"),
+                    Identifier.ofVanilla("container/slot/axe"),
+                    Identifier.ofVanilla("container/slot/sword"),
+                    Identifier.ofVanilla("container/slot/shovel"),
+                    Identifier.ofVanilla("container/slot/pickaxe")
             ),
-            List.of(Identifier.ofVanilla("item/empty_slot_ingot")),
+            List.of(Identifier.ofVanilla("container/slot/ingot")),
             new Item.Settings().registryKey(createItemKey("enderite_upgrade_smithing_template"))
     ));
 

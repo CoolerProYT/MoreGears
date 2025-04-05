@@ -22,6 +22,7 @@ public class MoreGearsDataGenerator implements DataGeneratorEntrypoint {
 		pack.addProvider(MGItemTagProvider::new);
 		pack.addProvider(MGRecipeProvider::new);
 		pack.addProvider(MGWorldGenProvider::new);
+		pack.addProvider(MGEquipmentInfoProvider::new);
 	}
 
 	@Override
