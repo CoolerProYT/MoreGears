@@ -4,11 +4,8 @@ import com.coolerpromc.moregears.MoreGears;
 import com.coolerpromc.moregears.block.MGBlocks;
 import com.coolerpromc.moregears.util.MGTags;
 import net.minecraft.core.HolderLookup;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.TagKey;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 
@@ -16,7 +13,7 @@ import java.util.concurrent.CompletableFuture;
 
 public class MGBlockTagGenerator extends BlockTagsProvider {
     public MGBlockTagGenerator(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider) {
-        super(output, lookupProvider, MoreGears.MODID, null);
+        super(output, lookupProvider, MoreGears.MODID);
     }
 
     @Override
