@@ -27,7 +27,7 @@ public class MGConfiguredFeatures {
     public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {
         RuleTest stoneReplaceable = new TagMatchTest(BlockTags.STONE_ORE_REPLACEABLES);
         RuleTest deepslateReplaceable = new TagMatchTest(BlockTags.DEEPSLATE_ORE_REPLACEABLES);
-        RuleTest netherrackReplaceable = new BlockMatchTest(Blocks.NETHERRACK);
+        RuleTest netherrackReplaceable = new TagMatchTest(BlockTags.BASE_STONE_NETHER);
         RuleTest endstoneReplaceable = new BlockMatchTest(Blocks.END_STONE);
 
         List<OreConfiguration.TargetBlockState> overworldTinOres = List.of(
@@ -42,7 +42,7 @@ public class MGConfiguredFeatures {
 
         register(context, TIN_ORE_KEY, Feature.ORE, new OreConfiguration(overworldTinOres, 8));
         register(context, RUBY_ORE_KEY, Feature.ORE, new OreConfiguration(overworldRubyOres, 4));
-        register(context, NETHER_TITANIUM_ORE_KEY, Feature.ORE, new OreConfiguration(netherrackReplaceable, MGBlocks.NETHER_TITANIUM_ORE.get().defaultBlockState(), 3));
+        register(context, NETHER_TITANIUM_ORE_KEY, Feature.ORE, new OreConfiguration(netherrackReplaceable, MGBlocks.NETHER_TITANIUM_ORE.get().defaultBlockState(), 4));
         register(context, END_ENDERITE_ORE_KEY, Feature.ORE, new OreConfiguration(endstoneReplaceable, MGBlocks.END_ENDERITE_ORE.get().defaultBlockState(), 3));
     }
 
