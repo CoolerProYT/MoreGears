@@ -27,7 +27,7 @@ public class MGPlacedFeatures {
 
         register(context, TIN_ORE_PLACED_KEY, configuredFeatures.getOrThrow(MGConfiguredFeatures.TIN_ORE_KEY), MGOrePlacement.commonOrePlacement(12, HeightRangePlacementModifier.trapezoid(YOffset.fixed(-64), YOffset.fixed(64))));
         register(context, RUBY_ORE_PLACED_KEY, configuredFeatures.getOrThrow(MGConfiguredFeatures.RUBY_ORE_KEY), MGOrePlacement.commonOrePlacement(12, HeightRangePlacementModifier.trapezoid(YOffset.fixed(-64), YOffset.fixed(64))));
-        register(context, NETHER_TITANIUM_ORE_PLACED_KEY, configuredFeatures.getOrThrow(MGConfiguredFeatures.NETHER_TITANIUM_ORE_KEY), MGOrePlacement.commonOrePlacement(12, HeightRangePlacementModifier.trapezoid(YOffset.fixed(-64), YOffset.fixed(25))));
+        register(context, NETHER_TITANIUM_ORE_PLACED_KEY, configuredFeatures.getOrThrow(MGConfiguredFeatures.NETHER_TITANIUM_ORE_KEY), MGOrePlacement.commonOrePlacement(4, HeightRangePlacementModifier.uniform(YOffset.fixed(-64), YOffset.fixed(25))));
         register(context, END_ENDERITE_ORE_PLACED_KEY, configuredFeatures.getOrThrow(MGConfiguredFeatures.END_ENDERITE_ORE_KEY), MGOrePlacement.commonOrePlacement(12, HeightRangePlacementModifier.trapezoid(YOffset.fixed(-64), YOffset.fixed(128))));
     }
 
