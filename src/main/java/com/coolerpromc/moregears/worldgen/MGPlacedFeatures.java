@@ -4,6 +4,7 @@ import com.coolerpromc.moregears.MoreGears;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
+import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
@@ -25,7 +26,7 @@ public class MGPlacedFeatures {
 
         register(context, TIN_ORE_PLACED_KEY, configuredFeatures.getOrThrow(MGConfiguredFeatures.TIN_ORE_KEY), MGOrePlacement.commonOrePlacement(12, HeightRangePlacement.triangle(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(64))));
         register(context, RUBY_ORE_PLACED_KEY, configuredFeatures.getOrThrow(MGConfiguredFeatures.RUBY_ORE_KEY), MGOrePlacement.commonOrePlacement(12, HeightRangePlacement.triangle(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(64))));
-        register(context, NETHER_TITANIUM_ORE_PLACED_KEY, configuredFeatures.getOrThrow(MGConfiguredFeatures.NETHER_TITANIUM_ORE_KEY), MGOrePlacement.commonOrePlacement(12, HeightRangePlacement.triangle(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(25))));
+        register(context, NETHER_TITANIUM_ORE_PLACED_KEY, configuredFeatures.getOrThrow(MGConfiguredFeatures.NETHER_TITANIUM_ORE_KEY), MGOrePlacement.commonOrePlacement(4, HeightRangePlacement.uniform(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(25))));
         register(context, END_ENDERITE_ORE_PLACED_KEY, configuredFeatures.getOrThrow(MGConfiguredFeatures.END_ENDERITE_ORE_KEY), MGOrePlacement.commonOrePlacement(12, HeightRangePlacement.triangle(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(128))));
     }
 
