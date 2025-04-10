@@ -1,4 +1,3 @@
-/*
 package com.coolerpromc.moregears.compat.rei.AlloySmelting;
 
 import com.coolerpromc.moregears.MoreGears;
@@ -86,4 +85,4 @@ public class AlloySmeltingCategory implements DisplayCategory<AlloySmeltingRecip
     public int getDisplayHeight() {
         return 84;
     }
-}*/
+}

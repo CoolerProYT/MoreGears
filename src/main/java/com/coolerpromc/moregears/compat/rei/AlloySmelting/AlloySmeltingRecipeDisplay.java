@@ -1,4 +1,3 @@
-/*
 package com.coolerpromc.moregears.compat.rei.AlloySmelting;
 
 import com.coolerpromc.moregears.recipe.AlloySmeltingRecipe;
@@ -37,8 +36,8 @@ public class AlloySmeltingRecipeDisplay extends BasicDisplay {
         super(
                 List.of(
                         EntryIngredients.ofIngredient(Ingredient.ofItems(Items.COAL)),
-                        EntryIngredients.ofIngredient(recipe.value().getInputItems().get(0)),
-                        EntryIngredients.ofIngredient(recipe.value().getInputItems().get(1))
+                        EntryIngredients.ofIngredient(recipe.value().getInputItems().get(0).ingredient()),
+                        EntryIngredients.ofIngredient(recipe.value().getInputItems().get(1).ingredient())
                 ),
                 List.of(EntryIngredients.of(recipe.value().getOutput().get(0)))
         );
@@ -57,4 +56,4 @@ public class AlloySmeltingRecipeDisplay extends BasicDisplay {
     public @Nullable DisplaySerializer<? extends Display> getSerializer() {
         return SERIALIZER;
     }
-}*/
+}
