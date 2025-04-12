@@ -229,5 +229,9 @@ public class MGItemTagGenerator extends ItemTagsProvider {
 
         this.tag(MGTags.Items.GEMS_RUBY)
                 .add(MGItems.RUBY_INGOT.get());
+
+        this.tag(ItemTags.ARROWS).add(
+                MGItems.ENDERITE_ARROW.get()
+        );
     }
 }

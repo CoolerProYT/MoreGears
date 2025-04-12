@@ -2,10 +2,13 @@ package com.coolerpromc.moregears;
 
 import com.coolerpromc.moregears.block.MGBlocks;
 import com.coolerpromc.moregears.block.entity.MGBlockEntities;
+import com.coolerpromc.moregears.entity.MGEntities;
+import com.coolerpromc.moregears.entity.renderer.MGArrowRenderer;
 import com.coolerpromc.moregears.item.MGCreativeTab;
 import com.coolerpromc.moregears.item.MGItems;
 import com.coolerpromc.moregears.recipe.MGRecipes;
 import com.coolerpromc.moregears.screen.MGMenuTypes;
+import net.minecraft.resources.ResourceLocation;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -15,6 +18,7 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
 
@@ -27,6 +31,7 @@ public class MoreGears
     {
         modEventBus.addListener(this::commonSetup);
 
+        MGEntities.register(modEventBus);
         MGItems.register(modEventBus);
         MGBlocks.register(modEventBus);
         MGBlockEntities.register(modEventBus);
@@ -54,6 +59,11 @@ public class MoreGears
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event)
         {
+        }
+
+        @SubscribeEvent
+        public static void onEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
+            event.registerEntityRenderer(MGEntities.ENDERITE_ARROW.get(), context -> new MGArrowRenderer(context, MGArrowRenderer.getTextureLocation("enderite_arrow")));
         }
     }
 }

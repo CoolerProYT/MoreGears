@@ -3,6 +3,8 @@ package com.coolerpromc.moregears.item;
 import com.coolerpromc.moregears.MoreGears;
 import com.coolerpromc.moregears.armor.MGArmorItem;
 import com.coolerpromc.moregears.armor.custom.*;
+import com.coolerpromc.moregears.entity.MGEntities;
+import com.coolerpromc.moregears.item.custom.MGArrowItem;
 import com.coolerpromc.moregears.item.custom.MGIngot;
 import com.coolerpromc.moregears.item.custom.MGRawOre;
 import com.coolerpromc.moregears.tool.MGToolMaterials;
@@ -152,6 +154,8 @@ public class MGItems {
             List.of(ResourceLocation.withDefaultNamespace("container/slot/ingot")),
             properties
     ));
+
+    public static final DeferredItem<MGArrowItem> ENDERITE_ARROW = registerItem("enderite_arrow", properties -> new MGArrowItem(properties, 4.0D, MGEntities.ENDERITE_ARROW.get()));
 
     private static <T extends Item> DeferredItem<T> registerItem(String name, Function<Item.Properties, ? extends T> item){
         return ITEMS.registerItem(name, item);

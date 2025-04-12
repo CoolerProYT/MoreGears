@@ -133,6 +133,8 @@ public class MGModelProvider extends ModelProvider {
         handheldItem(itemModels, MGItems.ENDERITE_PICKAXE);
         handheldItem(itemModels, MGItems.ENDERITE_AXE);
         handheldItem(itemModels, MGItems.ENDERITE_HOE);
+
+        basicItem(itemModels, MGItems.ENDERITE_ARROW);
     }
 
     // Block model methods

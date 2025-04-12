@@ -1,4 +1,4 @@
-// 1.21.5	2025-03-26T09:42:31.7992908	Model Definitions - minecraft
+// 1.21.5	2025-04-12T12:53:59.6428918	Model Definitions - minecraft
 b08efbda0661ec56eb4ca73e5b9abeecf208a077 assets/moregears/blockstates/alloy_smelter.json
 c0b9455e0eb5bfc48a0bc7a632b9d400f63d8c7f assets/moregears/blockstates/deepslate_ruby_ore.json
 ccc73b22054fad3b1c2795620632af10c6b04644 assets/moregears/blockstates/deepslate_tin_ore.json
@@ -28,6 +28,7 @@ b418a06446c2f641442ec2014c9d2f43ec3fd19a assets/moregears/items/copper_shovel.js
 0747027c9ea9ea169f5a4f6b79aba928b42784ca assets/moregears/items/copper_sword.json
 3e18476b6640c7dd9ec6ebf7489123c5501f1ae5 assets/moregears/items/deepslate_ruby_ore.json
 7597c2dc781ec973f9c2a4d4cc147d02877a85eb assets/moregears/items/deepslate_tin_ore.json
+7378df1868fd0e50dfde48b0e24c6a185819a4ad assets/moregears/items/enderite_arrow.json
 4741cea5800ce60ddb6332a671d26da2bbd32638 assets/moregears/items/enderite_axe.json
 aa20c1be7c0ebc44f19be7a51ed010f7b32e4146 assets/moregears/items/enderite_boots.json
 bf463a2ddb1be9afa82e294167eff1a8e886b9f0 assets/moregears/items/enderite_chestplate.json
@@ -192,6 +193,7 @@ e815abe61cecb40a7ed615947e09bee769d3fc6f assets/moregears/models/item/copper_leg
 70da412ec513a21dcf5050eab14cea4c7810950b assets/moregears/models/item/copper_pickaxe.json
 6e2aa64e0ae0100303265c9aaf594a09a3f19270 assets/moregears/models/item/copper_shovel.json
 115305bc3e7fa1dd962356940bf69c16cca308a2 assets/moregears/models/item/copper_sword.json
+eabe3d75ab92bca3a267da342a0e6922432a98f1 assets/moregears/models/item/enderite_arrow.json
 b5a61116750908c6110aae874639874da0994150 assets/moregears/models/item/enderite_axe.json
 8b628d16ca411d0190574a1e94a0432515495d4e assets/moregears/models/item/enderite_boots.json
 6d55097f87e658cdd8519ea08329096cc0b310e4 assets/moregears/models/item/enderite_boots_amethyst_trim.json
