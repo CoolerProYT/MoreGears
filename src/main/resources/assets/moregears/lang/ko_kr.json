@@ -104,5 +104,20 @@
   "special_effect.moregears.fire_resistance": "화염 저항",
   "special_effect.moregears.bronze_tools": "물속에서 채광 속도 증가",
   "special_effect.moregears.heavy": "무거움 (이동 속도 감소)",
-  "special_effect.moregears.faster_attack_speed": "공격 속도 증가"
+  "special_effect.moregears.faster_attack_speed": "공격 속도 증가",
+
+  "item.minecraft.arrow": "철 화살",
+  "entity.minecraft.arrow": "철 화살",
+  "item.moregears.copper_arrow": "구리 화살",
+  "entity.moregears.copper_arrow": "구리 화살",
+  "item.moregears.bronze_arrow": "청동 화살",
+  "entity.moregears.bronze_arrow": "청동 화살",
+  "item.moregears.steel_arrow": "강철 화살",
+  "entity.moregears.steel_arrow": "강철 화살",
+  "item.moregears.ruby_arrow": "루비 화살",
+  "entity.moregears.ruby_arrow": "루비 화살",
+  "item.moregears.titanium_arrow": "티타늄 화살",
+  "entity.moregears.titanium_arrow": "티타늄 화살",
+  "item.moregears.enderite_arrow": "엔더라이트 화살",
+  "entity.moregears.enderite_arrow": "엔더라이트 화살"
 }

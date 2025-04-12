@@ -104,5 +104,20 @@
   "special_effect.moregears.fire_resistance": "Fire Resistance",
   "special_effect.moregears.bronze_tools": "Faster mining under water",
   "special_effect.moregears.heavy": "Heavy (Walking speed is slower)",
-  "special_effect.moregears.faster_attack_speed": "Faster attack speed"
+  "special_effect.moregears.faster_attack_speed": "Faster attack speed",
+
+  "item.minecraft.arrow": "Iron Arrow",
+  "entity.minecraft.arrow": "Iron Arrow",
+  "item.moregears.copper_arrow": "Copper Arrow",
+  "entity.moregears.copper_arrow": "Copper Arrow",
+  "item.moregears.bronze_arrow": "Bronze Arrow",
+  "entity.moregears.bronze_arrow": "Bronze Arrow",
+  "item.moregears.steel_arrow": "Steel Arrow",
+  "entity.moregears.steel_arrow": "Steel Arrow",
+  "item.moregears.ruby_arrow": "Ruby Arrow",
+  "entity.moregears.ruby_arrow": "Ruby Arrow",
+  "item.moregears.titanium_arrow": "Titanium Arrow",
+  "entity.moregears.titanium_arrow": "Titanium Arrow",
+  "item.moregears.enderite_arrow": "Enderite Arrow",
+  "entity.moregears.enderite_arrow": "Enderite Arrow"
 }

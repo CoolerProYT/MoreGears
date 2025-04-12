@@ -104,5 +104,20 @@
   "special_effect.moregears.fire_resistance": "耐火",
   "special_effect.moregears.bronze_tools": "水中での採掘速度が向上する",
   "special_effect.moregears.heavy": "重い（移動速度が低下する）",
-  "special_effect.moregears.faster_attack_speed": "攻撃速度が速くなる"
+  "special_effect.moregears.faster_attack_speed": "攻撃速度が速くなる",
+
+  "item.minecraft.arrow": "鉄の矢",
+  "entity.minecraft.arrow": "鉄の矢",
+  "item.moregears.copper_arrow": "銅の矢",
+  "entity.moregears.copper_arrow": "銅の矢",
+  "item.moregears.bronze_arrow": "青銅の矢",
+  "entity.moregears.bronze_arrow": "青銅の矢",
+  "item.moregears.steel_arrow": "鋼の矢",
+  "entity.moregears.steel_arrow": "鋼の矢",
+  "item.moregears.ruby_arrow": "ルビーの矢",
+  "entity.moregears.ruby_arrow": "ルビーの矢",
+  "item.moregears.titanium_arrow": "チタンの矢",
+  "entity.moregears.titanium_arrow": "チタンの矢",
+  "item.moregears.enderite_arrow": "エンダライトの矢",
+  "entity.moregears.enderite_arrow": "エンダライトの矢"
 }

@@ -104,5 +104,20 @@
   "special_effect.moregears.fire_resistance": "抗火",
   "special_effect.moregears.bronze_tools": "水下挖掘速度加快",
   "special_effect.moregears.heavy": "沉重（行走速度變慢）",
-  "special_effect.moregears.faster_attack_speed": "攻擊速度更快"
+  "special_effect.moregears.faster_attack_speed": "攻擊速度更快",
+
+  "item.minecraft.arrow": "鐵箭",
+  "entity.minecraft.arrow": "鐵箭",
+  "item.moregears.copper_arrow": "銅箭",
+  "entity.moregears.copper_arrow": "銅箭",
+  "item.moregears.bronze_arrow": "青銅箭",
+  "entity.moregears.bronze_arrow": "青銅箭",
+  "item.moregears.steel_arrow": "鋼箭",
+  "entity.moregears.steel_arrow": "鋼箭",
+  "item.moregears.ruby_arrow": "紅寶石箭",
+  "entity.moregears.ruby_arrow": "紅寶石箭",
+  "item.moregears.titanium_arrow": "鈦箭",
+  "entity.moregears.titanium_arrow": "鈦箭",
+  "item.moregears.enderite_arrow": "末地合金箭",
+  "entity.moregears.enderite_arrow": "末地合金箭"
 }

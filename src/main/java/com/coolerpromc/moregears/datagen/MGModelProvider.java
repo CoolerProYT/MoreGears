@@ -121,6 +121,13 @@ public class MGModelProvider extends FabricModelProvider {
         itemModelGenerator.register(MGItems.ENDERITE_PICKAXE, Models.HANDHELD);
         itemModelGenerator.register(MGItems.ENDERITE_AXE, Models.HANDHELD);
         itemModelGenerator.register(MGItems.ENDERITE_HOE, Models.HANDHELD);
+
+        itemModelGenerator.register(MGItems.COPPER_ARROW, Models.GENERATED);
+        itemModelGenerator.register(MGItems.BRONZE_ARROW, Models.GENERATED);
+        itemModelGenerator.register(MGItems.STEEL_ARROW, Models.GENERATED);
+        itemModelGenerator.register(MGItems.RUBY_ARROW, Models.GENERATED);
+        itemModelGenerator.register(MGItems.TITANIUM_ARROW, Models.GENERATED);
+        itemModelGenerator.register(MGItems.ENDERITE_ARROW, Models.GENERATED);
     }
 
     private <T extends Item> void withExistingTexture(ItemModelGenerator itemModelGenerator, T item, Identifier texture){

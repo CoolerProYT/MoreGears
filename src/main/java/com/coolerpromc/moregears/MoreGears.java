@@ -2,6 +2,7 @@ package com.coolerpromc.moregears;
 
 import com.coolerpromc.moregears.block.MGBlocks;
 import com.coolerpromc.moregears.block.entity.MGBlockEntities;
+import com.coolerpromc.moregears.entity.MGEntities;
 import com.coolerpromc.moregears.event.MGCopperArmorEvent;
 import com.coolerpromc.moregears.event.MGEnderiteArmorEvent;
 import com.coolerpromc.moregears.item.MGCreativeTab;
@@ -22,6 +23,7 @@ public class MoreGears implements ModInitializer {
 		MGCopperArmorEvent.preventLightningBolt();
 		MGEnderiteArmorEvent.onPlayerHurt();
 
+		MGEntities.init();
 		MGItems.init();
 		MGBlocks.init();
 		MGBlockEntities.init();

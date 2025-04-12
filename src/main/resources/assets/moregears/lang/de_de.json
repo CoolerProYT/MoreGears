@@ -104,5 +104,20 @@
   "special_effect.moregears.fire_resistance": "Feuerresistenz",
   "special_effect.moregears.bronze_tools": "Schnelleres Abbauen unter Wasser",
   "special_effect.moregears.heavy": "Schwer (verringert die Gehgeschwindigkeit)",
-  "special_effect.moregears.faster_attack_speed": "Schnellere Angriffsgeschwindigkeit"
+  "special_effect.moregears.faster_attack_speed": "Schnellere Angriffsgeschwindigkeit",
+
+  "item.minecraft.arrow": "Eisenspfeil",
+  "entity.minecraft.arrow": "Eisenspfeil",
+  "item.moregears.copper_arrow": "Kupferpfeil",
+  "entity.moregears.copper_arrow": "Kupferpfeil",
+  "item.moregears.bronze_arrow": "Bronzepfeil",
+  "entity.moregears.bronze_arrow": "Bronzepfeil",
+  "item.moregears.steel_arrow": "Stahlpfeil",
+  "entity.moregears.steel_arrow": "Stahlpfeil",
+  "item.moregears.ruby_arrow": "Rubinpfeil",
+  "entity.moregears.ruby_arrow": "Rubinpfeil",
+  "item.moregears.titanium_arrow": "Titaniumpfeil",
+  "entity.moregears.titanium_arrow": "Titaniumpfeil",
+  "item.moregears.enderite_arrow": "Enderitpfeil",
+  "entity.moregears.enderite_arrow": "Enderitpfeil"
 }

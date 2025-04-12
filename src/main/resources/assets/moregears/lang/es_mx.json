@@ -104,5 +104,20 @@
   "special_effect.moregears.fire_resistance": "Resistencia al fuego",
   "special_effect.moregears.bronze_tools": "Minería más rápida bajo el agua",
   "special_effect.moregears.heavy": "Pesado (reduce la velocidad al caminar)",
-  "special_effect.moregears.faster_attack_speed": "Velocidad de ataque más rápida"
+  "special_effect.moregears.faster_attack_speed": "Velocidad de ataque más rápida",
+
+  "item.minecraft.arrow": "Flecha de hierro",
+  "entity.minecraft.arrow": "Flecha de hierro",
+  "item.moregears.copper_arrow": "Flecha de cobre",
+  "entity.moregears.copper_arrow": "Flecha de cobre",
+  "item.moregears.bronze_arrow": "Flecha de bronce",
+  "entity.moregears.bronze_arrow": "Flecha de bronce",
+  "item.moregears.steel_arrow": "Flecha de acero",
+  "entity.moregears.steel_arrow": "Flecha de acero",
+  "item.moregears.ruby_arrow": "Flecha de rubí",
+  "entity.moregears.ruby_arrow": "Flecha de rubí",
+  "item.moregears.titanium_arrow": "Flecha de titanio",
+  "entity.moregears.titanium_arrow": "Flecha de titanio",
+  "item.moregears.enderite_arrow": "Flecha de enderita",
+  "entity.moregears.enderite_arrow": "Flecha de enderita"
 }

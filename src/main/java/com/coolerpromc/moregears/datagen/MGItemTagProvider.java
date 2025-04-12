@@ -228,5 +228,14 @@ public class MGItemTagProvider extends FabricTagProvider.ItemTagProvider {
 
         this.getOrCreateTagBuilder(MGTags.Items.GEMS_RUBY)
                 .add(MGItems.RUBY_INGOT);
+
+        this.getOrCreateTagBuilder(ItemTags.ARROWS).add(
+                MGItems.COPPER_ARROW,
+                MGItems.BRONZE_ARROW,
+                MGItems.STEEL_ARROW,
+                MGItems.RUBY_ARROW,
+                MGItems.TITANIUM_ARROW,
+                MGItems.ENDERITE_ARROW
+        );
     }
 }

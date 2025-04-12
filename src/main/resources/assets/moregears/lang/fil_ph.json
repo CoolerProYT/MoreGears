@@ -104,5 +104,20 @@
   "special_effect.moregears.fire_resistance": "Resistensya sa Apoy",
   "special_effect.moregears.bronze_tools": "Mas Mabilis na Pagmimina sa Ilalim ng Tubig",
   "special_effect.moregears.heavy": "Mabigat (bumabagal sa paglakad)",
-  "special_effect.moregears.faster_attack_speed": "Mas Mabilis na Bilis ng Pag-atake"
+  "special_effect.moregears.faster_attack_speed": "Mas Mabilis na Bilis ng Pag-atake",
+
+  "item.minecraft.arrow": "Bakanteng Palaso",
+  "entity.minecraft.arrow": "Bakanteng Palaso",
+  "item.moregears.copper_arrow": "Palasong Tanso",
+  "entity.moregears.copper_arrow": "Palasong Tanso",
+  "item.moregears.bronze_arrow": "Palasong Bronse",
+  "entity.moregears.bronze_arrow": "Palasong Bronse",
+  "item.moregears.steel_arrow": "Palasong Bakal",
+  "entity.moregears.steel_arrow": "Palasong Bakal",
+  "item.moregears.ruby_arrow": "Palasong Rubi",
+  "entity.moregears.ruby_arrow": "Palasong Rubi",
+  "item.moregears.titanium_arrow": "Palasong Titaniyo",
+  "entity.moregears.titanium_arrow": "Palasong Titaniyo",
+  "item.moregears.enderite_arrow": "Palasong Enderite",
+  "entity.moregears.enderite_arrow": "Palasong Enderite"
 }

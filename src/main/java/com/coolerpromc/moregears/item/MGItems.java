@@ -3,6 +3,8 @@ package com.coolerpromc.moregears.item;
 import com.coolerpromc.moregears.MoreGears;
 import com.coolerpromc.moregears.armor.MGArmorItem;
 import com.coolerpromc.moregears.armor.custom.*;
+import com.coolerpromc.moregears.entity.MGEntities;
+import com.coolerpromc.moregears.item.custom.MGArrowItem;
 import com.coolerpromc.moregears.item.custom.MGIngot;
 import com.coolerpromc.moregears.item.custom.MGRawOre;
 import com.coolerpromc.moregears.tool.MGToolMaterials;
@@ -149,6 +151,13 @@ public class MGItems {
             List.of(Identifier.ofVanilla("container/slot/ingot")),
             new Item.Settings().registryKey(createItemKey("enderite_upgrade_smithing_template"))
     ));
+
+    public static final MGArrowItem COPPER_ARROW = registerItem("copper_arrow", new MGArrowItem(new Item.Settings().registryKey(createItemKey("copper_arrow")), 4.0D, MGEntities.COPPER_ARROW));
+    public static final MGArrowItem BRONZE_ARROW = registerItem("bronze_arrow", new MGArrowItem(new Item.Settings().registryKey(createItemKey("bronze_arrow")), 4.0D, MGEntities.BRONZE_ARROW));
+    public static final MGArrowItem STEEL_ARROW = registerItem("steel_arrow", new MGArrowItem(new Item.Settings().registryKey(createItemKey("steel_arrow")), 4.0D, MGEntities.STEEL_ARROW));
+    public static final MGArrowItem RUBY_ARROW = registerItem("ruby_arrow", new MGArrowItem(new Item.Settings().registryKey(createItemKey("ruby_arrow")), 4.0D, MGEntities.RUBY_ARROW));
+    public static final MGArrowItem TITANIUM_ARROW = registerItem("titanium_arrow", new MGArrowItem(new Item.Settings().registryKey(createItemKey("titanium_arrow")), 4.0D, MGEntities.TITANIUM_ARROW));
+    public static final MGArrowItem ENDERITE_ARROW = registerItem("enderite_arrow", new MGArrowItem(new Item.Settings().registryKey(createItemKey("enderite_arrow")), 4.0D, MGEntities.ENDERITE_ARROW));
 
     private static <T extends Item> T registerItem(String name, T item) {
         return Registry.register(Registries.ITEM, Identifier.of(MoreGears.MODID, name), item);
