@@ -124,6 +124,13 @@ public class MGRecipeProvider extends FabricRecipeProvider {
                         .pattern("AAA")
                         .criterion(hasItem(Items.FURNACE), conditionsFromItem(Items.FURNACE))
                         .offerTo(recipeOutput);
+
+                arrowRecipe(recipeOutput, Items.COPPER_INGOT, MGItems.COPPER_ARROW);
+                arrowRecipe(recipeOutput, MGItems.BRONZE_INGOT, MGItems.BRONZE_ARROW);
+                arrowRecipe(recipeOutput, MGItems.STEEL_INGOT, MGItems.STEEL_ARROW);
+                arrowRecipe(recipeOutput, MGItems.RUBY_INGOT, MGItems.RUBY_ARROW);
+                arrowRecipe(recipeOutput, MGItems.TITANIUM_INGOT, MGItems.TITANIUM_ARROW);
+                arrowRecipe(recipeOutput, MGItems.ENDERITE_INGOT, MGItems.ENDERITE_ARROW);
             }
 
             private void armorSetRecipe(RecipeExporter recipeOutput, ItemConvertible material, ItemConvertible helmet, ItemConvertible chestplate, ItemConvertible leggings, ItemConvertible boots){
@@ -235,6 +242,18 @@ public class MGRecipeProvider extends FabricRecipeProvider {
                         .addOutput(new ItemStack(result, outputCount))
                         .criterion(hasItem(ingredients1.ingredient().getMatchingItems().toList().get(0).value()), conditionsFromItem(ingredients1.ingredient().getMatchingItems().toList().get(0).value()))
                         .offerTo(recipeOutput, RegistryKey.of(RegistryKeys.RECIPE, Identifier.of(MoreGears.MODID, "alloy_smelting/" + getItemPath(result) + "_from_alloy_smelting")));
+            }
+
+            private void arrowRecipe(RecipeExporter output, ItemConvertible ingot, ItemConvertible outputItem) {
+                ShapedRecipeJsonBuilder.create(registryLookup, RecipeCategory.COMBAT, outputItem, 6)
+                        .input('#', Items.STICK)
+                        .input('X', ingot)
+                        .input('Y', Items.FEATHER)
+                        .pattern("X")
+                        .pattern("#")
+                        .pattern("Y")
+                        .criterion(hasItem(ingot), conditionsFromItem(ingot))
+                        .offerTo(output);
             }
         };
     }
