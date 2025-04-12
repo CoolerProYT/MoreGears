@@ -12,6 +12,8 @@ import com.coolerpromc.moregears.screen.MGMenuTypes;
 import com.coolerpromc.moregears.worldgen.MGWorldGeneration;
 import net.fabricmc.api.ModInitializer;
 
+import net.minecraft.block.DispenserBlock;
+import net.minecraft.block.dispenser.ProjectileDispenserBehavior;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -31,5 +33,12 @@ public class MoreGears implements ModInitializer {
 		MGRecipes.init();
 		MGMenuTypes.init();
 		MGWorldGeneration.generateModWorldGen();
+
+		DispenserBlock.registerProjectileBehavior(MGItems.COPPER_ARROW);
+		DispenserBlock.registerProjectileBehavior(MGItems.BRONZE_ARROW);
+		DispenserBlock.registerProjectileBehavior(MGItems.STEEL_ARROW);
+		DispenserBlock.registerProjectileBehavior(MGItems.RUBY_ARROW);
+		DispenserBlock.registerProjectileBehavior(MGItems.TITANIUM_ARROW);
+		DispenserBlock.registerProjectileBehavior(MGItems.ENDERITE_ARROW);
 	}
 }

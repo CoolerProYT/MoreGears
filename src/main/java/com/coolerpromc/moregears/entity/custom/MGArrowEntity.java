@@ -35,6 +35,11 @@ public class MGArrowEntity extends PersistentProjectileEntity {
         this.setDamage(baseDamage);
     }
 
+    public MGArrowEntity(EntityType<? extends PersistentProjectileEntity> type, double x, double y, double z, World world, ItemStack stack, @Nullable ItemStack weapon) {
+        super(type, x, y, z, world, stack, weapon);
+        this.stack = stack;
+    }
+
     @Override
     protected ItemStack getDefaultItemStack() {
         return stack;
