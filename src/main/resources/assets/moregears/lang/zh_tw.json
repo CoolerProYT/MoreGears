@@ -89,13 +89,11 @@
   "item.moregears.titanium_upgrade_smithing_template.equipment_info": "下界合金裝備",
   "item.moregears.titanium_upgrade_smithing_template.ingredient": "鈦錠",
   "item.moregears.titanium_upgrade_smithing_template.upgrade_description": "鈦升級",
-  "item.moregears.titanium_upgrade_smithing_template.base_slot_description": "添加下界合金護甲、武器或工具",
   "item.moregears.titanium_upgrade_smithing_template.additions_slot_description": "添加鈦錠",
 
   "item.moregears.enderite_upgrade_smithing_template.equipment_info": "末地合金裝備",
   "item.moregears.enderite_upgrade_smithing_template.ingredient": "末地合金錠",
   "item.moregears.enderite_upgrade_smithing_template.upgrade_description": "末地合金升級",
-  "item.moregears.enderite_upgrade_smithing_template.base_slot_description": "添加鈦護甲、武器或工具",
   "item.moregears.enderite_upgrade_smithing_template.additions_slot_description": "添加末地合金錠",
 
   "special_effect.moregears.copper_armor": "全套裝備時免疫雷擊。",
@@ -104,5 +102,20 @@
   "special_effect.moregears.fire_resistance": "抗火",
   "special_effect.moregears.bronze_tools": "水下挖掘速度加快",
   "special_effect.moregears.heavy": "沉重（行走速度變慢）",
-  "special_effect.moregears.faster_attack_speed": "攻擊速度更快"
+  "special_effect.moregears.faster_attack_speed": "攻擊速度更快",
+
+  "item.minecraft.arrow": "鐵箭",
+  "entity.minecraft.arrow": "鐵箭",
+  "item.moregears.copper_arrow": "銅箭",
+  "entity.moregears.copper_arrow": "銅箭",
+  "item.moregears.bronze_arrow": "青銅箭",
+  "entity.moregears.bronze_arrow": "青銅箭",
+  "item.moregears.steel_arrow": "鋼箭",
+  "entity.moregears.steel_arrow": "鋼箭",
+  "item.moregears.ruby_arrow": "紅寶石箭",
+  "entity.moregears.ruby_arrow": "紅寶石箭",
+  "item.moregears.titanium_arrow": "鈦箭",
+  "entity.moregears.titanium_arrow": "鈦箭",
+  "item.moregears.enderite_arrow": "末地合金礦箭",
+  "entity.moregears.enderite_arrow": "末地合金礦箭"
 }

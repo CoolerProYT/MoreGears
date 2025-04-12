@@ -21,22 +21,24 @@ import net.minecraft.world.item.equipment.ArmorMaterial;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredItem;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Stream;
 
+@SuppressWarnings({"SameParameterValue", "unused"})
 public class MGModelProvider extends ModelProvider {
     public final ResourceLocation RAW_ORE = itemLocation("template_raw_ore");
     public final ResourceLocation INGOT = itemLocation("template_ingot");
     public final ResourceLocation GEM = itemLocation("template_gem");
 
     public MGModelProvider(PackOutput output) {
-        super(output);
+        super(output, MoreGears.MODID);
     }
 
     @Override
-    protected void registerModels(BlockModelGenerators blockModels, ItemModelGenerators itemModels) {
+    protected void registerModels(@NotNull BlockModelGenerators blockModels, @NotNull ItemModelGenerators itemModels) {
         registerBlockState(blockModels);
         registerItemModels(itemModels);
     }
@@ -134,6 +136,11 @@ public class MGModelProvider extends ModelProvider {
         handheldItem(itemModels, MGItems.ENDERITE_AXE);
         handheldItem(itemModels, MGItems.ENDERITE_HOE);
 
+        basicItem(itemModels, MGItems.COPPER_ARROW);
+        basicItem(itemModels, MGItems.BRONZE_ARROW);
+        basicItem(itemModels, MGItems.STEEL_ARROW);
+        basicItem(itemModels, MGItems.RUBY_ARROW);
+        basicItem(itemModels, MGItems.TITANIUM_ARROW);
         basicItem(itemModels, MGItems.ENDERITE_ARROW);
     }
 
@@ -205,12 +212,12 @@ public class MGModelProvider extends ModelProvider {
 
     // Override methods
     @Override
-    protected Stream<? extends Holder<Block>> getKnownBlocks() {
+    protected @NotNull Stream<? extends Holder<Block>> getKnownBlocks() {
         return BuiltInRegistries.BLOCK.listElements().filter(blockReference -> Optional.of(BuiltInRegistries.BLOCK.getKey(blockReference.value())).filter(resourceLocation -> resourceLocation.getNamespace().equals(MoreGears.MODID)).isPresent());
     }
 
     @Override
-    protected Stream<? extends Holder<Item>> getKnownItems() {
+    protected @NotNull Stream<? extends Holder<Item>> getKnownItems() {
         return BuiltInRegistries.ITEM.listElements().filter(itemReference -> Optional.of(BuiltInRegistries.ITEM.getKey(itemReference.value())).filter(resourceLocation -> resourceLocation.getNamespace().equals(MoreGears.MODID)).isPresent());
     }
 }

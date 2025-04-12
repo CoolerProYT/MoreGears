@@ -7,6 +7,7 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.level.block.Block;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -16,7 +17,7 @@ public class MGItemTagGenerator extends ItemTagsProvider {
     }
 
     @Override
-    protected void addTags(HolderLookup.Provider provider) {
+    protected void addTags(HolderLookup.@NotNull Provider provider) {
         this.tag(ItemTags.TRIMMABLE_ARMOR).add(
                 MGItems.COPPER_BOOTS.get(),
                 MGItems.COPPER_CHESTPLATE.get(),
@@ -231,6 +232,11 @@ public class MGItemTagGenerator extends ItemTagsProvider {
                 .add(MGItems.RUBY_INGOT.get());
 
         this.tag(ItemTags.ARROWS).add(
+                MGItems.COPPER_ARROW.get(),
+                MGItems.BRONZE_ARROW.get(),
+                MGItems.STEEL_ARROW.get(),
+                MGItems.RUBY_ARROW.get(),
+                MGItems.TITANIUM_ARROW.get(),
                 MGItems.ENDERITE_ARROW.get()
         );
     }

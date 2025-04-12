@@ -27,7 +27,6 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.List;
 import java.util.function.Function;
-import java.util.function.Supplier;
 
 public class MGItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(MoreGears.MODID);
@@ -155,7 +154,12 @@ public class MGItems {
             properties
     ));
 
-    public static final DeferredItem<MGArrowItem> ENDERITE_ARROW = registerItem("enderite_arrow", properties -> new MGArrowItem(properties, 4.0D, MGEntities.ENDERITE_ARROW.get()));
+    public static final DeferredItem<MGArrowItem> COPPER_ARROW = registerItem("copper_arrow", properties -> new MGArrowItem(properties, 1.75D, MGEntities.COPPER_ARROW.get()));
+    public static final DeferredItem<MGArrowItem> BRONZE_ARROW = registerItem("bronze_arrow", properties -> new MGArrowItem(properties, 2.5D, MGEntities.BRONZE_ARROW.get()));
+    public static final DeferredItem<MGArrowItem> STEEL_ARROW = registerItem("steel_arrow", properties -> new MGArrowItem(properties, 3.0D, MGEntities.STEEL_ARROW.get()));
+    public static final DeferredItem<MGArrowItem> RUBY_ARROW = registerItem("ruby_arrow", properties -> new MGArrowItem(properties, 3.5D, MGEntities.RUBY_ARROW.get()));
+    public static final DeferredItem<MGArrowItem> TITANIUM_ARROW = registerItem("titanium_arrow", properties -> new MGArrowItem(properties, 4.5D, MGEntities.TITANIUM_ARROW.get()));
+    public static final DeferredItem<MGArrowItem> ENDERITE_ARROW = registerItem("enderite_arrow", properties -> new MGArrowItem(properties, 5.0D, MGEntities.ENDERITE_ARROW.get()));
 
     private static <T extends Item> DeferredItem<T> registerItem(String name, Function<Item.Properties, ? extends T> item){
         return ITEMS.registerItem(name, item);

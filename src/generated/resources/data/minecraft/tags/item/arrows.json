@@ -1,5 +1,10 @@
 {
   "values": [
+    "moregears:copper_arrow",
+    "moregears:bronze_arrow",
+    "moregears:steel_arrow",
+    "moregears:ruby_arrow",
+    "moregears:titanium_arrow",
     "moregears:enderite_arrow"
   ]
 }

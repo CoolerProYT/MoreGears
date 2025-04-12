@@ -8,7 +8,6 @@ import com.coolerpromc.moregears.item.MGCreativeTab;
 import com.coolerpromc.moregears.item.MGItems;
 import com.coolerpromc.moregears.recipe.MGRecipes;
 import com.coolerpromc.moregears.screen.MGMenuTypes;
-import net.minecraft.resources.ResourceLocation;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -63,6 +62,11 @@ public class MoreGears
 
         @SubscribeEvent
         public static void onEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
+            event.registerEntityRenderer(MGEntities.COPPER_ARROW.get(), context -> new MGArrowRenderer(context, MGArrowRenderer.getTextureLocation("copper_arrow")));
+            event.registerEntityRenderer(MGEntities.BRONZE_ARROW.get(), context -> new MGArrowRenderer(context, MGArrowRenderer.getTextureLocation("bronze_arrow")));
+            event.registerEntityRenderer(MGEntities.STEEL_ARROW.get(), context -> new MGArrowRenderer(context, MGArrowRenderer.getTextureLocation("steel_arrow")));
+            event.registerEntityRenderer(MGEntities.RUBY_ARROW.get(), context -> new MGArrowRenderer(context, MGArrowRenderer.getTextureLocation("ruby_arrow")));
+            event.registerEntityRenderer(MGEntities.TITANIUM_ARROW.get(), context -> new MGArrowRenderer(context, MGArrowRenderer.getTextureLocation("titanium_arrow")));
             event.registerEntityRenderer(MGEntities.ENDERITE_ARROW.get(), context -> new MGArrowRenderer(context, MGArrowRenderer.getTextureLocation("enderite_arrow")));
         }
     }
