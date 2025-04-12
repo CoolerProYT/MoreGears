@@ -35,6 +35,11 @@ public class MGArrowEntity extends AbstractArrow {
         this.setBaseDamage(baseDamage);
     }
 
+    public MGArrowEntity(EntityType<? extends AbstractArrow> entityType, double x, double y, double z, Level level, ItemStack pickupItemStack, @Nullable ItemStack firedFromWeapon) {
+        super(entityType, x, y, z, level, pickupItemStack, firedFromWeapon);
+        this.stack = pickupItemStack;
+    }
+
     @Override
     protected @NotNull ItemStack getDefaultPickupItem() {
         return stack;

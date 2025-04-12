@@ -8,6 +8,7 @@ import com.coolerpromc.moregears.item.MGCreativeTab;
 import com.coolerpromc.moregears.item.MGItems;
 import com.coolerpromc.moregears.recipe.MGRecipes;
 import com.coolerpromc.moregears.screen.MGMenuTypes;
+import net.minecraft.world.level.block.DispenserBlock;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -45,6 +46,12 @@ public class MoreGears
 
     private void commonSetup(final FMLCommonSetupEvent event)
     {
+        DispenserBlock.registerProjectileBehavior(MGItems.COPPER_ARROW);
+        DispenserBlock.registerProjectileBehavior(MGItems.BRONZE_ARROW);
+        DispenserBlock.registerProjectileBehavior(MGItems.STEEL_ARROW);
+        DispenserBlock.registerProjectileBehavior(MGItems.RUBY_ARROW);
+        DispenserBlock.registerProjectileBehavior(MGItems.TITANIUM_ARROW);
+        DispenserBlock.registerProjectileBehavior(MGItems.ENDERITE_ARROW);
     }
 
     @SubscribeEvent
