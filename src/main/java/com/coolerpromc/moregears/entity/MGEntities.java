@@ -2,8 +2,6 @@ package com.coolerpromc.moregears.entity;
 
 import com.coolerpromc.moregears.MoreGears;
 import com.coolerpromc.moregears.entity.custom.MGArrowEntity;
-import com.coolerpromc.moregears.item.MGItems;
-import com.coolerpromc.moregears.item.custom.MGArrowItem;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.registry.Registries;
@@ -21,12 +19,14 @@ public class MGEntities {
     public static final EntityType<MGArrowEntity> ENDERITE_ARROW = registerArrow("enderite_arrow");
 
     public static EntityType<MGArrowEntity> registerArrow(String name) {
-        return Registry.register(Registries.ENTITY_TYPE, Identifier.of(MoreGears.MODID, name),
-                EntityType.Builder.<MGArrowEntity>create((type, world) -> new MGArrowEntity(type, world), SpawnGroup.MISC)
+        RegistryKey<EntityType<?>> key = RegistryKey.of(RegistryKeys.ENTITY_TYPE, Identifier.of(MoreGears.MODID, name));
+
+        return Registry.register(Registries.ENTITY_TYPE, key,
+                EntityType.Builder.<MGArrowEntity>create(MGArrowEntity::new, SpawnGroup.MISC)
                         .dimensions(0.5F, 0.5F)
                         .maxTrackingRange(4)
                         .trackingTickInterval(20)
-                        .build(RegistryKey.of(RegistryKeys.ENTITY_TYPE, Identifier.of(MoreGears.MODID, name))));
+                        .build(key));
     }
 
     public static void init() {
