@@ -3,8 +3,8 @@ package com.coolerpromc.moregears.item.custom;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.AbstractArrow;
+import net.minecraft.world.item.BowItem;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
@@ -23,7 +23,7 @@ public class MGArrowEntity extends AbstractArrow {
         this.stack = pickupItemStack;
         this.pickup = Pickup.ALLOWED;
 
-        if (firedFromWeapon != null && firedFromWeapon.is(Items.BOW)){
+        if (firedFromWeapon != null && firedFromWeapon.getItem() instanceof BowItem){
             int powerLevel = firedFromWeapon.getEnchantmentLevel(level.registryAccess().getOrThrow(Enchantments.POWER));
             if (powerLevel > 0) {
                 baseDamage += (baseDamage * 0.25D) * (powerLevel + 1);

@@ -4,7 +4,9 @@ import com.coolerpromc.moregears.MoreGears;
 import com.coolerpromc.moregears.armor.MGArmorItem;
 import com.coolerpromc.moregears.armor.MGArmorMaterials;
 import com.coolerpromc.moregears.block.MGBlocks;
+import com.coolerpromc.moregears.datagen.property.Arrow;
 import com.coolerpromc.moregears.item.MGItems;
+import com.coolerpromc.moregears.item.custom.MGArrowItem;
 import com.coolerpromc.moregears.item.custom.MGIngot;
 import com.coolerpromc.moregears.item.custom.MGRawOre;
 import net.minecraft.client.data.models.BlockModelGenerators;
@@ -12,11 +14,14 @@ import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.client.data.models.ModelProvider;
 import net.minecraft.client.data.models.model.*;
 import net.minecraft.client.renderer.item.BlockModelWrapper;
+import net.minecraft.client.renderer.item.ItemModel;
+import net.minecraft.client.renderer.item.properties.numeric.UseDuration;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.equipment.ArmorMaterial;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.registries.DeferredBlock;
@@ -142,6 +147,14 @@ public class MGModelProvider extends ModelProvider {
         basicItem(itemModels, MGItems.RUBY_ARROW);
         basicItem(itemModels, MGItems.TITANIUM_ARROW);
         basicItem(itemModels, MGItems.ENDERITE_ARROW);
+
+        generateBow(itemModels, Items.BOW);
+        generateBow(itemModels, MGItems.COPPER_BOW.get());
+        generateBow(itemModels, MGItems.BRONZE_BOW.get());
+        generateBow(itemModels, MGItems.STEEL_BOW.get());
+        generateBow(itemModels, MGItems.RUBY_BOW.get());
+        generateBow(itemModels, MGItems.TITANIUM_BOW.get());
+        generateBow(itemModels, MGItems.ENDERITE_BOW.get());
     }
 
     // Block model methods
@@ -187,6 +200,77 @@ public class MGModelProvider extends ModelProvider {
         itemModels.itemModelOutput.accept(item.get(), new BlockModelWrapper.Unbaked(ModelTemplates.FLAT_HANDHELD_ITEM.create(item.get(), textureMapping, itemModels.modelOutput), List.of()));
     }
 
+    public void generateBow(ItemModelGenerators itemModels, Item bowItem) {
+        ItemModel.Unbaked baseModel;
+
+        if (bowItem == Items.BOW) {
+            baseModel = ItemModelUtils.plainModel(ModelLocationUtils.getModelLocation(bowItem));
+        }
+        else{
+            baseModel = ItemModelUtils.plainModel(createFlatItemModel(itemModels, bowItem, "", ModelTemplates.BOW));
+        }
+
+        ItemModel.Unbaked basePulling0 = ItemModelUtils.plainModel(itemModels.createFlatItemModel(bowItem, "_pulling_0", ModelTemplates.BOW));
+        ItemModel.Unbaked basePulling1 = ItemModelUtils.plainModel(itemModels.createFlatItemModel(bowItem, "_pulling_1", ModelTemplates.BOW));
+        ItemModel.Unbaked basePulling2 = ItemModelUtils.plainModel(itemModels.createFlatItemModel(bowItem, "_pulling_2", ModelTemplates.BOW));
+
+        ItemModel.Unbaked bronzePulling0 = ItemModelUtils.plainModel(createFlatItemModel(itemModels, bowItem, "_bronze_arrow_pulling_0", ModelTemplates.BOW));
+        ItemModel.Unbaked bronzePulling1 = ItemModelUtils.plainModel(createFlatItemModel(itemModels, bowItem, "_bronze_arrow_pulling_1", ModelTemplates.BOW));
+        ItemModel.Unbaked bronzePulling2 = ItemModelUtils.plainModel(createFlatItemModel(itemModels, bowItem, "_bronze_arrow_pulling_2", ModelTemplates.BOW));
+
+        ItemModel.Unbaked copperPulling0 = ItemModelUtils.plainModel(createFlatItemModel(itemModels, bowItem, "_copper_arrow_pulling_0", ModelTemplates.BOW));
+        ItemModel.Unbaked copperPulling1 = ItemModelUtils.plainModel(createFlatItemModel(itemModels, bowItem, "_copper_arrow_pulling_1", ModelTemplates.BOW));
+        ItemModel.Unbaked copperPulling2 = ItemModelUtils.plainModel(createFlatItemModel(itemModels, bowItem, "_copper_arrow_pulling_2", ModelTemplates.BOW));
+
+        ItemModel.Unbaked enderitePulling0 = ItemModelUtils.plainModel(createFlatItemModel(itemModels, bowItem, "_enderite_arrow_pulling_0", ModelTemplates.BOW));
+        ItemModel.Unbaked enderitePulling1 = ItemModelUtils.plainModel(createFlatItemModel(itemModels, bowItem, "_enderite_arrow_pulling_1", ModelTemplates.BOW));
+        ItemModel.Unbaked enderitePulling2 = ItemModelUtils.plainModel(createFlatItemModel(itemModels, bowItem, "_enderite_arrow_pulling_2", ModelTemplates.BOW));
+
+        ItemModel.Unbaked rubyPulling0 = ItemModelUtils.plainModel(createFlatItemModel(itemModels, bowItem, "_ruby_arrow_pulling_0", ModelTemplates.BOW));
+        ItemModel.Unbaked rubyPulling1 = ItemModelUtils.plainModel(createFlatItemModel(itemModels, bowItem, "_ruby_arrow_pulling_1", ModelTemplates.BOW));
+        ItemModel.Unbaked rubyPulling2 = ItemModelUtils.plainModel(createFlatItemModel(itemModels, bowItem, "_ruby_arrow_pulling_2", ModelTemplates.BOW));
+
+        ItemModel.Unbaked steelPulling0 = ItemModelUtils.plainModel(createFlatItemModel(itemModels, bowItem, "_steel_arrow_pulling_0", ModelTemplates.BOW));
+        ItemModel.Unbaked steelPulling1 = ItemModelUtils.plainModel(createFlatItemModel(itemModels, bowItem, "_steel_arrow_pulling_1", ModelTemplates.BOW));
+        ItemModel.Unbaked steelPulling2 = ItemModelUtils.plainModel(createFlatItemModel(itemModels, bowItem, "_steel_arrow_pulling_2", ModelTemplates.BOW));
+
+        ItemModel.Unbaked titaniumPulling0 = ItemModelUtils.plainModel(createFlatItemModel(itemModels, bowItem, "_titanium_arrow_pulling_0", ModelTemplates.BOW));
+        ItemModel.Unbaked titaniumPulling1 = ItemModelUtils.plainModel(createFlatItemModel(itemModels, bowItem, "_titanium_arrow_pulling_1", ModelTemplates.BOW));
+        ItemModel.Unbaked titaniumPulling2 = ItemModelUtils.plainModel(createFlatItemModel(itemModels, bowItem, "_titanium_arrow_pulling_2", ModelTemplates.BOW));
+
+        itemModels.itemModelOutput.accept(
+                bowItem,
+                ItemModelUtils.select(
+                        new Arrow(),
+                        ItemModelUtils.conditional(ItemModelUtils.isUsingItem(), ItemModelUtils.rangeSelect(new UseDuration(false), 0.05F, basePulling0, ItemModelUtils.override(basePulling1, 0.65F), ItemModelUtils.override(basePulling2, 0.9F)), baseModel),
+                        ItemModelUtils.when(
+                                MGArrowItem.MGArrowType.BRONZE,
+                                ItemModelUtils.conditional(ItemModelUtils.isUsingItem(), ItemModelUtils.rangeSelect(new UseDuration(false), 0.05F, bronzePulling0, ItemModelUtils.override(bronzePulling1, 0.65F), ItemModelUtils.override(bronzePulling2, 0.9F)), baseModel)
+                        ),
+                        ItemModelUtils.when(
+                                MGArrowItem.MGArrowType.COPPER,
+                                ItemModelUtils.conditional(ItemModelUtils.isUsingItem(), ItemModelUtils.rangeSelect(new UseDuration(false), 0.05F, copperPulling0, ItemModelUtils.override(copperPulling1, 0.65F), ItemModelUtils.override(copperPulling2, 0.9F)), baseModel)
+                        ),
+                        ItemModelUtils.when(
+                                MGArrowItem.MGArrowType.ENDERITE,
+                                ItemModelUtils.conditional(ItemModelUtils.isUsingItem(), ItemModelUtils.rangeSelect(new UseDuration(false), 0.05F, enderitePulling0, ItemModelUtils.override(enderitePulling1, 0.65F), ItemModelUtils.override(enderitePulling2, 0.9F)), baseModel)
+                        ),
+                        ItemModelUtils.when(
+                                MGArrowItem.MGArrowType.RUBY,
+                                ItemModelUtils.conditional(ItemModelUtils.isUsingItem(), ItemModelUtils.rangeSelect(new UseDuration(false), 0.05F, rubyPulling0, ItemModelUtils.override(rubyPulling1, 0.65F), ItemModelUtils.override(rubyPulling2, 0.9F)), baseModel)
+                        ),
+                        ItemModelUtils.when(
+                                MGArrowItem.MGArrowType.STEEL,
+                                ItemModelUtils.conditional(ItemModelUtils.isUsingItem(), ItemModelUtils.rangeSelect(new UseDuration(false), 0.05F, steelPulling0, ItemModelUtils.override(steelPulling1, 0.65F), ItemModelUtils.override(steelPulling2, 0.9F)), baseModel)
+                        ),
+                        ItemModelUtils.when(
+                                MGArrowItem.MGArrowType.TITANIUM,
+                                ItemModelUtils.conditional(ItemModelUtils.isUsingItem(), ItemModelUtils.rangeSelect(new UseDuration(false), 0.05F, titaniumPulling0, ItemModelUtils.override(titaniumPulling1, 0.65F), ItemModelUtils.override(titaniumPulling2, 0.9F)), baseModel)
+                        )
+                )
+        );
+    }
+
     // Helper methods
     private ResourceLocation mcLoc(String path){
         return ResourceLocation.withDefaultNamespace(path);
@@ -208,6 +292,15 @@ public class MGModelProvider extends ModelProvider {
 
     private ResourceLocation itemLocation(String modelName){
         return ResourceLocation.fromNamespaceAndPath(MoreGears.MODID, "item/" + modelName);
+    }
+
+    public ResourceLocation createFlatItemModel(ItemModelGenerators itemModels, Item item, String suffix, ModelTemplate modelTemplate) {
+        return modelTemplate.create(getModelLocation(item, suffix), TextureMapping.layer0(getModelLocation(item, suffix)), itemModels.modelOutput);
+    }
+
+    public ResourceLocation getModelLocation(Item item, String suffix) {
+        ResourceLocation resourcelocation = ResourceLocation.fromNamespaceAndPath(MoreGears.MODID, getItemName(item));
+        return resourcelocation.withPath((p_386751_) -> "item/" + p_386751_ + suffix);
     }
 
     // Override methods

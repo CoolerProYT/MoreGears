@@ -161,6 +161,13 @@ public class MGItems {
     public static final DeferredItem<MGArrowItem> TITANIUM_ARROW = registerItem("titanium_arrow", properties -> new MGArrowItem(properties, 4.5D, MGEntities.TITANIUM_ARROW.get()));
     public static final DeferredItem<MGArrowItem> ENDERITE_ARROW = registerItem("enderite_arrow", properties -> new MGArrowItem(properties, 5.0D, MGEntities.ENDERITE_ARROW.get()));
 
+    public static final DeferredItem<BowItem> COPPER_BOW = registerItem("copper_bow", properties -> new BowItem(properties.durability(520).enchantable(1)));
+    public static final DeferredItem<BowItem> BRONZE_BOW = registerItem("bronze_bow", properties -> new BowItem(properties.durability(789).enchantable(1)));
+    public static final DeferredItem<BowItem> STEEL_BOW = registerItem("steel_bow", properties -> new BowItem(properties.durability(1115).enchantable(1)));
+    public static final DeferredItem<BowItem> RUBY_BOW = registerItem("ruby_bow", properties -> new BowItem(properties.durability(1442).enchantable(1)));
+    public static final DeferredItem<BowItem> TITANIUM_BOW = registerItem("titanium_bow", properties -> new BowItem(properties.durability(1763).enchantable(1)));
+    public static final DeferredItem<BowItem> ENDERITE_BOW = registerItem("enderite_bow", properties -> new BowItem(properties.fireResistant().enchantable(1).component(DataComponents.UNBREAKABLE, Unit.INSTANCE)));
+
     private static <T extends Item> DeferredItem<T> registerItem(String name, Function<Item.Properties, ? extends T> item){
         return ITEMS.registerItem(name, item);
     }

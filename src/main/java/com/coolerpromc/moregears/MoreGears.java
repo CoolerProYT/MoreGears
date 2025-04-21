@@ -2,12 +2,14 @@ package com.coolerpromc.moregears;
 
 import com.coolerpromc.moregears.block.MGBlocks;
 import com.coolerpromc.moregears.block.entity.MGBlockEntities;
+import com.coolerpromc.moregears.datagen.property.Arrow;
 import com.coolerpromc.moregears.entity.MGEntities;
 import com.coolerpromc.moregears.entity.renderer.MGArrowRenderer;
 import com.coolerpromc.moregears.item.MGCreativeTab;
 import com.coolerpromc.moregears.item.MGItems;
 import com.coolerpromc.moregears.recipe.MGRecipes;
 import com.coolerpromc.moregears.screen.MGMenuTypes;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.DispenserBlock;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
@@ -19,6 +21,7 @@ import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
+import net.neoforged.neoforge.client.event.RegisterSelectItemModelPropertyEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
 
@@ -75,6 +78,11 @@ public class MoreGears
             event.registerEntityRenderer(MGEntities.RUBY_ARROW.get(), context -> new MGArrowRenderer(context, MGArrowRenderer.getTextureLocation("ruby_arrow")));
             event.registerEntityRenderer(MGEntities.TITANIUM_ARROW.get(), context -> new MGArrowRenderer(context, MGArrowRenderer.getTextureLocation("titanium_arrow")));
             event.registerEntityRenderer(MGEntities.ENDERITE_ARROW.get(), context -> new MGArrowRenderer(context, MGArrowRenderer.getTextureLocation("enderite_arrow")));
+        }
+
+        @SubscribeEvent
+        public static void onRegisterSelectItemModelProperty(RegisterSelectItemModelPropertyEvent event) {
+            event.register(ResourceLocation.fromNamespaceAndPath(MoreGears.MODID, "select_bow"), Arrow.TYPE);
         }
     }
 }

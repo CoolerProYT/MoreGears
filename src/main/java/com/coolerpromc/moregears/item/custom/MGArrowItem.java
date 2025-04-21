@@ -1,8 +1,9 @@
 package com.coolerpromc.moregears.item.custom;
 
+import com.mojang.serialization.Codec;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Position;
-import net.minecraft.world.entity.Entity;
+import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.AbstractArrow;
@@ -47,5 +48,26 @@ public class MGArrowItem extends ArrowItem {
         arrow.setBaseDamage(baseDamage);
         arrow.pickup = AbstractArrow.Pickup.ALLOWED;
         return arrow;
+    }
+
+    public enum MGArrowType implements StringRepresentable {
+        COPPER("copper"),
+        BRONZE("bronze"),
+        STEEL("steel"),
+        RUBY("ruby"),
+        TITANIUM("titanium"),
+        ENDERITE("enderite");
+
+        public static final Codec<MGArrowItem.MGArrowType> CODEC = StringRepresentable.fromEnum(MGArrowItem.MGArrowType::values);
+        private final String name;
+
+        MGArrowType(String name) {
+            this.name = name;
+        }
+
+        @Override
+        public String getSerializedName() {
+            return name;
+        }
     }
 }

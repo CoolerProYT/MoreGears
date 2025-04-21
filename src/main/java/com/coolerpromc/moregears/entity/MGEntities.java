@@ -4,9 +4,6 @@ import com.coolerpromc.moregears.MoreGears;
 import com.coolerpromc.moregears.item.MGItems;
 import com.coolerpromc.moregears.item.custom.MGArrowEntity;
 import com.coolerpromc.moregears.item.custom.MGArrowItem;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.neoforged.bus.api.IEventBus;
@@ -25,11 +22,7 @@ public class MGEntities {
     public static final DeferredHolder<EntityType<?>, EntityType<MGArrowEntity>> ENDERITE_ARROW = registerArrow("enderite_arrow", MGItems.ENDERITE_ARROW);
 
     public static DeferredHolder<EntityType<?>, EntityType<MGArrowEntity>> registerArrow(String name, DeferredItem<MGArrowItem> item) {
-        return ENTITIES.register(name, () -> EntityType.Builder.<MGArrowEntity>of((entityType, level) -> new MGArrowEntity(entityType, level, item.toStack(1)), MobCategory.MISC)
-                .sized(0.5f, 0.5f)
-                .clientTrackingRange(4)
-                .updateInterval(20)
-                .build(ResourceKey.create(Registries.ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath(MoreGears.MODID, name))));
+        return ENTITIES.registerEntityType(name, (entityType, level) -> new MGArrowEntity(entityType, level, item.toStack(1)), MobCategory.MISC, builder -> builder.sized(0.5f, 0.5f).clientTrackingRange(4).updateInterval(20));
     }
 
     public static void register(IEventBus eventBus) {
