@@ -2,7 +2,11 @@ package com.coolerpromc.moregears.tool.bronze;
 
 import com.coolerpromc.moregears.util.MGTooltip;
 import net.minecraft.client.Minecraft;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -10,6 +14,7 @@ import net.minecraft.world.item.ToolMaterial;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.component.TooltipDisplay;
 import net.minecraft.world.level.block.state.BlockState;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.function.Consumer;
 
@@ -20,14 +25,22 @@ public class BronzePickaxe extends Item {
 
     @Override
     public float getDestroySpeed(ItemStack stack, BlockState state) {
+        boolean underwaterSpeed = stack.getOrDefault(DataComponents.ENCHANTMENT_GLINT_OVERRIDE, false);
+        System.out.println("Underwater Speed: " + underwaterSpeed);
         float originalSpeed = super.getDestroySpeed(stack, state);
+        return underwaterSpeed ? originalSpeed * 3f : originalSpeed;
+    }
 
-        Player player = Minecraft.getInstance().player;
-        if(player != null && player.isInWater()){
-            return originalSpeed * 2f;
+    @Override
+    public void inventoryTick(ItemStack itemStack, ServerLevel serverLevel, Entity entity, @Nullable EquipmentSlot p_401900_) {
+        if (entity instanceof Player player) {
+            if (player.isInWater()) {
+                player.getMainHandItem().set(DataComponents.ENCHANTMENT_GLINT_OVERRIDE, true);
+            } else {
+                player.getMainHandItem().remove(DataComponents.ENCHANTMENT_GLINT_OVERRIDE);
+            }
         }
-
-        return originalSpeed;
+        super.inventoryTick(itemStack, serverLevel, entity, p_401900_);
     }
 
     @Override
