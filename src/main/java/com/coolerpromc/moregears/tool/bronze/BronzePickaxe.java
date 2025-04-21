@@ -4,6 +4,7 @@ import com.coolerpromc.moregears.util.MGTooltip;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.item.TooltipContext;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -22,14 +23,21 @@ public class BronzePickaxe extends PickaxeItem {
 
     @Override
     public float getMiningSpeedMultiplier(ItemStack stack, BlockState state) {
+        boolean underwaterSpeed = stack.getOrCreateNbt().getBoolean("UnderwaterSpeed");
         float originalSpeed = super.getMiningSpeedMultiplier(stack, state);
+        return underwaterSpeed ? originalSpeed * 3f : originalSpeed;
+    }
 
-        PlayerEntity player = MinecraftClient.getInstance().player;
-        if(player != null && player.isInsideWaterOrBubbleColumn()){
-            return originalSpeed * 2f;
+    @Override
+    public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
+        if (entity instanceof PlayerEntity player) {
+            if (player.isInsideWaterOrBubbleColumn()) {
+                player.getMainHandStack().getOrCreateNbt().putBoolean("UnderwaterSpeed", true);
+            } else {
+                player.getMainHandStack().getOrCreateNbt().remove("UnderwaterSpeed");
+            }
         }
-
-        return originalSpeed;
+        super.inventoryTick(stack, world, entity, slot, selected);
     }
 
     @Override
