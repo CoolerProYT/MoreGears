@@ -117,5 +117,12 @@
   "item.moregears.titanium_arrow": "鈦箭",
   "entity.moregears.titanium_arrow": "鈦箭",
   "item.moregears.enderite_arrow": "末地合金礦箭",
-  "entity.moregears.enderite_arrow": "末地合金礦箭"
+  "entity.moregears.enderite_arrow": "末地合金礦箭",
+
+  "item.moregears.copper_bow": "銅弓",
+  "item.moregears.bronze_bow": "青銅弓",
+  "item.moregears.steel_bow": "鋼弓",
+  "item.moregears.ruby_bow": "紅寶石弓",
+  "item.moregears.titanium_bow": "鈦弓",
+  "item.moregears.enderite_bow": "末地合金弓"
 }

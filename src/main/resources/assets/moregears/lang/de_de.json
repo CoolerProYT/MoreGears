@@ -117,5 +117,12 @@
   "item.moregears.titanium_arrow": "Titaniumpfeil",
   "entity.moregears.titanium_arrow": "Titaniumpfeil",
   "item.moregears.enderite_arrow": "Enderitpfeil",
-  "entity.moregears.enderite_arrow": "Enderitpfeil"
+  "entity.moregears.enderite_arrow": "Enderitpfeil",
+
+  "item.moregears.copper_bow": "Kupferbogen",
+  "item.moregears.bronze_bow": "Bronzebogen",
+  "item.moregears.steel_bow": "Stahlbogen",
+  "item.moregears.ruby_bow": "Rubinbogen",
+  "item.moregears.titanium_bow": "Titanbogen",
+  "item.moregears.enderite_bow": "Enderitbogen"
 }

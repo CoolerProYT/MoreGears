@@ -117,5 +117,12 @@
   "item.moregears.titanium_arrow": "Titanium Arrow",
   "entity.moregears.titanium_arrow": "Titanium Arrow",
   "item.moregears.enderite_arrow": "Enderite Arrow",
-  "entity.moregears.enderite_arrow": "Enderite Arrow"
+  "entity.moregears.enderite_arrow": "Enderite Arrow",
+
+  "item.moregears.copper_bow": "Copper Bow",
+  "item.moregears.bronze_bow": "Bronze Bow",
+  "item.moregears.steel_bow": "Steel Bow",
+  "item.moregears.ruby_bow": "Ruby Bow",
+  "item.moregears.titanium_bow": "Titanium Bow",
+  "item.moregears.enderite_bow": "Enderite Bow"
 }

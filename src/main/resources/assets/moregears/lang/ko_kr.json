@@ -117,5 +117,13 @@
   "item.moregears.titanium_arrow": "티타늄 화살",
   "entity.moregears.titanium_arrow": "티타늄 화살",
   "item.moregears.enderite_arrow": "엔더라이트 화살",
-  "entity.moregears.enderite_arrow": "엔더라이트 화살"
+  "entity.moregears.enderite_arrow": "엔더라이트 화살",
+
+  "item.moregears.copper_bow": "구리 활",
+  "item.moregears.bronze_bow": "청동 활",
+  "item.moregears.steel_bow": "강철 활",
+  "item.moregears.ruby_bow": "루비 활",
+  "item.moregears.titanium_bow": "티타늄 활",
+  "item.moregears.enderite_bow": "엔더라이트 활"
+
 }

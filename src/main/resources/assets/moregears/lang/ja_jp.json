@@ -117,5 +117,13 @@
   "item.moregears.titanium_arrow": "チタンの矢",
   "entity.moregears.titanium_arrow": "チタンの矢",
   "item.moregears.enderite_arrow": "エンダライトの矢",
-  "entity.moregears.enderite_arrow": "エンダライトの矢"
+  "entity.moregears.enderite_arrow": "エンダライトの矢",
+
+  "item.moregears.copper_bow": "銅の弓",
+  "item.moregears.bronze_bow": "青銅の弓",
+  "item.moregears.steel_bow": "鋼の弓",
+  "item.moregears.ruby_bow": "ルビーの弓",
+  "item.moregears.titanium_bow": "チタンの弓",
+  "item.moregears.enderite_bow": "エンダライトの弓"
+
 }

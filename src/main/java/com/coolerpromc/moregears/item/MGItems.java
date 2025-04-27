@@ -166,7 +166,7 @@ public class MGItems {
     public static final DeferredItem<BowItem> STEEL_BOW = registerItem("steel_bow", properties -> new BowItem(properties.durability(1115).enchantable(1)));
     public static final DeferredItem<BowItem> RUBY_BOW = registerItem("ruby_bow", properties -> new BowItem(properties.durability(1442).enchantable(1)));
     public static final DeferredItem<BowItem> TITANIUM_BOW = registerItem("titanium_bow", properties -> new BowItem(properties.durability(1763).enchantable(1)));
-    public static final DeferredItem<BowItem> ENDERITE_BOW = registerItem("enderite_bow", properties -> new BowItem(properties.fireResistant().enchantable(1).component(DataComponents.UNBREAKABLE, Unit.INSTANCE)));
+    public static final DeferredItem<BowItem> ENDERITE_BOW = registerItem("enderite_bow", properties -> new BowItem(properties.fireResistant().durability(Integer.MAX_VALUE).enchantable(1).component(DataComponents.UNBREAKABLE, Unit.INSTANCE)));
 
     private static <T extends Item> DeferredItem<T> registerItem(String name, Function<Item.Properties, ? extends T> item){
         return ITEMS.registerItem(name, item);

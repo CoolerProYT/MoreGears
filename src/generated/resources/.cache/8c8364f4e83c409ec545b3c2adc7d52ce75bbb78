@@ -1,4 +1,4 @@
-// 1.21.5	2025-04-12T13:41:21.1983984	Tags for minecraft:item mod id vanilla
+// 1.21.5	2025-04-27T14:23:19.357232	Tags for minecraft:item mod id vanilla
 a5b4cc01d8cd536842cbdcba4e5261d9654eee4c data/c/tags/item/gems/ruby.json
 193d5192bb9fb60e8422288cf79b7a6b9392f9c4 data/c/tags/item/ingots/bronze.json
 339021a867f34d3823f8068df0dc056231437d07 data/c/tags/item/ingots/enderite.json
@@ -8,6 +8,7 @@ f0e3d3a909b0b91d0383201029ef45ec18c0f541 data/c/tags/item/ingots/titanium.json
 88845b607b2825d953c4c9211cb49b9c5ce80574 data/minecraft/tags/item/axes.json
 d3431e43ea8478dec55031712c073d7f8a22686c data/minecraft/tags/item/chest_armor.json
 f375209587d367af0e27a8dca0d926b218b2e91e data/minecraft/tags/item/enchantable/armor.json
+16201f238467315e568b6f930475f94cd880b906 data/minecraft/tags/item/enchantable/bow.json
 d3431e43ea8478dec55031712c073d7f8a22686c data/minecraft/tags/item/enchantable/chest_armor.json
 f375209587d367af0e27a8dca0d926b218b2e91e data/minecraft/tags/item/enchantable/equippable.json
 80fb7151c4a29773efc7931458da0ed63dcd4f50 data/minecraft/tags/item/enchantable/foot_armor.json

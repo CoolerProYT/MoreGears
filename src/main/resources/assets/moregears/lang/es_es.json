@@ -117,5 +117,12 @@
   "item.moregears.titanium_arrow": "Flecha de titanio",
   "entity.moregears.titanium_arrow": "Flecha de titanio",
   "item.moregears.enderite_arrow": "Flecha de enderita",
-  "entity.moregears.enderite_arrow": "Flecha de enderita"
+  "entity.moregears.enderite_arrow": "Flecha de enderita",
+
+  "item.moregears.copper_bow": "Arco de cobre",
+  "item.moregears.bronze_bow": "Arco de bronce",
+  "item.moregears.steel_bow": "Arco de acero",
+  "item.moregears.ruby_bow": "Arco de rubí",
+  "item.moregears.titanium_bow": "Arco de titanio",
+  "item.moregears.enderite_bow": "Arco de enderita"
 }

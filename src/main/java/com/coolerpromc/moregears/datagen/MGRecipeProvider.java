@@ -127,6 +127,13 @@ public class MGRecipeProvider extends RecipeProvider {
         arrowRecipe(output, MGItems.RUBY_INGOT, MGItems.RUBY_ARROW);
         arrowRecipe(output, MGItems.TITANIUM_INGOT, MGItems.TITANIUM_ARROW);
         arrowRecipe(output, MGItems.ENDERITE_INGOT, MGItems.ENDERITE_ARROW);
+
+        bowRecipe(output, Items.COPPER_INGOT, MGItems.COPPER_BOW);
+        bowRecipe(output, MGItems.BRONZE_INGOT, MGItems.BRONZE_BOW);
+        bowRecipe(output, MGItems.STEEL_INGOT, MGItems.STEEL_BOW);
+        bowRecipe(output, MGItems.RUBY_INGOT, MGItems.RUBY_BOW);
+        bowRecipe(output, MGItems.TITANIUM_INGOT, MGItems.TITANIUM_BOW);
+        bowRecipe(output, MGItems.ENDERITE_INGOT, MGItems.ENDERITE_BOW);
     }
 
     protected void armorSetRecipe(RecipeOutput output, HolderGetter<Item> items, ItemLike material, ItemLike helmet, ItemLike chestplate, ItemLike leggings, ItemLike boots){
@@ -250,6 +257,17 @@ public class MGRecipeProvider extends RecipeProvider {
                 .pattern("Y")
                 .unlockedBy(getHasName(ingot), this.has(ingot))
                 .save(output);
+    }
+
+    protected void bowRecipe(RecipeOutput output, ItemLike ingot, ItemLike outputItem){
+        ShapedRecipeBuilder.shaped(this.items, RecipeCategory.COMBAT, outputItem)
+                .define('#', ingot)
+                .define('X', Items.STRING)
+                .pattern(" #X")
+                .pattern("# X")
+                .pattern(" #X")
+                .unlockedBy(getHasName(ingot), this.has(ingot))
+                .save(this.output);
     }
 
     public static final class Runner extends RecipeProvider.Runner {

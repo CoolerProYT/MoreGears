@@ -117,5 +117,12 @@
   "item.moregears.titanium_arrow": "Palasong Titaniyo",
   "entity.moregears.titanium_arrow": "Palasong Titaniyo",
   "item.moregears.enderite_arrow": "Palasong Enderite",
-  "entity.moregears.enderite_arrow": "Palasong Enderite"
+  "entity.moregears.enderite_arrow": "Palasong Enderite",
+
+  "item.moregears.copper_bow": "Tansong Pana",
+  "item.moregears.bronze_bow": "Bronse na Pana",
+  "item.moregears.steel_bow": "Bakal na Pana",
+  "item.moregears.ruby_bow": "Rubing Pana",
+  "item.moregears.titanium_bow": "Titanium na Pana",
+  "item.moregears.enderite_bow": "Enderite na Pana"
 }
