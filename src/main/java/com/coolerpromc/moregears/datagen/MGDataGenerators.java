@@ -28,6 +28,6 @@ public class MGDataGenerators {
         MGBlockTagGenerator blockTagGenerator = event.addProvider(new MGBlockTagGenerator(packOutput, lookupProvider));
         event.addProvider(new MGItemTagGenerator(packOutput, lookupProvider, blockTagGenerator.contentsGetter()));
 
-        event.addProvider(new MGWorldGenProvider(packOutput, lookupProvider));
+        event.addProvider(new MGDatapackProvider(packOutput, lookupProvider));
     }
 }

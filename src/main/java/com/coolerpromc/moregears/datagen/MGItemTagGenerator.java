@@ -229,5 +229,32 @@ public class MGItemTagGenerator extends ItemTagsProvider {
 
         this.tag(MGTags.Items.GEMS_RUBY)
                 .add(MGItems.RUBY_INGOT.get());
+
+        this.tag(ItemTags.ARROWS).add(
+                MGItems.COPPER_ARROW.get(),
+                MGItems.BRONZE_ARROW.get(),
+                MGItems.STEEL_ARROW.get(),
+                MGItems.RUBY_ARROW.get(),
+                MGItems.TITANIUM_ARROW.get(),
+                MGItems.ENDERITE_ARROW.get()
+        );
+
+        this.tag(ItemTags.BOW_ENCHANTABLE).add(
+                MGItems.COPPER_BOW.get(),
+                MGItems.BRONZE_BOW.get(),
+                MGItems.STEEL_BOW.get(),
+                MGItems.RUBY_BOW.get(),
+                MGItems.TITANIUM_BOW.get(),
+                MGItems.ENDERITE_BOW.get()
+        );
+
+        this.tag(ItemTags.TRIM_MATERIALS).add(
+                MGItems.TIN_INGOT.get(),
+                MGItems.BRONZE_INGOT.get(),
+                MGItems.STEEL_INGOT.get(),
+                MGItems.RUBY_INGOT.get(),
+                MGItems.TITANIUM_INGOT.get(),
+                MGItems.ENDERITE_INGOT.get()
+        );
     }
 }
