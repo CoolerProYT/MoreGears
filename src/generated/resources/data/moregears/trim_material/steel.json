@@ -1,0 +1,9 @@
+{
+  "asset_name": "steel",
+  "description": {
+    "color": "#6E6B6B",
+    "translate": "trim_material.moregears.steel"
+  },
+  "ingredient": "moregears:steel_ingot",
+  "item_model_index": 0.5
+}

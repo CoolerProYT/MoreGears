@@ -40,20 +40,18 @@ public class MGItemModelProvider extends ItemModelProvider {
     @Override
     protected void registerModels() {
         final ResourceLocation RAW_ORE = textureLoc("template_raw_ore");
-        final ResourceLocation INGOT = textureLoc("template_ingot");
-        final ResourceLocation GEM = textureLoc("template_gem");
 
-        withExistingTexture(MGItems.RAW_TIN, RAW_ORE);
-        withExistingTexture(MGItems.RAW_RUBY, RAW_ORE);
-        withExistingTexture(MGItems.RAW_TITANIUM, RAW_ORE);
-        withExistingTexture(MGItems.RAW_ENDERITE, RAW_ORE);
+        basicItem(MGItems.RAW_TIN.get());
+        basicItem(MGItems.RAW_RUBY.get());
+        basicItem(MGItems.RAW_TITANIUM.get());
+        basicItem(MGItems.RAW_ENDERITE.get());
 
-        withExistingTexture(MGItems.TIN_INGOT, INGOT);
-        withExistingTexture(MGItems.BRONZE_INGOT, INGOT);
-        withExistingTexture(MGItems.STEEL_INGOT, INGOT);
-        withExistingTexture(MGItems.RUBY_INGOT, GEM);
-        withExistingTexture(MGItems.TITANIUM_INGOT, INGOT);
-        withExistingTexture(MGItems.ENDERITE_INGOT, INGOT);
+        basicItem(MGItems.TIN_INGOT.get());
+        basicItem(MGItems.BRONZE_INGOT.get());
+        basicItem(MGItems.STEEL_INGOT.get());
+        basicItem(MGItems.RUBY_INGOT.get());
+        basicItem(MGItems.TITANIUM_INGOT.get());
+        basicItem(MGItems.ENDERITE_INGOT.get());
 
         trimmedArmorItem(MGItems.COPPER_HELMET);
         trimmedArmorItem(MGItems.COPPER_CHESTPLATE);

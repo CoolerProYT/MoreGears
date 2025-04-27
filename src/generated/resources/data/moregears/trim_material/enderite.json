@@ -1,0 +1,9 @@
+{
+  "asset_name": "enderite",
+  "description": {
+    "color": "#5D3391",
+    "translate": "trim_material.moregears.enderite"
+  },
+  "ingredient": "moregears:enderite_ingot",
+  "item_model_index": 0.5
+}

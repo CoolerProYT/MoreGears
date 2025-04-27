@@ -29,6 +29,6 @@ public class MGDataGenerators {
         MGBlockTagGenerator blockTagGenerator = generator.addProvider(event.includeServer(), new MGBlockTagGenerator(packOutput, lookupProvider, existingFileHelper));
         generator.addProvider(event.includeServer(), new MGItemTagGenerator(packOutput, lookupProvider, blockTagGenerator.contentsGetter(), existingFileHelper));
 
-        generator.addProvider(event.includeServer(), new MGWorldGenProvider(packOutput, lookupProvider));
+        generator.addProvider(event.includeServer(), new MGDatapackProvider(packOutput, lookupProvider));
     }
 }

@@ -1,0 +1,9 @@
+{
+  "asset_name": "bronze",
+  "description": {
+    "color": "#F1C232",
+    "translate": "trim_material.moregears.bronze"
+  },
+  "ingredient": "moregears:bronze_ingot",
+  "item_model_index": 0.5
+}
