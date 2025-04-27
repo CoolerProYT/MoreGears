@@ -1,4 +1,4 @@
-// 1.21.5	2025-04-27T14:23:19.357232	Tags for minecraft:item mod id vanilla
+// 1.21.5	2025-04-27T16:52:29.5892198	Tags for minecraft:item mod id vanilla
 a5b4cc01d8cd536842cbdcba4e5261d9654eee4c data/c/tags/item/gems/ruby.json
 193d5192bb9fb60e8422288cf79b7a6b9392f9c4 data/c/tags/item/ingots/bronze.json
 339021a867f34d3823f8068df0dc056231437d07 data/c/tags/item/ingots/enderite.json
@@ -22,3 +22,4 @@ f375209587d367af0e27a8dca0d926b218b2e91e data/minecraft/tags/item/enchantable/eq
 df44cbf81355492c38229f01261f32d7b1f1f40d data/minecraft/tags/item/shovels.json
 dcf3ff4dad887998c71bc9d792907b4a153ef94c data/minecraft/tags/item/swords.json
 f375209587d367af0e27a8dca0d926b218b2e91e data/minecraft/tags/item/trimmable_armor.json
+5303ef92e65e439745e7969f9f1b461c6d2d0b9f data/minecraft/tags/item/trim_materials.json

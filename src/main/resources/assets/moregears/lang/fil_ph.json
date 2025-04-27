@@ -124,5 +124,12 @@
   "item.moregears.steel_bow": "Bakal na Pana",
   "item.moregears.ruby_bow": "Rubing Pana",
   "item.moregears.titanium_bow": "Titanium na Pana",
-  "item.moregears.enderite_bow": "Enderite na Pana"
+  "item.moregears.enderite_bow": "Enderite na Pana",
+
+  "trim_material.moregears.tin": "Latang Materyal",
+  "trim_material.moregears.bronze": "Bronse na Materyal",
+  "trim_material.moregears.steel": "Bakal na Materyal",
+  "trim_material.moregears.ruby": "Rubing Materyal",
+  "trim_material.moregears.titanium": "Titanium na Materyal",
+  "trim_material.moregears.enderite": "Enderite na Materyal"
 }

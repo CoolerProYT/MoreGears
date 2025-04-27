@@ -124,5 +124,12 @@
   "item.moregears.steel_bow": "Arco de acero",
   "item.moregears.ruby_bow": "Arco de rubí",
   "item.moregears.titanium_bow": "Arco de titanio",
-  "item.moregears.enderite_bow": "Arco de enderita"
+  "item.moregears.enderite_bow": "Arco de enderita",
+
+  "trim_material.moregears.tin": "Material de estaño",
+  "trim_material.moregears.bronze": "Material de bronce",
+  "trim_material.moregears.steel": "Material de acero",
+  "trim_material.moregears.ruby": "Material de rubí",
+  "trim_material.moregears.titanium": "Material de titanio",
+  "trim_material.moregears.enderite": "Material de enderita"
 }

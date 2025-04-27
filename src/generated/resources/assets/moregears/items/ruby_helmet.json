@@ -78,6 +78,48 @@
           "model": "moregears:item/ruby_helmet_resin_trim"
         },
         "when": "minecraft:resin"
+      },
+      {
+        "model": {
+          "type": "minecraft:model",
+          "model": "moregears:item/ruby_helmet_tin_trim"
+        },
+        "when": "moregears:tin"
+      },
+      {
+        "model": {
+          "type": "minecraft:model",
+          "model": "moregears:item/ruby_helmet_bronze_trim"
+        },
+        "when": "moregears:bronze"
+      },
+      {
+        "model": {
+          "type": "minecraft:model",
+          "model": "moregears:item/ruby_helmet_steel_trim"
+        },
+        "when": "moregears:steel"
+      },
+      {
+        "model": {
+          "type": "minecraft:model",
+          "model": "moregears:item/ruby_helmet_ruby_trim"
+        },
+        "when": "moregears:ruby"
+      },
+      {
+        "model": {
+          "type": "minecraft:model",
+          "model": "moregears:item/ruby_helmet_titanium_trim"
+        },
+        "when": "moregears:titanium"
+      },
+      {
+        "model": {
+          "type": "minecraft:model",
+          "model": "moregears:item/ruby_helmet_enderite_trim"
+        },
+        "when": "moregears:enderite"
       }
     ],
     "fallback": {

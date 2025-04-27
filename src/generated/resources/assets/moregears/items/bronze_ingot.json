@@ -1,12 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "moregears:item/bronze_ingot",
-    "tints": [
-      {
-        "type": "minecraft:constant",
-        "value": -933326
-      }
-    ]
+    "model": "moregears:item/bronze_ingot"
   }
 }

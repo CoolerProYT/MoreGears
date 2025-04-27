@@ -124,5 +124,12 @@
   "item.moregears.steel_bow": "Steel Bow",
   "item.moregears.ruby_bow": "Ruby Bow",
   "item.moregears.titanium_bow": "Titanium Bow",
-  "item.moregears.enderite_bow": "Enderite Bow"
+  "item.moregears.enderite_bow": "Enderite Bow",
+
+  "trim_material.moregears.tin": "Tin Material",
+  "trim_material.moregears.bronze": "Bronze Material",
+  "trim_material.moregears.steel": "Steel Material",
+  "trim_material.moregears.ruby": "Ruby Material",
+  "trim_material.moregears.titanium": "Titanium Material",
+  "trim_material.moregears.enderite": "Enderite Material"
 }

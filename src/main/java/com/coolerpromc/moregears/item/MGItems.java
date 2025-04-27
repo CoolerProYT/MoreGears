@@ -13,6 +13,7 @@ import com.coolerpromc.moregears.tool.bronze.BronzeHoe;
 import com.coolerpromc.moregears.tool.bronze.BronzePickaxe;
 import com.coolerpromc.moregears.tool.bronze.BronzeShovel;
 import com.coolerpromc.moregears.tool.steel.*;
+import com.coolerpromc.moregears.trim.MGTrimMaterials;
 import com.coolerpromc.moregears.util.MGColors;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.component.DataComponents;
@@ -36,12 +37,12 @@ public class MGItems {
     public static final DeferredItem<MGRawOre> RAW_TITANIUM = registerItem("raw_titanium", properties -> new MGRawOre(properties, MGColors.TITANIUM_COLOR));
     public static final DeferredItem<MGRawOre> RAW_ENDERITE = registerItem("raw_enderite", properties -> new MGRawOre(properties, MGColors.ENDERITE_COLOR));
 
-    public static final DeferredItem<MGIngot> TIN_INGOT = registerItem("tin_ingot", properties -> new MGIngot(properties, MGColors.TIN_COLOR));
-    public static final DeferredItem<MGIngot> BRONZE_INGOT = registerItem("bronze_ingot", properties -> new MGIngot(properties, MGColors.BRONZE_COLOR));
-    public static final DeferredItem<MGIngot> STEEL_INGOT = registerItem("steel_ingot", properties -> new MGIngot(properties, MGColors.STEEL_COLOR));
-    public static final DeferredItem<MGIngot> RUBY_INGOT = registerItem("ruby", properties -> new MGIngot(properties, MGColors.RUBY_COLOR));
-    public static final DeferredItem<MGIngot> TITANIUM_INGOT = registerItem("titanium_ingot", properties -> new MGIngot(properties, MGColors.TITANIUM_COLOR));
-    public static final DeferredItem<MGIngot> ENDERITE_INGOT = registerItem("enderite_ingot", properties -> new MGIngot(properties, MGColors.ENDERITE_COLOR));
+    public static final DeferredItem<MGIngot> TIN_INGOT = registerItem("tin_ingot", properties -> new MGIngot(properties.trimMaterial(MGTrimMaterials.TIN), MGColors.TIN_COLOR));
+    public static final DeferredItem<MGIngot> BRONZE_INGOT = registerItem("bronze_ingot", properties -> new MGIngot(properties.trimMaterial(MGTrimMaterials.BRONZE), MGColors.BRONZE_COLOR));
+    public static final DeferredItem<MGIngot> STEEL_INGOT = registerItem("steel_ingot", properties -> new MGIngot(properties.trimMaterial(MGTrimMaterials.STEEL), MGColors.STEEL_COLOR));
+    public static final DeferredItem<MGIngot> RUBY_INGOT = registerItem("ruby", properties -> new MGIngot(properties.trimMaterial(MGTrimMaterials.RUBY), MGColors.RUBY_COLOR));
+    public static final DeferredItem<MGIngot> TITANIUM_INGOT = registerItem("titanium_ingot", properties -> new MGIngot(properties.trimMaterial(MGTrimMaterials.TITANIUM), MGColors.TITANIUM_COLOR));
+    public static final DeferredItem<MGIngot> ENDERITE_INGOT = registerItem("enderite_ingot", properties -> new MGIngot(properties.trimMaterial(MGTrimMaterials.ENDERITE), MGColors.ENDERITE_COLOR));
 
     public static final DeferredItem<MGArmorItem> COPPER_HELMET = registerItem("copper_helmet", properties -> new CopperArmor(ArmorType.HELMET, properties));
     public static final DeferredItem<MGArmorItem> COPPER_CHESTPLATE = registerItem("copper_chestplate", properties -> new CopperArmor(ArmorType.CHESTPLATE, properties));

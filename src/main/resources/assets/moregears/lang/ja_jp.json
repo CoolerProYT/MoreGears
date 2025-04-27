@@ -124,6 +124,12 @@
   "item.moregears.steel_bow": "鋼の弓",
   "item.moregears.ruby_bow": "ルビーの弓",
   "item.moregears.titanium_bow": "チタンの弓",
-  "item.moregears.enderite_bow": "エンダライトの弓"
+  "item.moregears.enderite_bow": "エンダライトの弓",
 
+  "trim_material.moregears.tin": "錫の素材",
+  "trim_material.moregears.bronze": "青銅の素材",
+  "trim_material.moregears.steel": "鋼の素材",
+  "trim_material.moregears.ruby": "ルビーの素材",
+  "trim_material.moregears.titanium": "チタンの素材",
+  "trim_material.moregears.enderite": "エンダライトの素材"
 }

@@ -78,6 +78,48 @@
           "model": "moregears:item/steel_leggings_resin_trim"
         },
         "when": "minecraft:resin"
+      },
+      {
+        "model": {
+          "type": "minecraft:model",
+          "model": "moregears:item/steel_leggings_tin_trim"
+        },
+        "when": "moregears:tin"
+      },
+      {
+        "model": {
+          "type": "minecraft:model",
+          "model": "moregears:item/steel_leggings_bronze_trim"
+        },
+        "when": "moregears:bronze"
+      },
+      {
+        "model": {
+          "type": "minecraft:model",
+          "model": "moregears:item/steel_leggings_steel_trim"
+        },
+        "when": "moregears:steel"
+      },
+      {
+        "model": {
+          "type": "minecraft:model",
+          "model": "moregears:item/steel_leggings_ruby_trim"
+        },
+        "when": "moregears:ruby"
+      },
+      {
+        "model": {
+          "type": "minecraft:model",
+          "model": "moregears:item/steel_leggings_titanium_trim"
+        },
+        "when": "moregears:titanium"
+      },
+      {
+        "model": {
+          "type": "minecraft:model",
+          "model": "moregears:item/steel_leggings_enderite_trim"
+        },
+        "when": "moregears:enderite"
       }
     ],
     "fallback": {

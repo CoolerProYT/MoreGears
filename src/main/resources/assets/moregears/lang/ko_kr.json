@@ -124,6 +124,12 @@
   "item.moregears.steel_bow": "강철 활",
   "item.moregears.ruby_bow": "루비 활",
   "item.moregears.titanium_bow": "티타늄 활",
-  "item.moregears.enderite_bow": "엔더라이트 활"
+  "item.moregears.enderite_bow": "엔더라이트 활",
 
+  "trim_material.moregears.tin": "주석 재료",
+  "trim_material.moregears.bronze": "청동 재료",
+  "trim_material.moregears.steel": "강철 재료",
+  "trim_material.moregears.ruby": "루비 재료",
+  "trim_material.moregears.titanium": "티타늄 재료",
+  "trim_material.moregears.enderite": "엔더라이트 재료"
 }
