@@ -1,5 +1,6 @@
 package com.coolerpromc.moregears.datagen;
 
+import com.coolerpromc.moregears.trim.MGTrimMaterials;
 import com.coolerpromc.moregears.worldgen.MGConfiguredFeatures;
 import com.coolerpromc.moregears.worldgen.MGPlacedFeatures;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
@@ -17,12 +18,13 @@ public class MoreGearsDataGenerator implements DataGeneratorEntrypoint {
 		pack.addProvider(MGBlockTagGenerator::new);
 		pack.addProvider(MGItemTagProvider::new);
 		pack.addProvider(MGRecipeProvider::new);
-		pack.addProvider(MGWorldGenProvider::new);
+		pack.addProvider(MGDatapackProvider::new);
 	}
 
 	@Override
 	public void buildRegistry(RegistryBuilder registryBuilder) {
 		registryBuilder.addRegistry(RegistryKeys.CONFIGURED_FEATURE, MGConfiguredFeatures::bootstrap);
 		registryBuilder.addRegistry(RegistryKeys.PLACED_FEATURE, MGPlacedFeatures::bootstrap);
+		registryBuilder.addRegistry(RegistryKeys.TRIM_MATERIAL, MGTrimMaterials::bootstrap);
 	}
 }

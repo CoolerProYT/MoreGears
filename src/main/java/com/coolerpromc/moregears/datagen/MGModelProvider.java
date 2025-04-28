@@ -37,17 +37,17 @@ public class MGModelProvider extends FabricModelProvider {
 
     @Override
     public void generateItemModels(ItemModelGenerator itemModelGenerator) {
-        withExistingTexture(itemModelGenerator, MGItems.RAW_TIN, RAW_ORE);
-        withExistingTexture(itemModelGenerator, MGItems.RAW_RUBY, RAW_ORE);
-        withExistingTexture(itemModelGenerator, MGItems.RAW_TITANIUM, RAW_ORE);
-        withExistingTexture(itemModelGenerator, MGItems.RAW_ENDERITE, RAW_ORE);
+        itemModelGenerator.register(MGItems.RAW_TIN, Models.GENERATED);
+        itemModelGenerator.register(MGItems.RAW_RUBY, Models.GENERATED);
+        itemModelGenerator.register(MGItems.RAW_TITANIUM, Models.GENERATED);
+        itemModelGenerator.register(MGItems.RAW_ENDERITE, Models.GENERATED);
 
-        withExistingTexture(itemModelGenerator, MGItems.TIN_INGOT, INGOT);
-        withExistingTexture(itemModelGenerator, MGItems.BRONZE_INGOT, INGOT);
-        withExistingTexture(itemModelGenerator, MGItems.STEEL_INGOT, INGOT);
-        withExistingTexture(itemModelGenerator, MGItems.RUBY_INGOT, GEM);
-        withExistingTexture(itemModelGenerator, MGItems.TITANIUM_INGOT, INGOT);
-        withExistingTexture(itemModelGenerator, MGItems.ENDERITE_INGOT, INGOT);
+        itemModelGenerator.register(MGItems.TIN_INGOT, Models.GENERATED);
+        itemModelGenerator.register(MGItems.BRONZE_INGOT, Models.GENERATED);
+        itemModelGenerator.register(MGItems.STEEL_INGOT, Models.GENERATED);
+        itemModelGenerator.register(MGItems.RUBY_INGOT, Models.GENERATED);
+        itemModelGenerator.register(MGItems.TITANIUM_INGOT, Models.GENERATED);
+        itemModelGenerator.register(MGItems.ENDERITE_INGOT, Models.GENERATED);
 
         itemModelGenerator.registerArmor(MGItems.COPPER_HELMET);
         itemModelGenerator.registerArmor(MGItems.COPPER_CHESTPLATE);
@@ -117,13 +117,6 @@ public class MGModelProvider extends FabricModelProvider {
         itemModelGenerator.register(MGItems.ENDERITE_PICKAXE, Models.HANDHELD);
         itemModelGenerator.register(MGItems.ENDERITE_AXE, Models.HANDHELD);
         itemModelGenerator.register(MGItems.ENDERITE_HOE, Models.HANDHELD);
-    }
-
-    private <T extends Item> void withExistingTexture(ItemModelGenerator itemModelGenerator, T item, Identifier texture){
-        Map<TextureKey, Identifier> textureMapConverted = new HashMap<>();
-        textureMapConverted.put(TextureKey.LAYER0, texture);
-
-        itemModelGenerator.writer.accept(itemTextureLoc(Registries.ITEM.getId(item).getPath()), () -> Models.GENERATED.createJson(itemTextureLoc(Registries.ITEM.getId(item).getPath()), textureMapConverted));
     }
 
     private <T extends Block> void simpleBlockWithItem(BlockStateModelGenerator blockStateModelGenerator, T block){
