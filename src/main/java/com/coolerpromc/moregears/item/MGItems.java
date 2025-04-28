@@ -3,6 +3,8 @@ package com.coolerpromc.moregears.item;
 import com.coolerpromc.moregears.MoreGears;
 import com.coolerpromc.moregears.armor.MGArmorItem;
 import com.coolerpromc.moregears.armor.custom.*;
+import com.coolerpromc.moregears.entity.MGEntities;
+import com.coolerpromc.moregears.item.custom.MGArrowItem;
 import com.coolerpromc.moregears.item.custom.MGIngot;
 import com.coolerpromc.moregears.item.custom.MGRawOre;
 import com.coolerpromc.moregears.tool.MGToolMaterials;
@@ -149,6 +151,20 @@ public class MGItems {
             List.of(Identifier.ofVanilla("item/empty_slot_ingot")),
             new Item.Settings().registryKey(createItemKey("enderite_upgrade_smithing_template"))
     ));
+
+    public static final MGArrowItem COPPER_ARROW = registerItem("copper_arrow", new MGArrowItem(new Item.Settings().registryKey(createItemKey("copper_arrow")), 1.75D, MGEntities.COPPER_ARROW));
+    public static final MGArrowItem BRONZE_ARROW = registerItem("bronze_arrow", new MGArrowItem(new Item.Settings().registryKey(createItemKey("bronze_arrow")), 2.5D, MGEntities.BRONZE_ARROW));
+    public static final MGArrowItem STEEL_ARROW = registerItem("steel_arrow", new MGArrowItem(new Item.Settings().registryKey(createItemKey("steel_arrow")), 3.0D, MGEntities.STEEL_ARROW));
+    public static final MGArrowItem RUBY_ARROW = registerItem("ruby_arrow", new MGArrowItem(new Item.Settings().registryKey(createItemKey("ruby_arrow")), 3.5D, MGEntities.RUBY_ARROW));
+    public static final MGArrowItem TITANIUM_ARROW = registerItem("titanium_arrow", new MGArrowItem(new Item.Settings().registryKey(createItemKey("titanium_arrow")), 4.5D, MGEntities.TITANIUM_ARROW));
+    public static final MGArrowItem ENDERITE_ARROW = registerItem("enderite_arrow", new MGArrowItem(new Item.Settings().registryKey(createItemKey("enderite_arrow")), 5.0D, MGEntities.ENDERITE_ARROW));
+
+    public static final BowItem COPPER_BOW = registerItem("copper_bow", new BowItem(new Item.Settings().registryKey(createItemKey("copper_bow")).maxDamage(520).enchantable(1)));
+    public static final BowItem BRONZE_BOW = registerItem("bronze_bow", new BowItem(new Item.Settings().registryKey(createItemKey("bronze_bow")).maxDamage(789).enchantable(1)));
+    public static final BowItem STEEL_BOW = registerItem("steel_bow", new BowItem(new Item.Settings().registryKey(createItemKey("steel_bow")).maxDamage(1115).enchantable(1)));
+    public static final BowItem RUBY_BOW = registerItem("ruby_bow", new BowItem(new Item.Settings().registryKey(createItemKey("ruby_bow")).maxDamage(1442).enchantable(1)));
+    public static final BowItem TITANIUM_BOW = registerItem("titanium_bow", new BowItem(new Item.Settings().registryKey(createItemKey("titanium_bow")).maxDamage(1763).enchantable(1)));
+    public static final BowItem ENDERITE_BOW = registerItem("enderite_bow", new BowItem(new Item.Settings().registryKey(createItemKey("enderite_bow")).fireproof().maxDamage(Integer.MAX_VALUE).enchantable(1).component(DataComponentTypes.UNBREAKABLE, new UnbreakableComponent(true))));
 
     private static <T extends Item> T registerItem(String name, T item) {
         return Registry.register(Registries.ITEM, Identifier.of(MoreGears.MODID, name), item);

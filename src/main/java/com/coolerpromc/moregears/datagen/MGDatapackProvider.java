@@ -7,8 +7,8 @@ import net.minecraft.registry.RegistryWrapper;
 
 import java.util.concurrent.CompletableFuture;
 
-public class MGWorldGenProvider extends FabricDynamicRegistryProvider {
-    public MGWorldGenProvider(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
+public class MGDatapackProvider extends FabricDynamicRegistryProvider {
+    public MGDatapackProvider(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
         super(output, registriesFuture);
     }
 
@@ -16,6 +16,7 @@ public class MGWorldGenProvider extends FabricDynamicRegistryProvider {
     protected void configure(RegistryWrapper.WrapperLookup wrapperLookup, Entries entries) {
         entries.addAll(wrapperLookup.getOrThrow(RegistryKeys.CONFIGURED_FEATURE));
         entries.addAll(wrapperLookup.getOrThrow(RegistryKeys.PLACED_FEATURE));
+        entries.addAll(wrapperLookup.getOrThrow(RegistryKeys.TRIM_MATERIAL));
     }
 
     @Override
