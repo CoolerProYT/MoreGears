@@ -1,6 +1,5 @@
 package com.coolerpromc.moregears.item.custom;
 
-import com.coolerpromc.moregears.item.MGItems;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.AbstractArrow;
@@ -42,6 +41,6 @@ public class MGArrowEntity extends AbstractArrow {
 
     @Override
     protected ItemStack getDefaultPickupItem() {
-        return MGItems.ENDERITE_ARROW.toStack(1);
+        return stack;
     }
 }
