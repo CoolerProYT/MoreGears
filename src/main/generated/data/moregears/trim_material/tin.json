@@ -1,0 +1,8 @@
+{
+  "asset_name": "tin",
+  "description": {
+    "color": "#9DC6E0",
+    "translate": "trim_material.moregears.tin"
+  },
+  "ingredient": "moregears:tin_ingot"
+}

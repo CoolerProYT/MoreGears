@@ -1,4 +1,10 @@
 // 1.21.4	-999999999-01-01T00:00:00	More Gears/
+833da5c70b26811fd0018232467b5f909786b18e data/moregears/trim_material/bronze.json
+fca79950e6949f6c6854fe2ba08eabbf7904da39 data/moregears/trim_material/enderite.json
+64586c2db597a90cebb548b8de10316e96f6c5c5 data/moregears/trim_material/ruby.json
+3220e8b7236bd80da9c09e9b6013b6494b2d8004 data/moregears/trim_material/steel.json
+7bf4f27be5565cf602a284c0c5bef0b4c868f50f data/moregears/trim_material/tin.json
+37bf0d8c94895623f082c096b64aaedcd4364c5a data/moregears/trim_material/titanium.json
 a6eb42ba68c20391e7652d872e8c83fa9078458a data/moregears/worldgen/configured_feature/end_enderite_ore.json
 9886e2eba858eebf8f1be9d8eac0a819c3e4dead data/moregears/worldgen/configured_feature/nether_titanium_ore.json
 250ae663c175e8cba2ae1ad591e4d34718301244 data/moregears/worldgen/configured_feature/ruby_ore.json
