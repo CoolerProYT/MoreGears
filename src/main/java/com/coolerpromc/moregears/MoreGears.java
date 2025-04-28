@@ -2,10 +2,14 @@ package com.coolerpromc.moregears;
 
 import com.coolerpromc.moregears.block.MGBlocks;
 import com.coolerpromc.moregears.block.entity.MGBlockEntities;
+import com.coolerpromc.moregears.datagen.property.Arrow;
+import com.coolerpromc.moregears.entity.MGEntities;
+import com.coolerpromc.moregears.entity.renderer.MGArrowRenderer;
 import com.coolerpromc.moregears.item.MGCreativeTab;
 import com.coolerpromc.moregears.item.MGItems;
 import com.coolerpromc.moregears.recipe.MGRecipes;
 import com.coolerpromc.moregears.screen.MGMenuTypes;
+import net.minecraft.world.level.block.DispenserBlock;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -15,6 +19,7 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
 
@@ -27,6 +32,7 @@ public class MoreGears
     {
         modEventBus.addListener(this::commonSetup);
 
+        MGEntities.register(modEventBus);
         MGItems.register(modEventBus);
         MGBlocks.register(modEventBus);
         MGBlockEntities.register(modEventBus);
@@ -41,6 +47,12 @@ public class MoreGears
 
     private void commonSetup(final FMLCommonSetupEvent event)
     {
+        DispenserBlock.registerProjectileBehavior(MGItems.COPPER_ARROW);
+        DispenserBlock.registerProjectileBehavior(MGItems.BRONZE_ARROW);
+        DispenserBlock.registerProjectileBehavior(MGItems.STEEL_ARROW);
+        DispenserBlock.registerProjectileBehavior(MGItems.RUBY_ARROW);
+        DispenserBlock.registerProjectileBehavior(MGItems.TITANIUM_ARROW);
+        DispenserBlock.registerProjectileBehavior(MGItems.ENDERITE_ARROW);
     }
 
     @SubscribeEvent
@@ -54,6 +66,17 @@ public class MoreGears
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event)
         {
+            Arrow.addBowItemProperties();
+        }
+
+        @SubscribeEvent
+        public static void onEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
+            event.registerEntityRenderer(MGEntities.COPPER_ARROW.get(), context -> new MGArrowRenderer(context, MGArrowRenderer.getTextureLocation("copper_arrow")));
+            event.registerEntityRenderer(MGEntities.BRONZE_ARROW.get(), context -> new MGArrowRenderer(context, MGArrowRenderer.getTextureLocation("bronze_arrow")));
+            event.registerEntityRenderer(MGEntities.STEEL_ARROW.get(), context -> new MGArrowRenderer(context, MGArrowRenderer.getTextureLocation("steel_arrow")));
+            event.registerEntityRenderer(MGEntities.RUBY_ARROW.get(), context -> new MGArrowRenderer(context, MGArrowRenderer.getTextureLocation("ruby_arrow")));
+            event.registerEntityRenderer(MGEntities.TITANIUM_ARROW.get(), context -> new MGArrowRenderer(context, MGArrowRenderer.getTextureLocation("titanium_arrow")));
+            event.registerEntityRenderer(MGEntities.ENDERITE_ARROW.get(), context -> new MGArrowRenderer(context, MGArrowRenderer.getTextureLocation("enderite_arrow")));
         }
     }
 }
