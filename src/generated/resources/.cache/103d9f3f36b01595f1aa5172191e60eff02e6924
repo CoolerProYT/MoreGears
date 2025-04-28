@@ -1,8 +1,14 @@
-// 1.20.1	2025-04-06T13:47:05.0754525	Registries
+// 1.20.1	2025-04-28T14:36:34.7398957	Registries
 d53ed369b72ab1dc07cd432dc34b2db01453ced2 data/moregears/forge/biome_modifier/add_end_enderite_ore.json
 f363f59128250485647ea0b2c3609dd1d307c6b6 data/moregears/forge/biome_modifier/add_nether_titanium_ore.json
 99710ae9bcc7d8d3ebdd4fa4e219ff7298f30fde data/moregears/forge/biome_modifier/add_ruby_ore.json
 d0add43f2152cafd72e3b2f3ae7454dc7b658ff6 data/moregears/forge/biome_modifier/add_tin_ore.json
+605cb26972ac874b9843a22637b842e8a0c6a544 data/moregears/trim_material/bronze.json
+a3cb6ee95ec6b33fe02615eabfb7c3d55b375b75 data/moregears/trim_material/enderite.json
+bb2a4bf4b0bad0ce52d752d6c422ae9d30a19980 data/moregears/trim_material/ruby.json
+1a498fead63c4219d6ffc571da173e39a101b67b data/moregears/trim_material/steel.json
+a0238706c187ff99a0bc7dc2af2d5864a631a010 data/moregears/trim_material/tin.json
+32cc02df849b84e07dd94c79072c3ca1326a49bd data/moregears/trim_material/titanium.json
 a6eb42ba68c20391e7652d872e8c83fa9078458a data/moregears/worldgen/configured_feature/end_enderite_ore.json
 9886e2eba858eebf8f1be9d8eac0a819c3e4dead data/moregears/worldgen/configured_feature/nether_titanium_ore.json
 250ae663c175e8cba2ae1ad591e4d34718301244 data/moregears/worldgen/configured_feature/ruby_ore.json
