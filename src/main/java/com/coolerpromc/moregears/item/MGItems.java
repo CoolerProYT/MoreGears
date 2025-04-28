@@ -13,6 +13,7 @@ import com.coolerpromc.moregears.tool.bronze.BronzeHoe;
 import com.coolerpromc.moregears.tool.bronze.BronzePickaxe;
 import com.coolerpromc.moregears.tool.bronze.BronzeShovel;
 import com.coolerpromc.moregears.tool.steel.*;
+import com.coolerpromc.moregears.trim.MGTrimMaterials;
 import com.coolerpromc.moregears.util.MGColors;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.item.*;
@@ -35,12 +36,12 @@ public class MGItems {
     public static final MGRawOre RAW_TITANIUM = registerItem("raw_titanium", new MGRawOre(new Item.Settings().registryKey(createItemKey("raw_titanium")), MGColors.TITANIUM_COLOR));
     public static final MGRawOre RAW_ENDERITE = registerItem("raw_enderite", new MGRawOre(new Item.Settings().registryKey(createItemKey("raw_enderite")), MGColors.ENDERITE_COLOR));
 
-    public static final MGIngot TIN_INGOT = registerItem("tin_ingot", new MGIngot(new Item.Settings().registryKey(createItemKey("tin_ingot")), MGColors.TIN_COLOR));
-    public static final MGIngot BRONZE_INGOT = registerItem("bronze_ingot", new MGIngot(new Item.Settings().registryKey(createItemKey("bronze_ingot")), MGColors.BRONZE_COLOR));
-    public static final MGIngot STEEL_INGOT = registerItem("steel_ingot", new MGIngot(new Item.Settings().registryKey(createItemKey("steel_ingot")), MGColors.STEEL_COLOR));
-    public static final MGIngot RUBY_INGOT = registerItem("ruby", new MGIngot(new Item.Settings().registryKey(createItemKey("ruby")), MGColors.RUBY_COLOR));
-    public static final MGIngot TITANIUM_INGOT = registerItem("titanium_ingot", new MGIngot(new Item.Settings().registryKey(createItemKey("titanium_ingot")), MGColors.TITANIUM_COLOR));
-    public static final MGIngot ENDERITE_INGOT = registerItem("enderite_ingot", new MGIngot(new Item.Settings().registryKey(createItemKey("enderite_ingot")), MGColors.ENDERITE_COLOR));
+    public static final MGIngot TIN_INGOT = registerItem("tin_ingot", new MGIngot(new Item.Settings().registryKey(createItemKey("tin_ingot")).trimMaterial(MGTrimMaterials.TIN), MGColors.TIN_COLOR));
+    public static final MGIngot BRONZE_INGOT = registerItem("bronze_ingot", new MGIngot(new Item.Settings().registryKey(createItemKey("bronze_ingot")).trimMaterial(MGTrimMaterials.BRONZE), MGColors.BRONZE_COLOR));
+    public static final MGIngot STEEL_INGOT = registerItem("steel_ingot", new MGIngot(new Item.Settings().registryKey(createItemKey("steel_ingot")).trimMaterial(MGTrimMaterials.STEEL), MGColors.STEEL_COLOR));
+    public static final MGIngot RUBY_INGOT = registerItem("ruby", new MGIngot(new Item.Settings().registryKey(createItemKey("ruby")).trimMaterial(MGTrimMaterials.RUBY), MGColors.RUBY_COLOR));
+    public static final MGIngot TITANIUM_INGOT = registerItem("titanium_ingot", new MGIngot(new Item.Settings().registryKey(createItemKey("titanium_ingot")).trimMaterial(MGTrimMaterials.TITANIUM), MGColors.TITANIUM_COLOR));
+    public static final MGIngot ENDERITE_INGOT = registerItem("enderite_ingot", new MGIngot(new Item.Settings().registryKey(createItemKey("enderite_ingot")).trimMaterial(MGTrimMaterials.ENDERITE), MGColors.ENDERITE_COLOR));
 
     public static final MGArmorItem COPPER_HELMET = registerItem("copper_helmet", new CopperArmor(EquipmentType.HELMET, "copper_helmet"));
     public static final MGArmorItem COPPER_CHESTPLATE = registerItem("copper_chestplate", new CopperArmor(EquipmentType.CHESTPLATE, "copper_chestplate"));
