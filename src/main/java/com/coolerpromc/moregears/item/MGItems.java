@@ -4,6 +4,8 @@ import com.coolerpromc.moregears.MoreGears;
 import com.coolerpromc.moregears.armor.MGArmorItem;
 import com.coolerpromc.moregears.armor.MGArmorMaterials;
 import com.coolerpromc.moregears.armor.custom.*;
+import com.coolerpromc.moregears.entity.MGEntities;
+import com.coolerpromc.moregears.item.custom.MGArrowItem;
 import com.coolerpromc.moregears.item.custom.MGIngot;
 import com.coolerpromc.moregears.item.custom.MGRawOre;
 import com.coolerpromc.moregears.tool.MGToolMaterials;
@@ -18,18 +20,15 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.component.Unbreakable;
 import net.minecraft.world.item.equipment.ArmorType;
-import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.List;
 import java.util.function.Function;
-import java.util.function.Supplier;
 
 public class MGItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(MoreGears.MODID);
@@ -156,6 +155,20 @@ public class MGItems {
             List.of(ResourceLocation.withDefaultNamespace("item/empty_slot_ingot")),
             properties
     ));
+
+    public static final DeferredItem<MGArrowItem> COPPER_ARROW = registerItem("copper_arrow", properties -> new MGArrowItem(properties, 1.75D, MGEntities.COPPER_ARROW.get()));
+    public static final DeferredItem<MGArrowItem> BRONZE_ARROW = registerItem("bronze_arrow", properties -> new MGArrowItem(properties, 2.5D, MGEntities.BRONZE_ARROW.get()));
+    public static final DeferredItem<MGArrowItem> STEEL_ARROW = registerItem("steel_arrow", properties -> new MGArrowItem(properties, 3.0D, MGEntities.STEEL_ARROW.get()));
+    public static final DeferredItem<MGArrowItem> RUBY_ARROW = registerItem("ruby_arrow", properties -> new MGArrowItem(properties, 3.5D, MGEntities.RUBY_ARROW.get()));
+    public static final DeferredItem<MGArrowItem> TITANIUM_ARROW = registerItem("titanium_arrow", properties -> new MGArrowItem(properties, 4.5D, MGEntities.TITANIUM_ARROW.get()));
+    public static final DeferredItem<MGArrowItem> ENDERITE_ARROW = registerItem("enderite_arrow", properties -> new MGArrowItem(properties, 5.0D, MGEntities.ENDERITE_ARROW.get()));
+
+    public static final DeferredItem<BowItem> COPPER_BOW = registerItem("copper_bow", properties -> new BowItem(properties.durability(520).enchantable(1)));
+    public static final DeferredItem<BowItem> BRONZE_BOW = registerItem("bronze_bow", properties -> new BowItem(properties.durability(789).enchantable(1)));
+    public static final DeferredItem<BowItem> STEEL_BOW = registerItem("steel_bow", properties -> new BowItem(properties.durability(1115).enchantable(1)));
+    public static final DeferredItem<BowItem> RUBY_BOW = registerItem("ruby_bow", properties -> new BowItem(properties.durability(1442).enchantable(1)));
+    public static final DeferredItem<BowItem> TITANIUM_BOW = registerItem("titanium_bow", properties -> new BowItem(properties.durability(1763).enchantable(1)));
+    public static final DeferredItem<BowItem> ENDERITE_BOW = registerItem("enderite_bow", properties -> new BowItem(properties.fireResistant().durability(Integer.MAX_VALUE).enchantable(1).component(DataComponents.UNBREAKABLE, new Unbreakable(true))));
 
     private static <T extends Item> DeferredItem<T> registerItem(String name, Function<Item.Properties, ? extends T> item){
         return ITEMS.registerItem(name, item);

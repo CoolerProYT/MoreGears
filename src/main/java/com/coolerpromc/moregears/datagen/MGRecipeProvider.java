@@ -120,6 +120,20 @@ public class MGRecipeProvider extends RecipeProvider {
                 .pattern("AAA")
                 .unlockedBy(getHasName(Items.FURNACE), has(Items.FURNACE))
                 .save(output);
+
+        arrowRecipe(output, Items.COPPER_INGOT, MGItems.COPPER_ARROW);
+        arrowRecipe(output, MGItems.BRONZE_INGOT, MGItems.BRONZE_ARROW);
+        arrowRecipe(output, MGItems.STEEL_INGOT, MGItems.STEEL_ARROW);
+        arrowRecipe(output, MGItems.RUBY_INGOT, MGItems.RUBY_ARROW);
+        arrowRecipe(output, MGItems.TITANIUM_INGOT, MGItems.TITANIUM_ARROW);
+        arrowRecipe(output, MGItems.ENDERITE_INGOT, MGItems.ENDERITE_ARROW);
+
+        bowRecipe(output, Items.COPPER_INGOT, MGItems.COPPER_BOW);
+        bowRecipe(output, MGItems.BRONZE_INGOT, MGItems.BRONZE_BOW);
+        bowRecipe(output, MGItems.STEEL_INGOT, MGItems.STEEL_BOW);
+        bowRecipe(output, MGItems.RUBY_INGOT, MGItems.RUBY_BOW);
+        bowRecipe(output, MGItems.TITANIUM_INGOT, MGItems.TITANIUM_BOW);
+        bowRecipe(output, MGItems.ENDERITE_INGOT, MGItems.ENDERITE_BOW);
     }
 
     protected void armorSetRecipe(RecipeOutput output, HolderGetter<Item> items, ItemLike material, ItemLike helmet, ItemLike chestplate, ItemLike leggings, ItemLike boots){
@@ -231,6 +245,29 @@ public class MGRecipeProvider extends RecipeProvider {
                 .addOutput(new ItemStack(result, outputCount))
                 .unlockedBy(getHasName(ingredients1.ingredient().getValues().get(0).value()), has(ingredients1.ingredient().getValues().get(0).value()))
                 .save(output, ResourceKey.create(Registries.RECIPE, ResourceLocation.fromNamespaceAndPath(MoreGears.MODID, "alloy_smelting/" + getItemName(result) + "_from_alloy_smelting")));
+    }
+
+    protected void arrowRecipe(RecipeOutput output, ItemLike ingot, ItemLike outputItem) {
+        ShapedRecipeBuilder.shaped(this.items, RecipeCategory.COMBAT, outputItem, 6)
+                .define('#', Items.STICK)
+                .define('X', ingot)
+                .define('Y', Items.FEATHER)
+                .pattern("X")
+                .pattern("#")
+                .pattern("Y")
+                .unlockedBy(getHasName(ingot), this.has(ingot))
+                .save(output);
+    }
+
+    protected void bowRecipe(RecipeOutput output, ItemLike ingot, ItemLike outputItem){
+        ShapedRecipeBuilder.shaped(this.items, RecipeCategory.COMBAT, outputItem)
+                .define('#', ingot)
+                .define('X', Items.STRING)
+                .pattern(" #X")
+                .pattern("# X")
+                .pattern(" #X")
+                .unlockedBy(getHasName(ingot), this.has(ingot))
+                .save(output);
     }
 
     public static final class Runner extends RecipeProvider.Runner {
