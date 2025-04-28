@@ -89,13 +89,11 @@
   "item.moregears.titanium_upgrade_smithing_template.equipment_info": "네더라이트 장비",
   "item.moregears.titanium_upgrade_smithing_template.ingredient": "티타늄 주괴",
   "item.moregears.titanium_upgrade_smithing_template.upgrade_description": "티타늄 업그레이드",
-  "item.moregears.titanium_upgrade_smithing_template.base_slot_description": "네더라이트 방어구, 무기 또는 도구 추가",
   "item.moregears.titanium_upgrade_smithing_template.additions_slot_description": "티타늄 주괴 추가",
 
   "item.moregears.enderite_upgrade_smithing_template.equipment_info": "티타늄 장비",
   "item.moregears.enderite_upgrade_smithing_template.ingredient": "엔더 합금 주괴",
   "item.moregears.enderite_upgrade_smithing_template.upgrade_description": "엔더 합금 업그레이드",
-  "item.moregears.enderite_upgrade_smithing_template.base_slot_description": "티타늄 방어구, 무기 또는 도구 추가",
   "item.moregears.enderite_upgrade_smithing_template.additions_slot_description": "엔더 합금 주괴 추가",
 
   "special_effect.moregears.copper_armor": "구리 방어구 전 세트를 착용하면 번개 피해를 무효화합니다.",
@@ -104,5 +102,34 @@
   "special_effect.moregears.fire_resistance": "화염 저항",
   "special_effect.moregears.bronze_tools": "물속에서 채광 속도 증가",
   "special_effect.moregears.heavy": "무거움 (이동 속도 감소)",
-  "special_effect.moregears.faster_attack_speed": "공격 속도 증가"
+  "special_effect.moregears.faster_attack_speed": "공격 속도 증가",
+
+  "item.minecraft.arrow": "철 화살",
+  "entity.minecraft.arrow": "철 화살",
+  "item.moregears.copper_arrow": "구리 화살",
+  "entity.moregears.copper_arrow": "구리 화살",
+  "item.moregears.bronze_arrow": "청동 화살",
+  "entity.moregears.bronze_arrow": "청동 화살",
+  "item.moregears.steel_arrow": "강철 화살",
+  "entity.moregears.steel_arrow": "강철 화살",
+  "item.moregears.ruby_arrow": "루비 화살",
+  "entity.moregears.ruby_arrow": "루비 화살",
+  "item.moregears.titanium_arrow": "티타늄 화살",
+  "entity.moregears.titanium_arrow": "티타늄 화살",
+  "item.moregears.enderite_arrow": "엔더라이트 화살",
+  "entity.moregears.enderite_arrow": "엔더라이트 화살",
+
+  "item.moregears.copper_bow": "구리 활",
+  "item.moregears.bronze_bow": "청동 활",
+  "item.moregears.steel_bow": "강철 활",
+  "item.moregears.ruby_bow": "루비 활",
+  "item.moregears.titanium_bow": "티타늄 활",
+  "item.moregears.enderite_bow": "엔더라이트 활",
+
+  "trim_material.moregears.tin": "주석 재료",
+  "trim_material.moregears.bronze": "청동 재료",
+  "trim_material.moregears.steel": "강철 재료",
+  "trim_material.moregears.ruby": "루비 재료",
+  "trim_material.moregears.titanium": "티타늄 재료",
+  "trim_material.moregears.enderite": "엔더라이트 재료"
 }

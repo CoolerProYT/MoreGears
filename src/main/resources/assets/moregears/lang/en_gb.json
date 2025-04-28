@@ -89,13 +89,11 @@
   "item.moregears.titanium_upgrade_smithing_template.equipment_info": "Netherite Equipment",
   "item.moregears.titanium_upgrade_smithing_template.ingredient": "Titanium Ingot",
   "item.moregears.titanium_upgrade_smithing_template.upgrade_description": "Titanium Upgrade",
-  "item.moregears.titanium_upgrade_smithing_template.base_slot_description": "Add Netherite Armour, Weapon or Tool",
   "item.moregears.titanium_upgrade_smithing_template.additions_slot_description": "Add Titanium Ingot",
 
   "item.moregears.enderite_upgrade_smithing_template.equipment_info": "Titanium Equipment",
   "item.moregears.enderite_upgrade_smithing_template.ingredient": "Enderite Ingot",
   "item.moregears.enderite_upgrade_smithing_template.upgrade_description": "Enderite Upgrade",
-  "item.moregears.enderite_upgrade_smithing_template.base_slot_description": "Add Titanium Armour, Weapon or Tool",
   "item.moregears.enderite_upgrade_smithing_template.additions_slot_description": "Add Enderite Ingot",
 
   "special_effect.moregears.copper_armor": "Immune to lightning strikes when wearing the full set.",
@@ -104,5 +102,34 @@
   "special_effect.moregears.fire_resistance": "Fire Resistance",
   "special_effect.moregears.bronze_tools": "Faster mining underwater",
   "special_effect.moregears.heavy": "Heavy (reduces walking speed)",
-  "special_effect.moregears.faster_attack_speed": "Faster attack speed"
+  "special_effect.moregears.faster_attack_speed": "Faster attack speed",
+
+  "item.minecraft.arrow": "Iron Arrow",
+  "entity.minecraft.arrow": "Iron Arrow",
+  "item.moregears.copper_arrow": "Copper Arrow",
+  "entity.moregears.copper_arrow": "Copper Arrow",
+  "item.moregears.bronze_arrow": "Bronze Arrow",
+  "entity.moregears.bronze_arrow": "Bronze Arrow",
+  "item.moregears.steel_arrow": "Steel Arrow",
+  "entity.moregears.steel_arrow": "Steel Arrow",
+  "item.moregears.ruby_arrow": "Ruby Arrow",
+  "entity.moregears.ruby_arrow": "Ruby Arrow",
+  "item.moregears.titanium_arrow": "Titanium Arrow",
+  "entity.moregears.titanium_arrow": "Titanium Arrow",
+  "item.moregears.enderite_arrow": "Enderite Arrow",
+  "entity.moregears.enderite_arrow": "Enderite Arrow",
+
+  "item.moregears.copper_bow": "Copper Bow",
+  "item.moregears.bronze_bow": "Bronze Bow",
+  "item.moregears.steel_bow": "Steel Bow",
+  "item.moregears.ruby_bow": "Ruby Bow",
+  "item.moregears.titanium_bow": "Titanium Bow",
+  "item.moregears.enderite_bow": "Enderite Bow",
+
+  "trim_material.moregears.tin": "Tin Material",
+  "trim_material.moregears.bronze": "Bronze Material",
+  "trim_material.moregears.steel": "Steel Material",
+  "trim_material.moregears.ruby": "Ruby Material",
+  "trim_material.moregears.titanium": "Titanium Material",
+  "trim_material.moregears.enderite": "Enderite Material"
 }
