@@ -228,5 +228,32 @@ public class MGItemTagProvider extends FabricTagProvider.ItemTagProvider {
 
         this.getOrCreateTagBuilder(MGTags.Items.GEMS_RUBY)
                 .add(MGItems.RUBY_INGOT);
+
+        this.getOrCreateTagBuilder(ItemTags.ARROWS).add(
+                MGItems.COPPER_ARROW,
+                MGItems.BRONZE_ARROW,
+                MGItems.STEEL_ARROW,
+                MGItems.RUBY_ARROW,
+                MGItems.TITANIUM_ARROW,
+                MGItems.ENDERITE_ARROW
+        );
+
+        this.getOrCreateTagBuilder(ItemTags.BOW_ENCHANTABLE).add(
+                MGItems.COPPER_BOW,
+                MGItems.BRONZE_BOW,
+                MGItems.STEEL_BOW,
+                MGItems.RUBY_BOW,
+                MGItems.TITANIUM_BOW,
+                MGItems.ENDERITE_BOW
+        );
+
+        this.getOrCreateTagBuilder(ItemTags.TRIM_MATERIALS).add(
+                MGItems.TIN_INGOT,
+                MGItems.BRONZE_INGOT,
+                MGItems.STEEL_INGOT,
+                MGItems.RUBY_INGOT,
+                MGItems.TITANIUM_INGOT,
+                MGItems.ENDERITE_INGOT
+        );
     }
 }
