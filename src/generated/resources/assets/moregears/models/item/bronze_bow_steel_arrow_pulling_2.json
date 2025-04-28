@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/bow",
+  "textures": {
+    "layer0": "moregears:item/bronze_bow_steel_arrow_pulling_2"
+  }
+}

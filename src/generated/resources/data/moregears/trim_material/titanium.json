@@ -1,0 +1,8 @@
+{
+  "asset_name": "titanium",
+  "description": {
+    "color": "#9E6590",
+    "translate": "trim_material.moregears.titanium"
+  },
+  "ingredient": "moregears:titanium_ingot"
+}
