@@ -3,12 +3,15 @@ package com.coolerpromc.moregears.datagen;
 import com.coolerpromc.moregears.MoreGears;
 import com.coolerpromc.moregears.item.MGItems;
 import net.minecraft.core.Direction;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemDisplayContext;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.armortrim.TrimMaterial;
 import net.minecraft.world.item.armortrim.TrimMaterials;
 import net.minecraftforge.client.model.generators.ItemModelBuilder;
@@ -51,6 +54,13 @@ public class MGItemModelProvider extends ItemModelProvider {
         basicItem(MGItems.RUBY_INGOT.get());
         basicItem(MGItems.TITANIUM_INGOT.get());
         basicItem(MGItems.ENDERITE_INGOT.get());
+
+        basicItem(MGItems.COPPER_ARROW.get());
+        basicItem(MGItems.BRONZE_ARROW.get());
+        basicItem(MGItems.STEEL_ARROW.get());
+        basicItem(MGItems.RUBY_ARROW.get());
+        basicItem(MGItems.TITANIUM_ARROW.get());
+        basicItem(MGItems.ENDERITE_ARROW.get());
 
         trimmedArmorItem(MGItems.COPPER_HELMET);
         trimmedArmorItem(MGItems.COPPER_CHESTPLATE);
@@ -120,6 +130,14 @@ public class MGItemModelProvider extends ItemModelProvider {
         handheldItem(MGItems.ENDERITE_PICKAXE);
         handheldItem(MGItems.ENDERITE_AXE);
         handheldItem(MGItems.ENDERITE_HOE);
+
+        generateBow(Items.BOW);
+        generateBow(MGItems.COPPER_BOW.get());
+        generateBow(MGItems.BRONZE_BOW.get());
+        generateBow(MGItems.STEEL_BOW.get());
+        generateBow(MGItems.RUBY_BOW.get());
+        generateBow(MGItems.TITANIUM_BOW.get());
+        generateBow(MGItems.ENDERITE_BOW.get());
     }
 
     private <T extends Item> void withExistingTexture(RegistryObject<T> item, ResourceLocation texture){
@@ -190,5 +208,183 @@ public class MGItemModelProvider extends ItemModelProvider {
                                         "item/" + itemRegistryObject.getId().getPath()));
             });
         }
+    }
+
+    public void generateBow(Item bowItem) {
+        getBuilder(BuiltInRegistries.ITEM.getKey(bowItem).toString())
+                .parent(getExistingFile(mcLoc("item/generated")))
+                .texture("layer0", new ResourceLocation(BuiltInRegistries.ITEM.getKey(bowItem).getNamespace(), "item/" + BuiltInRegistries.ITEM.getKey(bowItem).getPath()))
+                .transforms()
+                .transform(ItemDisplayContext.THIRD_PERSON_RIGHT_HAND)
+                .rotation(-80, 260, -40)
+                .translation(-1, -2, 2.5f)
+                .scale(0.9F)
+                .end()
+                .transform(ItemDisplayContext.THIRD_PERSON_LEFT_HAND)
+                .rotation(-80, -280, 40)
+                .translation(-1, -2, 2.5f)
+                .scale(0.9F)
+                .end()
+                .transform(ItemDisplayContext.FIRST_PERSON_RIGHT_HAND)
+                .rotation(0, -90, 25)
+                .translation(1.13f, 3.2f, 1.13f)
+                .scale(0.68F)
+                .end()
+                .transform(ItemDisplayContext.FIRST_PERSON_LEFT_HAND)
+                .rotation(0, 90, -25)
+                .translation(1.13f, 3.2f, 1.13f)
+                .scale(0.68F)
+                .end()
+                .end()
+                // Base pulling (regular arrows - 0.0)
+                .override()
+                .predicate(new ResourceLocation("pulling"), 1)
+                .predicate(new ResourceLocation(MoreGears.MODID, "select_arrow"), 0.0F)
+                .model(new ModelFile.UncheckedModelFile(getModelLocation(bowItem, "_pulling_0")))
+                .end()
+                .override()
+                .predicate(new ResourceLocation("pulling"), 1)
+                .predicate(new ResourceLocation("pull"), 0.65F)
+                .predicate(new ResourceLocation(MoreGears.MODID, "select_arrow"), 0.0F)
+                .model(new ModelFile.UncheckedModelFile(getModelLocation(bowItem, "_pulling_1")))
+                .end()
+                .override()
+                .predicate(new ResourceLocation("pulling"), 1)
+                .predicate(new ResourceLocation("pull"), 0.9F)
+                .predicate(new ResourceLocation(MoreGears.MODID, "select_arrow"), 0.0F)
+                .model(new ModelFile.UncheckedModelFile(getModelLocation(bowItem, "_pulling_2")))
+                .end()
+                // Copper arrows (0.1)
+                .override()
+                .predicate(new ResourceLocation("pulling"), 1)
+                .predicate(new ResourceLocation(MoreGears.MODID, "select_arrow"), 0.1F)
+                .model(new ModelFile.UncheckedModelFile(getModelLocation(bowItem, "_copper_arrow_pulling_0")))
+                .end()
+                .override()
+                .predicate(new ResourceLocation("pulling"), 1)
+                .predicate(new ResourceLocation("pull"), 0.65F)
+                .predicate(new ResourceLocation(MoreGears.MODID, "select_arrow"), 0.1F)
+                .model(new ModelFile.UncheckedModelFile(getModelLocation(bowItem, "_copper_arrow_pulling_1")))
+                .end()
+                .override()
+                .predicate(new ResourceLocation("pulling"), 1)
+                .predicate(new ResourceLocation("pull"), 0.9F)
+                .predicate(new ResourceLocation(MoreGears.MODID, "select_arrow"), 0.1F)
+                .model(new ModelFile.UncheckedModelFile(getModelLocation(bowItem, "_copper_arrow_pulling_2")))
+                .end()
+                // Bronze arrows (0.2)
+                .override()
+                .predicate(new ResourceLocation("pulling"), 1)
+                .predicate(new ResourceLocation(MoreGears.MODID, "select_arrow"), 0.2F)
+                .model(new ModelFile.UncheckedModelFile(getModelLocation(bowItem, "_bronze_arrow_pulling_0")))
+                .end()
+                .override()
+                .predicate(new ResourceLocation("pulling"), 1)
+                .predicate(new ResourceLocation("pull"), 0.65F)
+                .predicate(new ResourceLocation(MoreGears.MODID, "select_arrow"), 0.2F)
+                .model(new ModelFile.UncheckedModelFile(getModelLocation(bowItem, "_bronze_arrow_pulling_1")))
+                .end()
+                .override()
+                .predicate(new ResourceLocation("pulling"), 1)
+                .predicate(new ResourceLocation("pull"), 0.9F)
+                .predicate(new ResourceLocation(MoreGears.MODID, "select_arrow"), 0.2F)
+                .model(new ModelFile.UncheckedModelFile(getModelLocation(bowItem, "_bronze_arrow_pulling_2")))
+                .end()
+                // Steel arrows (0.3)
+                .override()
+                .predicate(new ResourceLocation("pulling"), 1)
+                .predicate(new ResourceLocation(MoreGears.MODID, "select_arrow"), 0.3F)
+                .model(new ModelFile.UncheckedModelFile(getModelLocation(bowItem, "_steel_arrow_pulling_0")))
+                .end()
+                .override()
+                .predicate(new ResourceLocation("pulling"), 1)
+                .predicate(new ResourceLocation("pull"), 0.65F)
+                .predicate(new ResourceLocation(MoreGears.MODID, "select_arrow"), 0.3F)
+                .model(new ModelFile.UncheckedModelFile(getModelLocation(bowItem, "_steel_arrow_pulling_1")))
+                .end()
+                .override()
+                .predicate(new ResourceLocation("pulling"), 1)
+                .predicate(new ResourceLocation("pull"), 0.9F)
+                .predicate(new ResourceLocation(MoreGears.MODID, "select_arrow"), 0.3F)
+                .model(new ModelFile.UncheckedModelFile(getModelLocation(bowItem, "_steel_arrow_pulling_2")))
+                .end()
+                // Ruby arrows (0.4)
+                .override()
+                .predicate(new ResourceLocation("pulling"), 1)
+                .predicate(new ResourceLocation(MoreGears.MODID, "select_arrow"), 0.4F)
+                .model(new ModelFile.UncheckedModelFile(getModelLocation(bowItem, "_ruby_arrow_pulling_0")))
+                .end()
+                .override()
+                .predicate(new ResourceLocation("pulling"), 1)
+                .predicate(new ResourceLocation("pull"), 0.65F)
+                .predicate(new ResourceLocation(MoreGears.MODID, "select_arrow"), 0.4F)
+                .model(new ModelFile.UncheckedModelFile(getModelLocation(bowItem, "_ruby_arrow_pulling_1")))
+                .end()
+                .override()
+                .predicate(new ResourceLocation("pulling"), 1)
+                .predicate(new ResourceLocation("pull"), 0.9F)
+                .predicate(new ResourceLocation(MoreGears.MODID, "select_arrow"), 0.4F)
+                .model(new ModelFile.UncheckedModelFile(getModelLocation(bowItem, "_ruby_arrow_pulling_2")))
+                .end()
+                // Titanium arrows (0.5)
+                .override()
+                .predicate(new ResourceLocation("pulling"), 1)
+                .predicate(new ResourceLocation(MoreGears.MODID, "select_arrow"), 0.5F)
+                .model(new ModelFile.UncheckedModelFile(getModelLocation(bowItem, "_titanium_arrow_pulling_0")))
+                .end()
+                .override()
+                .predicate(new ResourceLocation("pulling"), 1)
+                .predicate(new ResourceLocation("pull"), 0.65F)
+                .predicate(new ResourceLocation(MoreGears.MODID, "select_arrow"), 0.5F)
+                .model(new ModelFile.UncheckedModelFile(getModelLocation(bowItem, "_titanium_arrow_pulling_1")))
+                .end()
+                .override()
+                .predicate(new ResourceLocation("pulling"), 1)
+                .predicate(new ResourceLocation("pull"), 0.9F)
+                .predicate(new ResourceLocation(MoreGears.MODID, "select_arrow"), 0.5F)
+                .model(new ModelFile.UncheckedModelFile(getModelLocation(bowItem, "_titanium_arrow_pulling_2")))
+                .end()
+                // Enderite arrows (0.6)
+                .override()
+                .predicate(new ResourceLocation("pulling"), 1)
+                .predicate(new ResourceLocation(MoreGears.MODID, "select_arrow"), 0.6F)
+                .model(new ModelFile.UncheckedModelFile(getModelLocation(bowItem, "_enderite_arrow_pulling_0")))
+                .end()
+                .override()
+                .predicate(new ResourceLocation("pulling"), 1)
+                .predicate(new ResourceLocation("pull"), 0.65F)
+                .predicate(new ResourceLocation(MoreGears.MODID, "select_arrow"), 0.6F)
+                .model(new ModelFile.UncheckedModelFile(getModelLocation(bowItem, "_enderite_arrow_pulling_1")))
+                .end()
+                .override()
+                .predicate(new ResourceLocation("pulling"), 1)
+                .predicate(new ResourceLocation("pull"), 0.9F)
+                .predicate(new ResourceLocation(MoreGears.MODID, "select_arrow"), 0.6F)
+                .model(new ModelFile.UncheckedModelFile(getModelLocation(bowItem, "_enderite_arrow_pulling_2")))
+                .end();
+
+        // Create all the pulling model variants
+        createPullingModels(bowItem, "");
+        createPullingModels(bowItem, "_copper_arrow");
+        createPullingModels(bowItem, "_bronze_arrow");
+        createPullingModels(bowItem, "_steel_arrow");
+        createPullingModels(bowItem, "_ruby_arrow");
+        createPullingModels(bowItem, "_titanium_arrow");
+        createPullingModels(bowItem, "_enderite_arrow");
+    }
+
+    private void createPullingModels(Item bowItem, String arrowSuffix) {
+        for (int i = 0; i <= 2; i++) {
+            getBuilder(getModelLocation(bowItem, arrowSuffix + "_pulling_" + i).toString())
+                    .parent(getExistingFile(mcLoc("item/bow")))
+                    .texture("layer0", getModelLocation(bowItem, arrowSuffix + "_pulling_" + i));
+        }
+    }
+
+    private ResourceLocation getModelLocation(Item item, String suffix) {
+        if (suffix.startsWith("_pulling") && item == Items.BOW){
+            return new ResourceLocation("item/" + BuiltInRegistries.ITEM.getKey(item).getPath() + suffix);
+        }
+        return new ResourceLocation(MoreGears.MODID, "item/" + BuiltInRegistries.ITEM.getKey(item).getPath() + suffix);
     }
 }

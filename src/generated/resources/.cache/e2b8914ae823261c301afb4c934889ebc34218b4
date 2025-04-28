@@ -1,9 +1,11 @@
-// 1.20.1	2025-04-28T14:36:34.7378942	Tags for minecraft:item mod id moregears
+// 1.20.1	2025-08-02T20:00:22.7181568	Tags for minecraft:item mod id moregears
 a5b4cc01d8cd536842cbdcba4e5261d9654eee4c data/c/tags/items/gems/ruby.json
 193d5192bb9fb60e8422288cf79b7a6b9392f9c4 data/c/tags/items/ingots/bronze.json
 339021a867f34d3823f8068df0dc056231437d07 data/c/tags/items/ingots/enderite.json
 60899488a0b836974836e4413c870bfec19a70f9 data/c/tags/items/ingots/steel.json
 f0e3d3a909b0b91d0383201029ef45ec18c0f541 data/c/tags/items/ingots/titanium.json
+16201f238467315e568b6f930475f94cd880b906 data/forge/tags/items/tools/bows.json
+075f01d78f2508725b8704682fbe56caef521408 data/minecraft/tags/items/arrows.json
 88845b607b2825d953c4c9211cb49b9c5ce80574 data/minecraft/tags/items/axes.json
 58be9d520b2f4964785c1741c976d8016f027a16 data/minecraft/tags/items/hoes.json
 9750a871be387c23058e7991724e6bd1e13c0d67 data/minecraft/tags/items/pickaxes.json

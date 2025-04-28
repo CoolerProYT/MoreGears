@@ -10,10 +10,8 @@ import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.crafting.BlastingRecipe;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
-import net.minecraft.world.item.crafting.SmeltingRecipe;
 import net.minecraft.world.level.ItemLike;
 import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
 
@@ -114,6 +112,20 @@ public class MGRecipeProvider extends RecipeProvider implements IConditionBuilde
                 .pattern("AAA")
                 .unlockedBy(getHasName(Items.FURNACE), has(Items.FURNACE))
                 .save(recipeOutput);
+
+        arrowRecipe(recipeOutput, Items.COPPER_INGOT, MGItems.COPPER_ARROW.get());
+        arrowRecipe(recipeOutput, MGItems.BRONZE_INGOT.get(), MGItems.BRONZE_ARROW.get());
+        arrowRecipe(recipeOutput, MGItems.STEEL_INGOT.get(), MGItems.STEEL_ARROW.get());
+        arrowRecipe(recipeOutput, MGItems.RUBY_INGOT.get(), MGItems.RUBY_ARROW.get());
+        arrowRecipe(recipeOutput, MGItems.TITANIUM_INGOT.get(), MGItems.TITANIUM_ARROW.get());
+        arrowRecipe(recipeOutput, MGItems.ENDERITE_INGOT.get(), MGItems.ENDERITE_ARROW.get());
+
+        bowRecipe(recipeOutput, Items.COPPER_INGOT, MGItems.COPPER_BOW.get());
+        bowRecipe(recipeOutput, MGItems.BRONZE_INGOT.get(), MGItems.BRONZE_BOW.get());
+        bowRecipe(recipeOutput, MGItems.STEEL_INGOT.get(), MGItems.STEEL_BOW.get());
+        bowRecipe(recipeOutput, MGItems.RUBY_INGOT.get(), MGItems.RUBY_BOW.get());
+        bowRecipe(recipeOutput, MGItems.TITANIUM_INGOT.get(), MGItems.TITANIUM_BOW.get());
+        bowRecipe(recipeOutput, MGItems.ENDERITE_INGOT.get(), MGItems.ENDERITE_BOW.get());
     }
 
     protected static void armorSetRecipe(Consumer<FinishedRecipe> recipeOutput, ItemLike material, ItemLike helmet, ItemLike chestplate, ItemLike leggings, ItemLike boots){
@@ -225,5 +237,28 @@ public class MGRecipeProvider extends RecipeProvider implements IConditionBuilde
                 .addOutput(new ItemStack(result, outputCount))
                 .unlockedBy(getHasName(ingredients1.getItems()[0].getItem()), has(ingredients1.getItems()[0].getItem()))
                 .save(recipeOutput, new ResourceLocation(MoreGears.MODID, "alloy_smelting/" + getItemName(result) + "_from_alloy_smelting"));
+    }
+
+    protected void arrowRecipe(Consumer<FinishedRecipe> output, ItemLike ingot, ItemLike outputItem) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, outputItem, 6)
+                .define('#', Items.STICK)
+                .define('X', ingot)
+                .define('Y', Items.FEATHER)
+                .pattern("X")
+                .pattern("#")
+                .pattern("Y")
+                .unlockedBy(getHasName(ingot), this.has(ingot))
+                .save(output);
+    }
+
+    protected void bowRecipe(Consumer<FinishedRecipe> output, ItemLike ingot, ItemLike outputItem){
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, outputItem)
+                .define('#', ingot)
+                .define('X', Items.STRING)
+                .pattern(" #X")
+                .pattern("# X")
+                .pattern(" #X")
+                .unlockedBy(getHasName(ingot), this.has(ingot))
+                .save(output);
     }
 }

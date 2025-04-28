@@ -8,6 +8,7 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.level.block.Block;
+import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
 import java.util.concurrent.CompletableFuture;
@@ -105,6 +106,24 @@ public class MGItemTagGenerator extends ItemTagsProvider {
 
         this.tag(MGTags.Items.GEMS_RUBY)
                 .add(MGItems.RUBY_INGOT.get());
+
+        this.tag(ItemTags.ARROWS).add(
+                MGItems.COPPER_ARROW.get(),
+                MGItems.BRONZE_ARROW.get(),
+                MGItems.STEEL_ARROW.get(),
+                MGItems.RUBY_ARROW.get(),
+                MGItems.TITANIUM_ARROW.get(),
+                MGItems.ENDERITE_ARROW.get()
+        );
+
+        this.tag(Tags.Items.TOOLS_BOWS).add(
+                MGItems.COPPER_BOW.get(),
+                MGItems.BRONZE_BOW.get(),
+                MGItems.STEEL_BOW.get(),
+                MGItems.RUBY_BOW.get(),
+                MGItems.TITANIUM_BOW.get(),
+                MGItems.ENDERITE_BOW.get()
+        );
 
         this.tag(ItemTags.TRIM_MATERIALS).add(
                 MGItems.TIN_INGOT.get(),

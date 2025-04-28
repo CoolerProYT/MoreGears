@@ -1,0 +1,30 @@
+package com.coolerpromc.moregears.entity;
+
+import com.coolerpromc.moregears.MoreGears;
+import com.coolerpromc.moregears.item.MGItems;
+import com.coolerpromc.moregears.item.custom.MGArrowEntity;
+import com.coolerpromc.moregears.item.custom.MGArrowItem;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.MobCategory;
+import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.RegistryObject;
+
+public class MGEntities {
+    public static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(Registries.ENTITY_TYPE, MoreGears.MODID);
+
+    public static final RegistryObject<EntityType<MGArrowEntity>> COPPER_ARROW = registerArrow("copper_arrow", MGItems.COPPER_ARROW);
+    public static final RegistryObject<EntityType<MGArrowEntity>> BRONZE_ARROW = registerArrow("bronze_arrow", MGItems.BRONZE_ARROW);
+    public static final RegistryObject<EntityType<MGArrowEntity>> STEEL_ARROW = registerArrow("steel_arrow", MGItems.STEEL_ARROW);
+    public static final RegistryObject<EntityType<MGArrowEntity>> RUBY_ARROW = registerArrow("ruby_arrow", MGItems.RUBY_ARROW);
+    public static final RegistryObject<EntityType<MGArrowEntity>> TITANIUM_ARROW = registerArrow("titanium_arrow", MGItems.TITANIUM_ARROW);
+    public static final RegistryObject<EntityType<MGArrowEntity>> ENDERITE_ARROW = registerArrow("enderite_arrow", MGItems.ENDERITE_ARROW);
+
+    public static RegistryObject<EntityType<MGArrowEntity>> registerArrow(String name, RegistryObject<MGArrowItem> item) {
+        return ENTITIES.register(name, () -> EntityType.Builder.<MGArrowEntity>of((entityType, level) -> new MGArrowEntity(entityType, level, item.get().getDefaultInstance()), MobCategory.MISC).sized(0.5f, 0.5f).clientTrackingRange(4).updateInterval(20).build(name));
+    }
+    public static void register(IEventBus eventBus) {
+        ENTITIES.register(eventBus);
+    }
+}

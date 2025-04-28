@@ -2,6 +2,8 @@ package com.coolerpromc.moregears.item;
 
 import com.coolerpromc.moregears.MoreGears;
 import com.coolerpromc.moregears.armor.custom.*;
+import com.coolerpromc.moregears.entity.MGEntities;
+import com.coolerpromc.moregears.item.custom.MGArrowItem;
 import com.coolerpromc.moregears.item.custom.MGIngot;
 import com.coolerpromc.moregears.item.custom.MGRawOre;
 import com.coolerpromc.moregears.tool.MGToolMaterials;
@@ -197,6 +199,30 @@ public class MGItems {
             ),
             List.of(new ResourceLocation("item/empty_slot_ingot"))
     ));
+
+    public static final RegistryObject<MGArrowItem> COPPER_ARROW = registerItem("copper_arrow", () -> new MGArrowItem(new Item.Properties(), 1.75D, MGEntities.COPPER_ARROW));
+    public static final RegistryObject<MGArrowItem> BRONZE_ARROW = registerItem("bronze_arrow", () -> new MGArrowItem(new Item.Properties(), 2.5D, MGEntities.BRONZE_ARROW));
+    public static final RegistryObject<MGArrowItem> STEEL_ARROW = registerItem("steel_arrow", () -> new MGArrowItem(new Item.Properties(), 3.0D, MGEntities.STEEL_ARROW));
+    public static final RegistryObject<MGArrowItem> RUBY_ARROW = registerItem("ruby_arrow", () -> new MGArrowItem(new Item.Properties(), 3.5D, MGEntities.RUBY_ARROW));
+    public static final RegistryObject<MGArrowItem> TITANIUM_ARROW = registerItem("titanium_arrow", () -> new MGArrowItem(new Item.Properties(), 4.5D, MGEntities.TITANIUM_ARROW));
+    public static final RegistryObject<MGArrowItem> ENDERITE_ARROW = registerItem("enderite_arrow", () -> new MGArrowItem(new Item.Properties(), 5.0D, MGEntities.ENDERITE_ARROW));
+
+    public static final RegistryObject<BowItem> COPPER_BOW = registerItem("copper_bow", () -> new BowItem(new Item.Properties().durability(520)));
+    public static final RegistryObject<BowItem> BRONZE_BOW = registerItem("bronze_bow", () -> new BowItem(new Item.Properties().durability(789)));
+    public static final RegistryObject<BowItem> STEEL_BOW = registerItem("steel_bow", () -> new BowItem(new Item.Properties().durability(1115)));
+    public static final RegistryObject<BowItem> RUBY_BOW = registerItem("ruby_bow", () -> new BowItem(new Item.Properties().durability(1442)));
+    public static final RegistryObject<BowItem> TITANIUM_BOW = registerItem("titanium_bow", () -> new BowItem(new Item.Properties().durability(1763)));
+    public static final RegistryObject<BowItem> ENDERITE_BOW = registerItem("enderite_bow", () -> new BowItem(new Item.Properties().fireResistant().durability(Integer.MAX_VALUE)){
+        @Override
+        public boolean isDamageable(ItemStack stack) {
+            return false;
+        }
+
+        @Override
+        public boolean isEnchantable(ItemStack p_41456_) {
+            return true;
+        }
+    });
 
     private static <T extends Item> RegistryObject<T> registerItem(String name, Supplier<T> item){
         return ITEMS.register(name, item);
