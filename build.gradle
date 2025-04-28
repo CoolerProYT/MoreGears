@@ -28,6 +28,10 @@ repositories {
 	}
 }
 
+loom {
+	accessWidenerPath = file("src/main/resources/moregears.accesswidener")
+}
+
 fabricApi {
 	configureDataGeneration {
 		client = true

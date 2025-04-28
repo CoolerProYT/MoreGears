@@ -89,13 +89,11 @@
   "item.moregears.titanium_upgrade_smithing_template.equipment_info": "ネザーライト装備",
   "item.moregears.titanium_upgrade_smithing_template.ingredient": "チタンインゴット",
   "item.moregears.titanium_upgrade_smithing_template.upgrade_description": "チタンアップグレード",
-  "item.moregears.titanium_upgrade_smithing_template.base_slot_description": "ネザーライトの防具、武器、または道具を追加",
   "item.moregears.titanium_upgrade_smithing_template.additions_slot_description": "チタンインゴットを追加",
 
   "item.moregears.enderite_upgrade_smithing_template.equipment_info": "チタン装備",
   "item.moregears.enderite_upgrade_smithing_template.ingredient": "末地合金インゴット",
   "item.moregears.enderite_upgrade_smithing_template.upgrade_description": "末地合金アップグレード",
-  "item.moregears.enderite_upgrade_smithing_template.base_slot_description": "チタンの防具、武器、または道具を追加",
   "item.moregears.enderite_upgrade_smithing_template.additions_slot_description": "末地合金インゴットを追加",
 
   "special_effect.moregears.copper_armor": "銅防具を全セット装備すると、雷撃を無効化する。",
@@ -119,5 +117,19 @@
   "item.moregears.titanium_arrow": "チタンの矢",
   "entity.moregears.titanium_arrow": "チタンの矢",
   "item.moregears.enderite_arrow": "エンダライトの矢",
-  "entity.moregears.enderite_arrow": "エンダライトの矢"
+  "entity.moregears.enderite_arrow": "エンダライトの矢",
+
+  "item.moregears.copper_bow": "銅の弓",
+  "item.moregears.bronze_bow": "青銅の弓",
+  "item.moregears.steel_bow": "鋼の弓",
+  "item.moregears.ruby_bow": "ルビーの弓",
+  "item.moregears.titanium_bow": "チタンの弓",
+  "item.moregears.enderite_bow": "エンダライトの弓",
+
+  "trim_material.moregears.tin": "錫の素材",
+  "trim_material.moregears.bronze": "青銅の素材",
+  "trim_material.moregears.steel": "鋼の素材",
+  "trim_material.moregears.ruby": "ルビーの素材",
+  "trim_material.moregears.titanium": "チタンの素材",
+  "trim_material.moregears.enderite": "エンダライトの素材"
 }

@@ -1,6 +1,6 @@
 package com.coolerpromc.moregears.item.custom;
 
-import com.coolerpromc.moregears.entity.custom.MGArrowEntity;
+import com.mojang.serialization.Codec;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.EntityType;
@@ -10,7 +10,7 @@ import net.minecraft.entity.projectile.ProjectileEntity;
 import net.minecraft.item.ArrowItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.ProjectileItem;
+import net.minecraft.util.StringIdentifiable;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Position;
 import net.minecraft.world.World;
@@ -32,16 +32,16 @@ public class MGArrowItem extends ArrowItem {
     }
 
     public boolean isInfinite(ItemStack ammo, ItemStack bow, LivingEntity livingEntity) {
-        return EnchantmentHelper.getEquipmentLevel(livingEntity.getWorld().getRegistryManager().getEntryOrThrow(Enchantments.INFINITY), livingEntity) > 0;
+        return EnchantmentHelper.getEquipmentLevel(livingEntity.getWorld().getRegistryManager().getOptionalEntry(Enchantments.INFINITY).orElseThrow(), livingEntity) > 0;
     }
 
     @Override
-    public ProjectileEntity createEntity(World world, Position pos, ItemStack stack, Direction direction) {
+    public ProjectileEntity createEntity(World world, Position location, ItemStack stack, Direction direction) {
         MGArrowEntity arrow = new MGArrowEntity(
                 entityType,
-                pos.getX(),
-                pos.getY(),
-                pos.getZ(),
+                location.getX(),
+                location.getY(),
+                location.getZ(),
                 world,
                 stack.copyWithCount(1),
                 null
@@ -49,5 +49,26 @@ public class MGArrowItem extends ArrowItem {
         arrow.setDamage(baseDamage);
         arrow.pickupType = PersistentProjectileEntity.PickupPermission.ALLOWED;
         return arrow;
+    }
+
+    public enum MGArrowType implements StringIdentifiable {
+        COPPER("copper"),
+        BRONZE("bronze"),
+        STEEL("steel"),
+        RUBY("ruby"),
+        TITANIUM("titanium"),
+        ENDERITE("enderite");
+
+        public static final Codec<MGArrowType> CODEC = StringIdentifiable.createCodec(MGArrowItem.MGArrowType::values);
+        private final String name;
+
+        MGArrowType(String name) {
+            this.name = name;
+        }
+
+        @Override
+        public String asString() {
+            return name;
+        }
     }
 }

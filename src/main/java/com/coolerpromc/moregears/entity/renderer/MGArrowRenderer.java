@@ -1,28 +1,27 @@
 package com.coolerpromc.moregears.entity.renderer;
 
 import com.coolerpromc.moregears.MoreGears;
-import com.coolerpromc.moregears.entity.custom.MGArrowEntity;
+import com.coolerpromc.moregears.item.custom.MGArrowEntity;
 import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.render.entity.ProjectileEntityRenderer;
-import net.minecraft.client.render.entity.state.ArrowEntityRenderState;
+import net.minecraft.client.render.entity.state.ProjectileEntityRenderState;
 import net.minecraft.util.Identifier;
 
-public class MGArrowRenderer extends ProjectileEntityRenderer<MGArrowEntity, ArrowEntityRenderState> {
+public class MGArrowRenderer extends ProjectileEntityRenderer<MGArrowEntity, ProjectileEntityRenderState> {
     public final Identifier arrowTexture;
 
-    public MGArrowRenderer(EntityRendererFactory.Context context, Identifier arrowTexture) {
-        super(context);
+    public MGArrowRenderer(EntityRendererFactory.Context p_174399_, Identifier arrowTexture) {
+        super(p_174399_);
         this.arrowTexture = arrowTexture;
     }
 
     @Override
-    public ArrowEntityRenderState createRenderState() {
-        return new ArrowEntityRenderState();
+    protected Identifier getTexture(ProjectileEntityRenderState p_364566_) {
+        return arrowTexture;
     }
 
-    @Override
-    protected Identifier getTexture(ArrowEntityRenderState state) {
-        return arrowTexture;
+    public ProjectileEntityRenderState createRenderState() {
+        return new ProjectileEntityRenderState();
     }
 
     public static Identifier getTextureLocation(String textureName) {

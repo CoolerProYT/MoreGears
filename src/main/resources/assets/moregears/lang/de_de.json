@@ -89,13 +89,11 @@
   "item.moregears.titanium_upgrade_smithing_template.equipment_info": "Netherlegierungs-Ausrüstung",
   "item.moregears.titanium_upgrade_smithing_template.ingredient": "Titanbarren",
   "item.moregears.titanium_upgrade_smithing_template.upgrade_description": "Titan-Upgrade",
-  "item.moregears.titanium_upgrade_smithing_template.base_slot_description": "Füge Netherlegierungs-Rüstung, -Waffe oder -Werkzeug hinzu",
   "item.moregears.titanium_upgrade_smithing_template.additions_slot_description": "Füge Titanbarren hinzu",
 
   "item.moregears.enderite_upgrade_smithing_template.equipment_info": "Titan-Ausrüstung",
   "item.moregears.enderite_upgrade_smithing_template.ingredient": "Enderitebarren",
   "item.moregears.enderite_upgrade_smithing_template.upgrade_description": "Enderite-Upgrade",
-  "item.moregears.enderite_upgrade_smithing_template.base_slot_description": "Füge Titan-Rüstung, -Waffe oder -Werkzeug hinzu",
   "item.moregears.enderite_upgrade_smithing_template.additions_slot_description": "Füge Enderitebarren hinzu",
 
   "special_effect.moregears.copper_armor": "Bei vollständiger Kupferrüstung: Immunität gegen Blitzschläge.",
@@ -119,5 +117,19 @@
   "item.moregears.titanium_arrow": "Titaniumpfeil",
   "entity.moregears.titanium_arrow": "Titaniumpfeil",
   "item.moregears.enderite_arrow": "Enderitpfeil",
-  "entity.moregears.enderite_arrow": "Enderitpfeil"
+  "entity.moregears.enderite_arrow": "Enderitpfeil",
+
+  "item.moregears.copper_bow": "Kupferbogen",
+  "item.moregears.bronze_bow": "Bronzebogen",
+  "item.moregears.steel_bow": "Stahlbogen",
+  "item.moregears.ruby_bow": "Rubinbogen",
+  "item.moregears.titanium_bow": "Titanbogen",
+  "item.moregears.enderite_bow": "Enderitbogen",
+
+  "trim_material.moregears.tin": "Zinnmaterial",
+  "trim_material.moregears.bronze": "Bronzematerial",
+  "trim_material.moregears.steel": "Stahlmaterial",
+  "trim_material.moregears.ruby": "Rubinmaterial",
+  "trim_material.moregears.titanium": "Titanmaterial",
+  "trim_material.moregears.enderite": "Enderitmaterial"
 }

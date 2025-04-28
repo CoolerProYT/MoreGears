@@ -89,13 +89,11 @@
   "item.moregears.titanium_upgrade_smithing_template.equipment_info": "下界合金裝備",
   "item.moregears.titanium_upgrade_smithing_template.ingredient": "鈦錠",
   "item.moregears.titanium_upgrade_smithing_template.upgrade_description": "鈦升級",
-  "item.moregears.titanium_upgrade_smithing_template.base_slot_description": "添加下界合金護甲、武器或工具",
   "item.moregears.titanium_upgrade_smithing_template.additions_slot_description": "添加鈦錠",
 
   "item.moregears.enderite_upgrade_smithing_template.equipment_info": "末地合金裝備",
   "item.moregears.enderite_upgrade_smithing_template.ingredient": "末地合金錠",
   "item.moregears.enderite_upgrade_smithing_template.upgrade_description": "末地合金升級",
-  "item.moregears.enderite_upgrade_smithing_template.base_slot_description": "添加鈦護甲、武器或工具",
   "item.moregears.enderite_upgrade_smithing_template.additions_slot_description": "添加末地合金錠",
 
   "special_effect.moregears.copper_armor": "全套裝備時免疫雷擊。",
@@ -119,5 +117,20 @@
   "item.moregears.titanium_arrow": "鈦箭",
   "entity.moregears.titanium_arrow": "鈦箭",
   "item.moregears.enderite_arrow": "末地合金箭",
-  "entity.moregears.enderite_arrow": "末地合金箭"
+  "entity.moregears.enderite_arrow": "末地合金箭",
+
+  "item.moregears.copper_bow": "銅弓",
+  "item.moregears.bronze_bow": "青銅弓",
+  "item.moregears.steel_bow": "鋼弓",
+  "item.moregears.ruby_bow": "紅寶石弓",
+  "item.moregears.titanium_bow": "鈦弓",
+  "item.moregears.enderite_bow": "末地合金弓",
+
+  "trim_material.moregears.tin": "錫材料",
+  "trim_material.moregears.bronze": "青銅材料",
+  "trim_material.moregears.steel": "鋼材料",
+  "trim_material.moregears.ruby": "紅寶石材料",
+  "trim_material.moregears.titanium": "鈦材料",
+  "trim_material.moregears.enderite": "末地合金材料"
+
 }

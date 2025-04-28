@@ -13,7 +13,6 @@ import com.coolerpromc.moregears.worldgen.MGWorldGeneration;
 import net.fabricmc.api.ModInitializer;
 
 import net.minecraft.block.DispenserBlock;
-import net.minecraft.block.dispenser.ProjectileDispenserBehavior;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -25,7 +24,7 @@ public class MoreGears implements ModInitializer {
 		MGCopperArmorEvent.preventLightningBolt();
 		MGEnderiteArmorEvent.onPlayerHurt();
 
-		MGEntities.init();
+		MGEntities.register();
 		MGItems.init();
 		MGBlocks.init();
 		MGBlockEntities.init();
