@@ -27,6 +27,8 @@ import net.minecraft.screen.PropertyDelegate;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.storage.ReadView;
+import net.minecraft.storage.WriteView;
 import net.minecraft.text.Text;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
@@ -124,29 +126,28 @@ public class AlloySmelterBlockEntity extends BlockEntity implements ExtendedScre
     }
 
     @Override
-    protected void writeNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
-        Inventories.writeNbt(nbt, inventory, registryLookup);
-        nbt.putInt("energy", energyStorage.amount);
+    protected void writeData(WriteView view) {
+        Inventories.writeData(view, inventory);
+        view.putInt("energy", energyStorage.amount);
 
-        nbt.putInt("progress", progress);
-        nbt.putInt("burnProgress", burnProgress);
-        nbt.putInt("maxBurnProgress", maxBurnProgress);
-        nbt.putBoolean("isBurning", isBurning);
+        view.putInt("progress", progress);
+        view.putInt("burnProgress", burnProgress);
+        view.putInt("maxBurnProgress", maxBurnProgress);
+        view.putBoolean("isBurning", isBurning);
 
-        super.writeNbt(nbt, registryLookup);
+        super.writeData(view);
     }
 
     @Override
-    protected void readNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
-        super.readNbt(nbt, registryLookup);
+    protected void readData(ReadView view) {
+        super.readData(view);
+        Inventories.readData(view, inventory);
+        energyStorage.setEnergy(view.getInt("energy", 0));
 
-        Inventories.readNbt(nbt, inventory, registryLookup);
-        energyStorage.setEnergy(nbt.getInt("energy", 0));
-
-        progress = nbt.getInt("progress", 0);
-        burnProgress = nbt.getInt("burnProgress", 0);
-        maxBurnProgress = nbt.getInt("maxBurnProgress", 0);
-        isBurning = nbt.getBoolean("isBurning", false);
+        progress = view.getInt("progress", 0);
+        burnProgress = view.getInt("burnProgress", 0);
+        maxBurnProgress = view.getInt("maxBurnProgress", 0);
+        isBurning = view.getBoolean("isBurning", false);
     }
 
     @Override
@@ -162,9 +163,7 @@ public class AlloySmelterBlockEntity extends BlockEntity implements ExtendedScre
 
     @Override
     public NbtCompound toInitialChunkDataNbt(RegistryWrapper.WrapperLookup registryLookup) {
-        var nbt = super.toInitialChunkDataNbt(registryLookup);
-        writeNbt(nbt, registryLookup);
-        return nbt;
+        return this.createComponentlessNbt(registryLookup);
     }
 
     @Override

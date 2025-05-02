@@ -16,7 +16,7 @@ public class MGItemTagProvider extends FabricTagProvider.ItemTagProvider {
 
     @Override
     protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
-        this.getOrCreateTagBuilder(ItemTags.TRIMMABLE_ARMOR).add(
+        this.valueLookupBuilder(ItemTags.TRIMMABLE_ARMOR).add(
                 MGItems.COPPER_BOOTS,
                 MGItems.COPPER_CHESTPLATE,
                 MGItems.COPPER_HELMET,
@@ -43,7 +43,7 @@ public class MGItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 MGItems.ENDERITE_LEGGINGS
         );
 
-        this.getOrCreateTagBuilder(ItemTags.ARMOR_ENCHANTABLE).add(
+        this.valueLookupBuilder(ItemTags.ARMOR_ENCHANTABLE).add(
                 MGItems.COPPER_BOOTS,
                 MGItems.COPPER_CHESTPLATE,
                 MGItems.COPPER_HELMET,
@@ -70,7 +70,7 @@ public class MGItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 MGItems.ENDERITE_LEGGINGS
         );
 
-        this.getOrCreateTagBuilder(ItemTags.EQUIPPABLE_ENCHANTABLE).add(
+        this.valueLookupBuilder(ItemTags.EQUIPPABLE_ENCHANTABLE).add(
                 MGItems.COPPER_BOOTS,
                 MGItems.COPPER_CHESTPLATE,
                 MGItems.COPPER_HELMET,
@@ -97,7 +97,7 @@ public class MGItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 MGItems.ENDERITE_LEGGINGS
         );
 
-        this.getOrCreateTagBuilder(ItemTags.HEAD_ARMOR).add(
+        this.valueLookupBuilder(ItemTags.HEAD_ARMOR).add(
                 MGItems.COPPER_HELMET,
                 MGItems.BRONZE_HELMET,
                 MGItems.STEEL_HELMET,
@@ -106,7 +106,7 @@ public class MGItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 MGItems.ENDERITE_HELMET
         );
 
-        this.getOrCreateTagBuilder(ItemTags.HEAD_ARMOR_ENCHANTABLE).add(
+        this.valueLookupBuilder(ItemTags.HEAD_ARMOR_ENCHANTABLE).add(
                 MGItems.COPPER_HELMET,
                 MGItems.BRONZE_HELMET,
                 MGItems.STEEL_HELMET,
@@ -115,7 +115,7 @@ public class MGItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 MGItems.ENDERITE_HELMET
         );
 
-        this.getOrCreateTagBuilder(ItemTags.CHEST_ARMOR).add(
+        this.valueLookupBuilder(ItemTags.CHEST_ARMOR).add(
                 MGItems.COPPER_CHESTPLATE,
                 MGItems.BRONZE_CHESTPLATE,
                 MGItems.STEEL_CHESTPLATE,
@@ -124,7 +124,7 @@ public class MGItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 MGItems.ENDERITE_CHESTPLATE
         );
 
-        this.getOrCreateTagBuilder(ItemTags.CHEST_ARMOR_ENCHANTABLE).add(
+        this.valueLookupBuilder(ItemTags.CHEST_ARMOR_ENCHANTABLE).add(
                 MGItems.COPPER_CHESTPLATE,
                 MGItems.BRONZE_CHESTPLATE,
                 MGItems.STEEL_CHESTPLATE,
@@ -133,7 +133,7 @@ public class MGItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 MGItems.ENDERITE_CHESTPLATE
         );
 
-        this.getOrCreateTagBuilder(ItemTags.LEG_ARMOR).add(
+        this.valueLookupBuilder(ItemTags.LEG_ARMOR).add(
                 MGItems.COPPER_LEGGINGS,
                 MGItems.BRONZE_LEGGINGS,
                 MGItems.STEEL_LEGGINGS,
@@ -142,7 +142,7 @@ public class MGItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 MGItems.ENDERITE_LEGGINGS
         );
 
-        this.getOrCreateTagBuilder(ItemTags.LEG_ARMOR_ENCHANTABLE).add(
+        this.valueLookupBuilder(ItemTags.LEG_ARMOR_ENCHANTABLE).add(
                 MGItems.COPPER_LEGGINGS,
                 MGItems.BRONZE_LEGGINGS,
                 MGItems.STEEL_LEGGINGS,
@@ -151,7 +151,7 @@ public class MGItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 MGItems.ENDERITE_LEGGINGS
         );
 
-        this.getOrCreateTagBuilder(ItemTags.FOOT_ARMOR).add(
+        this.valueLookupBuilder(ItemTags.FOOT_ARMOR).add(
                 MGItems.COPPER_BOOTS,
                 MGItems.BRONZE_BOOTS,
                 MGItems.STEEL_BOOTS,
@@ -160,7 +160,7 @@ public class MGItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 MGItems.ENDERITE_BOOTS
         );
 
-        this.getOrCreateTagBuilder(ItemTags.FOOT_ARMOR_ENCHANTABLE).add(
+        this.valueLookupBuilder(ItemTags.FOOT_ARMOR_ENCHANTABLE).add(
                 MGItems.COPPER_BOOTS,
                 MGItems.BRONZE_BOOTS,
                 MGItems.STEEL_BOOTS,
@@ -169,7 +169,7 @@ public class MGItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 MGItems.ENDERITE_BOOTS
         );
 
-        this.getOrCreateTagBuilder(ItemTags.SWORDS).add(
+        this.valueLookupBuilder(ItemTags.SWORDS).add(
                 MGItems.COPPER_SWORD,
                 MGItems.BRONZE_SWORD,
                 MGItems.STEEL_SWORD,
@@ -178,7 +178,7 @@ public class MGItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 MGItems.ENDERITE_SWORD
         );
 
-        this.getOrCreateTagBuilder(ItemTags.PICKAXES).add(
+        this.valueLookupBuilder(ItemTags.PICKAXES).add(
                 MGItems.COPPER_PICKAXE,
                 MGItems.BRONZE_PICKAXE,
                 MGItems.STEEL_PICKAXE,
@@ -187,7 +187,7 @@ public class MGItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 MGItems.ENDERITE_PICKAXE
         );
 
-        this.getOrCreateTagBuilder(ItemTags.SHOVELS).add(
+        this.valueLookupBuilder(ItemTags.SHOVELS).add(
                 MGItems.COPPER_SHOVEL,
                 MGItems.BRONZE_SHOVEL,
                 MGItems.STEEL_SHOVEL,
@@ -196,7 +196,7 @@ public class MGItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 MGItems.ENDERITE_SHOVEL
         );
 
-        this.getOrCreateTagBuilder(ItemTags.AXES).add(
+        this.valueLookupBuilder(ItemTags.AXES).add(
                 MGItems.COPPER_AXE,
                 MGItems.BRONZE_AXE,
                 MGItems.STEEL_AXE,
@@ -205,7 +205,7 @@ public class MGItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 MGItems.ENDERITE_AXE
         );
 
-        this.getOrCreateTagBuilder(ItemTags.HOES).add(
+        this.valueLookupBuilder(ItemTags.HOES).add(
                 MGItems.COPPER_HOE,
                 MGItems.BRONZE_HOE,
                 MGItems.STEEL_HOE,
@@ -214,22 +214,22 @@ public class MGItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 MGItems.ENDERITE_HOE
         );
 
-        this.getOrCreateTagBuilder(MGTags.Items.INGOTS_BRONZE)
+        this.valueLookupBuilder(MGTags.Items.INGOTS_BRONZE)
                 .add(MGItems.BRONZE_INGOT);
 
-        this.getOrCreateTagBuilder(MGTags.Items.INGOTS_STEEL)
+        this.valueLookupBuilder(MGTags.Items.INGOTS_STEEL)
                 .add(MGItems.STEEL_INGOT);
 
-        this.getOrCreateTagBuilder(MGTags.Items.INGOTS_TITANIUM)
+        this.valueLookupBuilder(MGTags.Items.INGOTS_TITANIUM)
                 .add(MGItems.TITANIUM_INGOT);
 
-        this.getOrCreateTagBuilder(MGTags.Items.INGOTS_ENDERITE)
+        this.valueLookupBuilder(MGTags.Items.INGOTS_ENDERITE)
                 .add(MGItems.ENDERITE_INGOT);
 
-        this.getOrCreateTagBuilder(MGTags.Items.GEMS_RUBY)
+        this.valueLookupBuilder(MGTags.Items.GEMS_RUBY)
                 .add(MGItems.RUBY_INGOT);
 
-        this.getOrCreateTagBuilder(ItemTags.ARROWS).add(
+        this.valueLookupBuilder(ItemTags.ARROWS).add(
                 MGItems.COPPER_ARROW,
                 MGItems.BRONZE_ARROW,
                 MGItems.STEEL_ARROW,
@@ -238,7 +238,7 @@ public class MGItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 MGItems.ENDERITE_ARROW
         );
 
-        this.getOrCreateTagBuilder(ItemTags.BOW_ENCHANTABLE).add(
+        this.valueLookupBuilder(ItemTags.BOW_ENCHANTABLE).add(
                 MGItems.COPPER_BOW,
                 MGItems.BRONZE_BOW,
                 MGItems.STEEL_BOW,
@@ -247,7 +247,7 @@ public class MGItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 MGItems.ENDERITE_BOW
         );
 
-        this.getOrCreateTagBuilder(ItemTags.TRIM_MATERIALS).add(
+        this.valueLookupBuilder(ItemTags.TRIM_MATERIALS).add(
                 MGItems.TIN_INGOT,
                 MGItems.BRONZE_INGOT,
                 MGItems.STEEL_INGOT,
