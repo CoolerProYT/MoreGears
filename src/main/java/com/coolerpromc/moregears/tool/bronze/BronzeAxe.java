@@ -2,7 +2,6 @@ package com.coolerpromc.moregears.tool.bronze;
 
 import com.coolerpromc.moregears.util.MGTooltip;
 import net.minecraft.block.BlockState;
-import net.minecraft.client.MinecraftClient;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
