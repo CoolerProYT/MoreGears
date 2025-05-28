@@ -23,6 +23,7 @@ import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.client.event.RegisterSelectItemModelPropertyEvent;
 import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.neoforge.event.OnDatapackSyncEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
 
 @Mod(MoreGears.MODID)
@@ -60,6 +61,11 @@ public class MoreGears
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event)
     {
+    }
+
+    @SubscribeEvent
+    public void onOnDatapackSync(OnDatapackSyncEvent event) {
+        event.sendRecipes(MGRecipes.ALLOY_SMELTING_TYPE.get());
     }
 
     @EventBusSubscriber(modid = MODID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
