@@ -6,6 +6,7 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.renderer.GameRenderer;
+import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -28,12 +29,10 @@ public class AlloySmelterScreen extends AbstractContainerScreen<AlloySmelterMenu
 
     @Override
     protected void renderBg(GuiGraphics pGuiGraphics, float pPartialTick, int pMouseX, int pMouseY) {
-        RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
-
         int x = (width - imageWidth) / 2;
         int y = (height - imageHeight) / 2;
 
-        pGuiGraphics.blit(RenderType::guiTextured, TEXTURE, x, y, 0, 0, imageWidth, imageHeight, 256, 256);
+        pGuiGraphics.blit(RenderPipelines.GUI_TEXTURED, TEXTURE, x, y, 0, 0, imageWidth, imageHeight, 256, 256);
 
         renderEnergyBar(pGuiGraphics, x, y);
         renderProgressArrow(pGuiGraphics, x, y);
@@ -42,18 +41,18 @@ public class AlloySmelterScreen extends AbstractContainerScreen<AlloySmelterMenu
 
     private void renderEnergyBar(GuiGraphics guiGraphics, int x, int y) {
         int energyScaled = menu.getEnergyStoredScaled();
-        guiGraphics.blit(RenderType::guiTextured, TEXTURE, x + 9, y + 13 + (58 - energyScaled), 176, 101 - energyScaled, 14, energyScaled, 256, 256);
+        guiGraphics.blit(RenderPipelines.GUI_TEXTURED, TEXTURE, x + 9, y + 13 + (58 - energyScaled), 176, 101 - energyScaled, 14, energyScaled, 256, 256);
     }
 
     private void renderProgressArrow(GuiGraphics guiGraphics, int x, int y) {
         if(menu.isCrafting()) {
-            guiGraphics.blit(RenderType::guiTextured, TEXTURE, x + 99, y + 30, 176, 18, 20, menu.getScaledProgress(), 256, 256);
+            guiGraphics.blit(RenderPipelines.GUI_TEXTURED, TEXTURE, x + 99, y + 30, 176, 18, 20, menu.getScaledProgress(), 256, 256);
         }
     }
 
     private void renderEnergyGeneration(GuiGraphics guiGraphics, int x, int y) {
         if(menu.isGeneratingEnergy()) {
-            guiGraphics.blit(RenderType::guiTextured, TEXTURE, x + 33, y + 44 + menu.getEnergyProgress(), 176, menu.getEnergyProgress(), 12, 18 - menu.getEnergyProgress(), 256, 256);
+            guiGraphics.blit(RenderPipelines.GUI_TEXTURED, TEXTURE, x + 33, y + 44 + menu.getEnergyProgress(), 176, menu.getEnergyProgress(), 12, 18 - menu.getEnergyProgress(), 256, 256);
         }
     }
 
@@ -68,7 +67,7 @@ public class AlloySmelterScreen extends AbstractContainerScreen<AlloySmelterMenu
 
         Component text = Component.translatable("gui.moregears.energy_stored", MGEnergyStorage.convertEnergyToString(energyStored), MGEnergyStorage.convertEnergyToString(maxEnergy));
         if(isHovering(9, 13, 14, 58, pMouseX, pMouseY)) {
-            pGuiGraphics.renderTooltip(this.font, text, pMouseX, pMouseY);
+            pGuiGraphics.setTooltipForNextFrame(this.font, text, pMouseX, pMouseY);
         }
     }
 }

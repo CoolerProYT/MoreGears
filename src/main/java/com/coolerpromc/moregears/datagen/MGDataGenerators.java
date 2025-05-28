@@ -25,8 +25,8 @@ public class MGDataGenerators {
         event.addProvider(new MGModelProvider(packOutput));
         event.addProvider(new MGEquipmentInfoProvider(packOutput));
 
-        MGBlockTagGenerator blockTagGenerator = event.addProvider(new MGBlockTagGenerator(packOutput, lookupProvider));
-        event.addProvider(new MGItemTagGenerator(packOutput, lookupProvider, blockTagGenerator.contentsGetter()));
+        event.addProvider(new MGBlockTagGenerator(packOutput, lookupProvider));
+        event.addProvider(new MGItemTagGenerator(packOutput, lookupProvider));
 
         event.addProvider(new MGDatapackProvider(packOutput, lookupProvider));
     }

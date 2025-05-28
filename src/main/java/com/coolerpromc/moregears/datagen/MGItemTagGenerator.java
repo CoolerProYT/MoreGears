@@ -1,19 +1,19 @@
 package com.coolerpromc.moregears.datagen;
 
+import com.coolerpromc.moregears.MoreGears;
 import com.coolerpromc.moregears.item.MGItems;
 import com.coolerpromc.moregears.util.MGTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
-import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.tags.ItemTags;
-import net.minecraft.world.level.block.Block;
+import net.neoforged.neoforge.common.data.ItemTagsProvider;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.concurrent.CompletableFuture;
 
 public class MGItemTagGenerator extends ItemTagsProvider {
-    public MGItemTagGenerator(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, CompletableFuture<TagLookup<Block>> blockTags) {
-        super(output, lookupProvider, blockTags);
+    public MGItemTagGenerator(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider) {
+        super(output, lookupProvider, MoreGears.MODID);
     }
 
     @Override
