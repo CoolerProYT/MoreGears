@@ -7,14 +7,12 @@ import com.coolerpromc.moregears.screen.AlloySmelterMenu;
 import com.coolerpromc.moregears.util.MGEnergyStorage;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
-import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.ContainerHelper;
 import net.minecraft.world.Containers;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.SimpleContainer;
@@ -168,38 +166,28 @@ public class AlloySmelterBlockEntity extends BlockEntity implements MenuProvider
 
     @Override
     protected void saveAdditional(ValueOutput valueOutput) {
-        NonNullList<ItemStack> stacks = NonNullList.withSize(4, ItemStack.EMPTY);
-        stacks.set(0, fuelHandler.getStackInSlot(0));
-        stacks.set(1, inputHandler.getStackInSlot(0));
-        stacks.set(2, inputHandler.getStackInSlot(1));
-        stacks.set(3, outputHandler.getStackInSlot(0));
-        ContainerHelper.saveAllItems(valueOutput, stacks);
+        fuelHandler.serialize(valueOutput.child("fuelHandler"));
+        inputHandler.serialize(valueOutput.child("inputHandler"));
+        outputHandler.serialize(valueOutput.child("outputHandler"));
         valueOutput.putInt("energy", energyStorage.getEnergyStored());
-
         valueOutput.putInt("progress", progress);
         valueOutput.putInt("burnProgress", burnProgress);
         valueOutput.putInt("maxBurnProgress", maxBurnProgress);
         valueOutput.putBoolean("isBurning", isBurning);
-
         super.saveAdditional(valueOutput);
     }
 
     @Override
     protected void loadAdditional(ValueInput valueInput) {
-        super.loadAdditional(valueInput);
-
-        NonNullList<ItemStack> stacks = NonNullList.withSize(4, ItemStack.EMPTY);
-        ContainerHelper.loadAllItems(valueInput, stacks);
-        fuelHandler.setStackInSlot(0, stacks.get(0));
-        inputHandler.setStackInSlot(0, stacks.get(1));
-        inputHandler.setStackInSlot(1, stacks.get(2));
-        outputHandler.setStackInSlot(0, stacks.get(3));
+        fuelHandler.deserialize(valueInput.childOrEmpty("fuelHandler"));
+        inputHandler.deserialize(valueInput.childOrEmpty("inputHandler"));
+        outputHandler.deserialize(valueInput.childOrEmpty("outputHandler"));
         energyStorage.setEnergy(valueInput.getIntOr("energy", 0));
-
         progress = valueInput.getIntOr("progress", 0);
         burnProgress = valueInput.getIntOr("burnProgress", 0);
         maxBurnProgress = valueInput.getIntOr("maxBurnProgress", 0);
         isBurning = valueInput.getBooleanOr("isBurning", false);
+        super.loadAdditional(valueInput);
     }
 
     public void tick(Level pLevel, BlockPos pPos, BlockState pState) {

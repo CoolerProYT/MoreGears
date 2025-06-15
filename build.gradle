@@ -29,10 +29,10 @@ repositories {
     }
     maven { url "https://maven.architectury.dev/" }
     maven {
-        url = uri("https://maven.pkg.github.com/neoforged/NeoForge/pr2297")
-        credentials {
-            username = System.getenv("USERNAME")
-            password = System.getenv("GITHUB_PAT")
+        name 'Maven for PR #2297'
+        url 'https://prmaven.neoforged.net/NeoForge/pr2297'
+        content {
+            includeModule('net.neoforged', 'neoforge')
         }
     }
 }
