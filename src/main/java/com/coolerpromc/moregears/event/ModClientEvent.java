@@ -8,7 +8,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.ComputeFovModifierEvent;
 
-@EventBusSubscriber(modid = MoreGears.MODID, bus = EventBusSubscriber.Bus.GAME, value = Dist.CLIENT)
+@EventBusSubscriber(modid = MoreGears.MODID, value = Dist.CLIENT)
 public class ModClientEvent {
     @SubscribeEvent
     public static void onComputeFovModifier(ComputeFovModifierEvent event) {
