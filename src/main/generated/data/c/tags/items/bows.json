@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "moregears:copper_bow",
+    "moregears:bronze_bow",
+    "moregears:steel_bow",
+    "moregears:ruby_bow",
+    "moregears:titanium_bow",
+    "moregears:enderite_bow"
+  ]
+}

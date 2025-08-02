@@ -1,0 +1,6 @@
+{
+  "parent": "item/bow",
+  "textures": {
+    "layer0": "moregears:item/ruby_bow_pulling_1"
+  }
+}

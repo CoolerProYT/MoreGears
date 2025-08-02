@@ -4,6 +4,7 @@ import com.coolerpromc.moregears.item.MGItems;
 import com.coolerpromc.moregears.util.MGTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
+import net.fabricmc.fabric.api.tag.convention.v1.ConventionalItemTags;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.ItemTags;
 
@@ -102,6 +103,24 @@ public class MGItemTagProvider extends FabricTagProvider.ItemTagProvider {
 
         this.getOrCreateTagBuilder(MGTags.Items.GEMS_RUBY)
                 .add(MGItems.RUBY_INGOT);
+
+        this.getOrCreateTagBuilder(ItemTags.ARROWS).add(
+                MGItems.COPPER_ARROW,
+                MGItems.BRONZE_ARROW,
+                MGItems.STEEL_ARROW,
+                MGItems.RUBY_ARROW,
+                MGItems.TITANIUM_ARROW,
+                MGItems.ENDERITE_ARROW
+        );
+
+        this.getOrCreateTagBuilder(ConventionalItemTags.BOWS).add(
+                MGItems.COPPER_BOW,
+                MGItems.BRONZE_BOW,
+                MGItems.STEEL_BOW,
+                MGItems.RUBY_BOW,
+                MGItems.TITANIUM_BOW,
+                MGItems.ENDERITE_BOW
+        );
 
         this.getOrCreateTagBuilder(ItemTags.TRIM_MATERIALS).add(
                 MGItems.TIN_INGOT,

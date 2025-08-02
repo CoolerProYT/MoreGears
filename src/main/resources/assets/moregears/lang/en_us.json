@@ -131,5 +131,8 @@
   "trim_material.moregears.steel": "Steel Material",
   "trim_material.moregears.ruby": "Ruby Material",
   "trim_material.moregears.titanium": "Titanium Material",
-  "trim_material.moregears.enderite": "Enderite Material"
+  "trim_material.moregears.enderite": "Enderite Material",
+
+  "item.moregears.titanium_upgrade_smithing_template.base_slot_description": "Add titanium armor, weapon, or tool",
+  "item.moregears.enderite_upgrade_smithing_template.base_slot_description": "Add enderite armor, weapon, or tool"
 }
