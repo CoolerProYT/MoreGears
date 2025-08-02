@@ -113,6 +113,20 @@ public class MGRecipeProvider extends FabricRecipeProvider {
                 .pattern("AAA")
                 .criterion(hasItem(Items.FURNACE), conditionsFromItem(Items.FURNACE))
                 .offerTo(recipeOutput);
+
+        arrowRecipe(recipeOutput, Items.COPPER_INGOT, MGItems.COPPER_ARROW);
+        arrowRecipe(recipeOutput, MGItems.BRONZE_INGOT, MGItems.BRONZE_ARROW);
+        arrowRecipe(recipeOutput, MGItems.STEEL_INGOT, MGItems.STEEL_ARROW);
+        arrowRecipe(recipeOutput, MGItems.RUBY_INGOT, MGItems.RUBY_ARROW);
+        arrowRecipe(recipeOutput, MGItems.TITANIUM_INGOT, MGItems.TITANIUM_ARROW);
+        arrowRecipe(recipeOutput, MGItems.ENDERITE_INGOT, MGItems.ENDERITE_ARROW);
+
+        bowRecipe(recipeOutput, Items.COPPER_INGOT, MGItems.COPPER_BOW);
+        bowRecipe(recipeOutput, MGItems.BRONZE_INGOT, MGItems.BRONZE_BOW);
+        bowRecipe(recipeOutput, MGItems.STEEL_INGOT, MGItems.STEEL_BOW);
+        bowRecipe(recipeOutput, MGItems.RUBY_INGOT, MGItems.RUBY_BOW);
+        bowRecipe(recipeOutput, MGItems.TITANIUM_INGOT, MGItems.TITANIUM_BOW);
+        bowRecipe(recipeOutput, MGItems.ENDERITE_INGOT, MGItems.ENDERITE_BOW);
     }
 
     protected static void armorSetRecipe(RecipeExporter recipeOutput, ItemConvertible material, ItemConvertible helmet, ItemConvertible chestplate, ItemConvertible leggings, ItemConvertible boots){
@@ -224,5 +238,28 @@ public class MGRecipeProvider extends FabricRecipeProvider {
                 .addOutput(new ItemStack(result, outputCount))
                 .criterion(hasItem(ingredients1.getMatchingStacks()[0].getItem()), conditionsFromItem(ingredients1.getMatchingStacks()[0].getItem()))
                 .offerTo(recipeOutput, Identifier.of(MoreGears.MODID, "alloy_smelting/" + getItemPath(result) + "_from_alloy_smelting"));
+    }
+
+    protected void arrowRecipe(RecipeExporter output, ItemConvertible ingot, ItemConvertible outputItem) {
+        ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, outputItem, 6)
+                .input('#', Items.STICK)
+                .input('X', ingot)
+                .input('Y', Items.FEATHER)
+                .pattern("X")
+                .pattern("#")
+                .pattern("Y")
+                .criterion(hasItem(ingot), conditionsFromItem(ingot))
+                .offerTo(output);
+    }
+
+    protected void bowRecipe(RecipeExporter output, ItemConvertible ingot, ItemConvertible outputItem){
+        ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, outputItem)
+                .input('#', ingot)
+                .input('X', Items.STRING)
+                .pattern(" #X")
+                .pattern("# X")
+                .pattern(" #X")
+                .criterion(hasItem(ingot), conditionsFromItem(ingot))
+                .offerTo(output);
     }
 }
