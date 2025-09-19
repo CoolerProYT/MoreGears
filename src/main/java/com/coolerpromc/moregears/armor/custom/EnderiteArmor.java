@@ -27,7 +27,7 @@ public class EnderiteArmor extends MGArmorItem {
     @Override
     public void inventoryTick(ItemStack stack, ServerLevel level, Entity entity, @Nullable EquipmentSlot p_401900_) {
         // 0 = boots, 1 = leggings, 2 = chestplate, 3 = helmet
-        if (!level.isClientSide){
+        if (!level.isClientSide()){
             if (entity instanceof Player player){
                 if(player.isOnFire()|| player.isInLava()){
                     player.extinguishFire();

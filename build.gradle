@@ -2,7 +2,7 @@ plugins {
     id 'idea'
     id 'java-library'
     id 'maven-publish'
-    id 'net.neoforged.moddev' version '2.0.103'
+    id 'net.neoforged.moddev' version '2.0.107'
 }
 
 tasks.named('wrapper', Wrapper).configure {
@@ -29,10 +29,10 @@ repositories {
     }
     maven { url "https://maven.architectury.dev/" }
     maven {
-        name 'Maven for PR #2297'
-        url 'https://prmaven.neoforged.net/NeoForge/pr2297'
+        name = "Maven for PR #2639"
+        url = uri("https://prmaven.neoforged.net/NeoForge/pr2639")
         content {
-            includeModule('net.neoforged', 'neoforge')
+            includeModule("net.neoforged", "neoforge")
         }
     }
 }
