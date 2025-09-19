@@ -32,7 +32,7 @@ public class MGArrowItem extends ArrowItem {
     }
 
     public boolean isInfinite(ItemStack ammo, ItemStack bow, LivingEntity livingEntity) {
-        return EnchantmentHelper.getEquipmentLevel(livingEntity.getWorld().getRegistryManager().getOptionalEntry(Enchantments.INFINITY).orElseThrow(), livingEntity) > 0;
+        return EnchantmentHelper.getEquipmentLevel(livingEntity.getEntityWorld().getRegistryManager().getOptionalEntry(Enchantments.INFINITY).orElseThrow(), livingEntity) > 0;
     }
 
     @Override

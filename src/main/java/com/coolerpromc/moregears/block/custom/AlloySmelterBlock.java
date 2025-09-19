@@ -85,7 +85,7 @@ public class AlloySmelterBlock extends BlockWithEntity {
 
     @Override
     protected ActionResult onUseWithItem(ItemStack stack, BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-        if (!world.isClient){
+        if (!world.isClient()){
             BlockEntity entity = world.getBlockEntity(pos);
             if (entity instanceof AlloySmelterBlockEntity alloySmelterBlockEntity){
                 player.openHandledScreen(alloySmelterBlockEntity);
@@ -104,7 +104,7 @@ public class AlloySmelterBlock extends BlockWithEntity {
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
-        if (world.isClient){
+        if (world.isClient()){
             return null;
         }
 

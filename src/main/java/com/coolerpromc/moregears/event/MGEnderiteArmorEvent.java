@@ -17,7 +17,7 @@ import java.util.Objects;
 public class MGEnderiteArmorEvent {
     public static void onPlayerHurt(){
         ServerLivingEntityEvents.ALLOW_DAMAGE.register((livingEntity, damageSource, v) -> {
-            if (livingEntity instanceof PlayerEntity player && livingEntity.getWorld() instanceof ServerWorld serverWorld) {
+            if (livingEntity instanceof PlayerEntity player && livingEntity.getEntityWorld() instanceof ServerWorld serverWorld) {
                 Registry<DamageType> damageTypeReg = serverWorld.getRegistryManager().getOptional(RegistryKeys.DAMAGE_TYPE).orElse(null);
                 List<ItemStack> armorlist = List.of(player.getEquippedStack(EquipmentSlot.FEET), player.getEquippedStack(EquipmentSlot.HEAD), player.getEquippedStack(EquipmentSlot.CHEST), player.getEquippedStack(EquipmentSlot.LEGS));
 

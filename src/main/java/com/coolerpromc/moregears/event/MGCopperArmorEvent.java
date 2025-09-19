@@ -17,7 +17,7 @@ import java.util.Objects;
 public class MGCopperArmorEvent {
     public static void preventLightningBolt() {
         ServerLivingEntityEvents.ALLOW_DAMAGE.register((livingEntity, damageSource, v) -> {
-            if (livingEntity instanceof PlayerEntity player && livingEntity.getWorld() instanceof ServerWorld serverWorld){
+            if (livingEntity instanceof PlayerEntity player && livingEntity.getEntityWorld() instanceof ServerWorld serverWorld){
                 Registry<DamageType> damageTypeReg = serverWorld.getRegistryManager().getOptional(RegistryKeys.DAMAGE_TYPE).orElse(null);
                 if (damageTypeReg != null && (Objects.equals(damageSource.getType(), damageTypeReg.get(DamageTypes.LIGHTNING_BOLT)))){
                     return !isCopperArmor(player);

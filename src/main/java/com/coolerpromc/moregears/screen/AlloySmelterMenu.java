@@ -19,7 +19,7 @@ public class AlloySmelterMenu extends ScreenHandler {
     private final PropertyDelegate data;
 
     public AlloySmelterMenu(int syncId, PlayerInventory inventory, BlockPos pos) {
-        this(syncId, inventory, inventory.player.getWorld().getBlockEntity(pos), new ArrayPropertyDelegate(6));
+        this(syncId, inventory, inventory.player.getEntityWorld().getBlockEntity(pos), new ArrayPropertyDelegate(6));
     }
 
     public AlloySmelterMenu(int syncId, PlayerInventory playerInventory, BlockEntity blockEntity, PropertyDelegate propertyDelegate) {
