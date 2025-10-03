@@ -31,7 +31,9 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
 import net.neoforged.neoforge.common.crafting.SizedIngredient;
-import net.neoforged.neoforge.items.ItemStackHandler;
+import net.neoforged.neoforge.transfer.item.ItemResource;
+import net.neoforged.neoforge.transfer.item.ItemStacksResourceHandler;
+import net.neoforged.neoforge.transfer.transaction.Transaction;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
@@ -42,39 +44,34 @@ import java.util.Optional;
 public class AlloySmelterBlockEntity extends BlockEntity implements MenuProvider {
     private final MGEnergyStorage energyStorage = new MGEnergyStorage(100000, 10000, 0);
 
-    private final ItemStackHandler fuelHandler = new ItemStackHandler(1){
+    private final ItemStacksResourceHandler fuelHandler = new ItemStacksResourceHandler(1){
         @Override
-        public boolean isItemValid(int slot, ItemStack stack) {
+        public boolean isValid(int index, ItemResource resource) {
             assert level != null;
-            return stack.getBurnTime(RecipeType.BLASTING, level.fuelValues()) > 0;
+            return resource.toStack().getBurnTime(RecipeType.BLASTING, level.fuelValues()) > 0;
         }
 
         @Override
-        protected void onContentsChanged(int slot) {
+        protected void onContentsChanged(int index, ItemStack previousContents) {
             setChanged();
         }
     };
 
-    private final ItemStackHandler inputHandler = new ItemStackHandler(2){
+    private final ItemStacksResourceHandler inputHandler = new ItemStacksResourceHandler(2){
         @Override
-        public boolean isItemValid(int slot, ItemStack stack) {
-            return true;
-        }
-
-        @Override
-        protected void onContentsChanged(int slot) {
+        protected void onContentsChanged(int index, ItemStack previousContents) {
             setChanged();
         }
     };
 
-    private final ItemStackHandler outputHandler = new ItemStackHandler(1){
+    private final ItemStacksResourceHandler outputHandler = new ItemStacksResourceHandler(1){
         @Override
-        public boolean isItemValid(int slot, ItemStack stack) {
+        public boolean isValid(int index, ItemResource resource) {
             return false;
         }
 
         @Override
-        protected void onContentsChanged(int slot) {
+        protected void onContentsChanged(int index, ItemStack previousContents) {
             setChanged();
         }
     };
@@ -94,8 +91,8 @@ public class AlloySmelterBlockEntity extends BlockEntity implements MenuProvider
                 return switch (pIndex) {
                     case 0 -> AlloySmelterBlockEntity.this.progress;
                     case 1 -> AlloySmelterBlockEntity.this.maxProgress;
-                    case 2 -> AlloySmelterBlockEntity.this.energyStorage.getEnergyStored();
-                    case 3 -> AlloySmelterBlockEntity.this.energyStorage.getMaxEnergyStored();
+                    case 2 -> AlloySmelterBlockEntity.this.energyStorage.getAmountAsInt();
+                    case 3 -> AlloySmelterBlockEntity.this.energyStorage.getCapacityAsInt();
                     case 4 -> AlloySmelterBlockEntity.this.burnProgress;
                     case 5 -> AlloySmelterBlockEntity.this.maxBurnProgress;
                     default -> 0;
@@ -122,15 +119,15 @@ public class AlloySmelterBlockEntity extends BlockEntity implements MenuProvider
         return energyStorage;
     }
 
-    public ItemStackHandler getFuelHandler() {
+    public ItemStacksResourceHandler getFuelHandler() {
         return fuelHandler;
     }
 
-    public ItemStackHandler getInputHandler() {
+    public ItemStacksResourceHandler getInputHandler() {
         return inputHandler;
     }
 
-    public ItemStackHandler getOutputHandler() {
+    public ItemStacksResourceHandler getOutputHandler() {
         return outputHandler;
     }
 
@@ -145,10 +142,10 @@ public class AlloySmelterBlockEntity extends BlockEntity implements MenuProvider
 
     public void drops(){
         SimpleContainer inventory = new SimpleContainer(4);
-        inventory.setItem(0, inputHandler.getStackInSlot(0));
-        inventory.setItem(1, inputHandler.getStackInSlot(1));
-        inventory.setItem(2, outputHandler.getStackInSlot(0));
-        inventory.setItem(3, fuelHandler.getStackInSlot(0));
+        inventory.setItem(0, inputHandler.getResource(0).toStack(inputHandler.getAmountAsInt(0)));
+        inventory.setItem(1, inputHandler.getResource(1).toStack(inputHandler.getAmountAsInt(1)));
+        inventory.setItem(2, outputHandler.getResource(0).toStack(outputHandler.getAmountAsInt(0)));
+        inventory.setItem(3, fuelHandler.getResource(0).toStack(fuelHandler.getAmountAsInt(0)));
 
         Containers.dropContents(this.level, this.worldPosition, inventory);
     }
@@ -169,7 +166,7 @@ public class AlloySmelterBlockEntity extends BlockEntity implements MenuProvider
         fuelHandler.serialize(valueOutput.child("fuelHandler"));
         inputHandler.serialize(valueOutput.child("inputHandler"));
         outputHandler.serialize(valueOutput.child("outputHandler"));
-        valueOutput.putInt("energy", energyStorage.getEnergyStored());
+        valueOutput.putInt("energy", energyStorage.getAmountAsInt());
         valueOutput.putInt("progress", progress);
         valueOutput.putInt("burnProgress", burnProgress);
         valueOutput.putInt("maxBurnProgress", maxBurnProgress);
@@ -194,7 +191,7 @@ public class AlloySmelterBlockEntity extends BlockEntity implements MenuProvider
         generateEnergy();
         setChanged(pLevel, pPos, pState);
 
-        if(hasRecipe() && energyStorage.getEnergyStored() >= 1){
+        if(hasRecipe() && energyStorage.getAmountAsInt() >= 1){
             increaseCraftingProgress();
             energyStorage.removeEnergy(10);
             setChanged(pLevel, pPos, pState);
@@ -212,11 +209,11 @@ public class AlloySmelterBlockEntity extends BlockEntity implements MenuProvider
 
     private void generateEnergy(){
         assert level != null;
-        if (fuelHandler.getStackInSlot(0).getBurnTime(RecipeType.BLASTING, level.fuelValues()) > 0 && !isBurning){
-            maxBurnProgress = Math.max(fuelHandler.getStackInSlot(0).getBurnTime(RecipeType.BLASTING, level.fuelValues()), 0);
+        if (fuelHandler.getResource(0).toStack().getBurnTime(RecipeType.BLASTING, level.fuelValues()) > 0 && !isBurning){
+            maxBurnProgress = Math.max(fuelHandler.getResource(0).toStack().getBurnTime(RecipeType.BLASTING, level.fuelValues()), 0);
         }
 
-        if(fuelHandler.getStackInSlot(0).getBurnTime(RecipeType.BLASTING, level.fuelValues()) > 0 || isBurning && energyStorage.getEnergyStored() < energyStorage.getMaxEnergyStored()){
+        if(fuelHandler.getResource(0).toStack().getBurnTime(RecipeType.BLASTING, level.fuelValues()) > 0 || isBurning && energyStorage.getAmountAsInt() < energyStorage.getCapacityAsInt()){
             if (burnProgress >= maxBurnProgress){
                 burnProgress = 0;
                 isBurning = false;
@@ -224,11 +221,15 @@ public class AlloySmelterBlockEntity extends BlockEntity implements MenuProvider
             }
 
             if (burnProgress == 0){
-                fuelHandler.extractItem(0, 1, false);
-                isBurning = true;
+                try(Transaction tx = Transaction.open(null)){
+                    if(fuelHandler.extract(fuelHandler.getResource(0), 1, tx) == 1){
+                        tx.commit();
+                        isBurning = true;
+                    }
+                }
             }
 
-            energyStorage.receiveEnergy(100, false);
+            energyStorage.addEnergy(100);
             burnProgress++;
         }
     }
@@ -246,25 +247,32 @@ public class AlloySmelterBlockEntity extends BlockEntity implements MenuProvider
             int extractFromSlot1 = 0;
 
             for (SizedIngredient ingredient : recipe.get().value().inputItems()) {
-                if (ingredient.test(inputHandler.getStackInSlot(0))) {
-                    extractFromSlot0 += Math.min(inputHandler.getStackInSlot(0).getCount(), ingredient.count());
-                } else if (ingredient.test(inputHandler.getStackInSlot(1))) {
-                    extractFromSlot1 += Math.min(inputHandler.getStackInSlot(1).getCount(), ingredient.count());
+                if (ingredient.test(inputHandler.getResource(0).toStack(inputHandler.getAmountAsInt(0)))) {
+                    extractFromSlot0 += Math.min(inputHandler.getAmountAsInt(0), ingredient.count());
+                } else if (ingredient.test(inputHandler.getResource(1).toStack(inputHandler.getAmountAsInt(1)))) {
+                    extractFromSlot1 += Math.min(inputHandler.getAmountAsInt(1), ingredient.count());
                 }
             }
 
             if (extractFromSlot0 > 0) {
-                inputHandler.extractItem(0, extractFromSlot0, false);
+                try(Transaction tx = Transaction.open(null)){
+                    if (inputHandler.extract(inputHandler.getResource(0), extractFromSlot0, tx) == extractFromSlot0){
+                        tx.commit();
+                    }
+                }
             }
             if (extractFromSlot1 > 0) {
-                inputHandler.extractItem(1, extractFromSlot1, false);
+                try(Transaction tx = Transaction.open(null)){
+                    if (inputHandler.extract(inputHandler.getResource(1), extractFromSlot1, tx) == extractFromSlot1){
+                        tx.commit();
+                    }
+                }
             }
 
             for (ItemStack result : results) {
                 int outputSlot = findSuitableOutputSlot(result);
                 if (outputSlot != -1) {
-                    this.outputHandler.setStackInSlot(outputSlot, new ItemStack(result.getItem(),
-                            this.outputHandler.getStackInSlot(outputSlot).getCount() + result.getCount()));
+                    this.outputHandler.set(outputSlot, ItemResource.of(result.getItem()), this.outputHandler.getAmountAsInt(outputSlot) + result.getCount());
 
                 } else {
                     System.err.println("No suitable output slot found for item: " + result);
@@ -274,10 +282,8 @@ public class AlloySmelterBlockEntity extends BlockEntity implements MenuProvider
     }
 
     private int findSuitableOutputSlot(ItemStack result) {
-        // Implement logic to find a suitable output slot for the given result
-        // Return the slot index or -1 if no suitable slot is found
-        for (int i = 0; i < this.outputHandler.getSlots(); i++) {
-            ItemStack stackInSlot = this.outputHandler.getStackInSlot(i);
+        for (int i = 0; i < this.outputHandler.size(); i++) {
+            ItemStack stackInSlot = this.outputHandler.getResource(i).toStack(this.outputHandler.getAmountAsInt(i));
             if (stackInSlot.isEmpty() || (stackInSlot.getItem() == result.getItem() && stackInSlot.getCount() + result.getCount() <= stackInSlot.getMaxStackSize())) {
                 return i;
             }
@@ -299,8 +305,8 @@ public class AlloySmelterBlockEntity extends BlockEntity implements MenuProvider
 
         // Create a mutable copy of the user inputs
         List<ItemStack> userInputs = new ArrayList<>();
-        userInputs.add(this.inputHandler.getStackInSlot(0));
-        userInputs.add(this.inputHandler.getStackInSlot(1));
+        userInputs.add(this.inputHandler.getResource(0).toStack(this.inputHandler.getAmountAsInt(0)));
+        userInputs.add(this.inputHandler.getResource(1).toStack(this.inputHandler.getAmountAsInt(1)));
 
         // Check if all recipe ingredients are matched with user inputs
         for (SizedIngredient recipeIngredient : recipeIngredients) {
@@ -344,8 +350,8 @@ public class AlloySmelterBlockEntity extends BlockEntity implements MenuProvider
             count++;
         }
 
-        for (int i = 0; i < this.outputHandler.getSlots(); i++) {
-            ItemStack stackInSlot = this.outputHandler.getStackInSlot(i);
+        for (int i = 0; i < this.outputHandler.size(); i++) {
+            ItemStack stackInSlot = this.outputHandler.getResource(i).toStack(this.outputHandler.getAmountAsInt(i));
             if(!stackInSlot.isEmpty()){
                 for (ItemStack result : results){
                     if(stackInSlot.getItem() == result.getItem()){
@@ -366,8 +372,8 @@ public class AlloySmelterBlockEntity extends BlockEntity implements MenuProvider
     private Optional<RecipeHolder<AlloySmeltingRecipe>> getCurrentRecipe(){
         List<ItemStack> inputs = new ArrayList<>();
 
-        for (int i = 0; i < this.inputHandler.getSlots(); i++) {
-            inputs.add(this.inputHandler.getStackInSlot(i));
+        for (int i = 0; i < this.inputHandler.size(); i++) {
+            inputs.add(this.inputHandler.getResource(i).toStack(this.inputHandler.getAmountAsInt(i)));
         }
 
         ServerLevel serverLevel = (ServerLevel) level;
@@ -378,8 +384,8 @@ public class AlloySmelterBlockEntity extends BlockEntity implements MenuProvider
     }
 
     private boolean canInsertAmountIntoOutputSlot(ItemStack result) {
-        for (int i = 0; i < this.outputHandler.getSlots(); i++) {
-            ItemStack stackInSlot = this.outputHandler.getStackInSlot(i);
+        for (int i = 0; i < this.outputHandler.size(); i++) {
+            ItemStack stackInSlot = this.outputHandler.getResource(i).toStack(this.outputHandler.getAmountAsInt(i));
             if (stackInSlot.isEmpty() || (stackInSlot.getItem() == result.getItem() && stackInSlot.getCount() + result.getCount() <= stackInSlot.getMaxStackSize())) {
                 return true;
             }
@@ -388,8 +394,8 @@ public class AlloySmelterBlockEntity extends BlockEntity implements MenuProvider
     }
 
     private boolean canInsertItemIntoOutputSlot(Item item) {
-        for (int i = 0; i < this.outputHandler.getSlots(); i++) {
-            ItemStack stackInSlot = this.outputHandler.getStackInSlot(i);
+        for (int i = 0; i < this.outputHandler.size(); i++) {
+            ItemStack stackInSlot = this.outputHandler.getResource(i).toStack(this.outputHandler.getAmountAsInt(i));
             if (stackInSlot.isEmpty() || stackInSlot.getItem() == item) {
                 return true;
             }

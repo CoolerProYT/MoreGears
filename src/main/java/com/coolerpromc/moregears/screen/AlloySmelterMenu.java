@@ -9,8 +9,8 @@ import net.minecraft.world.inventory.*;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.neoforged.neoforge.items.IItemHandler;
-import net.neoforged.neoforge.items.SlotItemHandler;;
+import net.neoforged.neoforge.transfer.item.ItemStacksResourceHandler;
+import net.neoforged.neoforge.transfer.item.ResourceHandlerSlot;
 
 public class AlloySmelterMenu extends AbstractContainerMenu {
     public final AlloySmelterBlockEntity blockEntity;
@@ -31,15 +31,15 @@ public class AlloySmelterMenu extends AbstractContainerMenu {
         addPlayerInventory(inv);
         addPlayerHotbar(inv);
 
-        IItemHandler fuelHandler = blockEntity.getFuelHandler();
-        this.addSlot(new SlotItemHandler(fuelHandler, 0, 31, 23));
+        ItemStacksResourceHandler fuelHandler = blockEntity.getFuelHandler();
+        this.addSlot(new ResourceHandlerSlot(fuelHandler, fuelHandler::set, 0, 31, 23));
 
-        IItemHandler inputHandler = blockEntity.getInputHandler();
-        this.addSlot(new SlotItemHandler(inputHandler, 0, 83, 23));
-        this.addSlot(new SlotItemHandler(inputHandler, 1, 119, 23));
+        ItemStacksResourceHandler inputHandler = blockEntity.getInputHandler();
+        this.addSlot(new ResourceHandlerSlot(inputHandler, inputHandler::set, 0, 83, 23));
+        this.addSlot(new ResourceHandlerSlot(inputHandler, inputHandler::set, 1, 119, 23));
 
-        IItemHandler outputHandler = blockEntity.getOutputHandler();
-        this.addSlot(new SlotItemHandler(outputHandler, 0, 101, 55));
+        ItemStacksResourceHandler outputHandler = blockEntity.getOutputHandler();
+        this.addSlot(new ResourceHandlerSlot(outputHandler, outputHandler::set, 0, 101, 55));
 
         addDataSlots(data);
     }

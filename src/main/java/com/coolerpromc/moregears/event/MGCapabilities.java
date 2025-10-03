@@ -12,11 +12,11 @@ import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 public class MGCapabilities {
     @SubscribeEvent
     public static void onRegisterCapabilities(RegisterCapabilitiesEvent event) {
-        event.registerBlockEntity(Capabilities.EnergyStorage.BLOCK,
+        event.registerBlockEntity(Capabilities.Energy.BLOCK,
                 MGBlockEntities.ALLOY_SMELTER_BE.get(),
                 (be, side) -> be.getEnergyStorage());
 
-        event.registerBlockEntity(Capabilities.ItemHandler.BLOCK,
+        event.registerBlockEntity(Capabilities.Item.BLOCK,
                 MGBlockEntities.ALLOY_SMELTER_BE.get(),
                 (be, side) -> {
                     if (side == Direction.UP){

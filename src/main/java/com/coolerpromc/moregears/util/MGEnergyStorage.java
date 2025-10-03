@@ -1,8 +1,8 @@
 package com.coolerpromc.moregears.util;
 
-import net.neoforged.neoforge.energy.EnergyStorage;
+import net.neoforged.neoforge.transfer.energy.SimpleEnergyHandler;
 
-public class MGEnergyStorage extends EnergyStorage {
+public class MGEnergyStorage extends SimpleEnergyHandler {
     public MGEnergyStorage(int capacity) {
         super(capacity);
     }
@@ -25,11 +25,11 @@ public class MGEnergyStorage extends EnergyStorage {
         if(energy > this.capacity)
             energy = this.capacity;
 
-        this.energy = energy;
+        set(energy);
     }
 
     public void setMaxReceive(int maxReceive) {
-        this.maxReceive = maxReceive;
+        this.maxInsert = maxReceive;
     }
 
     public void setMaxExtract(int maxExtract) {
