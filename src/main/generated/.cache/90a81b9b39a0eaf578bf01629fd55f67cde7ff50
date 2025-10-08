@@ -1,4 +1,4 @@
-// 1.21.1	2025-08-02T22:36:23.0581432	More Gears/Tags for minecraft:block
+// 1.21.1	2025-10-08T22:31:52.839226	More Gears/Tags for minecraft:block
 50055e5bf1ead0894e8e73aecf8d15e7e10d18dc data\moregears\tags\block\needs_copper_tool.json
 f57a1c0d935679dbbcab3f2e8a06cae2238a6735 data\moregears\tags\block\incorrect_for_steel_tool.json
 a9deff2915f25501638356542b8da699980ca8ba data\minecraft\tags\block\mineable\pickaxe.json
@@ -6,8 +6,8 @@ a9deff2915f25501638356542b8da699980ca8ba data\minecraft\tags\block\mineable\pick
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data\moregears\tags\block\needs_enderite_tool.json
 f412859b8c0aba65e46f531e030e7f98d20783e3 data\minecraft\tags\block\incorrect_for_wooden_tool.json
 cbc7f6120e69aff3583e817327e91b6b64ac7ec9 data\minecraft\tags\block\incorrect_for_iron_tool.json
-f57a1c0d935679dbbcab3f2e8a06cae2238a6735 data\moregears\tags\block\incorrect_for_ruby_tool.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data\moregears\tags\block\needs_ruby_tool.json
+f57a1c0d935679dbbcab3f2e8a06cae2238a6735 data\moregears\tags\block\incorrect_for_ruby_tool.json
 fa47e71294cea8e19c34859c8ecbef08c4ee5a41 data\moregears\tags\block\needs_bronze_tool.json
 6b6e7e4ae99a39fc2777f4f10384fe75cbcda279 data\minecraft\tags\block\incorrect_for_netherite_tool.json
 c6bc7995ea73e3b61f17a7613c9188753f6cdb69 data\c\tags\block\ores\titanium.json

@@ -255,5 +255,13 @@ public class MGItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 MGItems.TITANIUM_INGOT,
                 MGItems.ENDERITE_INGOT
         );
+
+        this.getOrCreateTagBuilder(ItemTags.DURABILITY_ENCHANTABLE).add(
+                MGItems.COPPER_BOW,
+                MGItems.BRONZE_BOW,
+                MGItems.STEEL_BOW,
+                MGItems.RUBY_BOW,
+                MGItems.TITANIUM_BOW
+        );
     }
 }
