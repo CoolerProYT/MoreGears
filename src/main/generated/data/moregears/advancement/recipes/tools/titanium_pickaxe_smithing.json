@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:titanium_pickaxe_smithing"
+        "recipe": "moregears:titanium_pickaxe_smithing"
       },
       "trigger": "minecraft:recipe_unlocked"
     },
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:titanium_pickaxe_smithing"
+      "moregears:titanium_pickaxe_smithing"
     ]
   }
 }
