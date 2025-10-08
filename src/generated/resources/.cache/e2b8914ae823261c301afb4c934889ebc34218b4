@@ -1,4 +1,4 @@
-// 1.21.1	2025-08-02T17:22:34.6006665	Tags for minecraft:item mod id moregears
+// 1.21.1	2025-10-08T22:19:18.6617449	Tags for minecraft:item mod id moregears
 a5b4cc01d8cd536842cbdcba4e5261d9654eee4c data/c/tags/item/gems/ruby.json
 193d5192bb9fb60e8422288cf79b7a6b9392f9c4 data/c/tags/item/ingots/bronze.json
 339021a867f34d3823f8068df0dc056231437d07 data/c/tags/item/ingots/enderite.json
@@ -10,6 +10,7 @@ d3431e43ea8478dec55031712c073d7f8a22686c data/minecraft/tags/item/chest_armor.js
 f375209587d367af0e27a8dca0d926b218b2e91e data/minecraft/tags/item/enchantable/armor.json
 16201f238467315e568b6f930475f94cd880b906 data/minecraft/tags/item/enchantable/bow.json
 d3431e43ea8478dec55031712c073d7f8a22686c data/minecraft/tags/item/enchantable/chest_armor.json
+e6d2247c92e93ec15bf3dfeea60a58c188f8a347 data/minecraft/tags/item/enchantable/durability.json
 f375209587d367af0e27a8dca0d926b218b2e91e data/minecraft/tags/item/enchantable/equippable.json
 80fb7151c4a29773efc7931458da0ed63dcd4f50 data/minecraft/tags/item/enchantable/foot_armor.json
 71c863b7d42072d7be7f3647ff173bfbaceb14b5 data/minecraft/tags/item/enchantable/head_armor.json

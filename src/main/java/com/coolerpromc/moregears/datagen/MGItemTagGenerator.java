@@ -258,5 +258,13 @@ public class MGItemTagGenerator extends ItemTagsProvider {
                 MGItems.TITANIUM_INGOT.get(),
                 MGItems.ENDERITE_INGOT.get()
         );
+
+        this.tag(ItemTags.DURABILITY_ENCHANTABLE).add(
+                MGItems.COPPER_BOW.get(),
+                MGItems.BRONZE_BOW.get(),
+                MGItems.STEEL_BOW.get(),
+                MGItems.RUBY_BOW.get(),
+                MGItems.TITANIUM_BOW.get()
+        );
     }
 }
