@@ -7,14 +7,11 @@ import com.coolerpromc.moregears.block.MGBlocks;
 import com.coolerpromc.moregears.datagen.property.Arrow;
 import com.coolerpromc.moregears.item.MGItems;
 import com.coolerpromc.moregears.item.custom.MGArrowItem;
-import com.coolerpromc.moregears.item.custom.MGIngot;
-import com.coolerpromc.moregears.item.custom.MGRawOre;
 import com.coolerpromc.moregears.trim.MGTrimMaterials;
 import net.fabricmc.fabric.api.client.datagen.v1.provider.FabricModelProvider;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.minecraft.block.Block;
 import net.minecraft.client.data.*;
-import net.minecraft.client.render.item.model.BasicItemModel;
 import net.minecraft.client.render.item.model.ItemModel;
 import net.minecraft.client.render.item.model.SelectItemModel;
 import net.minecraft.client.render.item.property.numeric.UseDurationProperty;
@@ -258,7 +255,7 @@ public class MGModelProvider extends FabricModelProvider {
     }
 
     private <T extends Block> void horizontalRotationBlock(BlockStateModelGenerator blockStateModelGenerator, T block){
-        blockStateModelGenerator.registerNorthDefaultHorizontalRotation(block);
+        blockStateModelGenerator.registerNorthDefaultHorizontalRotatable(block);
     }
 
     public void generateBow(ItemModelGenerator itemModels, Item bowItem) {

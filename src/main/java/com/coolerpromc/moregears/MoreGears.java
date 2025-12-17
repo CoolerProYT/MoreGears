@@ -11,10 +11,7 @@ import com.coolerpromc.moregears.recipe.MGRecipes;
 import com.coolerpromc.moregears.screen.MGMenuTypes;
 import com.coolerpromc.moregears.worldgen.MGWorldGeneration;
 import net.fabricmc.api.ModInitializer;
-
 import net.minecraft.block.DispenserBlock;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class MoreGears implements ModInitializer {
 	public static final String MODID = "moregears";
