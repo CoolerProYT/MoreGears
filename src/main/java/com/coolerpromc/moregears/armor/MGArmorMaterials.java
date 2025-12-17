@@ -2,10 +2,10 @@ package com.coolerpromc.moregears.armor;
 
 import com.coolerpromc.moregears.MoreGears;
 import com.coolerpromc.moregears.util.MGTags;
-import net.minecraft.Util;
+import net.minecraft.util.Util;
 import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.TagKey;
@@ -116,7 +116,7 @@ public class MGArmorMaterials {
     );
 
     private static ArmorMaterial register(String name, int durability, EnumMap<ArmorType, Integer> typeProtection, int enchantmentValue, Holder<SoundEvent> equipSound, TagKey<Item> ingredient, float toughness, float knockbackResistance){
-        ResourceLocation location = ResourceLocation.fromNamespaceAndPath(MoreGears.MODID, name);
+        Identifier location = Identifier.fromNamespaceAndPath(MoreGears.MODID, name);
         ResourceKey<EquipmentAsset> layers = ResourceKey.create(EquipmentAssets.ROOT_ID, location);
 
         EnumMap<ArmorType, Integer> typeMap = new EnumMap<>(ArmorType.class);

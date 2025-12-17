@@ -7,7 +7,7 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
@@ -80,7 +80,7 @@ public record AlloySmeltingRecipe(List<SizedIngredient> inputItems, List<ItemSta
 
     public static class Serializer implements RecipeSerializer<AlloySmeltingRecipe> {
         public static final AlloySmeltingRecipe.Serializer INSTANCE = new AlloySmeltingRecipe.Serializer();
-        public static final ResourceLocation ID = ResourceLocation.fromNamespaceAndPath(MoreGears.MODID, "alloy_smelting");
+        public static final Identifier ID = Identifier.fromNamespaceAndPath(MoreGears.MODID, "alloy_smelting");
 
         private final MapCodec<AlloySmeltingRecipe> CODEC = RecordCodecBuilder.mapCodec(alloySmeltingRecipeInstance -> alloySmeltingRecipeInstance.group(
                 SizedIngredient.NESTED_CODEC.listOf().fieldOf("ingredients").forGetter(AlloySmeltingRecipe::inputItems),

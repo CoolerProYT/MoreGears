@@ -5,7 +5,7 @@ import net.minecraft.client.resources.model.EquipmentClientInfo;
 import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataProvider;
 import net.minecraft.data.PackOutput;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -19,7 +19,7 @@ public class MGEquipmentInfoProvider implements DataProvider {
         this.path = output.createPathProvider(PackOutput.Target.RESOURCE_PACK, "equipment");
     }
 
-    private void add(BiConsumer<ResourceLocation, EquipmentClientInfo> registrar) {
+    private void add(BiConsumer<Identifier, EquipmentClientInfo> registrar) {
         register(registrar, "copper");
         register(registrar, "bronze");
         register(registrar, "steel");
@@ -28,18 +28,18 @@ public class MGEquipmentInfoProvider implements DataProvider {
         register(registrar, "enderite");
     }
 
-    private void register(BiConsumer<ResourceLocation, EquipmentClientInfo> registrar, String path){
-        ResourceLocation resourceLocation = ResourceLocation.fromNamespaceAndPath(MoreGears.MODID, path);
+    private void register(BiConsumer<Identifier, EquipmentClientInfo> registrar, String path){
+        Identifier identifier = Identifier.fromNamespaceAndPath(MoreGears.MODID, path);
 
-        registrar.accept(resourceLocation, EquipmentClientInfo.builder()
-                .addLayers(EquipmentClientInfo.LayerType.HUMANOID, new EquipmentClientInfo.Layer(resourceLocation))
-                .addLayers(EquipmentClientInfo.LayerType.HUMANOID_LEGGINGS, new EquipmentClientInfo.Layer(resourceLocation)).build()
+        registrar.accept(identifier, EquipmentClientInfo.builder()
+                .addLayers(EquipmentClientInfo.LayerType.HUMANOID, new EquipmentClientInfo.Layer(identifier))
+                .addLayers(EquipmentClientInfo.LayerType.HUMANOID_LEGGINGS, new EquipmentClientInfo.Layer(identifier)).build()
         );
     }
 
     @Override
     public CompletableFuture<?> run(CachedOutput cachedOutput) {
-        Map<ResourceLocation, EquipmentClientInfo> map = new HashMap<>();
+        Map<Identifier, EquipmentClientInfo> map = new HashMap<>();
         this.add((name, info) -> {
             if (map.putIfAbsent(name, info) != null) {
                 throw new IllegalStateException("Tried to register equipment client info twice for id: " + name);

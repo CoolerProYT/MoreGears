@@ -9,7 +9,7 @@ import com.coolerpromc.moregears.item.MGCreativeTab;
 import com.coolerpromc.moregears.item.MGItems;
 import com.coolerpromc.moregears.recipe.MGRecipes;
 import com.coolerpromc.moregears.screen.MGMenuTypes;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.level.block.DispenserBlock;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
@@ -88,7 +88,7 @@ public class MoreGears
 
         @SubscribeEvent
         public static void onRegisterSelectItemModelProperty(RegisterSelectItemModelPropertyEvent event) {
-            event.register(ResourceLocation.fromNamespaceAndPath(MoreGears.MODID, "select_bow"), Arrow.TYPE);
+            event.register(Identifier.fromNamespaceAndPath(MoreGears.MODID, "select_bow"), Arrow.TYPE);
         }
     }
 }

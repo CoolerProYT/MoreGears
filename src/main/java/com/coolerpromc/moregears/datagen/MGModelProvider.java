@@ -22,7 +22,7 @@ import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.equipment.ArmorMaterial;
@@ -45,9 +45,9 @@ import static net.minecraft.client.data.models.ItemModelGenerators.*;
 
 @SuppressWarnings({"SameParameterValue", "unused"})
 public class MGModelProvider extends ModelProvider {
-    public final ResourceLocation RAW_ORE = itemLocation("template_raw_ore");
-    public final ResourceLocation INGOT = itemLocation("template_ingot");
-    public final ResourceLocation GEM = itemLocation("template_gem");
+    public final Identifier RAW_ORE = itemLocation("template_raw_ore");
+    public final Identifier INGOT = itemLocation("template_ingot");
+    public final Identifier GEM = itemLocation("template_gem");
     public static final List<ItemModelGenerators.TrimMaterialData> TRIM_MATERIAL_MODELS = List.of(
             new ItemModelGenerators.TrimMaterialData(MaterialAssetGroup.QUARTZ, TrimMaterials.QUARTZ),
             new ItemModelGenerators.TrimMaterialData(MaterialAssetGroup.IRON, TrimMaterials.IRON),
@@ -68,10 +68,10 @@ public class MGModelProvider extends ModelProvider {
             new ItemModelGenerators.TrimMaterialData(MGTrimMaterials.ENDERITE_ASSET_GROUP, MGTrimMaterials.ENDERITE)
     );
 
-    public static final ResourceLocation MOD_TRIM_PREFIX_HELMET = ResourceLocation.fromNamespaceAndPath(MoreGears.MODID, "item/helmet_trim");
-    public static final ResourceLocation MOD_TRIM_PREFIX_CHESTPLATE = ResourceLocation.fromNamespaceAndPath(MoreGears.MODID, "item/chestplate_trim");
-    public static final ResourceLocation MOD_TRIM_PREFIX_LEGGINGS = ResourceLocation.fromNamespaceAndPath(MoreGears.MODID, "item/leggings_trim");
-    public static final ResourceLocation MOD_TRIM_PREFIX_BOOTS = ResourceLocation.fromNamespaceAndPath(MoreGears.MODID, "item/boots_trim");
+    public static final Identifier MOD_TRIM_PREFIX_HELMET = Identifier.fromNamespaceAndPath(MoreGears.MODID, "item/helmet_trim");
+    public static final Identifier MOD_TRIM_PREFIX_CHESTPLATE = Identifier.fromNamespaceAndPath(MoreGears.MODID, "item/chestplate_trim");
+    public static final Identifier MOD_TRIM_PREFIX_LEGGINGS = Identifier.fromNamespaceAndPath(MoreGears.MODID, "item/leggings_trim");
+    public static final Identifier MOD_TRIM_PREFIX_BOOTS = Identifier.fromNamespaceAndPath(MoreGears.MODID, "item/boots_trim");
 
     public MGModelProvider(PackOutput output) {
         super(output, MoreGears.MODID);
@@ -230,31 +230,31 @@ public class MGModelProvider extends ModelProvider {
     }
 
     private void trimmedArmorItem(ItemModelGenerators itemModels, DeferredItem<MGArmorItem> item, ArmorMaterial armorMaterial){
-        generateTrimmableItem(itemModels, item.get(), armorMaterial.assetId(), ResourceLocation.parse("trims/items/" + item.get().getArmorType().getName() + "_trim"), ResourceLocation.fromNamespaceAndPath(MoreGears.MODID, "item/" + item.get().getArmorType().getName() + "_trim"), false);
+        generateTrimmableItem(itemModels, item.get(), armorMaterial.assetId(), Identifier.parse("trims/items/" + item.get().getArmorType().getName() + "_trim"), Identifier.fromNamespaceAndPath(MoreGears.MODID, "item/" + item.get().getArmorType().getName() + "_trim"), false);
     }
 
-    private void trimmedArmorItem(ItemModelGenerators itemModels, Item item, ResourceKey<EquipmentAsset> equipmentAsset, ResourceLocation resourceLocation, ResourceLocation resourceLocation2, boolean tint) {
-        generateTrimmableItem(itemModels, item, equipmentAsset, resourceLocation, resourceLocation2, false);
+    private void trimmedArmorItem(ItemModelGenerators itemModels, Item item, ResourceKey<EquipmentAsset> equipmentAsset, Identifier Identifier, Identifier Identifier2, boolean tint) {
+        generateTrimmableItem(itemModels, item, equipmentAsset, Identifier, Identifier2, false);
     }
 
-    public void generateTrimmableItem(ItemModelGenerators itemModels, Item armorItem, ResourceKey<EquipmentAsset> equipmentAsset, ResourceLocation vanillaTrimLocation, ResourceLocation modTrimLocation, boolean tint) {
-        ResourceLocation resourcelocation = ModelLocationUtils.getModelLocation(armorItem);
-        ResourceLocation resourcelocation1 = TextureMapping.getItemTexture(armorItem);
-        ResourceLocation resourcelocation2 = TextureMapping.getItemTexture(armorItem, "_overlay");
+    public void generateTrimmableItem(ItemModelGenerators itemModels, Item armorItem, ResourceKey<EquipmentAsset> equipmentAsset, Identifier vanillaTrimLocation, Identifier modTrimLocation, boolean tint) {
+        Identifier Identifier = ModelLocationUtils.getModelLocation(armorItem);
+        Identifier Identifier1 = TextureMapping.getItemTexture(armorItem);
+        Identifier Identifier2 = TextureMapping.getItemTexture(armorItem, "_overlay");
         List<SelectItemModel.SwitchCase<ResourceKey<TrimMaterial>>> list = new ArrayList<>(TRIM_MATERIAL_MODELS.size());
 
         for (ItemModelGenerators.TrimMaterialData itemmodelgenerators$trimmaterialdata : TRIM_MATERIAL_MODELS) {
-            ResourceLocation resourcelocation3 = resourcelocation.withSuffix("_" + itemmodelgenerators$trimmaterialdata.assets().base().suffix() + "_trim");
-            ResourceLocation resourcelocation4 = MGTrimMaterials.MATERIAL_ASSET_GROUPS.contains(itemmodelgenerators$trimmaterialdata.assets())
+            Identifier Identifier3 = Identifier.withSuffix("_" + itemmodelgenerators$trimmaterialdata.assets().base().suffix() + "_trim");
+            Identifier Identifier4 = MGTrimMaterials.MATERIAL_ASSET_GROUPS.contains(itemmodelgenerators$trimmaterialdata.assets())
                     ? modTrimLocation.withSuffix("_" + itemmodelgenerators$trimmaterialdata.assets().assetId(equipmentAsset).suffix())
                     : vanillaTrimLocation.withSuffix("_" + itemmodelgenerators$trimmaterialdata.assets().assetId(equipmentAsset).suffix());
             ItemModel.Unbaked itemmodel$unbaked;
             if (tint) {
-                itemModels.generateLayeredItem(resourcelocation3, resourcelocation1, resourcelocation2, resourcelocation4);
-                itemmodel$unbaked = ItemModelUtils.tintedModel(resourcelocation3, new Dye(-6265536));
+                itemModels.generateLayeredItem(Identifier3, Identifier1, Identifier2, Identifier4);
+                itemmodel$unbaked = ItemModelUtils.tintedModel(Identifier3, new Dye(-6265536));
             } else {
-                itemModels.generateLayeredItem(resourcelocation3, resourcelocation1, resourcelocation4);
-                itemmodel$unbaked = ItemModelUtils.plainModel(resourcelocation3);
+                itemModels.generateLayeredItem(Identifier3, Identifier1, Identifier4);
+                itemmodel$unbaked = ItemModelUtils.plainModel(Identifier3);
             }
 
             list.add(ItemModelUtils.when(itemmodelgenerators$trimmaterialdata.materialKey(), itemmodel$unbaked));
@@ -262,11 +262,11 @@ public class MGModelProvider extends ModelProvider {
 
         ItemModel.Unbaked itemmodel$unbaked1;
         if (tint) {
-            ModelTemplates.TWO_LAYERED_ITEM.create(resourcelocation, TextureMapping.layered(resourcelocation1, resourcelocation2), itemModels.modelOutput);
-            itemmodel$unbaked1 = ItemModelUtils.tintedModel(resourcelocation, new Dye(-6265536));
+            ModelTemplates.TWO_LAYERED_ITEM.create(Identifier, TextureMapping.layered(Identifier1, Identifier2), itemModels.modelOutput);
+            itemmodel$unbaked1 = ItemModelUtils.tintedModel(Identifier, new Dye(-6265536));
         } else {
-            ModelTemplates.FLAT_ITEM.create(resourcelocation, TextureMapping.layer0(resourcelocation1), itemModels.modelOutput);
-            itemmodel$unbaked1 = ItemModelUtils.plainModel(resourcelocation);
+            ModelTemplates.FLAT_ITEM.create(Identifier, TextureMapping.layer0(Identifier1), itemModels.modelOutput);
+            itemmodel$unbaked1 = ItemModelUtils.plainModel(Identifier);
         }
 
         itemModels.itemModelOutput.accept(armorItem, ItemModelUtils.select(new TrimMaterialProperty(), itemmodel$unbaked1, list));
@@ -355,45 +355,45 @@ public class MGModelProvider extends ModelProvider {
     }
 
     // Helper methods
-    private ResourceLocation mcLoc(String path){
-        return ResourceLocation.withDefaultNamespace(path);
+    private Identifier mcLoc(String path){
+        return Identifier.withDefaultNamespace(path);
     }
 
     private String getBlockName(Block block){
-        ResourceLocation location = BuiltInRegistries.BLOCK.getKey(block);
+        Identifier location = BuiltInRegistries.BLOCK.getKey(block);
         return location.getPath();
     }
 
     private String getItemName(Item item){
-        ResourceLocation location = BuiltInRegistries.ITEM.getKey(item);
+        Identifier location = BuiltInRegistries.ITEM.getKey(item);
         return location.getPath();
     }
 
-    private ResourceLocation blockLocation(String modelName){
-        return ResourceLocation.fromNamespaceAndPath(MoreGears.MODID, "block/" + modelName);
+    private Identifier blockLocation(String modelName){
+        return Identifier.fromNamespaceAndPath(MoreGears.MODID, "block/" + modelName);
     }
 
-    private ResourceLocation itemLocation(String modelName){
-        return ResourceLocation.fromNamespaceAndPath(MoreGears.MODID, "item/" + modelName);
+    private Identifier itemLocation(String modelName){
+        return Identifier.fromNamespaceAndPath(MoreGears.MODID, "item/" + modelName);
     }
 
-    public ResourceLocation createFlatItemModel(ItemModelGenerators itemModels, Item item, String suffix, ModelTemplate modelTemplate) {
+    public Identifier createFlatItemModel(ItemModelGenerators itemModels, Item item, String suffix, ModelTemplate modelTemplate) {
         return modelTemplate.create(getModelLocation(item, suffix), TextureMapping.layer0(getModelLocation(item, suffix)), itemModels.modelOutput);
     }
 
-    public ResourceLocation getModelLocation(Item item, String suffix) {
-        ResourceLocation resourcelocation = ResourceLocation.fromNamespaceAndPath(MoreGears.MODID, getItemName(item));
-        return resourcelocation.withPath((p_386751_) -> "item/" + p_386751_ + suffix);
+    public Identifier getModelLocation(Item item, String suffix) {
+        Identifier identifier = Identifier.fromNamespaceAndPath(MoreGears.MODID, getItemName(item));
+        return identifier.withPath((p_386751_) -> "item/" + p_386751_ + suffix);
     }
 
     // Override methods
     @Override
     protected @NotNull Stream<? extends Holder<Block>> getKnownBlocks() {
-        return BuiltInRegistries.BLOCK.listElements().filter(blockReference -> Optional.of(BuiltInRegistries.BLOCK.getKey(blockReference.value())).filter(resourceLocation -> resourceLocation.getNamespace().equals(MoreGears.MODID)).isPresent());
+        return BuiltInRegistries.BLOCK.listElements().filter(blockReference -> Optional.of(BuiltInRegistries.BLOCK.getKey(blockReference.value())).filter(Identifier -> Identifier.getNamespace().equals(MoreGears.MODID)).isPresent());
     }
 
     @Override
     protected @NotNull Stream<? extends Holder<Item>> getKnownItems() {
-        return BuiltInRegistries.ITEM.listElements().filter(itemReference -> Optional.of(BuiltInRegistries.ITEM.getKey(itemReference.value())).filter(resourceLocation -> resourceLocation.getNamespace().equals(MoreGears.MODID)).isPresent());
+        return BuiltInRegistries.ITEM.listElements().filter(itemReference -> Optional.of(BuiltInRegistries.ITEM.getKey(itemReference.value())).filter(Identifier -> Identifier.getNamespace().equals(MoreGears.MODID)).isPresent());
     }
 }

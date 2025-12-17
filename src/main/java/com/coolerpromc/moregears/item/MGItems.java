@@ -18,7 +18,7 @@ import com.coolerpromc.moregears.util.MGColors;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.util.Unit;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.equipment.ArmorType;
@@ -121,17 +121,17 @@ public class MGItems {
             Component.translatable("item.moregears.titanium_upgrade_smithing_template.upgrade_description").withStyle(ChatFormatting.GRAY),
             Component.translatable("item.moregears.titanium_upgrade_smithing_template.additions_slot_description"),
             List.of(
-                    ResourceLocation.withDefaultNamespace("container/slot/helmet"),
-                    ResourceLocation.withDefaultNamespace("container/slot/chestplate"),
-                    ResourceLocation.withDefaultNamespace("container/slot/leggings"),
-                    ResourceLocation.withDefaultNamespace("container/slot/boots"),
-                    ResourceLocation.withDefaultNamespace("container/slot/hoe"),
-                    ResourceLocation.withDefaultNamespace("container/slot/axe"),
-                    ResourceLocation.withDefaultNamespace("container/slot/sword"),
-                    ResourceLocation.withDefaultNamespace("container/slot/shovel"),
-                    ResourceLocation.withDefaultNamespace("container/slot/pickaxe")
+                    Identifier.withDefaultNamespace("container/slot/helmet"),
+                    Identifier.withDefaultNamespace("container/slot/chestplate"),
+                    Identifier.withDefaultNamespace("container/slot/leggings"),
+                    Identifier.withDefaultNamespace("container/slot/boots"),
+                    Identifier.withDefaultNamespace("container/slot/hoe"),
+                    Identifier.withDefaultNamespace("container/slot/axe"),
+                    Identifier.withDefaultNamespace("container/slot/sword"),
+                    Identifier.withDefaultNamespace("container/slot/shovel"),
+                    Identifier.withDefaultNamespace("container/slot/pickaxe")
             ),
-            List.of(ResourceLocation.withDefaultNamespace("container/slot/ingot")),
+            List.of(Identifier.withDefaultNamespace("container/slot/ingot")),
             properties
     ));
 
@@ -141,17 +141,17 @@ public class MGItems {
             Component.translatable("item.moregears.enderite_upgrade_smithing_template.upgrade_description").withStyle(ChatFormatting.GRAY),
             Component.translatable("item.moregears.enderite_upgrade_smithing_template.additions_slot_description"),
             List.of(
-                    ResourceLocation.withDefaultNamespace("container/slot/helmet"),
-                    ResourceLocation.withDefaultNamespace("container/slot/chestplate"),
-                    ResourceLocation.withDefaultNamespace("container/slot/leggings"),
-                    ResourceLocation.withDefaultNamespace("container/slot/boots"),
-                    ResourceLocation.withDefaultNamespace("container/slot/hoe"),
-                    ResourceLocation.withDefaultNamespace("container/slot/axe"),
-                    ResourceLocation.withDefaultNamespace("container/slot/sword"),
-                    ResourceLocation.withDefaultNamespace("container/slot/shovel"),
-                    ResourceLocation.withDefaultNamespace("container/slot/pickaxe")
+                    Identifier.withDefaultNamespace("container/slot/helmet"),
+                    Identifier.withDefaultNamespace("container/slot/chestplate"),
+                    Identifier.withDefaultNamespace("container/slot/leggings"),
+                    Identifier.withDefaultNamespace("container/slot/boots"),
+                    Identifier.withDefaultNamespace("container/slot/hoe"),
+                    Identifier.withDefaultNamespace("container/slot/axe"),
+                    Identifier.withDefaultNamespace("container/slot/sword"),
+                    Identifier.withDefaultNamespace("container/slot/shovel"),
+                    Identifier.withDefaultNamespace("container/slot/pickaxe")
             ),
-            List.of(ResourceLocation.withDefaultNamespace("container/slot/ingot")),
+            List.of(Identifier.withDefaultNamespace("container/slot/ingot")),
             properties
     ));
 

@@ -10,7 +10,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -244,7 +244,7 @@ public class MGRecipeProvider extends RecipeProvider {
                 .addIngredient(ingredients2)
                 .addOutput(new ItemStack(result, outputCount))
                 .unlockedBy(getHasName(ingredients1.ingredient().getValues().get(0).value()), has(ingredients1.ingredient().getValues().get(0).value()))
-                .save(output, ResourceKey.create(Registries.RECIPE, ResourceLocation.fromNamespaceAndPath(MoreGears.MODID, "alloy_smelting/" + getItemName(result) + "_from_alloy_smelting")));
+                .save(output, ResourceKey.create(Registries.RECIPE, Identifier.fromNamespaceAndPath(MoreGears.MODID, "alloy_smelting/" + getItemName(result) + "_from_alloy_smelting")));
     }
 
     protected void arrowRecipe(RecipeOutput output, ItemLike ingot, ItemLike outputItem) {

@@ -1,3 +1,4 @@
+/*
 package com.coolerpromc.moregears.compat.rei;
 
 import com.coolerpromc.moregears.MoreGears;
@@ -8,13 +9,13 @@ import me.shedaniel.rei.api.common.display.DisplaySerializerRegistry;
 import me.shedaniel.rei.api.common.plugins.REICommonPlugin;
 import me.shedaniel.rei.api.common.registry.display.ServerDisplayRegistry;
 import me.shedaniel.rei.forge.REIPluginCommon;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 
 @REIPluginCommon
 public class REIPluginServer implements REICommonPlugin {
     @Override
     public void registerDisplaySerializer(DisplaySerializerRegistry registry) {
-        registry.register(ResourceLocation.fromNamespaceAndPath(MoreGears.MODID, "alloy_smelting"), AlloySmeltingRecipeDisplay.SERIALIZER);
+        registry.register(Identifier.fromNamespaceAndPath(MoreGears.MODID, "alloy_smelting"), AlloySmeltingRecipeDisplay.SERIALIZER);
     }
 
     @Override
@@ -22,3 +23,4 @@ public class REIPluginServer implements REICommonPlugin {
         registry.beginRecipeFiller(AlloySmeltingRecipe.class).filterType(MGRecipes.ALLOY_SMELTING_TYPE.get()).fill(AlloySmeltingRecipeDisplay::new);
     }
 }
+*/

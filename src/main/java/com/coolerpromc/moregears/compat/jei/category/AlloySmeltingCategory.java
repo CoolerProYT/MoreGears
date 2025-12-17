@@ -15,13 +15,13 @@ import mezz.jei.api.recipe.types.IRecipeHolderType;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.RecipeHolder;
 
 public class AlloySmeltingCategory extends AbstractRecipeCategory<RecipeHolder<AlloySmeltingRecipe>> {
-    public static final ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath(MoreGears.MODID, "textures/gui/compat/alloy_smelter_gui.png");
+    public static final Identifier TEXTURE = Identifier.fromNamespaceAndPath(MoreGears.MODID, "textures/gui/compat/alloy_smelter_gui.png");
     public static final IRecipeHolderType<AlloySmeltingRecipe> ALLOY_SMELTING_TYPE = IRecipeHolderType.create(MGRecipes.ALLOY_SMELTING_TYPE.get());
     private int tickCount = 0;
 

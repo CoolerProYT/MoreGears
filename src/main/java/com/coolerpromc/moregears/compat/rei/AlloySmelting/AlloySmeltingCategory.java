@@ -1,3 +1,4 @@
+/*
 package com.coolerpromc.moregears.compat.rei.AlloySmelting;
 
 import com.coolerpromc.moregears.MoreGears;
@@ -14,9 +15,8 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.events.GuiEventListener;
 import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.client.renderer.RenderType;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -24,7 +24,7 @@ import java.util.List;
 
 public class AlloySmeltingCategory implements DisplayCategory<AlloySmeltingRecipeDisplay> {
     public static final CategoryIdentifier<? extends AlloySmeltingRecipeDisplay> ALLOY_SMELTING = CategoryIdentifier.of(MoreGears.MODID, "alloy_smelting");
-    public static final ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath(MoreGears.MODID, "textures/gui/compat/alloy_smelter_gui.png");
+    public static final Identifier TEXTURE = Identifier.fromNamespaceAndPath(MoreGears.MODID, "textures/gui/compat/alloy_smelter_gui.png");
     private int tickCount = 0;
 
     @Override
@@ -86,3 +86,4 @@ public class AlloySmeltingCategory implements DisplayCategory<AlloySmeltingRecip
         return 84;
     }
 }
+*/

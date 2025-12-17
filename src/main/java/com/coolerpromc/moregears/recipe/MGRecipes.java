@@ -2,7 +2,7 @@ package com.coolerpromc.moregears.recipe;
 
 import com.coolerpromc.moregears.MoreGears;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.neoforged.bus.api.IEventBus;
@@ -16,7 +16,7 @@ public class MGRecipes {
     public static final DeferredHolder<RecipeSerializer<?>, RecipeSerializer<?>> ALLOY_SMELTING_SERIALIZER =
             SERIALIZERS.register("alloy_smelting", () -> AlloySmeltingRecipe.Serializer.INSTANCE);
     public static final DeferredHolder<RecipeType<?>, RecipeType<AlloySmeltingRecipe>> ALLOY_SMELTING_TYPE =
-            TYPES.register("alloy_smelting", () -> RecipeType.simple(ResourceLocation.fromNamespaceAndPath(MoreGears.MODID, "alloy_smelting")));
+            TYPES.register("alloy_smelting", () -> RecipeType.simple(Identifier.fromNamespaceAndPath(MoreGears.MODID, "alloy_smelting")));
 
     public static void register(IEventBus eventBus){
         SERIALIZERS.register(eventBus);

@@ -3,7 +3,7 @@ package com.coolerpromc.moregears.tool.steel;
 import com.coolerpromc.moregears.MoreGears;
 import com.coolerpromc.moregears.util.MGTooltip;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.Entity;
@@ -19,7 +19,7 @@ import javax.annotation.Nullable;
 import java.util.function.Consumer;
 
 public class SteelHoe extends HoeItem {
-    private static final ResourceLocation modifierId = ResourceLocation.fromNamespaceAndPath(MoreGears.MODID, "steel_hoe_slow_speed");
+    private static final Identifier modifierId = Identifier.fromNamespaceAndPath(MoreGears.MODID, "steel_hoe_slow_speed");
 
     public SteelHoe(ToolMaterial material, float attackDamage, float attackSpeed, Properties properties) {
         super(material, attackDamage, attackSpeed, properties);

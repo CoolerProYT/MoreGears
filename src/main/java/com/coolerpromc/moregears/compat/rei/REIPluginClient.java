@@ -1,3 +1,4 @@
+/*
 package com.coolerpromc.moregears.compat.rei;
 
 import com.coolerpromc.moregears.block.MGBlocks;
@@ -27,3 +28,4 @@ public class REIPluginClient implements REIClientPlugin {
         registry.registerClickArea(screen -> new Rectangle(((screen.width - 176) / 2) + 100, ((screen.height - 166) / 2) + 31, 18, 23), AlloySmelterScreen.class, AlloySmeltingCategory.ALLOY_SMELTING);
     }
 }
+*/

@@ -1,7 +1,7 @@
 package com.coolerpromc.moregears.util;
 
 import com.coolerpromc.moregears.MoreGears;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
@@ -34,11 +34,11 @@ public class MGTags {
         public static final TagKey<Block> ORES_ENDERITE = commonTag("ores/enderite");
 
         private static TagKey<Block> commonTag(String name){
-            return BlockTags.create(ResourceLocation.fromNamespaceAndPath("c", name));
+            return BlockTags.create(Identifier.fromNamespaceAndPath("c", name));
         }
 
         private static TagKey<Block> modTag(String name){
-            return BlockTags.create(ResourceLocation.fromNamespaceAndPath(MoreGears.MODID, name));
+            return BlockTags.create(Identifier.fromNamespaceAndPath(MoreGears.MODID, name));
         }
     }
 
@@ -50,11 +50,11 @@ public class MGTags {
         public static final TagKey<Item> GEMS_RUBY = commonTag("gems/ruby");
 
         private static TagKey<Item> commonTag(String name){
-            return ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", name));
+            return ItemTags.create(Identifier.fromNamespaceAndPath("c", name));
         }
 
         private static TagKey<Item> modTag(String name){
-            return ItemTags.create(ResourceLocation.fromNamespaceAndPath(MoreGears.MODID, name));
+            return ItemTags.create(Identifier.fromNamespaceAndPath(MoreGears.MODID, name));
         }
     }
 }

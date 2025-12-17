@@ -4,7 +4,7 @@ import com.coolerpromc.moregears.MoreGears;
 import com.coolerpromc.moregears.util.MGTooltip;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.Entity;
@@ -23,7 +23,7 @@ import java.util.List;
 import java.util.function.Consumer;
 
 public class SteelPickaxe extends Item {
-    private static final ResourceLocation modifierId = ResourceLocation.fromNamespaceAndPath(MoreGears.MODID, "steel_pickaxe_slow_speed");
+    private static final Identifier modifierId = Identifier.fromNamespaceAndPath(MoreGears.MODID, "steel_pickaxe_slow_speed");
 
     public SteelPickaxe(ToolMaterial material, float attackDamage, float attackSpeed, Properties properties) {
         super(properties.pickaxe(material, attackDamage, attackDamage));
