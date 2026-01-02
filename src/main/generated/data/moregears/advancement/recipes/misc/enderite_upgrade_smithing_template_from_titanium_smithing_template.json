@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:enderite_upgrade_smithing_template_from_titanium_smithing_template"
+        "recipe": "moregears:enderite_upgrade_smithing_template_from_titanium_smithing_template"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:enderite_upgrade_smithing_template_from_titanium_smithing_template"
+      "moregears:enderite_upgrade_smithing_template_from_titanium_smithing_template"
     ]
   }
 }

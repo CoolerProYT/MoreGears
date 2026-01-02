@@ -4,7 +4,7 @@
   "key": {
     "N": "minecraft:end_stone",
     "S": "moregears:enderite_upgrade_smithing_template",
-    "X": "moregears:titanium_ingot"
+    "X": "moregears:titanium_nugget"
   },
   "pattern": [
     "XSX",
