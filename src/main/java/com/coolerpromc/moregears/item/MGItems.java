@@ -7,6 +7,7 @@ import com.coolerpromc.moregears.armor.custom.*;
 import com.coolerpromc.moregears.entity.MGEntities;
 import com.coolerpromc.moregears.item.custom.MGArrowItem;
 import com.coolerpromc.moregears.item.custom.MGIngot;
+import com.coolerpromc.moregears.item.custom.MGNugget;
 import com.coolerpromc.moregears.item.custom.MGRawOre;
 import com.coolerpromc.moregears.tool.MGToolMaterials;
 import com.coolerpromc.moregears.tool.bronze.BronzeAxe;
@@ -37,6 +38,8 @@ public class MGItems {
     public static final DeferredItem<MGRawOre> RAW_RUBY = registerItem("raw_ruby", properties -> new MGRawOre(properties, MGColors.RUBY_COLOR));
     public static final DeferredItem<MGRawOre> RAW_TITANIUM = registerItem("raw_titanium", properties -> new MGRawOre(properties, MGColors.TITANIUM_COLOR));
     public static final DeferredItem<MGRawOre> RAW_ENDERITE = registerItem("raw_enderite", properties -> new MGRawOre(properties, MGColors.ENDERITE_COLOR));
+
+    public static final DeferredItem<MGNugget> TITANIUM_NUGGET = registerItem("titanium_nugget", properties -> new MGNugget(properties, MGColors.TITANIUM_COLOR));
 
     public static final DeferredItem<MGIngot> TIN_INGOT = registerItem("tin_ingot", properties -> new MGIngot(properties, MGColors.TIN_COLOR));
     public static final DeferredItem<MGIngot> BRONZE_INGOT = registerItem("bronze_ingot", properties -> new MGIngot(properties, MGColors.BRONZE_COLOR));

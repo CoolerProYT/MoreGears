@@ -71,8 +71,21 @@ public class MGRecipeProvider extends RecipeProvider {
         enderiteSmithing(output, MGItems.TITANIUM_SHOVEL, RecipeCategory.TOOLS, MGItems.ENDERITE_SHOVEL);
         enderiteSmithing(output, MGItems.TITANIUM_HOE, RecipeCategory.TOOLS, MGItems.ENDERITE_HOE);
 
+        ShapedRecipeBuilder.shaped(items, RecipeCategory.MISC, MGItems.TITANIUM_INGOT)
+                .define('N', MGItems.TITANIUM_NUGGET)
+                .pattern("NNN")
+                .pattern("NNN")
+                .pattern("NNN")
+                .unlockedBy(getHasName(MGItems.TITANIUM_NUGGET), has(MGItems.TITANIUM_NUGGET))
+                .save(output, getItemName(MGItems.TITANIUM_INGOT) + "_from_titanium_nugget");
+
+        ShapelessRecipeBuilder.shapeless(items, RecipeCategory.MISC, MGItems.TITANIUM_NUGGET, 9)
+                .requires(MGItems.TITANIUM_INGOT)
+                .unlockedBy(getHasName(MGItems.TITANIUM_INGOT), has(MGItems.TITANIUM_INGOT))
+                .save(output, getItemName(MGItems.TITANIUM_NUGGET) + "_from_titanium_ingot");
+
         ShapedRecipeBuilder.shaped(items, RecipeCategory.MISC, MGItems.TITANIUM_UPGRADE_SMITHING_TEMPLATE)
-                .define('X', Items.NETHERITE_INGOT)
+                .define('X', Items.NETHERITE_SCRAP)
                 .define('S', Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE)
                 .define('N', MGItems.TITANIUM_INGOT)
                 .pattern("XSX")
@@ -82,7 +95,7 @@ public class MGRecipeProvider extends RecipeProvider {
                 .save(output, getItemName(MGItems.TITANIUM_UPGRADE_SMITHING_TEMPLATE) + "_from_netherite_smithing_template");
 
         ShapedRecipeBuilder.shaped(items, RecipeCategory.MISC, MGItems.TITANIUM_UPGRADE_SMITHING_TEMPLATE, 2)
-                .define('X', Items.NETHERITE_INGOT)
+                .define('X', Items.NETHERITE_SCRAP)
                 .define('S', MGItems.TITANIUM_UPGRADE_SMITHING_TEMPLATE)
                 .define('N', Items.BLACKSTONE)
                 .pattern("XSX")
@@ -92,7 +105,7 @@ public class MGRecipeProvider extends RecipeProvider {
                 .save(output);
 
         ShapedRecipeBuilder.shaped(items, RecipeCategory.MISC, MGItems.ENDERITE_UPGRADE_SMITHING_TEMPLATE)
-                .define('X', MGItems.TITANIUM_INGOT)
+                .define('X', MGItems.TITANIUM_NUGGET)
                 .define('S', MGItems.TITANIUM_UPGRADE_SMITHING_TEMPLATE)
                 .define('N', MGItems.ENDERITE_INGOT)
                 .pattern("XSX")
@@ -102,7 +115,7 @@ public class MGRecipeProvider extends RecipeProvider {
                 .save(output, getItemName(MGItems.ENDERITE_UPGRADE_SMITHING_TEMPLATE) + "_from_titanium_smithing_template");
 
         ShapedRecipeBuilder.shaped(items, RecipeCategory.MISC, MGItems.ENDERITE_UPGRADE_SMITHING_TEMPLATE, 2)
-                .define('X', MGItems.TITANIUM_INGOT)
+                .define('X', MGItems.TITANIUM_NUGGET)
                 .define('S', MGItems.ENDERITE_UPGRADE_SMITHING_TEMPLATE)
                 .define('N', Items.END_STONE)
                 .pattern("XSX")
