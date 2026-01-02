@@ -100,6 +100,8 @@ public class MGModelProvider extends ModelProvider {
         basicItem(itemModels, MGItems.RAW_TITANIUM);
         basicItem(itemModels, MGItems.RAW_ENDERITE);
 
+        basicItem(itemModels, MGItems.TITANIUM_NUGGET);
+
         basicItem(itemModels, MGItems.TIN_INGOT);
         basicItem(itemModels, MGItems.BRONZE_INGOT);
         basicItem(itemModels, MGItems.STEEL_INGOT);
