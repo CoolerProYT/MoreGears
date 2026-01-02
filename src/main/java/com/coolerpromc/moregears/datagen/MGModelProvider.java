@@ -44,6 +44,8 @@ public class MGModelProvider extends FabricModelProvider {
         itemModelGenerator.register(MGItems.RAW_TITANIUM, Models.GENERATED);
         itemModelGenerator.register(MGItems.RAW_ENDERITE, Models.GENERATED);
 
+        itemModelGenerator.register(MGItems.TITANIUM_NUGGET, Models.GENERATED);
+
         itemModelGenerator.register(MGItems.TIN_INGOT, Models.GENERATED);
         itemModelGenerator.register(MGItems.BRONZE_INGOT, Models.GENERATED);
         itemModelGenerator.register(MGItems.STEEL_INGOT, Models.GENERATED);

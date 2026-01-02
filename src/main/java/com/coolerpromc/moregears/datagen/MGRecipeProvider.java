@@ -8,6 +8,7 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.data.server.recipe.RecipeExporter;
 import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
+import net.minecraft.data.server.recipe.ShapelessRecipeJsonBuilder;
 import net.minecraft.data.server.recipe.SmithingTransformRecipeJsonBuilder;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.ItemStack;
@@ -64,8 +65,21 @@ public class MGRecipeProvider extends FabricRecipeProvider {
         enderiteSmithing(recipeOutput, MGItems.TITANIUM_SHOVEL, RecipeCategory.TOOLS, MGItems.ENDERITE_SHOVEL);
         enderiteSmithing(recipeOutput, MGItems.TITANIUM_HOE, RecipeCategory.TOOLS, MGItems.ENDERITE_HOE);
 
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, MGItems.TITANIUM_INGOT)
+                .input('N', MGItems.TITANIUM_NUGGET)
+                .pattern("NNN")
+                .pattern("NNN")
+                .pattern("NNN")
+                .criterion(hasItem(MGItems.TITANIUM_NUGGET), conditionsFromItem(MGItems.TITANIUM_NUGGET))
+                .offerTo(recipeOutput, getItemPath(MGItems.TITANIUM_INGOT) + "_from_titanium_nugget");
+
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, MGItems.TITANIUM_NUGGET, 9)
+                .input(MGItems.TITANIUM_INGOT)
+                .criterion(hasItem(MGItems.TITANIUM_INGOT), conditionsFromItem(MGItems.TITANIUM_INGOT))
+                .offerTo(recipeOutput, getItemPath(MGItems.TITANIUM_NUGGET) + "_from_titanium_ingot");
+
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, MGItems.TITANIUM_UPGRADE_SMITHING_TEMPLATE)
-                .input('X', Items.NETHERITE_INGOT)
+                .input('X', Items.NETHERITE_SCRAP)
                 .input('S', Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE)
                 .input('N', MGItems.TITANIUM_INGOT)
                 .pattern("XSX")
@@ -75,7 +89,7 @@ public class MGRecipeProvider extends FabricRecipeProvider {
                 .offerTo(recipeOutput, getItemPath(MGItems.TITANIUM_UPGRADE_SMITHING_TEMPLATE) + "_from_netherite_smithing_template");
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, MGItems.TITANIUM_UPGRADE_SMITHING_TEMPLATE, 2)
-                .input('X', Items.NETHERITE_INGOT)
+                .input('X', Items.NETHERITE_SCRAP)
                 .input('S', MGItems.TITANIUM_UPGRADE_SMITHING_TEMPLATE)
                 .input('N', Items.BLACKSTONE)
                 .pattern("XSX")
@@ -85,7 +99,7 @@ public class MGRecipeProvider extends FabricRecipeProvider {
                 .offerTo(recipeOutput);
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, MGItems.ENDERITE_UPGRADE_SMITHING_TEMPLATE)
-                .input('X', MGItems.TITANIUM_INGOT)
+                .input('X', MGItems.TITANIUM_NUGGET)
                 .input('S', MGItems.TITANIUM_UPGRADE_SMITHING_TEMPLATE)
                 .input('N', MGItems.ENDERITE_INGOT)
                 .pattern("XSX")
@@ -95,7 +109,7 @@ public class MGRecipeProvider extends FabricRecipeProvider {
                 .offerTo(recipeOutput, getItemPath(MGItems.ENDERITE_UPGRADE_SMITHING_TEMPLATE) + "_from_titanium_smithing_template");
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, MGItems.ENDERITE_UPGRADE_SMITHING_TEMPLATE, 2)
-                .input('X', MGItems.TITANIUM_INGOT)
+                .input('X', MGItems.TITANIUM_NUGGET)
                 .input('S', MGItems.ENDERITE_UPGRADE_SMITHING_TEMPLATE)
                 .input('N', Items.END_STONE)
                 .pattern("XSX")
