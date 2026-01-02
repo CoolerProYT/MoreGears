@@ -100,6 +100,8 @@ public class MGModelProvider extends ModelProvider {
         basicItem(itemModels, MGItems.RAW_TITANIUM);
         basicItem(itemModels, MGItems.RAW_ENDERITE);
 
+        basicItem(itemModels, MGItems.TITANIUM_NUGGET);
+
         basicItem(itemModels, MGItems.TIN_INGOT);
         basicItem(itemModels, MGItems.BRONZE_INGOT);
         basicItem(itemModels, MGItems.STEEL_INGOT);
@@ -132,7 +134,6 @@ public class MGModelProvider extends ModelProvider {
         trimmedArmorItem(itemModels, Items.NETHERITE_CHESTPLATE, EquipmentAssets.NETHERITE, TRIM_PREFIX_CHESTPLATE, MOD_TRIM_PREFIX_CHESTPLATE, false);
         trimmedArmorItem(itemModels, Items.NETHERITE_LEGGINGS, EquipmentAssets.NETHERITE, TRIM_PREFIX_LEGGINGS, MOD_TRIM_PREFIX_LEGGINGS, false);
         trimmedArmorItem(itemModels, Items.NETHERITE_BOOTS, EquipmentAssets.NETHERITE, TRIM_PREFIX_BOOTS, MOD_TRIM_PREFIX_BOOTS, false);
-
 
         trimmedArmorItem(itemModels, MGItems.COPPER_HELMET, MGArmorMaterials.COPPER_ARMOR_MATERIAL);
         trimmedArmorItem(itemModels, MGItems.COPPER_CHESTPLATE, MGArmorMaterials.COPPER_ARMOR_MATERIAL);

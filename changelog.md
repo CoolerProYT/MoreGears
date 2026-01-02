@@ -1,0 +1,3 @@
+- Added `Titanium Nugget`
+- Changed `Titanium Upgrade Smithing Template` recipe to use `Netherite Scrap`
+- Changed `Enderite Upgrade Smithing Template` recipe to use `Titanium Nugget`
