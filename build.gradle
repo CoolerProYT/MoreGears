@@ -1,6 +1,7 @@
 plugins {
-	id 'fabric-loom' version '1.10-SNAPSHOT'
+	id 'fabric-loom' version '1.14-SNAPSHOT'
 	id 'maven-publish'
+	id "me.modmuss50.mod-publish-plugin" version "1.1.0"
 }
 
 version = project.mod_version
@@ -54,8 +55,6 @@ dependencies {
 		exclude group: "net.fabricmc", module: "fabric-loader"
 	}
 
-//	modImplementation("mezz.jei:jei-${minecraft_version}-common-api-intermediary:${jei_version}")
-
 	modCompileOnly "me.shedaniel:RoughlyEnoughItems-api-fabric:${rei_version}"
 	modRuntimeOnly "me.shedaniel:RoughlyEnoughItems-fabric:${rei_version}"
 
@@ -100,11 +99,34 @@ publishing {
 		}
 	}
 
-	// See https://docs.gradle.org/current/userguide/publishing_maven.html for information on how to set up publishing.
 	repositories {
-		// Add repositories to publish to here.
-		// Notice: This block does NOT have the same function as the block in the top level.
-		// The repositories here will be used for publishing your artifact, not for
-		// retrieving dependencies.
+        mavenLocal()
+        maven {
+            url = findProperty("repsy_url")
+            credentials {
+                username = findProperty("repsy_username")
+                password = findProperty("repsy_password")
+            }
+        }
 	}
+}
+
+publishMods {
+    file.set(remapJar.archiveFile)
+    type = STABLE
+    modLoaders.add("fabric")
+    changelog = file("changelog.md").text
+    displayName = "moregears-" + mod_version
+
+    curseforge {
+        projectId = "1180717"
+        accessToken = findProperty("CF_TOKEN")
+        minecraftVersions.add(minecraft_version)
+    }
+
+    modrinth {
+        projectId = 'LDRhJ7sL'
+        accessToken = findProperty("MODRINTH_TOKEN")
+        minecraftVersions.add(minecraft_version)
+    }
 }
