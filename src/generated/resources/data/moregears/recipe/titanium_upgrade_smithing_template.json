@@ -4,7 +4,7 @@
   "key": {
     "N": "minecraft:blackstone",
     "S": "moregears:titanium_upgrade_smithing_template",
-    "X": "minecraft:netherite_ingot"
+    "X": "minecraft:netherite_scrap"
   },
   "pattern": [
     "XSX",
