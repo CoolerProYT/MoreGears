@@ -86,6 +86,8 @@ public class MGModelProvider extends FabricModelProvider {
         basicItem(itemModelGenerator, MGItems.RAW_TITANIUM);
         basicItem(itemModelGenerator, MGItems.RAW_ENDERITE);
 
+        basicItem(itemModelGenerator, MGItems.TITANIUM_NUGGET);
+
         basicItem(itemModelGenerator, MGItems.TIN_INGOT);
         basicItem(itemModelGenerator, MGItems.BRONZE_INGOT);
         basicItem(itemModelGenerator, MGItems.STEEL_INGOT);
