@@ -48,6 +48,8 @@ public class MGItemModelProvider extends ItemModelProvider {
         basicItem(MGItems.RAW_TITANIUM.get());
         basicItem(MGItems.RAW_ENDERITE.get());
 
+        basicItem(MGItems.TITANIUM_NUGGET.get());
+
         basicItem(MGItems.TIN_INGOT.get());
         basicItem(MGItems.BRONZE_INGOT.get());
         basicItem(MGItems.STEEL_INGOT.get());

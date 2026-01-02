@@ -63,8 +63,21 @@ public class MGRecipeProvider extends RecipeProvider implements IConditionBuilde
         enderiteSmithing(recipeOutput, MGItems.TITANIUM_SHOVEL.get(), RecipeCategory.TOOLS, MGItems.ENDERITE_SHOVEL.get());
         enderiteSmithing(recipeOutput, MGItems.TITANIUM_HOE.get(), RecipeCategory.TOOLS, MGItems.ENDERITE_HOE.get());
 
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MGItems.TITANIUM_INGOT.get())
+                .define('N', MGItems.TITANIUM_NUGGET.get())
+                .pattern("NNN")
+                .pattern("NNN")
+                .pattern("NNN")
+                .unlockedBy(getHasName(MGItems.TITANIUM_NUGGET.get()), has(MGItems.TITANIUM_NUGGET.get()))
+                .save(recipeOutput, getItemName(MGItems.TITANIUM_INGOT.get()) + "_from_titanium_nugget");
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MGItems.TITANIUM_NUGGET.get(), 9)
+                .requires(MGItems.TITANIUM_INGOT.get())
+                .unlockedBy(getHasName(MGItems.TITANIUM_INGOT.get()), has(MGItems.TITANIUM_INGOT.get()))
+                .save(recipeOutput, getItemName(MGItems.TITANIUM_NUGGET.get()) + "_from_titanium_ingot");
+
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MGItems.TITANIUM_UPGRADE_SMITHING_TEMPLATE.get())
-                .define('X', Items.NETHERITE_INGOT)
+                .define('X', Items.NETHERITE_SCRAP)
                 .define('S', Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE)
                 .define('N', MGItems.TITANIUM_INGOT.get())
                 .pattern("XSX")
@@ -74,7 +87,7 @@ public class MGRecipeProvider extends RecipeProvider implements IConditionBuilde
                 .save(recipeOutput, getItemName(MGItems.TITANIUM_UPGRADE_SMITHING_TEMPLATE.get()) + "_from_netherite_smithing_template");
 
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MGItems.TITANIUM_UPGRADE_SMITHING_TEMPLATE.get(), 2)
-                .define('X', Items.NETHERITE_INGOT)
+                .define('X', Items.NETHERITE_SCRAP)
                 .define('S', MGItems.TITANIUM_UPGRADE_SMITHING_TEMPLATE.get())
                 .define('N', Items.BLACKSTONE)
                 .pattern("XSX")
@@ -84,7 +97,7 @@ public class MGRecipeProvider extends RecipeProvider implements IConditionBuilde
                 .save(recipeOutput);
 
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MGItems.ENDERITE_UPGRADE_SMITHING_TEMPLATE.get())
-                .define('X', MGItems.TITANIUM_INGOT.get())
+                .define('X', MGItems.TITANIUM_NUGGET.get())
                 .define('S', MGItems.TITANIUM_UPGRADE_SMITHING_TEMPLATE.get())
                 .define('N', MGItems.ENDERITE_INGOT.get())
                 .pattern("XSX")
@@ -94,7 +107,7 @@ public class MGRecipeProvider extends RecipeProvider implements IConditionBuilde
                 .save(recipeOutput, getItemName(MGItems.ENDERITE_UPGRADE_SMITHING_TEMPLATE.get()) + "_from_titanium_smithing_template");
 
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MGItems.ENDERITE_UPGRADE_SMITHING_TEMPLATE.get(), 2)
-                .define('X', MGItems.TITANIUM_INGOT.get())
+                .define('X', MGItems.TITANIUM_NUGGET.get())
                 .define('S', MGItems.ENDERITE_UPGRADE_SMITHING_TEMPLATE.get())
                 .define('N', Items.END_STONE)
                 .pattern("XSX")
