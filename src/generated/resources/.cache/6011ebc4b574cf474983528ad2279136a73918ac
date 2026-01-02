@@ -1,4 +1,4 @@
-// 1.21.1	2025-08-02T17:55:07.9598605	Item Models: moregears
+// 1.21.1	2026-01-02T14:51:34.2819195	Item Models: moregears
 319fed96e06f7fec5640986e7bf09497ca65b68c assets/minecraft/models/item/bow.json
 08270cb07bcffbeedc5c5eeb4904c4f852a8741b assets/minecraft/models/item/bow_pulling_0.json
 ceb850b6b4a0650ee3d1529e67ab8e7447b0319f assets/minecraft/models/item/bow_pulling_1.json
@@ -461,6 +461,7 @@ ff945c798a66f0d552bf527a64ae51c0b81fb8d4 assets/moregears/models/item/titanium_l
 b4709e42e76b4b53f9e64a8e048b8bb19159054f assets/moregears/models/item/titanium_leggings_netherite_trim.json
 cc5670a3d0f4e01b05e0730971720e917d64b9dd assets/moregears/models/item/titanium_leggings_quartz_trim.json
 b2a9d871df3118266900745e30b8da54c623602a assets/moregears/models/item/titanium_leggings_redstone_trim.json
+820120f944a0976ffdc4194e009e0a2694c58ad8 assets/moregears/models/item/titanium_nugget.json
 d00b73895d314bdec13534c44c5b4e656c4a6dba assets/moregears/models/item/titanium_pickaxe.json
 2555c3b9369ebfa0731216cfde3809a92147a2dc assets/moregears/models/item/titanium_shovel.json
 f2510b968971f16486b6a78a2374af379d58e080 assets/moregears/models/item/titanium_sword.json
