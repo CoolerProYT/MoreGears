@@ -5,11 +5,15 @@ import com.coolerpromc.moregears.entity.MGEntities;
 import com.coolerpromc.moregears.entity.renderer.MGArrowRenderer;
 import com.coolerpromc.moregears.event.RegisterMenuEvent;
 import net.fabricmc.api.ClientModInitializer;
+import net.fabricmc.fabric.api.client.recipe.v1.sync.ClientRecipeSynchronizedEvent;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.minecraft.client.render.item.property.select.SelectProperties;
+import net.minecraft.recipe.PreparedRecipes;
 import net.minecraft.util.Identifier;
 
 public class MoreGearsClient implements ClientModInitializer {
+    public static PreparedRecipes recipeMap;
+
     @Override
     public void onInitializeClient() {
         RegisterMenuEvent.registerMenu();
@@ -22,5 +26,7 @@ public class MoreGearsClient implements ClientModInitializer {
         EntityRendererRegistry.register(MGEntities.ENDERITE_ARROW, ctx -> new MGArrowRenderer(ctx, MGArrowRenderer.getTextureLocation("enderite_arrow")));
 
         SelectProperties.ID_MAPPER.put(Identifier.of(MoreGears.MODID, "select_bow"), Arrow.TYPE);
+
+        ClientRecipeSynchronizedEvent.EVENT.register((client, recipes) -> recipeMap = PreparedRecipes.of(recipes.recipes()));
     }
 }

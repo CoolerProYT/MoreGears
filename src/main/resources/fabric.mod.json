@@ -1,44 +1,47 @@
 {
-	"schemaVersion": 1,
-	"id": "moregears",
-	"version": "${version}",
-	"name": "More Gears",
-	"description": "This is an example description! Tell everyone what your mod is about!",
-	"authors": [
-		"CoolerProMC"
-	],
-	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/CoolerProYT/MoreGears"
-	},
-	"license": "CC0-1.0",
-	"icon": "assets/moregears/icon.png",
-	"environment": "*",
-	"entrypoints": {
-		"main": [
-			"com.coolerpromc.moregears.MoreGears"
-		],
-		"fabric-datagen": [
-			"com.coolerpromc.moregears.datagen.MoreGearsDataGenerator"
-		],
-		"client": [
-			"com.coolerpromc.moregears.MoreGearsClient"
-		],
-		"rei_client": [
-			"com.coolerpromc.moregears.compat.rei.REIPluginClient"
-		],
-		"rei_common": [
-			"com.coolerpromc.moregears.compat.rei.REIPluginServer"
-		]
-	},
-	"depends": {
-		"fabricloader": ">=0.16.14",
-		"minecraft": "1.21.11",
-		"java": ">=21",
-		"fabric-api": "*"
-	},
-	"suggests": {
-		"another-mod": "*"
-	},
-	"accessWidener" : "moregears.accesswidener"
+  "schemaVersion": 1,
+  "id": "moregears",
+  "version": "${version}",
+  "name": "More Gears",
+  "description": "This is an example description! Tell everyone what your mod is about!",
+  "authors": [
+    "CoolerProMC"
+  ],
+  "contact": {
+    "homepage": "https://fabricmc.net/",
+    "sources": "https://github.com/CoolerProYT/MoreGears"
+  },
+  "license": "CC0-1.0",
+  "icon": "assets/moregears/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.coolerpromc.moregears.MoreGears"
+    ],
+    "fabric-datagen": [
+      "com.coolerpromc.moregears.datagen.MoreGearsDataGenerator"
+    ],
+    "client": [
+      "com.coolerpromc.moregears.MoreGearsClient"
+    ],
+    "rei_client": [
+      "com.coolerpromc.moregears.compat.rei.REIPluginClient"
+    ],
+    "rei_common": [
+      "com.coolerpromc.moregears.compat.rei.REIPluginServer"
+    ],
+    "jei_mod_plugin": [
+      "com.coolerpromc.moregears.compat.jei.JEIPlugin"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=0.16.14",
+    "minecraft": "1.21.11",
+    "java": ">=21",
+    "fabric-api": "*"
+  },
+  "suggests": {
+    "another-mod": "*"
+  },
+  "accessWidener": "moregears.accesswidener"
 }

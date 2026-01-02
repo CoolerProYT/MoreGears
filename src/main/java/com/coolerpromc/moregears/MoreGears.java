@@ -11,6 +11,7 @@ import com.coolerpromc.moregears.recipe.MGRecipes;
 import com.coolerpromc.moregears.screen.MGMenuTypes;
 import com.coolerpromc.moregears.worldgen.MGWorldGeneration;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.recipe.v1.sync.RecipeSynchronization;
 import net.minecraft.block.DispenserBlock;
 
 public class MoreGears implements ModInitializer {
@@ -36,5 +37,7 @@ public class MoreGears implements ModInitializer {
 		DispenserBlock.registerProjectileBehavior(MGItems.RUBY_ARROW);
 		DispenserBlock.registerProjectileBehavior(MGItems.TITANIUM_ARROW);
 		DispenserBlock.registerProjectileBehavior(MGItems.ENDERITE_ARROW);
+
+        RecipeSynchronization.synchronizeRecipeSerializer(MGRecipes.ALLOY_SMELTING_SERIALIZER);
 	}
 }
