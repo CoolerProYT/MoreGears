@@ -29,7 +29,10 @@
 		],
 		"rei_common": [
 			"com.coolerpromc.moregears.compat.rei.REIPluginServer"
-		]
+		],
+    "jei_mod_plugin": [
+      "com.coolerpromc.moregears.compat.jei.JEIPlugin"
+    ]
 	},
 	"depends": {
 		"fabricloader": ">=0.16.14",
