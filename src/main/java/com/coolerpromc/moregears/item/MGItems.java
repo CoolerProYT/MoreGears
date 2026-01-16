@@ -47,17 +47,6 @@ public class MGItems {
     public static final DeferredItem<MGIngot> TITANIUM_INGOT = registerItem("titanium_ingot", properties -> new MGIngot(properties.trimMaterial(MGTrimMaterials.TITANIUM), MGColors.TITANIUM_COLOR));
     public static final DeferredItem<MGIngot> ENDERITE_INGOT = registerItem("enderite_ingot", properties -> new MGIngot(properties.trimMaterial(MGTrimMaterials.ENDERITE), MGColors.ENDERITE_COLOR));
 
-    public static final DeferredItem<MGArmorItem> COPPER_HELMET = registerItem("copper_helmet", properties -> new CopperArmor(ArmorType.HELMET, properties));
-    public static final DeferredItem<MGArmorItem> COPPER_CHESTPLATE = registerItem("copper_chestplate", properties -> new CopperArmor(ArmorType.CHESTPLATE, properties));
-    public static final DeferredItem<MGArmorItem> COPPER_LEGGINGS = registerItem("copper_leggings", properties -> new CopperArmor(ArmorType.LEGGINGS, properties));
-    public static final DeferredItem<MGArmorItem> COPPER_BOOTS = registerItem("copper_boots", properties -> new CopperArmor(ArmorType.BOOTS, properties));
-
-    public static final DeferredItem<Item> COPPER_SWORD = registerItem("copper_sword", properties -> new Item(properties.sword(MGToolMaterials.COPPER_TIER, 3, -2.4F)));
-    public static final DeferredItem<Item> COPPER_PICKAXE = registerItem("copper_pickaxe", properties -> new Item(properties.pickaxe(MGToolMaterials.COPPER_TIER, 1, -2.8f)));
-    public static final DeferredItem<ShovelItem> COPPER_SHOVEL = registerItem("copper_shovel", properties -> new ShovelItem(MGToolMaterials.COPPER_TIER, 1.5f, -3f, properties));
-    public static final DeferredItem<AxeItem> COPPER_AXE = registerItem("copper_axe", properties -> new AxeItem(MGToolMaterials.COPPER_TIER,  7, -3.2f, properties));
-    public static final DeferredItem<HoeItem> COPPER_HOE = registerItem("copper_hoe", properties -> new HoeItem(MGToolMaterials.COPPER_TIER,  -1f, -1.5f, properties));
-
     public static final DeferredItem<MGArmorItem> BRONZE_HELMET = registerItem("bronze_helmet", properties -> new BronzeArmor(ArmorType.HELMET, properties));
     public static final DeferredItem<MGArmorItem> BRONZE_CHESTPLATE = registerItem("bronze_chestplate", properties -> new BronzeArmor(ArmorType.CHESTPLATE, properties));
     public static final DeferredItem<MGArmorItem> BRONZE_LEGGINGS = registerItem("bronze_leggings", properties -> new BronzeArmor(ArmorType.LEGGINGS, properties));

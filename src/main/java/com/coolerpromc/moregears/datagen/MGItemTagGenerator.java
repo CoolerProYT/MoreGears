@@ -19,10 +19,6 @@ public class MGItemTagGenerator extends ItemTagsProvider {
     @Override
     protected void addTags(HolderLookup.@NotNull Provider provider) {
         this.tag(ItemTags.TRIMMABLE_ARMOR).add(
-                MGItems.COPPER_BOOTS.get(),
-                MGItems.COPPER_CHESTPLATE.get(),
-                MGItems.COPPER_HELMET.get(),
-                MGItems.COPPER_LEGGINGS.get(),
                 MGItems.BRONZE_BOOTS.get(),
                 MGItems.BRONZE_CHESTPLATE.get(),
                 MGItems.BRONZE_HELMET.get(),
@@ -46,10 +42,6 @@ public class MGItemTagGenerator extends ItemTagsProvider {
         );
 
         this.tag(ItemTags.ARMOR_ENCHANTABLE).add(
-                MGItems.COPPER_BOOTS.get(),
-                MGItems.COPPER_CHESTPLATE.get(),
-                MGItems.COPPER_HELMET.get(),
-                MGItems.COPPER_LEGGINGS.get(),
                 MGItems.BRONZE_BOOTS.get(),
                 MGItems.BRONZE_CHESTPLATE.get(),
                 MGItems.BRONZE_HELMET.get(),
@@ -73,10 +65,6 @@ public class MGItemTagGenerator extends ItemTagsProvider {
         );
 
         this.tag(ItemTags.EQUIPPABLE_ENCHANTABLE).add(
-                MGItems.COPPER_BOOTS.get(),
-                MGItems.COPPER_CHESTPLATE.get(),
-                MGItems.COPPER_HELMET.get(),
-                MGItems.COPPER_LEGGINGS.get(),
                 MGItems.BRONZE_BOOTS.get(),
                 MGItems.BRONZE_CHESTPLATE.get(),
                 MGItems.BRONZE_HELMET.get(),
@@ -100,7 +88,6 @@ public class MGItemTagGenerator extends ItemTagsProvider {
         );
 
         this.tag(ItemTags.HEAD_ARMOR).add(
-                MGItems.COPPER_HELMET.get(),
                 MGItems.BRONZE_HELMET.get(),
                 MGItems.STEEL_HELMET.get(),
                 MGItems.RUBY_HELMET.get(),
@@ -109,7 +96,6 @@ public class MGItemTagGenerator extends ItemTagsProvider {
         );
 
         this.tag(ItemTags.HEAD_ARMOR_ENCHANTABLE).add(
-                MGItems.COPPER_HELMET.get(),
                 MGItems.BRONZE_HELMET.get(),
                 MGItems.STEEL_HELMET.get(),
                 MGItems.RUBY_HELMET.get(),
@@ -118,7 +104,6 @@ public class MGItemTagGenerator extends ItemTagsProvider {
         );
 
         this.tag(ItemTags.CHEST_ARMOR).add(
-                MGItems.COPPER_CHESTPLATE.get(),
                 MGItems.BRONZE_CHESTPLATE.get(),
                 MGItems.STEEL_CHESTPLATE.get(),
                 MGItems.RUBY_CHESTPLATE.get(),
@@ -127,7 +112,6 @@ public class MGItemTagGenerator extends ItemTagsProvider {
         );
 
         this.tag(ItemTags.CHEST_ARMOR_ENCHANTABLE).add(
-                MGItems.COPPER_CHESTPLATE.get(),
                 MGItems.BRONZE_CHESTPLATE.get(),
                 MGItems.STEEL_CHESTPLATE.get(),
                 MGItems.RUBY_CHESTPLATE.get(),
@@ -136,7 +120,6 @@ public class MGItemTagGenerator extends ItemTagsProvider {
         );
 
         this.tag(ItemTags.LEG_ARMOR).add(
-                MGItems.COPPER_LEGGINGS.get(),
                 MGItems.BRONZE_LEGGINGS.get(),
                 MGItems.STEEL_LEGGINGS.get(),
                 MGItems.RUBY_LEGGINGS.get(),
@@ -145,7 +128,6 @@ public class MGItemTagGenerator extends ItemTagsProvider {
         );
 
         this.tag(ItemTags.LEG_ARMOR_ENCHANTABLE).add(
-                MGItems.COPPER_LEGGINGS.get(),
                 MGItems.BRONZE_LEGGINGS.get(),
                 MGItems.STEEL_LEGGINGS.get(),
                 MGItems.RUBY_LEGGINGS.get(),
@@ -154,7 +136,6 @@ public class MGItemTagGenerator extends ItemTagsProvider {
         );
 
         this.tag(ItemTags.FOOT_ARMOR).add(
-                MGItems.COPPER_BOOTS.get(),
                 MGItems.BRONZE_BOOTS.get(),
                 MGItems.STEEL_BOOTS.get(),
                 MGItems.RUBY_BOOTS.get(),
@@ -163,7 +144,6 @@ public class MGItemTagGenerator extends ItemTagsProvider {
         );
 
         this.tag(ItemTags.FOOT_ARMOR_ENCHANTABLE).add(
-                MGItems.COPPER_BOOTS.get(),
                 MGItems.BRONZE_BOOTS.get(),
                 MGItems.STEEL_BOOTS.get(),
                 MGItems.RUBY_BOOTS.get(),
@@ -172,7 +152,6 @@ public class MGItemTagGenerator extends ItemTagsProvider {
         );
 
         this.tag(ItemTags.SWORDS).add(
-                MGItems.COPPER_SWORD.get(),
                 MGItems.BRONZE_SWORD.get(),
                 MGItems.STEEL_SWORD.get(),
                 MGItems.RUBY_SWORD.get(),
@@ -181,7 +160,6 @@ public class MGItemTagGenerator extends ItemTagsProvider {
         );
 
         this.tag(ItemTags.PICKAXES).add(
-                MGItems.COPPER_PICKAXE.get(),
                 MGItems.BRONZE_PICKAXE.get(),
                 MGItems.STEEL_PICKAXE.get(),
                 MGItems.RUBY_PICKAXE.get(),
@@ -190,7 +168,6 @@ public class MGItemTagGenerator extends ItemTagsProvider {
         );
 
         this.tag(ItemTags.SHOVELS).add(
-                MGItems.COPPER_SHOVEL.get(),
                 MGItems.BRONZE_SHOVEL.get(),
                 MGItems.STEEL_SHOVEL.get(),
                 MGItems.RUBY_SHOVEL.get(),
@@ -199,7 +176,6 @@ public class MGItemTagGenerator extends ItemTagsProvider {
         );
 
         this.tag(ItemTags.AXES).add(
-                MGItems.COPPER_AXE.get(),
                 MGItems.BRONZE_AXE.get(),
                 MGItems.STEEL_AXE.get(),
                 MGItems.RUBY_AXE.get(),
@@ -208,7 +184,6 @@ public class MGItemTagGenerator extends ItemTagsProvider {
         );
 
         this.tag(ItemTags.HOES).add(
-                MGItems.COPPER_HOE.get(),
                 MGItems.BRONZE_HOE.get(),
                 MGItems.STEEL_HOE.get(),
                 MGItems.RUBY_HOE.get(),
