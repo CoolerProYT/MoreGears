@@ -46,17 +46,6 @@ public class MGItems {
     public static final MGIngot TITANIUM_INGOT = registerItem("titanium_ingot", new MGIngot(new Item.Settings().registryKey(createItemKey("titanium_ingot")).trimMaterial(MGTrimMaterials.TITANIUM), MGColors.TITANIUM_COLOR));
     public static final MGIngot ENDERITE_INGOT = registerItem("enderite_ingot", new MGIngot(new Item.Settings().registryKey(createItemKey("enderite_ingot")).trimMaterial(MGTrimMaterials.ENDERITE), MGColors.ENDERITE_COLOR));
 
-    public static final MGArmorItem COPPER_HELMET = registerItem("copper_helmet", new CopperArmor(EquipmentType.HELMET, "copper_helmet"));
-    public static final MGArmorItem COPPER_CHESTPLATE = registerItem("copper_chestplate", new CopperArmor(EquipmentType.CHESTPLATE, "copper_chestplate"));
-    public static final MGArmorItem COPPER_LEGGINGS = registerItem("copper_leggings", new CopperArmor(EquipmentType.LEGGINGS, "copper_leggings"));
-    public static final MGArmorItem COPPER_BOOTS = registerItem("copper_boots", new CopperArmor(EquipmentType.BOOTS, "copper_boots"));
-
-    public static final Item COPPER_SWORD = registerItem("copper_sword", new Item(new Item.Settings().sword(MGToolMaterials.COPPER_TIER, 3, -2.4F).registryKey(createItemKey("copper_sword"))));
-    public static final Item COPPER_PICKAXE = registerItem("copper_pickaxe", new Item(new Item.Settings().pickaxe(MGToolMaterials.COPPER_TIER, 1, -2.8F).registryKey(createItemKey("copper_pickaxe"))));
-    public static final ShovelItem COPPER_SHOVEL = registerItem("copper_shovel", new ShovelItem(MGToolMaterials.COPPER_TIER, 1.5F, -3.0F, new Item.Settings().registryKey(createItemKey("copper_shovel"))));
-    public static final AxeItem COPPER_AXE = registerItem("copper_axe", new AxeItem(MGToolMaterials.COPPER_TIER, 7.0F, -3.2F, new Item.Settings().registryKey(createItemKey("copper_axe"))));
-    public static final HoeItem COPPER_HOE = registerItem("copper_hoe", new HoeItem(MGToolMaterials.COPPER_TIER, -1, -1.5F, new Item.Settings().registryKey(createItemKey("copper_hoe"))));
-
     public static final MGArmorItem BRONZE_HELMET = registerItem("bronze_helmet", new BronzeArmor(EquipmentType.HELMET, "bronze_helmet"));
     public static final MGArmorItem BRONZE_CHESTPLATE = registerItem("bronze_chestplate", new BronzeArmor(EquipmentType.CHESTPLATE, "bronze_chestplate"));
     public static final MGArmorItem BRONZE_LEGGINGS = registerItem("bronze_leggings", new BronzeArmor(EquipmentType.LEGGINGS, "bronze_leggings"));

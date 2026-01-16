@@ -4,12 +4,18 @@ import com.coolerpromc.moregears.datagen.property.Arrow;
 import com.coolerpromc.moregears.entity.MGEntities;
 import com.coolerpromc.moregears.entity.renderer.MGArrowRenderer;
 import com.coolerpromc.moregears.event.RegisterMenuEvent;
+import com.coolerpromc.moregears.util.MGTooltip;
 import net.fabricmc.api.ClientModInitializer;
+import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback;
 import net.fabricmc.fabric.api.client.recipe.v1.sync.ClientRecipeSynchronizedEvent;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.minecraft.client.render.item.property.select.SelectProperties;
+import net.minecraft.item.Items;
 import net.minecraft.recipe.PreparedRecipes;
+import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
+
+import java.util.LinkedList;
 
 public class MoreGearsClient implements ClientModInitializer {
     public static PreparedRecipes recipeMap;
@@ -28,5 +34,15 @@ public class MoreGearsClient implements ClientModInitializer {
         SelectProperties.ID_MAPPER.put(Identifier.of(MoreGears.MODID, "select_bow"), Arrow.TYPE);
 
         ClientRecipeSynchronizedEvent.EVENT.register((client, recipes) -> recipeMap = PreparedRecipes.of(recipes.recipes()));
+
+        ItemTooltipCallback.EVENT.register((itemStack, tooltipContext, tooltipType, list) -> {
+            if (itemStack.isOf(Items.COPPER_HELMET) || itemStack.isOf(Items.COPPER_CHESTPLATE) || itemStack.isOf(Items.COPPER_LEGGINGS) || itemStack.isOf(Items.COPPER_BOOTS)) {
+                LinkedList<Text> tooltips = new LinkedList<>(list);
+                tooltips.add(1, MGTooltip.itemSpecialEffect("special_effect.moregears.copper_armor"));
+                list.clear();
+                list.addAll(tooltips);
+
+            }
+        });
     }
 }

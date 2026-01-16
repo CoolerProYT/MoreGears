@@ -43,8 +43,6 @@ public class MGRecipeProvider extends FabricRecipeProvider {
                 oreCooking(recipeOutput, List.of(MGBlocks.NETHER_TITANIUM_ORE, MGItems.RAW_TITANIUM), RecipeCategory.TOOLS, MGItems.TITANIUM_INGOT, 1.0F, 200, "titanium_ingot");
                 oreCooking(recipeOutput, List.of(MGBlocks.END_ENDERITE_ORE, MGItems.RAW_ENDERITE), RecipeCategory.TOOLS, MGItems.ENDERITE_INGOT, 1.0F, 200, "enderite_ingot");
 
-                armorSetRecipe(recipeOutput, Items.COPPER_INGOT, MGItems.COPPER_HELMET, MGItems.COPPER_CHESTPLATE, MGItems.COPPER_LEGGINGS, MGItems.COPPER_BOOTS);
-                toolSetRecipe(recipeOutput, Items.COPPER_INGOT, MGItems.COPPER_SWORD, MGItems.COPPER_PICKAXE, MGItems.COPPER_AXE, MGItems.COPPER_SHOVEL, MGItems.COPPER_HOE);
                 armorSetRecipe(recipeOutput, MGItems.BRONZE_INGOT, MGItems.BRONZE_HELMET, MGItems.BRONZE_CHESTPLATE, MGItems.BRONZE_LEGGINGS, MGItems.BRONZE_BOOTS);
                 toolSetRecipe(recipeOutput, MGItems.BRONZE_INGOT, MGItems.BRONZE_SWORD, MGItems.BRONZE_PICKAXE, MGItems.BRONZE_AXE, MGItems.BRONZE_SHOVEL, MGItems.BRONZE_HOE);
                 armorSetRecipe(recipeOutput, MGItems.STEEL_INGOT, MGItems.STEEL_HELMET, MGItems.STEEL_CHESTPLATE, MGItems.STEEL_LEGGINGS, MGItems.STEEL_BOOTS);
