@@ -104,6 +104,10 @@ public class MGModelProvider extends FabricModelProvider {
         trimmedArmorItem(itemModelGenerator, Items.CHAINMAIL_CHESTPLATE, EquipmentAssetKeys.CHAINMAIL, CHESTPLATE_TRIM_ID_PREFIX, MOD_TRIM_PREFIX_CHESTPLATE, false);
         trimmedArmorItem(itemModelGenerator, Items.CHAINMAIL_LEGGINGS, EquipmentAssetKeys.CHAINMAIL, LEGGINGS_TRIM_ID_PREFIX, MOD_TRIM_PREFIX_LEGGINGS, false);
         trimmedArmorItem(itemModelGenerator, Items.CHAINMAIL_BOOTS, EquipmentAssetKeys.CHAINMAIL, BOOTS_TRIM_ID_PREFIX, MOD_TRIM_PREFIX_BOOTS, false);
+        trimmedArmorItem(itemModelGenerator, Items.COPPER_HELMET, EquipmentAssetKeys.COPPER, HELMET_TRIM_ID_PREFIX, MOD_TRIM_PREFIX_HELMET, false);
+        trimmedArmorItem(itemModelGenerator, Items.COPPER_CHESTPLATE, EquipmentAssetKeys.COPPER, CHESTPLATE_TRIM_ID_PREFIX, MOD_TRIM_PREFIX_CHESTPLATE, false);
+        trimmedArmorItem(itemModelGenerator, Items.COPPER_LEGGINGS, EquipmentAssetKeys.COPPER, LEGGINGS_TRIM_ID_PREFIX, MOD_TRIM_PREFIX_LEGGINGS, false);
+        trimmedArmorItem(itemModelGenerator, Items.COPPER_BOOTS, EquipmentAssetKeys.COPPER, BOOTS_TRIM_ID_PREFIX, MOD_TRIM_PREFIX_BOOTS, false);
         trimmedArmorItem(itemModelGenerator, Items.IRON_HELMET, EquipmentAssetKeys.IRON, HELMET_TRIM_ID_PREFIX, MOD_TRIM_PREFIX_HELMET, false);
         trimmedArmorItem(itemModelGenerator, Items.IRON_CHESTPLATE, EquipmentAssetKeys.IRON, CHESTPLATE_TRIM_ID_PREFIX, MOD_TRIM_PREFIX_CHESTPLATE, false);
         trimmedArmorItem(itemModelGenerator, Items.IRON_LEGGINGS, EquipmentAssetKeys.IRON, LEGGINGS_TRIM_ID_PREFIX, MOD_TRIM_PREFIX_LEGGINGS, false);
@@ -120,11 +124,6 @@ public class MGModelProvider extends FabricModelProvider {
         trimmedArmorItem(itemModelGenerator, Items.NETHERITE_CHESTPLATE, EquipmentAssetKeys.NETHERITE, CHESTPLATE_TRIM_ID_PREFIX, MOD_TRIM_PREFIX_CHESTPLATE, false);
         trimmedArmorItem(itemModelGenerator, Items.NETHERITE_LEGGINGS, EquipmentAssetKeys.NETHERITE, LEGGINGS_TRIM_ID_PREFIX, MOD_TRIM_PREFIX_LEGGINGS, false);
         trimmedArmorItem(itemModelGenerator, Items.NETHERITE_BOOTS, EquipmentAssetKeys.NETHERITE, BOOTS_TRIM_ID_PREFIX, MOD_TRIM_PREFIX_BOOTS, false);
-
-        trimmedArmorItem(itemModelGenerator, MGItems.COPPER_HELMET, MGArmorMaterials.COPPER_ARMOR_MATERIAL);
-        trimmedArmorItem(itemModelGenerator, MGItems.COPPER_CHESTPLATE, MGArmorMaterials.COPPER_ARMOR_MATERIAL);
-        trimmedArmorItem(itemModelGenerator, MGItems.COPPER_LEGGINGS, MGArmorMaterials.COPPER_ARMOR_MATERIAL);
-        trimmedArmorItem(itemModelGenerator, MGItems.COPPER_BOOTS, MGArmorMaterials.COPPER_ARMOR_MATERIAL);
 
         trimmedArmorItem(itemModelGenerator, MGItems.BRONZE_HELMET, MGArmorMaterials.BRONZE_ARMOR_MATERIAL);
         trimmedArmorItem(itemModelGenerator, MGItems.BRONZE_CHESTPLATE, MGArmorMaterials.BRONZE_ARMOR_MATERIAL);
@@ -153,12 +152,6 @@ public class MGModelProvider extends FabricModelProvider {
 
         itemModelGenerator.register(MGItems.TITANIUM_UPGRADE_SMITHING_TEMPLATE, Models.GENERATED);
         itemModelGenerator.register(MGItems.ENDERITE_UPGRADE_SMITHING_TEMPLATE, Models.GENERATED);
-
-        itemModelGenerator.register(MGItems.COPPER_SWORD, Models.HANDHELD);
-        itemModelGenerator.register(MGItems.COPPER_SHOVEL, Models.HANDHELD);
-        itemModelGenerator.register(MGItems.COPPER_PICKAXE, Models.HANDHELD);
-        itemModelGenerator.register(MGItems.COPPER_AXE, Models.HANDHELD);
-        itemModelGenerator.register(MGItems.COPPER_HOE, Models.HANDHELD);
 
         itemModelGenerator.register(MGItems.BRONZE_SWORD, Models.HANDHELD);
         itemModelGenerator.register(MGItems.BRONZE_SHOVEL, Models.HANDHELD);

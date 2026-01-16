@@ -17,7 +17,7 @@ import java.lang.reflect.Field;
 public class MGCreativeTab {
     public static final ItemGroup MG_TAB = Registry.register(Registries.ITEM_GROUP,
             Identifier.of(MoreGears.MODID, "more_gears"),
-            FabricItemGroup.builder().icon(() -> new ItemStack(MGItems.COPPER_SWORD))
+            FabricItemGroup.builder().icon(() -> new ItemStack(MGBlocks.ALLOY_SMELTER))
                     .displayName(Text.translatable("creativetab.moregears"))
                     .entries((displayContext, entries) -> {
                         for (Field field : MGBlocks.class.getFields()){

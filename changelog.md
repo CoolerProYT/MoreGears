@@ -1,4 +1,2 @@
-- Added `Titanium Nugget`
-- Changed `Titanium Upgrade Smithing Template` recipe to use `Netherite Scrap`
-- Changed `Enderite Upgrade Smithing Template` recipe to use `Titanium Nugget`
-- Added `JEI` Compat
+- Removed `Copper Armor` from this mod, moved effects and textures to `Vanilla Copper Armor`
+- Removed `Copper Tools` from this mod, moved textures to `Vanilla Copper Tools`

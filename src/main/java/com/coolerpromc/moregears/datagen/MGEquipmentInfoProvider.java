@@ -21,7 +21,6 @@ public class MGEquipmentInfoProvider implements DataProvider {
     }
 
     private void add(BiConsumer<Identifier, EquipmentModel> registrar) {
-        register(registrar, "copper");
         register(registrar, "bronze");
         register(registrar, "steel");
         register(registrar, "ruby");
