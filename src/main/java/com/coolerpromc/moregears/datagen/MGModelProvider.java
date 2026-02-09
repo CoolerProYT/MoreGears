@@ -172,30 +172,37 @@ public class MGModelProvider extends ModelProvider {
         handheldItem(itemModels, MGItems.BRONZE_PICKAXE);
         handheldItem(itemModels, MGItems.BRONZE_AXE);
         handheldItem(itemModels, MGItems.BRONZE_HOE);
+        itemModels.generateSpear(MGItems.BRONZE_SPEAR.get());
 
         handheldItem(itemModels, MGItems.STEEL_SWORD);
         handheldItem(itemModels, MGItems.STEEL_SHOVEL);
         handheldItem(itemModels, MGItems.STEEL_PICKAXE);
         handheldItem(itemModels, MGItems.STEEL_AXE);
         handheldItem(itemModels, MGItems.STEEL_HOE);
+        itemModels.generateSpear(MGItems.STEEL_SPEAR.get());
 
         handheldItem(itemModels, MGItems.RUBY_SWORD);
         handheldItem(itemModels, MGItems.RUBY_SHOVEL);
         handheldItem(itemModels, MGItems.RUBY_PICKAXE);
         handheldItem(itemModels, MGItems.RUBY_AXE);
         handheldItem(itemModels, MGItems.RUBY_HOE);
+        itemModels.generateSpear(MGItems.RUBY_SPEAR.get());
 
         handheldItem(itemModels, MGItems.TITANIUM_SWORD);
         handheldItem(itemModels, MGItems.TITANIUM_SHOVEL);
         handheldItem(itemModels, MGItems.TITANIUM_PICKAXE);
         handheldItem(itemModels, MGItems.TITANIUM_AXE);
         handheldItem(itemModels, MGItems.TITANIUM_HOE);
+        handheldItem(itemModels, MGItems.TITANIUM_MACE);
+        itemModels.generateSpear(MGItems.TITANIUM_SPEAR.get());
 
         handheldItem(itemModels, MGItems.ENDERITE_SWORD);
         handheldItem(itemModels, MGItems.ENDERITE_SHOVEL);
         handheldItem(itemModels, MGItems.ENDERITE_PICKAXE);
         handheldItem(itemModels, MGItems.ENDERITE_AXE);
         handheldItem(itemModels, MGItems.ENDERITE_HOE);
+        handheldItem(itemModels, MGItems.ENDERITE_MACE);
+        itemModels.generateSpear(MGItems.ENDERITE_SPEAR.get());
 
         basicItem(itemModels, MGItems.COPPER_ARROW);
         basicItem(itemModels, MGItems.BRONZE_ARROW);

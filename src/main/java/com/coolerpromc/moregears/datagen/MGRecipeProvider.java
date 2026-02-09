@@ -43,11 +43,11 @@ public class MGRecipeProvider extends RecipeProvider {
         oreCooking(List.of(MGBlocks.END_ENDERITE_ORE, MGItems.RAW_ENDERITE), RecipeCategory.TOOLS, MGItems.ENDERITE_INGOT, 1.0F, 200, "enderite_ingot");
 
         armorSetRecipe(output, items, MGItems.BRONZE_INGOT, MGItems.BRONZE_HELMET, MGItems.BRONZE_CHESTPLATE, MGItems.BRONZE_LEGGINGS, MGItems.BRONZE_BOOTS);
-        toolSetRecipe(output, items, MGItems.BRONZE_INGOT, MGItems.BRONZE_SWORD, MGItems.BRONZE_PICKAXE, MGItems.BRONZE_AXE, MGItems.BRONZE_SHOVEL, MGItems.BRONZE_HOE);
+        toolSetRecipe(output, items, MGItems.BRONZE_INGOT, MGItems.BRONZE_SWORD, MGItems.BRONZE_PICKAXE, MGItems.BRONZE_AXE, MGItems.BRONZE_SHOVEL, MGItems.BRONZE_HOE, MGItems.BRONZE_SPEAR);
         armorSetRecipe(output, items, MGItems.STEEL_INGOT, MGItems.STEEL_HELMET, MGItems.STEEL_CHESTPLATE, MGItems.STEEL_LEGGINGS, MGItems.STEEL_BOOTS);
-        toolSetRecipe(output, items, MGItems.STEEL_INGOT, MGItems.STEEL_SWORD, MGItems.STEEL_PICKAXE, MGItems.STEEL_AXE, MGItems.STEEL_SHOVEL, MGItems.STEEL_HOE);
+        toolSetRecipe(output, items, MGItems.STEEL_INGOT, MGItems.STEEL_SWORD, MGItems.STEEL_PICKAXE, MGItems.STEEL_AXE, MGItems.STEEL_SHOVEL, MGItems.STEEL_HOE, MGItems.STEEL_SPEAR);
         armorSetRecipe(output, items, MGItems.RUBY_INGOT, MGItems.RUBY_HELMET, MGItems.RUBY_CHESTPLATE, MGItems.RUBY_LEGGINGS, MGItems.RUBY_BOOTS);
-        toolSetRecipe(output, items, MGItems.RUBY_INGOT, MGItems.RUBY_SWORD, MGItems.RUBY_PICKAXE, MGItems.RUBY_AXE, MGItems.RUBY_SHOVEL, MGItems.RUBY_HOE);
+        toolSetRecipe(output, items, MGItems.RUBY_INGOT, MGItems.RUBY_SWORD, MGItems.RUBY_PICKAXE, MGItems.RUBY_AXE, MGItems.RUBY_SHOVEL, MGItems.RUBY_HOE, MGItems.RUBY_SPEAR);
 
         titaniumSmithing(output, Items.NETHERITE_HELMET, RecipeCategory.COMBAT, MGItems.TITANIUM_HELMET);
         titaniumSmithing(output, Items.NETHERITE_CHESTPLATE, RecipeCategory.COMBAT, MGItems.TITANIUM_CHESTPLATE);
@@ -58,6 +58,8 @@ public class MGRecipeProvider extends RecipeProvider {
         titaniumSmithing(output, Items.NETHERITE_AXE, RecipeCategory.TOOLS, MGItems.TITANIUM_AXE);
         titaniumSmithing(output, Items.NETHERITE_SHOVEL, RecipeCategory.TOOLS, MGItems.TITANIUM_SHOVEL);
         titaniumSmithing(output, Items.NETHERITE_HOE, RecipeCategory.TOOLS, MGItems.TITANIUM_HOE);
+        titaniumSmithing(output, Items.NETHERITE_SPEAR, RecipeCategory.COMBAT, MGItems.TITANIUM_SPEAR);
+        titaniumSmithing(output, Items.MACE, RecipeCategory.COMBAT, MGItems.TITANIUM_MACE);
 
         enderiteSmithing(output, MGItems.TITANIUM_HELMET, RecipeCategory.COMBAT, MGItems.ENDERITE_HELMET);
         enderiteSmithing(output, MGItems.TITANIUM_CHESTPLATE, RecipeCategory.COMBAT, MGItems.ENDERITE_CHESTPLATE);
@@ -68,6 +70,8 @@ public class MGRecipeProvider extends RecipeProvider {
         enderiteSmithing(output, MGItems.TITANIUM_AXE, RecipeCategory.TOOLS, MGItems.ENDERITE_AXE);
         enderiteSmithing(output, MGItems.TITANIUM_SHOVEL, RecipeCategory.TOOLS, MGItems.ENDERITE_SHOVEL);
         enderiteSmithing(output, MGItems.TITANIUM_HOE, RecipeCategory.TOOLS, MGItems.ENDERITE_HOE);
+        enderiteSmithing(output, MGItems.TITANIUM_SPEAR, RecipeCategory.COMBAT, MGItems.ENDERITE_SPEAR);
+        enderiteSmithing(output, MGItems.TITANIUM_MACE, RecipeCategory.COMBAT, MGItems.ENDERITE_MACE);
 
         ShapedRecipeBuilder.shaped(items, RecipeCategory.MISC, MGItems.TITANIUM_INGOT)
                 .define('N', MGItems.TITANIUM_NUGGET)
@@ -179,7 +183,7 @@ public class MGRecipeProvider extends RecipeProvider {
                 .save(output);
     }
 
-    protected void toolSetRecipe(RecipeOutput output, HolderGetter<Item> items, ItemLike material, ItemLike sword, ItemLike pickaxe, ItemLike axe, ItemLike shovel, ItemLike hoe){
+    protected void toolSetRecipe(RecipeOutput output, HolderGetter<Item> items, ItemLike material, ItemLike sword, ItemLike pickaxe, ItemLike axe, ItemLike shovel, ItemLike hoe, ItemLike spear){
         ShapedRecipeBuilder.shaped(items, RecipeCategory.TOOLS, hoe)
                 .define('X', material)
                 .define('s', Items.STICK)
@@ -224,6 +228,15 @@ public class MGRecipeProvider extends RecipeProvider {
                 .pattern("s")
                 .unlockedBy(getHasName(material), has(material))
                 .save(output);
+
+        ShapedRecipeBuilder.shaped(items, RecipeCategory.COMBAT, spear)
+                .define('#', Items.STICK)
+                .define('X', material)
+                .pattern("  X")
+                .pattern(" # ")
+                .pattern("#  ")
+                .unlockedBy(getHasName(material), has(material))
+                .save(this.output);
     }
 
     protected void titaniumSmithing(RecipeOutput output, ItemLike ingredientItem, RecipeCategory category, ItemLike resultItem) {

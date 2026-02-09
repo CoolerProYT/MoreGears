@@ -1,2 +1,2 @@
-- Removed `Copper Armor` from this mod, moved effects and textures to `Vanilla Copper Armor`
-- Removed `Copper Tools` from this mod, moved textures to `Vanilla Copper Tools`
+- Added `Titanium Mace` and `Enderite Mace`
+- Added `Spear` for each tier of weapons from this mod

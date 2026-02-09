@@ -4,10 +4,7 @@ import com.coolerpromc.moregears.MoreGears;
 import com.coolerpromc.moregears.armor.MGArmorItem;
 import com.coolerpromc.moregears.armor.custom.*;
 import com.coolerpromc.moregears.entity.MGEntities;
-import com.coolerpromc.moregears.item.custom.MGArrowItem;
-import com.coolerpromc.moregears.item.custom.MGIngot;
-import com.coolerpromc.moregears.item.custom.MGNugget;
-import com.coolerpromc.moregears.item.custom.MGRawOre;
+import com.coolerpromc.moregears.item.custom.*;
 import com.coolerpromc.moregears.tool.MGToolMaterials;
 import com.coolerpromc.moregears.tool.bronze.BronzeAxe;
 import com.coolerpromc.moregears.tool.bronze.BronzeHoe;
@@ -22,6 +19,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.util.Unit;
 import net.minecraft.world.item.*;
+import net.minecraft.world.item.component.Weapon;
 import net.minecraft.world.item.equipment.ArmorType;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredItem;
@@ -57,6 +55,9 @@ public class MGItems {
     public static final DeferredItem<ShovelItem> BRONZE_SHOVEL = registerItem("bronze_shovel", properties -> new BronzeShovel(MGToolMaterials.BRONZE_TIER, 1.5f, -3f, properties));
     public static final DeferredItem<AxeItem> BRONZE_AXE = registerItem("bronze_axe", properties -> new BronzeAxe(MGToolMaterials.BRONZE_TIER,  5.5f, -3.0f, properties));
     public static final DeferredItem<HoeItem> BRONZE_HOE = registerItem("bronze_hoe", properties -> new BronzeHoe(MGToolMaterials.BRONZE_TIER,  -2.5f, -0.5f, properties));
+    public static final DeferredItem<Item> BRONZE_SPEAR = registerItem("bronze_spear", properties -> new Item(properties
+            .spear(MGToolMaterials.BRONZE_TIER, 0.9F, 0.89F, 0.625F, 3.5F, 8.5F, 7.5F, 5.1F, 11.875F, 4.6F))
+    );
 
     public static final DeferredItem<MGArmorItem> STEEL_HELMET = registerItem("steel_helmet", properties -> new SteelArmor(ArmorType.HELMET, properties));
     public static final DeferredItem<MGArmorItem> STEEL_CHESTPLATE = registerItem("steel_chestplate", properties -> new SteelArmor(ArmorType.CHESTPLATE, properties));
@@ -68,6 +69,9 @@ public class MGItems {
     public static final DeferredItem<ShovelItem> STEEL_SHOVEL = registerItem("steel_shovel", properties -> new SteelShovel(MGToolMaterials.STEEL_TIER, 1.5f, -2f, properties));
     public static final DeferredItem<AxeItem> STEEL_AXE = registerItem("steel_axe", properties -> new SteelAxe(MGToolMaterials.STEEL_TIER, 6, -2f, properties));
     public static final DeferredItem<HoeItem> STEEL_HOE = registerItem("steel_hoe", properties -> new SteelHoe(MGToolMaterials.STEEL_TIER, -2f, 0.0f, properties));
+    public static final DeferredItem<Item> STEEL_SPEAR = registerItem("steel_spear", properties -> new Item(properties
+            .spear(MGToolMaterials.STEEL_TIER, 0.98F, 1F, 0.57F, 2.65F, 7.85F, 6.67F, 5.1F, 10.8F, 4.6F))
+    );
 
     public static final DeferredItem<MGArmorItem> RUBY_HELMET = registerItem("ruby_helmet", properties -> new RubyArmor(ArmorType.HELMET, properties));
     public static final DeferredItem<MGArmorItem> RUBY_CHESTPLATE = registerItem("ruby_chestplate", properties -> new RubyArmor(ArmorType.CHESTPLATE, properties));
@@ -79,6 +83,9 @@ public class MGItems {
     public static final DeferredItem<ShovelItem> RUBY_SHOVEL = registerItem("ruby_shovel", properties -> new ShovelItem(MGToolMaterials.RUBY_TIER, 1.5f, -3f, properties));
     public static final DeferredItem<AxeItem> RUBY_AXE = registerItem("ruby_axe", properties -> new AxeItem(MGToolMaterials.RUBY_TIER, 4, -3.2f, properties));
     public static final DeferredItem<HoeItem> RUBY_HOE = registerItem("ruby_hoe", properties -> new HoeItem(MGToolMaterials.RUBY_TIER, -3f, 0f, properties));
+    public static final DeferredItem<Item> RUBY_SPEAR = registerItem("ruby_spear", properties -> new Item(properties
+            .spear(MGToolMaterials.RUBY_TIER, 1.02F, 1.04F, 0.53F, 2.75F, 7.65F, 6.58F, 5.1F, 10.4F, 4.6F))
+    );
 
     public static final DeferredItem<MGArmorItem> TITANIUM_HELMET = registerItem("titanium_helmet", properties -> new TitaniumArmor(ArmorType.HELMET, properties));
     public static final DeferredItem<MGArmorItem> TITANIUM_CHESTPLATE = registerItem("titanium_chestplate", properties -> new TitaniumArmor(ArmorType.CHESTPLATE, properties));
@@ -90,6 +97,18 @@ public class MGItems {
     public static final DeferredItem<ShovelItem> TITANIUM_SHOVEL = registerItem("titanium_shovel", properties -> new ShovelItem(MGToolMaterials.TITANIUM_TIER, 2f, -2f, properties));
     public static final DeferredItem<AxeItem> TITANIUM_AXE = registerItem("titanium_axe", properties -> new AxeItem(MGToolMaterials.TITANIUM_TIER, 6, -2.2f, properties));
     public static final DeferredItem<HoeItem> TITANIUM_HOE = registerItem("titanium_hoe", properties -> new HoeItem(MGToolMaterials.TITANIUM_TIER, -2f, 0.0f, properties));
+    public static final DeferredItem<Item> TITANIUM_SPEAR = registerItem("titanium_spear", properties -> new Item(properties
+            .spear(MGToolMaterials.TITANIUM_TIER, 1.25F, 1.325F, 0.3F, 2F, 6.5F, 4.5F, 5.1F, 7.5F, 4.6F).fireResistant())
+    );
+    public static final DeferredItem<MGMaceItem> TITANIUM_MACE = registerItem("titanium_mace", properties -> new MGMaceItem(properties
+            .fireResistant()
+            .rarity(Rarity.EPIC)
+            .component(DataComponents.UNBREAKABLE, Unit.INSTANCE)
+            .component(DataComponents.TOOL, MGMaceItem.createToolProperties(MGToolMaterials.TITANIUM_TIER))
+            .attributes(MGMaceItem.createAttributes(MGToolMaterials.TITANIUM_TIER, -2.4f))
+            .enchantable(MGToolMaterials.TITANIUM_TIER.enchantmentValue())
+            .component(DataComponents.WEAPON, new Weapon(2))
+    ));
 
     public static final DeferredItem<MGArmorItem> ENDERITE_HELMET = registerItem("enderite_helmet", properties -> new EnderiteArmor(ArmorType.HELMET, properties));
     public static final DeferredItem<MGArmorItem> ENDERITE_CHESTPLATE = registerItem("enderite_chestplate", properties -> new EnderiteArmor(ArmorType.CHESTPLATE, properties));
@@ -106,6 +125,18 @@ public class MGItems {
             properties -> new AxeItem(MGToolMaterials.ENDERITE_TIER, 9, -1.5f, properties.fireResistant().component(DataComponents.UNBREAKABLE, Unit.INSTANCE)));
     public static final DeferredItem<HoeItem> ENDERITE_HOE = registerItem("enderite_hoe",
             properties -> new HoeItem(MGToolMaterials.ENDERITE_TIER, -1f, 0.0f, properties.fireResistant().component(DataComponents.UNBREAKABLE, Unit.INSTANCE)));
+    public static final DeferredItem<Item> ENDERITE_SPEAR = registerItem("enderite_spear", properties -> new Item(properties
+            .spear(MGToolMaterials.ENDERITE_TIER, 1.35F, 1.45F, 0.2F, 1.5F, 6F, 3.5F, 5.1F, 6.25F, 4.6F).fireResistant().component(DataComponents.UNBREAKABLE, Unit.INSTANCE))
+    );
+    public static final DeferredItem<MGMaceItem> ENDERITE_MACE = registerItem("enderite_mace", properties -> new MGMaceItem(properties
+            .fireResistant()
+            .rarity(Rarity.EPIC)
+            .component(DataComponents.UNBREAKABLE, Unit.INSTANCE)
+            .component(DataComponents.TOOL, MGMaceItem.createToolProperties(MGToolMaterials.ENDERITE_TIER))
+            .attributes(MGMaceItem.createAttributes(MGToolMaterials.ENDERITE_TIER, -1.4f))
+            .enchantable(MGToolMaterials.ENDERITE_TIER.enchantmentValue())
+            .component(DataComponents.WEAPON, new Weapon(3))
+    ));
 
     public static final DeferredItem<SmithingTemplateItem> TITANIUM_UPGRADE_SMITHING_TEMPLATE = registerItem("titanium_upgrade_smithing_template", properties -> new SmithingTemplateItem(
             Component.translatable("item.moregears.titanium_upgrade_smithing_template.equipment_info").withStyle(ChatFormatting.BLUE),
@@ -121,7 +152,8 @@ public class MGItems {
                     Identifier.withDefaultNamespace("container/slot/axe"),
                     Identifier.withDefaultNamespace("container/slot/sword"),
                     Identifier.withDefaultNamespace("container/slot/shovel"),
-                    Identifier.withDefaultNamespace("container/slot/pickaxe")
+                    Identifier.withDefaultNamespace("container/slot/pickaxe"),
+                    Identifier.fromNamespaceAndPath(MoreGears.MODID, "container/slot/mace")
             ),
             List.of(Identifier.withDefaultNamespace("container/slot/ingot")),
             properties
@@ -141,7 +173,8 @@ public class MGItems {
                     Identifier.withDefaultNamespace("container/slot/axe"),
                     Identifier.withDefaultNamespace("container/slot/sword"),
                     Identifier.withDefaultNamespace("container/slot/shovel"),
-                    Identifier.withDefaultNamespace("container/slot/pickaxe")
+                    Identifier.withDefaultNamespace("container/slot/pickaxe"),
+                    Identifier.fromNamespaceAndPath(MoreGears.MODID, "container/slot/mace")
             ),
             List.of(Identifier.withDefaultNamespace("container/slot/ingot")),
             properties

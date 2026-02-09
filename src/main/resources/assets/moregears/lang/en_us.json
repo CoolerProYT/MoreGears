@@ -41,6 +41,7 @@
   "item.moregears.bronze_axe": "Bronze Axe",
   "item.moregears.bronze_shovel": "Bronze Shovel",
   "item.moregears.bronze_hoe": "Bronze Hoe",
+  "item.moregears.bronze_spear": "Bronze Spear",
 
   "item.moregears.steel_helmet": "Steel Helmet",
   "item.moregears.steel_chestplate": "Steel Chestplate",
@@ -51,6 +52,7 @@
   "item.moregears.steel_axe": "Steel Axe",
   "item.moregears.steel_shovel": "Steel Shovel",
   "item.moregears.steel_hoe": "Steel Hoe",
+  "item.moregears.steel_spear": "Steel Spear",
 
   "item.moregears.ruby_helmet": "Ruby Helmet",
   "item.moregears.ruby_chestplate": "Ruby Chestplate",
@@ -61,6 +63,7 @@
   "item.moregears.ruby_axe": "Ruby Axe",
   "item.moregears.ruby_shovel": "Ruby Shovel",
   "item.moregears.ruby_hoe": "Ruby Hoe",
+  "item.moregears.ruby_spear": "Ruby Spear",
 
   "item.moregears.titanium_helmet": "Titanium Helmet",
   "item.moregears.titanium_chestplate": "Titanium Chestplate",
@@ -71,6 +74,8 @@
   "item.moregears.titanium_axe": "Titanium Axe",
   "item.moregears.titanium_shovel": "Titanium Shovel",
   "item.moregears.titanium_hoe": "Titanium Hoe",
+  "item.moregears.titanium_mace": "Titanium Mace",
+  "item.moregears.titanium_spear": "Titanium Spear",
 
   "item.moregears.enderite_helmet": "Enderite Helmet",
   "item.moregears.enderite_chestplate": "Enderite Chestplate",
@@ -81,6 +86,8 @@
   "item.moregears.enderite_axe": "Enderite Axe",
   "item.moregears.enderite_shovel": "Enderite Shovel",
   "item.moregears.enderite_hoe": "Enderite Hoe",
+  "item.moregears.enderite_mace": "Enderite Mace",
+  "item.moregears.enderite_spear": "Enderite Spear",
 
   "item.moregears.titanium_upgrade_smithing_template": "Titanium Upgrade Smithing Template",
   "item.moregears.enderite_upgrade_smithing_template": "Enderite Upgrade Smithing Template",

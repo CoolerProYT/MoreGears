@@ -6,6 +6,7 @@ import com.coolerpromc.moregears.util.MGTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.ItemTags;
+import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.ItemTagsProvider;
 import org.jetbrains.annotations.NotNull;
 
@@ -238,7 +239,46 @@ public class MGItemTagGenerator extends ItemTagsProvider {
                 MGItems.BRONZE_BOW.get(),
                 MGItems.STEEL_BOW.get(),
                 MGItems.RUBY_BOW.get(),
-                MGItems.TITANIUM_BOW.get()
+                MGItems.TITANIUM_BOW.get(),
+                MGItems.TITANIUM_MACE.get()
+        );
+
+        this.tag(ItemTags.MACE_ENCHANTABLE).add(
+                MGItems.TITANIUM_MACE.get(),
+                MGItems.ENDERITE_MACE.get()
+        );
+
+        this.tag(ItemTags.WEAPON_ENCHANTABLE).add(
+                MGItems.TITANIUM_MACE.get(),
+                MGItems.ENDERITE_MACE.get()
+        );
+
+        this.tag(ItemTags.SPEARS).add(
+                MGItems.BRONZE_SPEAR.get(),
+                MGItems.STEEL_SPEAR.get(),
+                MGItems.RUBY_SPEAR.get(),
+                MGItems.TITANIUM_SPEAR.get(),
+                MGItems.ENDERITE_SPEAR.get()
+        );
+
+        this.tag(ItemTags.FIRE_ASPECT_ENCHANTABLE).add(
+                MGItems.TITANIUM_MACE.get(),
+                MGItems.ENDERITE_MACE.get()
+        );
+
+        this.tag(Tags.Items.TOOLS_MACE).add(
+                MGItems.TITANIUM_MACE.get(),
+                MGItems.ENDERITE_MACE.get()
+        );
+
+        this.tag(Tags.Items.MELEE_WEAPON_TOOLS).add(
+                MGItems.BRONZE_SPEAR.get(),
+                MGItems.STEEL_SPEAR.get(),
+                MGItems.RUBY_SPEAR.get(),
+                MGItems.TITANIUM_SPEAR.get(),
+                MGItems.ENDERITE_SPEAR.get(),
+                MGItems.TITANIUM_MACE.get(),
+                MGItems.ENDERITE_MACE.get()
         );
     }
 }
