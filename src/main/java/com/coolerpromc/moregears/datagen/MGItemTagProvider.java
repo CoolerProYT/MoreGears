@@ -4,6 +4,7 @@ import com.coolerpromc.moregears.item.MGItems;
 import com.coolerpromc.moregears.util.MGTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
+import net.fabricmc.fabric.api.tag.convention.v2.ConventionalItemTags;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.ItemTags;
 
@@ -236,7 +237,46 @@ public class MGItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 MGItems.BRONZE_BOW,
                 MGItems.STEEL_BOW,
                 MGItems.RUBY_BOW,
-                MGItems.TITANIUM_BOW
+                MGItems.TITANIUM_BOW,
+                MGItems.TITANIUM_MACE
+        );
+
+        this.valueLookupBuilder(ItemTags.MACE_ENCHANTABLE).add(
+                MGItems.TITANIUM_MACE,
+                MGItems.ENDERITE_MACE
+        );
+
+        this.valueLookupBuilder(ItemTags.WEAPON_ENCHANTABLE).add(
+                MGItems.TITANIUM_MACE,
+                MGItems.ENDERITE_MACE
+        );
+
+        this.valueLookupBuilder(ItemTags.SPEARS).add(
+                MGItems.BRONZE_SPEAR,
+                MGItems.STEEL_SPEAR,
+                MGItems.RUBY_SPEAR,
+                MGItems.TITANIUM_SPEAR,
+                MGItems.ENDERITE_SPEAR
+        );
+
+        this.valueLookupBuilder(ItemTags.FIRE_ASPECT_ENCHANTABLE).add(
+                MGItems.TITANIUM_MACE,
+                MGItems.ENDERITE_MACE
+        );
+
+        this.valueLookupBuilder(ConventionalItemTags.MACE_TOOLS).add(
+                MGItems.TITANIUM_MACE,
+                MGItems.ENDERITE_MACE
+        );
+
+        this.valueLookupBuilder(ConventionalItemTags.MELEE_WEAPON_TOOLS).add(
+                MGItems.BRONZE_SPEAR,
+                MGItems.STEEL_SPEAR,
+                MGItems.RUBY_SPEAR,
+                MGItems.TITANIUM_SPEAR,
+                MGItems.ENDERITE_SPEAR,
+                MGItems.TITANIUM_MACE,
+                MGItems.ENDERITE_MACE
         );
     }
 }

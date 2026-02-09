@@ -4,10 +4,7 @@ import com.coolerpromc.moregears.MoreGears;
 import com.coolerpromc.moregears.armor.MGArmorItem;
 import com.coolerpromc.moregears.armor.custom.*;
 import com.coolerpromc.moregears.entity.MGEntities;
-import com.coolerpromc.moregears.item.custom.MGArrowItem;
-import com.coolerpromc.moregears.item.custom.MGIngot;
-import com.coolerpromc.moregears.item.custom.MGNugget;
-import com.coolerpromc.moregears.item.custom.MGRawOre;
+import com.coolerpromc.moregears.item.custom.*;
 import com.coolerpromc.moregears.tool.MGToolMaterials;
 import com.coolerpromc.moregears.tool.bronze.BronzeAxe;
 import com.coolerpromc.moregears.tool.bronze.BronzeHoe;
@@ -17,6 +14,7 @@ import com.coolerpromc.moregears.tool.steel.*;
 import com.coolerpromc.moregears.trim.MGTrimMaterials;
 import com.coolerpromc.moregears.util.MGColors;
 import net.minecraft.component.DataComponentTypes;
+import net.minecraft.component.type.WeaponComponent;
 import net.minecraft.item.*;
 import net.minecraft.item.equipment.EquipmentType;
 import net.minecraft.registry.Registries;
@@ -27,9 +25,11 @@ import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.Rarity;
 import net.minecraft.util.Unit;
 
 import java.util.List;
+import java.util.function.Function;
 
 public class MGItems {
     public static final MGRawOre RAW_TIN = registerItem("raw_tin", new MGRawOre(new Item.Settings().registryKey(createItemKey("raw_tin")), MGColors.TIN_COLOR));
@@ -56,7 +56,9 @@ public class MGItems {
     public static final ShovelItem BRONZE_SHOVEL = registerItem("bronze_shovel", new BronzeShovel(MGToolMaterials.BRONZE_TIER, 1.5F, -3.0F, new Item.Settings().registryKey(createItemKey("bronze_shovel"))));
     public static final AxeItem BRONZE_AXE = registerItem("bronze_axe", new BronzeAxe(MGToolMaterials.BRONZE_TIER, 5.5F, -3.0F, new Item.Settings().registryKey(createItemKey("bronze_axe"))));
     public static final HoeItem BRONZE_HOE = registerItem("bronze_hoe", new BronzeHoe(MGToolMaterials.BRONZE_TIER, -2.5F, -0.5F, new Item.Settings().registryKey(createItemKey("bronze_hoe"))));
-
+    public static final Item BRONZE_SPEAR = registerItemWithKey("bronze_spear", properties -> new Item(properties
+            .spear(MGToolMaterials.BRONZE_TIER, 0.9F, 0.89F, 0.625F, 3.5F, 8.5F, 7.5F, 5.1F, 11.875F, 4.6F))
+    );
 
     public static final MGArmorItem STEEL_HELMET = registerItem("steel_helmet", new SteelArmor(EquipmentType.HELMET, "steel_helmet"));
     public static final MGArmorItem STEEL_CHESTPLATE = registerItem("steel_chestplate", new SteelArmor(EquipmentType.CHESTPLATE, "steel_chestplate"));
@@ -68,7 +70,9 @@ public class MGItems {
     public static final ShovelItem STEEL_SHOVEL = registerItem("steel_shovel", new SteelShovel(MGToolMaterials.STEEL_TIER, 1.5F, -2.0F, new Item.Settings().registryKey(createItemKey("steel_shovel"))));
     public static final AxeItem STEEL_AXE = registerItem("steel_axe", new SteelAxe(MGToolMaterials.STEEL_TIER, 6.0F, -2.0F, new Item.Settings().registryKey(createItemKey("steel_axe"))));
     public static final HoeItem STEEL_HOE = registerItem("steel_hoe", new SteelHoe(MGToolMaterials.STEEL_TIER, -2.0F, 0.0F, new Item.Settings().registryKey(createItemKey("steel_hoe"))));
-
+    public static final Item STEEL_SPEAR = registerItemWithKey("steel_spear", properties -> new Item(properties
+            .spear(MGToolMaterials.STEEL_TIER, 0.98F, 1F, 0.57F, 2.65F, 7.85F, 6.67F, 5.1F, 10.8F, 4.6F))
+    );
 
     public static final MGArmorItem RUBY_HELMET = registerItem("ruby_helmet", new RubyArmor(EquipmentType.HELMET, "ruby_helmet"));
     public static final MGArmorItem RUBY_CHESTPLATE = registerItem("ruby_chestplate", new RubyArmor(EquipmentType.CHESTPLATE, "ruby_chestplate"));
@@ -80,7 +84,9 @@ public class MGItems {
     public static final ShovelItem RUBY_SHOVEL = registerItem("ruby_shovel", new ShovelItem(MGToolMaterials.RUBY_TIER, 1.5F, -3.0F, new Item.Settings().registryKey(createItemKey("ruby_shovel"))));
     public static final AxeItem RUBY_AXE = registerItem("ruby_axe", new AxeItem(MGToolMaterials.RUBY_TIER, 4.0F, -3.2F, new Item.Settings().registryKey(createItemKey("ruby_axe"))));
     public static final HoeItem RUBY_HOE = registerItem("ruby_hoe", new HoeItem(MGToolMaterials.RUBY_TIER, -3.0F, 0.0F, new Item.Settings().registryKey(createItemKey("ruby_hoe"))));
-
+    public static final Item RUBY_SPEAR = registerItemWithKey("ruby_spear", properties -> new Item(properties
+            .spear(MGToolMaterials.RUBY_TIER, 1.02F, 1.04F, 0.53F, 2.75F, 7.65F, 6.58F, 5.1F, 10.4F, 4.6F))
+    );
 
     public static final MGArmorItem TITANIUM_HELMET = registerItem("titanium_helmet", new TitaniumArmor(EquipmentType.HELMET, "titanium_helmet"));
     public static final MGArmorItem TITANIUM_CHESTPLATE = registerItem("titanium_chestplate", new TitaniumArmor(EquipmentType.CHESTPLATE, "titanium_chestplate"));
@@ -92,7 +98,18 @@ public class MGItems {
     public static final ShovelItem TITANIUM_SHOVEL = registerItem("titanium_shovel", new ShovelItem(MGToolMaterials.TITANIUM_TIER, 2.0F, -2.0F, new Item.Settings().registryKey(createItemKey("titanium_shovel"))));
     public static final AxeItem TITANIUM_AXE = registerItem("titanium_axe", new AxeItem(MGToolMaterials.TITANIUM_TIER, 6.0F, -2.2F, new Item.Settings().registryKey(createItemKey("titanium_axe"))));
     public static final HoeItem TITANIUM_HOE = registerItem("titanium_hoe", new HoeItem(MGToolMaterials.TITANIUM_TIER, -2.0F, 0.0F, new Item.Settings().registryKey(createItemKey("titanium_hoe"))));
-
+    public static final Item TITANIUM_SPEAR = registerItemWithKey("titanium_spear", properties -> new Item(properties
+            .spear(MGToolMaterials.TITANIUM_TIER, 1.25F, 1.325F, 0.3F, 2F, 6.5F, 4.5F, 5.1F, 7.5F, 4.6F).fireproof())
+    );
+    public static final MGMaceItem TITANIUM_MACE = registerItemWithKey("titanium_mace", properties -> new MGMaceItem(properties
+            .fireproof()
+            .rarity(Rarity.EPIC)
+            .component(DataComponentTypes.UNBREAKABLE, Unit.INSTANCE)
+            .component(DataComponentTypes.TOOL, MGMaceItem.createToolProperties(MGToolMaterials.TITANIUM_TIER))
+            .attributeModifiers(MGMaceItem.createAttributes(MGToolMaterials.TITANIUM_TIER, -2.4f))
+            .enchantable(MGToolMaterials.TITANIUM_TIER.enchantmentValue())
+            .component(DataComponentTypes.WEAPON, new WeaponComponent(2))
+    ));
 
     public static final MGArmorItem ENDERITE_HELMET = registerItem("enderite_helmet", new EnderiteArmor(EquipmentType.HELMET, "enderite_helmet"));
     public static final MGArmorItem ENDERITE_CHESTPLATE = registerItem("enderite_chestplate", new EnderiteArmor(EquipmentType.CHESTPLATE, "enderite_chestplate"));
@@ -104,6 +121,18 @@ public class MGItems {
     public static final ShovelItem ENDERITE_SHOVEL = registerItem("enderite_shovel", new ShovelItem(MGToolMaterials.ENDERITE_TIER, 3.5F, -1.8F, new Item.Settings().fireproof().component(DataComponentTypes.UNBREAKABLE, Unit.INSTANCE).registryKey(createItemKey("enderite_shovel"))));
     public static final AxeItem ENDERITE_AXE = registerItem("enderite_axe", new AxeItem(MGToolMaterials.ENDERITE_TIER, 9, -1.5F, new Item.Settings().fireproof().component(DataComponentTypes.UNBREAKABLE, Unit.INSTANCE).registryKey(createItemKey("enderite_axe"))));
     public static final HoeItem ENDERITE_HOE = registerItem("enderite_hoe", new HoeItem(MGToolMaterials.ENDERITE_TIER, -1.0F, 0.0F, new Item.Settings().fireproof().component(DataComponentTypes.UNBREAKABLE, Unit.INSTANCE).registryKey(createItemKey("enderite_hoe"))));
+    public static final Item ENDERITE_SPEAR = registerItemWithKey("enderite_spear", properties -> new Item(properties
+            .spear(MGToolMaterials.ENDERITE_TIER, 1.35F, 1.45F, 0.2F, 1.5F, 6F, 3.5F, 5.1F, 6.25F, 4.6F).fireproof().component(DataComponentTypes.UNBREAKABLE, Unit.INSTANCE))
+    );
+    public static final MGMaceItem ENDERITE_MACE = registerItemWithKey("enderite_mace", properties -> new MGMaceItem(properties
+            .fireproof()
+            .rarity(Rarity.EPIC)
+            .component(DataComponentTypes.UNBREAKABLE, Unit.INSTANCE)
+            .component(DataComponentTypes.TOOL, MGMaceItem.createToolProperties(MGToolMaterials.ENDERITE_TIER))
+            .attributeModifiers(MGMaceItem.createAttributes(MGToolMaterials.ENDERITE_TIER, -1.4f))
+            .enchantable(MGToolMaterials.ENDERITE_TIER.enchantmentValue())
+            .component(DataComponentTypes.WEAPON, new WeaponComponent(3))
+    ));
 
     public static final SmithingTemplateItem TITANIUM_UPGRADE_SMITHING_TEMPLATE = registerItem("titanium_upgrade_smithing_template", new SmithingTemplateItem(
             Text.translatable("item.moregears.titanium_upgrade_smithing_template.equipment_info").fillStyle(Style.EMPTY.withColor(Formatting.BLUE)),
@@ -119,7 +148,8 @@ public class MGItems {
                     Identifier.ofVanilla("container/slot/axe"),
                     Identifier.ofVanilla("container/slot/sword"),
                     Identifier.ofVanilla("container/slot/shovel"),
-                    Identifier.ofVanilla("container/slot/pickaxe")
+                    Identifier.ofVanilla("container/slot/pickaxe"),
+                    Identifier.of(MoreGears.MODID, "container/slot/mace")
             ),
             List.of(Identifier.ofVanilla("container/slot/ingot")),
             new Item.Settings().registryKey(createItemKey("titanium_upgrade_smithing_template"))
@@ -139,7 +169,8 @@ public class MGItems {
                     Identifier.ofVanilla("container/slot/axe"),
                     Identifier.ofVanilla("container/slot/sword"),
                     Identifier.ofVanilla("container/slot/shovel"),
-                    Identifier.ofVanilla("container/slot/pickaxe")
+                    Identifier.ofVanilla("container/slot/pickaxe"),
+                    Identifier.of(MoreGears.MODID, "container/slot/mace")
             ),
             List.of(Identifier.ofVanilla("container/slot/ingot")),
             new Item.Settings().registryKey(createItemKey("enderite_upgrade_smithing_template"))
@@ -165,6 +196,10 @@ public class MGItems {
 
     private static RegistryKey<Item> createItemKey(String name) {
         return RegistryKey.of(RegistryKeys.ITEM, Identifier.of(MoreGears.MODID, name));
+    }
+
+    private static <T extends Item> T registerItemWithKey(String name, Function<Item.Settings, T> item) {
+        return Registry.register(Registries.ITEM, Identifier.of(MoreGears.MODID, name), item.apply(new Item.Settings().registryKey(createItemKey(name))));
     }
 
     public static void init() {

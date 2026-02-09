@@ -155,30 +155,37 @@ public class MGModelProvider extends FabricModelProvider {
         itemModelGenerator.register(MGItems.BRONZE_PICKAXE, Models.HANDHELD);
         itemModelGenerator.register(MGItems.BRONZE_AXE, Models.HANDHELD);
         itemModelGenerator.register(MGItems.BRONZE_HOE, Models.HANDHELD);
+        itemModelGenerator.registerSpear(MGItems.BRONZE_SPEAR);
 
         itemModelGenerator.register(MGItems.STEEL_SWORD, Models.HANDHELD);
         itemModelGenerator.register(MGItems.STEEL_SHOVEL, Models.HANDHELD);
         itemModelGenerator.register(MGItems.STEEL_PICKAXE, Models.HANDHELD);
         itemModelGenerator.register(MGItems.STEEL_AXE, Models.HANDHELD);
         itemModelGenerator.register(MGItems.STEEL_HOE, Models.HANDHELD);
+        itemModelGenerator.registerSpear(MGItems.STEEL_SPEAR);
 
         itemModelGenerator.register(MGItems.RUBY_SWORD, Models.HANDHELD);
         itemModelGenerator.register(MGItems.RUBY_SHOVEL, Models.HANDHELD);
         itemModelGenerator.register(MGItems.RUBY_PICKAXE, Models.HANDHELD);
         itemModelGenerator.register(MGItems.RUBY_AXE, Models.HANDHELD);
         itemModelGenerator.register(MGItems.RUBY_HOE, Models.HANDHELD);
+        itemModelGenerator.registerSpear(MGItems.RUBY_SPEAR);
 
         itemModelGenerator.register(MGItems.TITANIUM_SWORD, Models.HANDHELD);
         itemModelGenerator.register(MGItems.TITANIUM_SHOVEL, Models.HANDHELD);
         itemModelGenerator.register(MGItems.TITANIUM_PICKAXE, Models.HANDHELD);
         itemModelGenerator.register(MGItems.TITANIUM_AXE, Models.HANDHELD);
         itemModelGenerator.register(MGItems.TITANIUM_HOE, Models.HANDHELD);
+        itemModelGenerator.register(MGItems.TITANIUM_MACE, Models.HANDHELD_MACE);
+        itemModelGenerator.registerSpear(MGItems.TITANIUM_SPEAR);
 
         itemModelGenerator.register(MGItems.ENDERITE_SWORD, Models.HANDHELD);
         itemModelGenerator.register(MGItems.ENDERITE_SHOVEL, Models.HANDHELD);
         itemModelGenerator.register(MGItems.ENDERITE_PICKAXE, Models.HANDHELD);
         itemModelGenerator.register(MGItems.ENDERITE_AXE, Models.HANDHELD);
         itemModelGenerator.register(MGItems.ENDERITE_HOE, Models.HANDHELD);
+        itemModelGenerator.register(MGItems.ENDERITE_MACE, Models.HANDHELD_MACE);
+        itemModelGenerator.registerSpear(MGItems.ENDERITE_SPEAR);
 
         basicItem(itemModelGenerator, MGItems.COPPER_ARROW);
         basicItem(itemModelGenerator, MGItems.BRONZE_ARROW);

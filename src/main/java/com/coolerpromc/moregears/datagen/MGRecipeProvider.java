@@ -44,11 +44,11 @@ public class MGRecipeProvider extends FabricRecipeProvider {
                 oreCooking(recipeOutput, List.of(MGBlocks.END_ENDERITE_ORE, MGItems.RAW_ENDERITE), RecipeCategory.TOOLS, MGItems.ENDERITE_INGOT, 1.0F, 200, "enderite_ingot");
 
                 armorSetRecipe(recipeOutput, MGItems.BRONZE_INGOT, MGItems.BRONZE_HELMET, MGItems.BRONZE_CHESTPLATE, MGItems.BRONZE_LEGGINGS, MGItems.BRONZE_BOOTS);
-                toolSetRecipe(recipeOutput, MGItems.BRONZE_INGOT, MGItems.BRONZE_SWORD, MGItems.BRONZE_PICKAXE, MGItems.BRONZE_AXE, MGItems.BRONZE_SHOVEL, MGItems.BRONZE_HOE);
+                toolSetRecipe(recipeOutput, MGItems.BRONZE_INGOT, MGItems.BRONZE_SWORD, MGItems.BRONZE_PICKAXE, MGItems.BRONZE_AXE, MGItems.BRONZE_SHOVEL, MGItems.BRONZE_HOE, MGItems.BRONZE_SPEAR);
                 armorSetRecipe(recipeOutput, MGItems.STEEL_INGOT, MGItems.STEEL_HELMET, MGItems.STEEL_CHESTPLATE, MGItems.STEEL_LEGGINGS, MGItems.STEEL_BOOTS);
-                toolSetRecipe(recipeOutput, MGItems.STEEL_INGOT, MGItems.STEEL_SWORD, MGItems.STEEL_PICKAXE, MGItems.STEEL_AXE, MGItems.STEEL_SHOVEL, MGItems.STEEL_HOE);
+                toolSetRecipe(recipeOutput, MGItems.STEEL_INGOT, MGItems.STEEL_SWORD, MGItems.STEEL_PICKAXE, MGItems.STEEL_AXE, MGItems.STEEL_SHOVEL, MGItems.STEEL_HOE, MGItems.STEEL_SPEAR);
                 armorSetRecipe(recipeOutput, MGItems.RUBY_INGOT, MGItems.RUBY_HELMET, MGItems.RUBY_CHESTPLATE, MGItems.RUBY_LEGGINGS, MGItems.RUBY_BOOTS);
-                toolSetRecipe(recipeOutput, MGItems.RUBY_INGOT, MGItems.RUBY_SWORD, MGItems.RUBY_PICKAXE, MGItems.RUBY_AXE, MGItems.RUBY_SHOVEL, MGItems.RUBY_HOE);
+                toolSetRecipe(recipeOutput, MGItems.RUBY_INGOT, MGItems.RUBY_SWORD, MGItems.RUBY_PICKAXE, MGItems.RUBY_AXE, MGItems.RUBY_SHOVEL, MGItems.RUBY_HOE, MGItems.RUBY_SPEAR);
 
                 titaniumSmithing(recipeOutput, Items.NETHERITE_HELMET, RecipeCategory.COMBAT, MGItems.TITANIUM_HELMET);
                 titaniumSmithing(recipeOutput, Items.NETHERITE_CHESTPLATE, RecipeCategory.COMBAT, MGItems.TITANIUM_CHESTPLATE);
@@ -59,6 +59,8 @@ public class MGRecipeProvider extends FabricRecipeProvider {
                 titaniumSmithing(recipeOutput, Items.NETHERITE_AXE, RecipeCategory.TOOLS, MGItems.TITANIUM_AXE);
                 titaniumSmithing(recipeOutput, Items.NETHERITE_SHOVEL, RecipeCategory.TOOLS, MGItems.TITANIUM_SHOVEL);
                 titaniumSmithing(recipeOutput, Items.NETHERITE_HOE, RecipeCategory.TOOLS, MGItems.TITANIUM_HOE);
+                titaniumSmithing(recipeOutput, Items.NETHERITE_SPEAR, RecipeCategory.COMBAT, MGItems.TITANIUM_SPEAR);
+                titaniumSmithing(recipeOutput, Items.MACE, RecipeCategory.COMBAT, MGItems.TITANIUM_MACE);
 
                 enderiteSmithing(recipeOutput, MGItems.TITANIUM_HELMET, RecipeCategory.COMBAT, MGItems.ENDERITE_HELMET);
                 enderiteSmithing(recipeOutput, MGItems.TITANIUM_CHESTPLATE, RecipeCategory.COMBAT, MGItems.ENDERITE_CHESTPLATE);
@@ -69,6 +71,8 @@ public class MGRecipeProvider extends FabricRecipeProvider {
                 enderiteSmithing(recipeOutput, MGItems.TITANIUM_AXE, RecipeCategory.TOOLS, MGItems.ENDERITE_AXE);
                 enderiteSmithing(recipeOutput, MGItems.TITANIUM_SHOVEL, RecipeCategory.TOOLS, MGItems.ENDERITE_SHOVEL);
                 enderiteSmithing(recipeOutput, MGItems.TITANIUM_HOE, RecipeCategory.TOOLS, MGItems.ENDERITE_HOE);
+                enderiteSmithing(recipeOutput, MGItems.TITANIUM_SPEAR, RecipeCategory.COMBAT, MGItems.ENDERITE_SPEAR);
+                enderiteSmithing(recipeOutput, MGItems.TITANIUM_MACE, RecipeCategory.COMBAT, MGItems.ENDERITE_MACE);
 
                 ShapedRecipeJsonBuilder.create(registryLookup, RecipeCategory.MISC, MGItems.TITANIUM_INGOT)
                         .input('N', MGItems.TITANIUM_NUGGET)
@@ -180,7 +184,7 @@ public class MGRecipeProvider extends FabricRecipeProvider {
                         .offerTo(recipeOutput);
             }
 
-            private void toolSetRecipe(RecipeExporter recipeOutput, ItemConvertible material, ItemConvertible sword, ItemConvertible pickaxe, ItemConvertible axe, ItemConvertible shovel, ItemConvertible hoe){
+            private void toolSetRecipe(RecipeExporter recipeOutput, ItemConvertible material, ItemConvertible sword, ItemConvertible pickaxe, ItemConvertible axe, ItemConvertible shovel, ItemConvertible hoe, ItemConvertible spear){
                 ShapedRecipeJsonBuilder.create(registryLookup, RecipeCategory.TOOLS, hoe)
                         .input('X', material)
                         .input('s', Items.STICK)
@@ -223,6 +227,15 @@ public class MGRecipeProvider extends FabricRecipeProvider {
                         .pattern("X")
                         .pattern("X")
                         .pattern("s")
+                        .criterion(hasItem(material), conditionsFromItem(material))
+                        .offerTo(recipeOutput);
+
+                ShapedRecipeJsonBuilder.create(registryLookup, RecipeCategory.COMBAT, spear)
+                        .input('#', Items.STICK)
+                        .input('X', material)
+                        .pattern("  X")
+                        .pattern(" # ")
+                        .pattern("#  ")
                         .criterion(hasItem(material), conditionsFromItem(material))
                         .offerTo(recipeOutput);
             }
