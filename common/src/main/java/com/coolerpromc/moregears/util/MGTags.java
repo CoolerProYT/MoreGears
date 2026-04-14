@@ -1,9 +1,8 @@
 package com.coolerpromc.moregears.util;
 
-import com.coolerpromc.moregears.MoreGears;
+import com.coolerpromc.moregears.Constants;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -34,11 +33,11 @@ public class MGTags {
         public static final TagKey<Block> ORES_ENDERITE = commonTag("ores/enderite");
 
         private static TagKey<Block> commonTag(String name){
-            return BlockTags.create(Identifier.fromNamespaceAndPath("c", name));
+            return TagKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath("c", name));
         }
 
         private static TagKey<Block> modTag(String name){
-            return BlockTags.create(Identifier.fromNamespaceAndPath(MoreGears.MODID, name));
+            return TagKey.create(Registries.BLOCK, Constants.id(name));
         }
     }
 
@@ -50,11 +49,11 @@ public class MGTags {
         public static final TagKey<Item> GEMS_RUBY = commonTag("gems/ruby");
 
         private static TagKey<Item> commonTag(String name){
-            return ItemTags.create(Identifier.fromNamespaceAndPath("c", name));
+            return TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath("c", name));
         }
 
         private static TagKey<Item> modTag(String name){
-            return ItemTags.create(Identifier.fromNamespaceAndPath(MoreGears.MODID, name));
+            return TagKey.create(Registries.ITEM, Constants.id(name));
         }
     }
 }

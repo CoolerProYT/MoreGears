@@ -9,3 +9,7 @@ plugins {
 tasks.register('publishMods') {
     dependsOn ':neoforge:publishMods', ':fabric:publishMods'
 }
+
+tasks.register('datagen') {
+    dependsOn ':neoforge:runData', ':fabric:runDatagen', ':neoforge:runServerData'
+}

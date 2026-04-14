@@ -1,6 +1,6 @@
 package com.coolerpromc.moregears.trim;
 
-import com.coolerpromc.moregears.MoreGears;
+import com.coolerpromc.moregears.Constants;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.network.chat.Component;
@@ -15,12 +15,12 @@ import net.minecraft.world.item.equipment.trim.TrimMaterial;
 import java.util.List;
 
 public class MGTrimMaterials {
-    public static final ResourceKey<TrimMaterial> TIN = ResourceKey.create(Registries.TRIM_MATERIAL, Identifier.fromNamespaceAndPath(MoreGears.MODID, "tin"));
-    public static final ResourceKey<TrimMaterial> BRONZE = ResourceKey.create(Registries.TRIM_MATERIAL, Identifier.fromNamespaceAndPath(MoreGears.MODID, "bronze"));
-    public static final ResourceKey<TrimMaterial> STEEL = ResourceKey.create(Registries.TRIM_MATERIAL, Identifier.fromNamespaceAndPath(MoreGears.MODID, "steel"));
-    public static final ResourceKey<TrimMaterial> RUBY = ResourceKey.create(Registries.TRIM_MATERIAL, Identifier.fromNamespaceAndPath(MoreGears.MODID, "ruby"));
-    public static final ResourceKey<TrimMaterial> TITANIUM = ResourceKey.create(Registries.TRIM_MATERIAL, Identifier.fromNamespaceAndPath(MoreGears.MODID, "titanium"));
-    public static final ResourceKey<TrimMaterial> ENDERITE = ResourceKey.create(Registries.TRIM_MATERIAL, Identifier.fromNamespaceAndPath(MoreGears.MODID, "enderite"));
+    public static final ResourceKey<TrimMaterial> TIN = ResourceKey.create(Registries.TRIM_MATERIAL, Constants.id("tin"));
+    public static final ResourceKey<TrimMaterial> BRONZE = ResourceKey.create(Registries.TRIM_MATERIAL, Constants.id("bronze"));
+    public static final ResourceKey<TrimMaterial> STEEL = ResourceKey.create(Registries.TRIM_MATERIAL, Constants.id("steel"));
+    public static final ResourceKey<TrimMaterial> RUBY = ResourceKey.create(Registries.TRIM_MATERIAL, Constants.id("ruby"));
+    public static final ResourceKey<TrimMaterial> TITANIUM = ResourceKey.create(Registries.TRIM_MATERIAL, Constants.id("titanium"));
+    public static final ResourceKey<TrimMaterial> ENDERITE = ResourceKey.create(Registries.TRIM_MATERIAL, Constants.id("enderite"));
 
     public static final MaterialAssetGroup TIN_ASSET_GROUP = MaterialAssetGroup.create("tin");
     public static final MaterialAssetGroup BRONZE_ASSET_GROUP = MaterialAssetGroup.create("bronze");

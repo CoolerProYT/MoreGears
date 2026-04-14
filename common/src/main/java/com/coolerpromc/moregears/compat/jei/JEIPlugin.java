@@ -1,11 +1,11 @@
 package com.coolerpromc.moregears.compat.jei;
 
-import com.coolerpromc.moregears.MoreGears;
+import com.coolerpromc.moregears.Constants;
 import com.coolerpromc.moregears.compat.jei.category.AlloySmeltingCategory;
-import com.coolerpromc.moregears.event.ModRecipeReceived;
 import com.coolerpromc.moregears.recipe.AlloySmeltingRecipe;
 import com.coolerpromc.moregears.recipe.MGRecipes;
 import com.coolerpromc.moregears.screen.AlloySmelterScreen;
+import com.coolerpromc.moregears.CommonClientClass;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.registration.IGuiHandlerRegistration;
@@ -20,7 +20,7 @@ import java.util.List;
 public class JEIPlugin implements IModPlugin {
     @Override
     public Identifier getPluginUid() {
-        return Identifier.fromNamespaceAndPath(MoreGears.MODID, "jei_plugin");
+        return Constants.id("jei_plugin");
     }
 
     @Override
@@ -30,7 +30,7 @@ public class JEIPlugin implements IModPlugin {
 
     @Override
     public void registerRecipes(IRecipeRegistration registration) {
-        List<RecipeHolder<AlloySmeltingRecipe>> meltingRecipes = ModRecipeReceived.recipeMap.byType(MGRecipes.ALLOY_SMELTING_TYPE.get()).stream().toList();
+        List<RecipeHolder<AlloySmeltingRecipe>> meltingRecipes = CommonClientClass.recipeMap.byType(MGRecipes.ALLOY_SMELTING_TYPE.get()).stream().toList();
         registration.addRecipes(AlloySmeltingCategory.ALLOY_SMELTING_TYPE, meltingRecipes);
     }
 

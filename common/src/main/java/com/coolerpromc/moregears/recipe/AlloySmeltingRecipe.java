@@ -1,6 +1,7 @@
 package com.coolerpromc.moregears.recipe;
 
 import com.coolerpromc.moregears.recipe.custom.MultipleRecipeInput;
+import com.coolerpromc.moregears.recipe.custom.SizedIngredient;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.network.RegistryFriendlyByteBuf;
@@ -9,7 +10,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ItemStackTemplate;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
-import net.neoforged.neoforge.common.crafting.SizedIngredient;
 
 import java.util.ArrayList;
 import java.util.Iterator;

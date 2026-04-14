@@ -2,10 +2,7 @@ package com.coolerpromc.moregears.platform;
 
 import com.coolerpromc.moregears.Constants;
 import com.coolerpromc.moregears.platform.services.IRegistryHelper;
-import com.coolerpromc.moregears.platform.util.BlockEntityTypeFactory;
-import com.coolerpromc.moregears.platform.util.ItemLikeRegistryHandler;
-import com.coolerpromc.moregears.platform.util.MenuFactory;
-import com.coolerpromc.moregears.platform.util.RegistryHandler;
+import com.coolerpromc.moregears.platform.util.*;
 import net.fabricmc.fabric.api.creativetab.v1.FabricCreativeModeTab;
 import net.fabricmc.fabric.api.menu.v1.ExtendedMenuType;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
@@ -17,12 +14,18 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -31,6 +34,7 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import java.util.Arrays;
 import java.util.function.Function;
 import java.util.function.Supplier;
+import java.util.function.UnaryOperator;
 
 public class FabricRegistryHelper implements IRegistryHelper {
     @Override
@@ -87,7 +91,7 @@ public class FabricRegistryHelper implements IRegistryHelper {
 
             @Override
             public Item asItem() {
-                return get();
+                return item.value();
             }
         };
     }
@@ -156,6 +160,81 @@ public class FabricRegistryHelper implements IRegistryHelper {
 
             @Override
             public MenuType<T> get() {
+                return holder.value();
+            }
+        };
+    }
+
+    @Override
+    public <T extends Recipe<?>> RegistryHandler<RecipeSerializer<T>> registerRecipeSerializer(String name, RecipeSerializer<T> serializer) {
+        Identifier id = Constants.id(name);
+        Holder<RecipeSerializer<T>> holder = Registry.registerForHolder(BuiltInRegistries.RECIPE_SERIALIZER, id, serializer);
+
+        return new RegistryHandler<>() {
+            @Override
+            public Identifier id() {
+                return id;
+            }
+
+            @Override
+            public Holder<RecipeSerializer<T>> holder() {
+                return holder;
+            }
+
+            @Override
+            public RecipeSerializer<T> get() {
+                return holder.value();
+            }
+        };
+    }
+
+    @Override
+    public <T extends Recipe<?>> RegistryHandler<RecipeType<T>> registerRecipeType(String name) {
+        Identifier id = Constants.id(name);
+        Holder<RecipeType<T>> holder = Registry.registerForHolder(BuiltInRegistries.RECIPE_TYPE, id, new RecipeType<>() {
+            @Override
+            public String toString() {
+                return name;
+            }
+        });
+
+        return new RegistryHandler<>() {
+            @Override
+            public Identifier id() {
+                return id;
+            }
+
+            @Override
+            public Holder<RecipeType<T>> holder() {
+                return holder;
+            }
+
+            @Override
+            public RecipeType<T> get() {
+                return holder.value();
+            }
+        };
+    }
+
+    @Override
+    public <T extends Entity> RegistryHandler<EntityType<T>> registerEntity(String name, EntityFactory<T> factory, MobCategory category, UnaryOperator<EntityType.Builder<T>> builder) {
+        Identifier id = Constants.id(name);
+        ResourceKey<EntityType<?>> key = IRegistryHelper.entityKey(name);
+        Holder<EntityType<T>> holder = Registry.registerForHolder(BuiltInRegistries.ENTITY_TYPE, id, builder.apply(EntityType.Builder.of(factory::create, category)).build(key));
+
+        return new RegistryHandler<>() {
+            @Override
+            public Identifier id() {
+                return id;
+            }
+
+            @Override
+            public Holder<EntityType<T>> holder() {
+                return holder;
+            }
+
+            @Override
+            public EntityType<T> get() {
                 return holder.value();
             }
         };

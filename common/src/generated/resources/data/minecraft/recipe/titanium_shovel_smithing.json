@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "moregears:titanium_ingot",
+  "base": "minecraft:netherite_shovel",
+  "result": {
+    "id": "moregears:titanium_shovel"
+  },
+  "template": "moregears:titanium_upgrade_smithing_template"
+}

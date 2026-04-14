@@ -6,6 +6,6 @@ import net.minecraft.client.gui.screens.MenuScreens;
 
 public class RegisterMenuEvent {
     public static void registerMenu() {
-        MenuScreens.register(MGMenuTypes.ALLOY_SMELTER_MENU, AlloySmelterScreen::new);
+        MenuScreens.register(MGMenuTypes.ALLOY_SMELTER.get(), AlloySmelterScreen::new);
     }
 }

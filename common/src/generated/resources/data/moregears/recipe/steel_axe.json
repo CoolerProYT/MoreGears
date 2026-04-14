@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "X": "moregears:steel_ingot",
+    "s": "minecraft:stick"
+  },
+  "pattern": [
+    "XX",
+    "Xs",
+    " s"
+  ],
+  "result": {
+    "id": "moregears:steel_axe"
+  }
+}

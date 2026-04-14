@@ -1,6 +1,6 @@
 package com.coolerpromc.moregears.screen;
 
-import com.coolerpromc.moregears.MoreGears;
+import com.coolerpromc.moregears.Constants;
 import com.coolerpromc.moregears.util.MGEnergyStorage;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
@@ -10,7 +10,7 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.player.Inventory;
 
 public class AlloySmelterScreen extends AbstractContainerScreen<AlloySmelterMenu> {
-    private static final Identifier TEXTURE = Identifier.fromNamespaceAndPath(MoreGears.MODID, "textures/gui/alloy_smelter_gui.png");
+    private static final Identifier TEXTURE = Constants.id("textures/gui/alloy_smelter_gui.png");
 
     public AlloySmelterScreen(AlloySmelterMenu pMenu, Inventory pPlayerInventory, Component pTitle) {
         super(pMenu, pPlayerInventory, pTitle);

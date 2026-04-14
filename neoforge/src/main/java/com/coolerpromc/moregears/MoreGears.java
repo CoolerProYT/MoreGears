@@ -1,12 +1,13 @@
 package com.coolerpromc.moregears;
 
-
-import com.coolerpromc.moregears.datagen.property.Arrow;
 import com.coolerpromc.moregears.entity.MGEntities;
 import com.coolerpromc.moregears.entity.renderer.MGArrowRenderer;
+import com.coolerpromc.moregears.event.MGCopperArmorEvent;
+import com.coolerpromc.moregears.event.MGEnderiteArmorEvent;
 import com.coolerpromc.moregears.item.MGItems;
 import com.coolerpromc.moregears.platform.NeoForgeRegistryHelper;
 import com.coolerpromc.moregears.recipe.MGRecipes;
+import com.coolerpromc.moregears.util.Arrow;
 import net.minecraft.world.level.block.DispenserBlock;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
@@ -19,6 +20,9 @@ import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.client.event.RegisterSelectItemModelPropertyEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.OnDatapackSyncEvent;
+import net.neoforged.neoforge.event.entity.EntityStruckByLightningEvent;
+import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
+import net.neoforged.neoforge.event.entity.living.LivingFallEvent;
 
 @Mod(MoreGears.MODID)
 public class MoreGears
@@ -48,6 +52,27 @@ public class MoreGears
     @SubscribeEvent
     public void onOnDatapackSync(OnDatapackSyncEvent event) {
         event.sendRecipes(MGRecipes.ALLOY_SMELTING_TYPE.get());
+    }
+
+    @SubscribeEvent
+    public void onEntityStruckByLightning(EntityStruckByLightningEvent event) {
+        if (!MGCopperArmorEvent.preventLightningBolt(event.getEntity(), event.getEntity().damageSources().lightningBolt())){
+            event.setCanceled(true);
+        }
+    }
+
+    @SubscribeEvent
+    public void onLivingFall(LivingFallEvent event) {
+        if (!MGEnderiteArmorEvent.onPlayerHurt(event.getEntity(), event.getEntity().level().damageSources().fall())){
+            event.setCanceled(true);
+        }
+    }
+
+    @SubscribeEvent
+    public void onLivingDamage(LivingDamageEvent.Pre event) {
+        if (!MGEnderiteArmorEvent.onPlayerHurt(event.getEntity(), event.getSource())){
+            event.setNewDamage(0);
+        }
     }
 
     @EventBusSubscriber(modid = MODID, value = Dist.CLIENT)

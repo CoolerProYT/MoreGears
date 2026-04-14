@@ -1,0 +1,14 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "moregears:enderite"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "moregears:enderite"
+      }
+    ]
+  }
+}

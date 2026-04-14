@@ -1,7 +1,7 @@
 package com.coolerpromc.moregears.entity.renderer;
 
-import com.coolerpromc.moregears.MoreGears;
-import com.coolerpromc.moregears.item.custom.MGArrowEntity;
+import com.coolerpromc.moregears.Constants;
+import com.coolerpromc.moregears.entity.MGArrowEntity;
 import net.minecraft.client.renderer.entity.ArrowRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.state.ArrowRenderState;
@@ -24,6 +24,6 @@ public class MGArrowRenderer extends ArrowRenderer<MGArrowEntity, ArrowRenderSta
     }
 
     public static Identifier getTextureLocation(String textureName) {
-        return Identifier.fromNamespaceAndPath(MoreGears.MODID, "textures/entity/projectiles/" + textureName + ".png");
+        return Constants.id("textures/entity/projectiles/" + textureName + ".png");
     }
 }

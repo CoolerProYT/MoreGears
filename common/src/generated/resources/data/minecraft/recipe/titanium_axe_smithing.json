@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "moregears:titanium_ingot",
+  "base": "minecraft:netherite_axe",
+  "result": {
+    "id": "moregears:titanium_axe"
+  },
+  "template": "moregears:titanium_upgrade_smithing_template"
+}

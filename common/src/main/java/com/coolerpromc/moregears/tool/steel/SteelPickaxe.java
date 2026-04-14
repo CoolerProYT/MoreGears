@@ -1,6 +1,6 @@
 package com.coolerpromc.moregears.tool.steel;
 
-import com.coolerpromc.moregears.MoreGears;
+import com.coolerpromc.moregears.Constants;
 import com.coolerpromc.moregears.util.MGTooltip;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
@@ -18,11 +18,11 @@ import net.minecraft.world.item.ToolMaterial;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.component.TooltipDisplay;
 
-import javax.annotation.Nullable;
+import org.jspecify.annotations.Nullable;
 import java.util.function.Consumer;
 
 public class SteelPickaxe extends Item {
-    private static final Identifier modifierId = Identifier.fromNamespaceAndPath(MoreGears.MODID, "steel_pickaxe_slow_speed");
+    private static final Identifier modifierId = Constants.id("steel_pickaxe_slow_speed");
 
     public SteelPickaxe(ToolMaterial material, float attackDamage, float attackSpeed, Properties properties) {
         super(properties.pickaxe(material, attackDamage, attackDamage));

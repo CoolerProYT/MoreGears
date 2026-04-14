@@ -1,6 +1,6 @@
 package com.coolerpromc.moregears.compat.jei.category;
 
-import com.coolerpromc.moregears.MoreGears;
+import com.coolerpromc.moregears.Constants;
 import com.coolerpromc.moregears.block.MGBlocks;
 import com.coolerpromc.moregears.recipe.AlloySmeltingRecipe;
 import com.coolerpromc.moregears.recipe.MGRecipes;
@@ -14,14 +14,16 @@ import mezz.jei.api.recipe.category.AbstractRecipeCategory;
 import mezz.jei.api.recipe.types.IRecipeHolderType;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.renderer.RenderPipelines;
+import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.RecipeHolder;
 
 public class AlloySmeltingCategory extends AbstractRecipeCategory<RecipeHolder<AlloySmeltingRecipe>> {
-    public static final Identifier TEXTURE = Identifier.fromNamespaceAndPath(MoreGears.MODID, "textures/gui/compat/alloy_smelter_gui.png");
+    public static final Identifier TEXTURE = Constants.id("textures/gui/compat/alloy_smelter_gui.png");
     public static final IRecipeHolderType<AlloySmeltingRecipe> ALLOY_SMELTING_TYPE = IRecipeHolderType.create(MGRecipes.ALLOY_SMELTING_TYPE.get());
     private int tickCount = 0;
 
@@ -31,7 +33,7 @@ public class AlloySmeltingCategory extends AbstractRecipeCategory<RecipeHolder<A
 
     @Override
     public void draw(RecipeHolder<AlloySmeltingRecipe> recipe, IRecipeSlotsView recipeSlotsView, GuiGraphicsExtractor guiGraphics, double mouseX, double mouseY) {
-        guiGraphics.blit(RenderPipelines.GUI_TEXTURED, TEXTURE, 0, 0, 0, 0, 176, 84, 256, 256);
+        guiGraphics.blit(RenderPipelines.GUI_TEXTURED, TEXTURE, 4, 4, 4, 4, 166, 76, 256, 256);
 
         tickCount++;
 
@@ -48,8 +50,8 @@ public class AlloySmeltingCategory extends AbstractRecipeCategory<RecipeHolder<A
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, RecipeHolder<AlloySmeltingRecipe> recipe, IFocusGroup focuses) {
         builder.addSlot(RecipeIngredientRole.INPUT, 31, 23).add(new ItemStack(Items.COAL));
-        builder.addSlot(RecipeIngredientRole.INPUT, 83, 23).add(new ItemStack(recipe.value().inputItems().get(0).ingredient().getValues().get(0), recipe.value().inputItems().get(0).count()));
-        builder.addSlot(RecipeIngredientRole.INPUT, 119, 23).add(new ItemStack(recipe.value().inputItems().get(1).ingredient().getValues().get(0), recipe.value().inputItems().get(1).count()));
+        builder.addSlot(RecipeIngredientRole.INPUT, 83, 23).addItemStacks(recipe.value().inputItems().get(0).ingredient().items().map(Holder::value).map(Item::getDefaultInstance).peek(stack -> stack.setCount(recipe.value().inputItems().get(0).count())).toList());
+        builder.addSlot(RecipeIngredientRole.INPUT, 119, 23).addItemStacks(recipe.value().inputItems().get(1).ingredient().items().map(Holder::value).map(Item::getDefaultInstance).peek(stack -> stack.setCount(recipe.value().inputItems().get(1).count())).toList());
         builder.addSlot(RecipeIngredientRole.OUTPUT, 101, 55).add(recipe.value().output().getFirst().create());
     }
 }

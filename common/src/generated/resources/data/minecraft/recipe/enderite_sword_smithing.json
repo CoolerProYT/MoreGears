@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "moregears:enderite_ingot",
+  "base": "moregears:titanium_sword",
+  "result": {
+    "id": "moregears:enderite_sword"
+  },
+  "template": "moregears:enderite_upgrade_smithing_template"
+}

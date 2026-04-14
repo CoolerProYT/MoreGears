@@ -4,10 +4,11 @@ import com.coolerpromc.moregears.MoreGears;
 import com.coolerpromc.moregears.armor.MGArmorItem;
 import com.coolerpromc.moregears.armor.MGArmorMaterials;
 import com.coolerpromc.moregears.block.MGBlocks;
-import com.coolerpromc.moregears.datagen.property.Arrow;
 import com.coolerpromc.moregears.item.MGItems;
 import com.coolerpromc.moregears.item.custom.MGArrowItem;
+import com.coolerpromc.moregears.platform.util.ItemLikeRegistryHandler;
 import com.coolerpromc.moregears.trim.MGTrimMaterials;
+import com.coolerpromc.moregears.util.Arrow;
 import net.minecraft.client.color.item.Dye;
 import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;
@@ -33,8 +34,6 @@ import net.minecraft.world.item.equipment.trim.MaterialAssetGroup;
 import net.minecraft.world.item.equipment.trim.TrimMaterial;
 import net.minecraft.world.item.equipment.trim.TrimMaterials;
 import net.minecraft.world.level.block.Block;
-import net.neoforged.neoforge.registries.DeferredBlock;
-import net.neoforged.neoforge.registries.DeferredItem;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -222,16 +221,16 @@ public class MGModelProvider extends ModelProvider {
     }
 
     // Block model methods
-    private <T extends Block> void horizontalRotationBlock(BlockModelGenerators blockModels, DeferredBlock<T> block){
+    private <T extends Block> void horizontalRotationBlock(BlockModelGenerators blockModels, ItemLikeRegistryHandler<T> block){
         blockModels.createNonTemplateHorizontalBlock(MGBlocks.ALLOY_SMELTER.get());
         blockModels.registerSimpleItemModel(block.get(), blockLocation(getBlockName(block.get())));
     }
 
-    private <T extends Block> void simpleBlockWithItem(BlockModelGenerators blockModels, DeferredBlock<T> block) {
+    private <T extends Block> void simpleBlockWithItem(BlockModelGenerators blockModels, ItemLikeRegistryHandler<T> block) {
         blockModels.createTrivialCube(block.get());
     }
 
-    private void trimmedArmorItem(ItemModelGenerators itemModels, DeferredItem<MGArmorItem> item, ArmorMaterial armorMaterial){
+    private void trimmedArmorItem(ItemModelGenerators itemModels, ItemLikeRegistryHandler<MGArmorItem> item, ArmorMaterial armorMaterial){
         generateTrimmableItem(itemModels, item.get(), armorMaterial.assetId(), Identifier.parse("trims/items/" + item.get().getArmorType().getName() + "_trim"), Identifier.fromNamespaceAndPath(MoreGears.MODID, "item/" + item.get().getArmorType().getName() + "_trim"), false);
     }
 
@@ -274,11 +273,11 @@ public class MGModelProvider extends ModelProvider {
         itemModels.itemModelOutput.accept(armorItem, ItemModelUtils.select(new TrimMaterialProperty(), itemmodel$unbaked1, list));
     }
 
-    private <T extends Item> void basicItem(ItemModelGenerators itemModels, DeferredItem<T> item){
+    private <T extends Item> void basicItem(ItemModelGenerators itemModels, ItemLikeRegistryHandler<T> item){
         itemModels.generateFlatItem(item.get(), ModelTemplates.FLAT_ITEM);
     }
 
-    private <T extends Item> void handheldItem(ItemModelGenerators itemModels, DeferredItem<T> item){
+    private <T extends Item> void handheldItem(ItemModelGenerators itemModels, ItemLikeRegistryHandler<T> item){
         TextureMapping textureMapping = new TextureMapping();
         textureMapping.put(TextureSlot.LAYER0, new Material(itemLocation(getItemName(item.get()))));
 

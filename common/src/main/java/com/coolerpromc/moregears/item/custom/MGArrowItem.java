@@ -1,5 +1,6 @@
 package com.coolerpromc.moregears.item.custom;
 
+import com.coolerpromc.moregears.entity.MGArrowEntity;
 import com.mojang.serialization.Codec;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Position;
@@ -10,6 +11,7 @@ import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.entity.projectile.arrow.AbstractArrow;
 import net.minecraft.world.item.ArrowItem;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
@@ -29,9 +31,8 @@ public class MGArrowItem extends ArrowItem {
         return new MGArrowEntity(entityType, shooter, level, ammo.copyWithCount(1), weapon, baseDamage);
     }
 
-    @Override
     public boolean isInfinite(ItemStack ammo, ItemStack bow, LivingEntity livingEntity) {
-        return bow.getEnchantmentLevel(livingEntity.level().registryAccess().getOrThrow(Enchantments.INFINITY)) > 0;
+        return EnchantmentHelper.getItemEnchantmentLevel(livingEntity.registryAccess().getOrThrow(Enchantments.INFINITY), bow) > 0;
     }
 
     @Override

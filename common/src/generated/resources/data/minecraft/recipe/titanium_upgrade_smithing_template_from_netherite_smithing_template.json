@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "N": "moregears:titanium_ingot",
+    "S": "minecraft:netherite_upgrade_smithing_template",
+    "X": "minecraft:netherite_scrap"
+  },
+  "pattern": [
+    "XSX",
+    "XNX",
+    "XXX"
+  ],
+  "result": {
+    "id": "moregears:titanium_upgrade_smithing_template"
+  }
+}

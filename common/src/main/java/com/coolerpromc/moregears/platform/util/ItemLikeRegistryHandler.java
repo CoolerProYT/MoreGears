@@ -7,4 +7,9 @@ public interface ItemLikeRegistryHandler<T> extends RegistryHandler<T>, ItemLike
     default ItemStack toStack(){
         return asItem().getDefaultInstance();
     }
+    default ItemStack toStack(int count){
+        ItemStack stack = asItem().getDefaultInstance();
+        stack.setCount(count);
+        return stack;
+    }
 }

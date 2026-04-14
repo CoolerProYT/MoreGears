@@ -23,16 +23,20 @@
         ],
         "fabric-datagen": [
             "com.coolerpromc.moregears.datagen.MoreGearsDataGenerator"
+        ],
+        "jei_mod_plugin": [
+            "com.coolerpromc.moregears.compat.jei.JEIPlugin"
         ]
     },
     "mixins": [
         "${mod_id}.mixins.json",
         "${mod_id}.fabric.mixins.json"
     ],
+    "accessWidener": "moregears.accesswidener",
     "depends": {
         "fabricloader": ">=${fabric_loader_version}",
         "fabric-api": "*",
-        "minecraft": "~${minecraft_version}",
+        "minecraft": "~26.1",
         "java": ">=${java_version}"
     },
     "suggests": {

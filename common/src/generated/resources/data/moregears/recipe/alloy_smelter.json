@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": "minecraft:deepslate",
+    "N": "minecraft:gunpowder",
+    "X": "minecraft:furnace"
+  },
+  "pattern": [
+    "XAX",
+    "ANA",
+    "AAA"
+  ],
+  "result": {
+    "id": "moregears:alloy_smelter"
+  }
+}

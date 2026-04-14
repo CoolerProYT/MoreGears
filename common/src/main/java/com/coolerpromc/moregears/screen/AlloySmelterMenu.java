@@ -2,23 +2,22 @@ package com.coolerpromc.moregears.screen;
 
 import com.coolerpromc.moregears.block.MGBlocks;
 import com.coolerpromc.moregears.block.entity.AlloySmelterBlockEntity;
-import net.minecraft.network.FriendlyByteBuf;
+import com.coolerpromc.moregears.util.AlloySmelterInventory;
+import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.*;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.neoforged.neoforge.transfer.item.ItemStacksResourceHandler;
-import net.neoforged.neoforge.transfer.item.ResourceHandlerSlot;
 
 public class AlloySmelterMenu extends AbstractContainerMenu {
     public final AlloySmelterBlockEntity blockEntity;
     private final Level level;
     private final ContainerData data;
 
-    public AlloySmelterMenu(int pContainerId, Inventory inv, FriendlyByteBuf extraData) {
-        this(pContainerId, inv, inv.player.level().getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(6));
+    public AlloySmelterMenu(int pContainerId, Inventory inv, BlockPos blockPos) {
+        this(pContainerId, inv, inv.player.level().getBlockEntity(blockPos), new SimpleContainerData(8));
     }
 
     public AlloySmelterMenu(int pContainerId, Inventory inv, BlockEntity entity, ContainerData data) {
@@ -31,15 +30,15 @@ public class AlloySmelterMenu extends AbstractContainerMenu {
         addPlayerInventory(inv);
         addPlayerHotbar(inv);
 
-        ItemStacksResourceHandler fuelHandler = blockEntity.getFuelHandler();
-        this.addSlot(new ResourceHandlerSlot(fuelHandler, fuelHandler::set, 0, 31, 23));
+        AlloySmelterInventory fuelHandler = blockEntity.getFuelHandler();
+        this.addSlot(new Slot(fuelHandler, 0, 31, 23));
 
-        ItemStacksResourceHandler inputHandler = blockEntity.getInputHandler();
-        this.addSlot(new ResourceHandlerSlot(inputHandler, inputHandler::set, 0, 83, 23));
-        this.addSlot(new ResourceHandlerSlot(inputHandler, inputHandler::set, 1, 119, 23));
+        AlloySmelterInventory inputHandler = blockEntity.getInputHandler();
+        this.addSlot(new Slot(inputHandler, 0, 83, 23));
+        this.addSlot(new Slot(inputHandler, 1, 119, 23));
 
-        ItemStacksResourceHandler outputHandler = blockEntity.getOutputHandler();
-        this.addSlot(new ResourceHandlerSlot(outputHandler, outputHandler::set, 0, 101, 55));
+        AlloySmelterInventory outputHandler = blockEntity.getOutputHandler();
+        this.addSlot(new Slot(outputHandler, 0, 101, 55));
 
         addDataSlots(data);
     }
@@ -112,15 +111,17 @@ public class AlloySmelterMenu extends AbstractContainerMenu {
     }
 
     public int getEnergy() {
-        return this.data.get(2);
+        return (this.data.get(3) << 16) | (this.data.get(2) & 0xFFFF);
     }
 
     public int getMaxEnergy() {
-        return this.data.get(3);
+        return (this.data.get(5) << 16) | (this.data.get(4) & 0xFFFF);
     }
 
     public int getEnergyStoredScaled() {
-        return (int) (((float) getEnergy() / (float) getMaxEnergy()) * 58);
+        int maxEnergy = getMaxEnergy();
+        if (maxEnergy == 0) return 0;
+        return (int) (((float) getEnergy() / (float) maxEnergy) * 58);
     }
 
     public int getScaledProgress() {
@@ -132,12 +133,12 @@ public class AlloySmelterMenu extends AbstractContainerMenu {
     }
 
     public boolean isGeneratingEnergy() {
-        return this.data.get(4) > 0;
+        return this.data.get(6) > 0;
     }
 
     public int getEnergyProgress() {
-        int progress = this.data.get(4);
-        int maxProgress = this.data.get(5);
+        int progress = this.data.get(6);
+        int maxProgress = this.data.get(7);
         int progressArrowSize = 18;
 
         return maxProgress != 0 && progress != 0 ? progress * progressArrowSize / maxProgress : 0;

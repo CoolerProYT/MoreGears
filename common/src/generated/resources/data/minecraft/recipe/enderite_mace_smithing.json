@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "moregears:enderite_ingot",
+  "base": "moregears:titanium_mace",
+  "result": {
+    "id": "moregears:enderite_mace"
+  },
+  "template": "moregears:enderite_upgrade_smithing_template"
+}

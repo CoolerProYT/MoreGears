@@ -4,10 +4,16 @@
   "package": "com.coolerpromc.moregears.mixin",
   "refmap": "${mod_id}.refmap.json",
   "compatibilityLevel": "JAVA_21",
-  "mixins": [],
+  "mixins": [
+    "ArrowItemMixin",
+    "InfiniteBowMixin"
+  ],
   "server": [],
   "injectors": {
     "defaultRequire": 1
-  }
+  },
+  "client": [
+    "AbstractClientPlayerMixin"
+  ]
 }
   

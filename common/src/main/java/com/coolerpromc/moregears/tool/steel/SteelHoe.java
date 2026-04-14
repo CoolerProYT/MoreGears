@@ -1,6 +1,6 @@
 package com.coolerpromc.moregears.tool.steel;
 
-import com.coolerpromc.moregears.MoreGears;
+import com.coolerpromc.moregears.Constants;
 import com.coolerpromc.moregears.util.MGTooltip;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
@@ -18,11 +18,11 @@ import net.minecraft.world.item.ToolMaterial;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.component.TooltipDisplay;
 
-import javax.annotation.Nullable;
+import org.jspecify.annotations.Nullable;
 import java.util.function.Consumer;
 
 public class SteelHoe extends HoeItem {
-    private static final Identifier modifierId = Identifier.fromNamespaceAndPath(MoreGears.MODID, "steel_hoe_slow_speed");
+    private static final Identifier modifierId = Constants.id("steel_hoe_slow_speed");
 
     public SteelHoe(ToolMaterial material, float attackDamage, float attackSpeed, Properties properties) {
         super(material, attackDamage, attackSpeed, properties);

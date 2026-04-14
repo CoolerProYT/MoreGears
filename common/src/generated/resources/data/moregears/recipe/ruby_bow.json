@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": "moregears:ruby",
+    "X": "minecraft:string"
+  },
+  "pattern": [
+    " #X",
+    "# X",
+    " #X"
+  ],
+  "result": {
+    "id": "moregears:ruby_bow"
+  }
+}

@@ -2,8 +2,9 @@ package com.coolerpromc.moregears.datagen;
 
 import com.coolerpromc.moregears.MoreGears;
 import com.coolerpromc.moregears.block.MGBlocks;
-import com.coolerpromc.moregears.datagen.builder.AlloySmeltingRecipeBuilder;
 import com.coolerpromc.moregears.item.MGItems;
+import com.coolerpromc.moregears.recipe.AlloySmeltingRecipeBuilder;
+import com.coolerpromc.moregears.recipe.custom.SizedIngredient;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
@@ -19,7 +20,6 @@ import net.minecraft.world.item.crafting.CookingBookCategory;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.SmeltingRecipe;
 import net.minecraft.world.level.ItemLike;
-import net.neoforged.neoforge.common.crafting.SizedIngredient;
 
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
