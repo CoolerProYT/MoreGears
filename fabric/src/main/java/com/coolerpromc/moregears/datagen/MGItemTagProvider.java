@@ -17,277 +17,277 @@ public class MGItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider wrapperLookup) {
-        this.valueLookupBuilder(ItemTags.TRIMMABLE_ARMOR).add(
-                MGItems.BRONZE_BOOTS.get(),
-                MGItems.BRONZE_CHESTPLATE.get(),
-                MGItems.BRONZE_HELMET.get(),
-                MGItems.BRONZE_LEGGINGS.get(),
-                MGItems.STEEL_BOOTS.get(),
-                MGItems.STEEL_CHESTPLATE.get(),
-                MGItems.STEEL_HELMET.get(),
-                MGItems.STEEL_LEGGINGS.get(),
-                MGItems.RUBY_BOOTS.get(),
-                MGItems.RUBY_CHESTPLATE.get(),
-                MGItems.RUBY_HELMET.get(),
-                MGItems.RUBY_LEGGINGS.get(),
-                MGItems.TITANIUM_BOOTS.get(),
-                MGItems.TITANIUM_CHESTPLATE.get(),
-                MGItems.TITANIUM_HELMET.get(),
-                MGItems.TITANIUM_LEGGINGS.get(),
-                MGItems.ENDERITE_BOOTS.get(),
-                MGItems.ENDERITE_CHESTPLATE.get(),
-                MGItems.ENDERITE_HELMET.get(),
-                MGItems.ENDERITE_LEGGINGS.get()
+        this.builder(ItemTags.TRIMMABLE_ARMOR).add(
+                MGItems.BRONZE_BOOTS.key(),
+                MGItems.BRONZE_CHESTPLATE.key(),
+                MGItems.BRONZE_HELMET.key(),
+                MGItems.BRONZE_LEGGINGS.key(),
+                MGItems.STEEL_BOOTS.key(),
+                MGItems.STEEL_CHESTPLATE.key(),
+                MGItems.STEEL_HELMET.key(),
+                MGItems.STEEL_LEGGINGS.key(),
+                MGItems.RUBY_BOOTS.key(),
+                MGItems.RUBY_CHESTPLATE.key(),
+                MGItems.RUBY_HELMET.key(),
+                MGItems.RUBY_LEGGINGS.key(),
+                MGItems.TITANIUM_BOOTS.key(),
+                MGItems.TITANIUM_CHESTPLATE.key(),
+                MGItems.TITANIUM_HELMET.key(),
+                MGItems.TITANIUM_LEGGINGS.key(),
+                MGItems.ENDERITE_BOOTS.key(),
+                MGItems.ENDERITE_CHESTPLATE.key(),
+                MGItems.ENDERITE_HELMET.key(),
+                MGItems.ENDERITE_LEGGINGS.key()
         );
 
-        this.valueLookupBuilder(ItemTags.ARMOR_ENCHANTABLE).add(
-                MGItems.BRONZE_BOOTS.get(),
-                MGItems.BRONZE_CHESTPLATE.get(),
-                MGItems.BRONZE_HELMET.get(),
-                MGItems.BRONZE_LEGGINGS.get(),
-                MGItems.STEEL_BOOTS.get(),
-                MGItems.STEEL_CHESTPLATE.get(),
-                MGItems.STEEL_HELMET.get(),
-                MGItems.STEEL_LEGGINGS.get(),
-                MGItems.RUBY_BOOTS.get(),
-                MGItems.RUBY_CHESTPLATE.get(),
-                MGItems.RUBY_HELMET.get(),
-                MGItems.RUBY_LEGGINGS.get(),
-                MGItems.TITANIUM_BOOTS.get(),
-                MGItems.TITANIUM_CHESTPLATE.get(),
-                MGItems.TITANIUM_HELMET.get(),
-                MGItems.TITANIUM_LEGGINGS.get(),
-                MGItems.ENDERITE_BOOTS.get(),
-                MGItems.ENDERITE_CHESTPLATE.get(),
-                MGItems.ENDERITE_HELMET.get(),
-                MGItems.ENDERITE_LEGGINGS.get()
+        this.builder(ItemTags.ARMOR_ENCHANTABLE).add(
+                MGItems.BRONZE_BOOTS.key(),
+                MGItems.BRONZE_CHESTPLATE.key(),
+                MGItems.BRONZE_HELMET.key(),
+                MGItems.BRONZE_LEGGINGS.key(),
+                MGItems.STEEL_BOOTS.key(),
+                MGItems.STEEL_CHESTPLATE.key(),
+                MGItems.STEEL_HELMET.key(),
+                MGItems.STEEL_LEGGINGS.key(),
+                MGItems.RUBY_BOOTS.key(),
+                MGItems.RUBY_CHESTPLATE.key(),
+                MGItems.RUBY_HELMET.key(),
+                MGItems.RUBY_LEGGINGS.key(),
+                MGItems.TITANIUM_BOOTS.key(),
+                MGItems.TITANIUM_CHESTPLATE.key(),
+                MGItems.TITANIUM_HELMET.key(),
+                MGItems.TITANIUM_LEGGINGS.key(),
+                MGItems.ENDERITE_BOOTS.key(),
+                MGItems.ENDERITE_CHESTPLATE.key(),
+                MGItems.ENDERITE_HELMET.key(),
+                MGItems.ENDERITE_LEGGINGS.key()
         );
 
-        this.valueLookupBuilder(ItemTags.EQUIPPABLE_ENCHANTABLE).add(
-                MGItems.BRONZE_BOOTS.get(),
-                MGItems.BRONZE_CHESTPLATE.get(),
-                MGItems.BRONZE_HELMET.get(),
-                MGItems.BRONZE_LEGGINGS.get(),
-                MGItems.STEEL_BOOTS.get(),
-                MGItems.STEEL_CHESTPLATE.get(),
-                MGItems.STEEL_HELMET.get(),
-                MGItems.STEEL_LEGGINGS.get(),
-                MGItems.RUBY_BOOTS.get(),
-                MGItems.RUBY_CHESTPLATE.get(),
-                MGItems.RUBY_HELMET.get(),
-                MGItems.RUBY_LEGGINGS.get(),
-                MGItems.TITANIUM_BOOTS.get(),
-                MGItems.TITANIUM_CHESTPLATE.get(),
-                MGItems.TITANIUM_HELMET.get(),
-                MGItems.TITANIUM_LEGGINGS.get(),
-                MGItems.ENDERITE_BOOTS.get(),
-                MGItems.ENDERITE_CHESTPLATE.get(),
-                MGItems.ENDERITE_HELMET.get(),
-                MGItems.ENDERITE_LEGGINGS.get()
+        this.builder(ItemTags.EQUIPPABLE_ENCHANTABLE).add(
+                MGItems.BRONZE_BOOTS.key(),
+                MGItems.BRONZE_CHESTPLATE.key(),
+                MGItems.BRONZE_HELMET.key(),
+                MGItems.BRONZE_LEGGINGS.key(),
+                MGItems.STEEL_BOOTS.key(),
+                MGItems.STEEL_CHESTPLATE.key(),
+                MGItems.STEEL_HELMET.key(),
+                MGItems.STEEL_LEGGINGS.key(),
+                MGItems.RUBY_BOOTS.key(),
+                MGItems.RUBY_CHESTPLATE.key(),
+                MGItems.RUBY_HELMET.key(),
+                MGItems.RUBY_LEGGINGS.key(),
+                MGItems.TITANIUM_BOOTS.key(),
+                MGItems.TITANIUM_CHESTPLATE.key(),
+                MGItems.TITANIUM_HELMET.key(),
+                MGItems.TITANIUM_LEGGINGS.key(),
+                MGItems.ENDERITE_BOOTS.key(),
+                MGItems.ENDERITE_CHESTPLATE.key(),
+                MGItems.ENDERITE_HELMET.key(),
+                MGItems.ENDERITE_LEGGINGS.key()
         );
 
-        this.valueLookupBuilder(ItemTags.HEAD_ARMOR).add(
-                MGItems.BRONZE_HELMET.get(),
-                MGItems.STEEL_HELMET.get(),
-                MGItems.RUBY_HELMET.get(),
-                MGItems.TITANIUM_HELMET.get(),
-                MGItems.ENDERITE_HELMET.get()
+        this.builder(ItemTags.HEAD_ARMOR).add(
+                MGItems.BRONZE_HELMET.key(),
+                MGItems.STEEL_HELMET.key(),
+                MGItems.RUBY_HELMET.key(),
+                MGItems.TITANIUM_HELMET.key(),
+                MGItems.ENDERITE_HELMET.key()
         );
 
-        this.valueLookupBuilder(ItemTags.HEAD_ARMOR_ENCHANTABLE).add(
-                MGItems.BRONZE_HELMET.get(),
-                MGItems.STEEL_HELMET.get(),
-                MGItems.RUBY_HELMET.get(),
-                MGItems.TITANIUM_HELMET.get(),
-                MGItems.ENDERITE_HELMET.get()
+        this.builder(ItemTags.HEAD_ARMOR_ENCHANTABLE).add(
+                MGItems.BRONZE_HELMET.key(),
+                MGItems.STEEL_HELMET.key(),
+                MGItems.RUBY_HELMET.key(),
+                MGItems.TITANIUM_HELMET.key(),
+                MGItems.ENDERITE_HELMET.key()
         );
 
-        this.valueLookupBuilder(ItemTags.CHEST_ARMOR).add(
-                MGItems.BRONZE_CHESTPLATE.get(),
-                MGItems.STEEL_CHESTPLATE.get(),
-                MGItems.RUBY_CHESTPLATE.get(),
-                MGItems.TITANIUM_CHESTPLATE.get(),
-                MGItems.ENDERITE_CHESTPLATE.get()
+        this.builder(ItemTags.CHEST_ARMOR).add(
+                MGItems.BRONZE_CHESTPLATE.key(),
+                MGItems.STEEL_CHESTPLATE.key(),
+                MGItems.RUBY_CHESTPLATE.key(),
+                MGItems.TITANIUM_CHESTPLATE.key(),
+                MGItems.ENDERITE_CHESTPLATE.key()
         );
 
-        this.valueLookupBuilder(ItemTags.CHEST_ARMOR_ENCHANTABLE).add(
-                MGItems.BRONZE_CHESTPLATE.get(),
-                MGItems.STEEL_CHESTPLATE.get(),
-                MGItems.RUBY_CHESTPLATE.get(),
-                MGItems.TITANIUM_CHESTPLATE.get(),
-                MGItems.ENDERITE_CHESTPLATE.get()
+        this.builder(ItemTags.CHEST_ARMOR_ENCHANTABLE).add(
+                MGItems.BRONZE_CHESTPLATE.key(),
+                MGItems.STEEL_CHESTPLATE.key(),
+                MGItems.RUBY_CHESTPLATE.key(),
+                MGItems.TITANIUM_CHESTPLATE.key(),
+                MGItems.ENDERITE_CHESTPLATE.key()
         );
 
-        this.valueLookupBuilder(ItemTags.LEG_ARMOR).add(
-                MGItems.BRONZE_LEGGINGS.get(),
-                MGItems.STEEL_LEGGINGS.get(),
-                MGItems.RUBY_LEGGINGS.get(),
-                MGItems.TITANIUM_LEGGINGS.get(),
-                MGItems.ENDERITE_LEGGINGS.get()
+        this.builder(ItemTags.LEG_ARMOR).add(
+                MGItems.BRONZE_LEGGINGS.key(),
+                MGItems.STEEL_LEGGINGS.key(),
+                MGItems.RUBY_LEGGINGS.key(),
+                MGItems.TITANIUM_LEGGINGS.key(),
+                MGItems.ENDERITE_LEGGINGS.key()
         );
 
-        this.valueLookupBuilder(ItemTags.LEG_ARMOR_ENCHANTABLE).add(
-                MGItems.BRONZE_LEGGINGS.get(),
-                MGItems.STEEL_LEGGINGS.get(),
-                MGItems.RUBY_LEGGINGS.get(),
-                MGItems.TITANIUM_LEGGINGS.get(),
-                MGItems.ENDERITE_LEGGINGS.get()
+        this.builder(ItemTags.LEG_ARMOR_ENCHANTABLE).add(
+                MGItems.BRONZE_LEGGINGS.key(),
+                MGItems.STEEL_LEGGINGS.key(),
+                MGItems.RUBY_LEGGINGS.key(),
+                MGItems.TITANIUM_LEGGINGS.key(),
+                MGItems.ENDERITE_LEGGINGS.key()
         );
 
-        this.valueLookupBuilder(ItemTags.FOOT_ARMOR).add(
-                MGItems.BRONZE_BOOTS.get(),
-                MGItems.STEEL_BOOTS.get(),
-                MGItems.RUBY_BOOTS.get(),
-                MGItems.TITANIUM_BOOTS.get(),
-                MGItems.ENDERITE_BOOTS.get()
+        this.builder(ItemTags.FOOT_ARMOR).add(
+                MGItems.BRONZE_BOOTS.key(),
+                MGItems.STEEL_BOOTS.key(),
+                MGItems.RUBY_BOOTS.key(),
+                MGItems.TITANIUM_BOOTS.key(),
+                MGItems.ENDERITE_BOOTS.key()
         );
 
-        this.valueLookupBuilder(ItemTags.FOOT_ARMOR_ENCHANTABLE).add(
-                MGItems.BRONZE_BOOTS.get(),
-                MGItems.STEEL_BOOTS.get(),
-                MGItems.RUBY_BOOTS.get(),
-                MGItems.TITANIUM_BOOTS.get(),
-                MGItems.ENDERITE_BOOTS.get()
+        this.builder(ItemTags.FOOT_ARMOR_ENCHANTABLE).add(
+                MGItems.BRONZE_BOOTS.key(),
+                MGItems.STEEL_BOOTS.key(),
+                MGItems.RUBY_BOOTS.key(),
+                MGItems.TITANIUM_BOOTS.key(),
+                MGItems.ENDERITE_BOOTS.key()
         );
 
-        this.valueLookupBuilder(ItemTags.SWORDS).add(
-                MGItems.BRONZE_SWORD.get(),
-                MGItems.STEEL_SWORD.get(),
-                MGItems.RUBY_SWORD.get(),
-                MGItems.TITANIUM_SWORD.get(),
-                MGItems.ENDERITE_SWORD.get()
+        this.builder(ItemTags.SWORDS).add(
+                MGItems.BRONZE_SWORD.key(),
+                MGItems.STEEL_SWORD.key(),
+                MGItems.RUBY_SWORD.key(),
+                MGItems.TITANIUM_SWORD.key(),
+                MGItems.ENDERITE_SWORD.key()
         );
 
-        this.valueLookupBuilder(ItemTags.PICKAXES).add(
-                MGItems.BRONZE_PICKAXE.get(),
-                MGItems.STEEL_PICKAXE.get(),
-                MGItems.RUBY_PICKAXE.get(),
-                MGItems.TITANIUM_PICKAXE.get(),
-                MGItems.ENDERITE_PICKAXE.get()
+        this.builder(ItemTags.PICKAXES).add(
+                MGItems.BRONZE_PICKAXE.key(),
+                MGItems.STEEL_PICKAXE.key(),
+                MGItems.RUBY_PICKAXE.key(),
+                MGItems.TITANIUM_PICKAXE.key(),
+                MGItems.ENDERITE_PICKAXE.key()
         );
 
-        this.valueLookupBuilder(ItemTags.SHOVELS).add(
-                MGItems.BRONZE_SHOVEL.get(),
-                MGItems.STEEL_SHOVEL.get(),
-                MGItems.RUBY_SHOVEL.get(),
-                MGItems.TITANIUM_SHOVEL.get(),
-                MGItems.ENDERITE_SHOVEL.get()
+        this.builder(ItemTags.SHOVELS).add(
+                MGItems.BRONZE_SHOVEL.key(),
+                MGItems.STEEL_SHOVEL.key(),
+                MGItems.RUBY_SHOVEL.key(),
+                MGItems.TITANIUM_SHOVEL.key(),
+                MGItems.ENDERITE_SHOVEL.key()
         );
 
-        this.valueLookupBuilder(ItemTags.AXES).add(
-                MGItems.BRONZE_AXE.get(),
-                MGItems.STEEL_AXE.get(),
-                MGItems.RUBY_AXE.get(),
-                MGItems.TITANIUM_AXE.get(),
-                MGItems.ENDERITE_AXE.get()
+        this.builder(ItemTags.AXES).add(
+                MGItems.BRONZE_AXE.key(),
+                MGItems.STEEL_AXE.key(),
+                MGItems.RUBY_AXE.key(),
+                MGItems.TITANIUM_AXE.key(),
+                MGItems.ENDERITE_AXE.key()
         );
 
-        this.valueLookupBuilder(ItemTags.HOES).add(
-                MGItems.BRONZE_HOE.get(),
-                MGItems.STEEL_HOE.get(),
-                MGItems.RUBY_HOE.get(),
-                MGItems.TITANIUM_HOE.get(),
-                MGItems.ENDERITE_HOE.get()
+        this.builder(ItemTags.HOES).add(
+                MGItems.BRONZE_HOE.key(),
+                MGItems.STEEL_HOE.key(),
+                MGItems.RUBY_HOE.key(),
+                MGItems.TITANIUM_HOE.key(),
+                MGItems.ENDERITE_HOE.key()
         );
 
-        this.valueLookupBuilder(MGTags.Items.INGOTS_BRONZE)
-                .add(MGItems.BRONZE_INGOT.get());
+        this.builder(MGTags.Items.INGOTS_BRONZE)
+                .add(MGItems.BRONZE_INGOT.key());
 
-        this.valueLookupBuilder(MGTags.Items.INGOTS_STEEL)
-                .add(MGItems.STEEL_INGOT.get());
+        this.builder(MGTags.Items.INGOTS_STEEL)
+                .add(MGItems.STEEL_INGOT.key());
 
-        this.valueLookupBuilder(MGTags.Items.INGOTS_TITANIUM)
-                .add(MGItems.TITANIUM_INGOT.get());
+        this.builder(MGTags.Items.INGOTS_TITANIUM)
+                .add(MGItems.TITANIUM_INGOT.key());
 
-        this.valueLookupBuilder(MGTags.Items.INGOTS_ENDERITE)
-                .add(MGItems.ENDERITE_INGOT.get());
+        this.builder(MGTags.Items.INGOTS_ENDERITE)
+                .add(MGItems.ENDERITE_INGOT.key());
 
-        this.valueLookupBuilder(MGTags.Items.GEMS_RUBY)
-                .add(MGItems.RUBY_INGOT.get());
+        this.builder(MGTags.Items.GEMS_RUBY)
+                .add(MGItems.RUBY_INGOT.key());
 
-        this.valueLookupBuilder(ItemTags.ARROWS).add(
-                MGItems.COPPER_ARROW.get(),
-                MGItems.BRONZE_ARROW.get(),
-                MGItems.STEEL_ARROW.get(),
-                MGItems.RUBY_ARROW.get(),
-                MGItems.TITANIUM_ARROW.get(),
-                MGItems.ENDERITE_ARROW.get()
+        this.builder(ItemTags.ARROWS).add(
+                MGItems.COPPER_ARROW.key(),
+                MGItems.BRONZE_ARROW.key(),
+                MGItems.STEEL_ARROW.key(),
+                MGItems.RUBY_ARROW.key(),
+                MGItems.TITANIUM_ARROW.key(),
+                MGItems.ENDERITE_ARROW.key()
         );
 
-        this.valueLookupBuilder(ItemTags.BOW_ENCHANTABLE).add(
-                MGItems.COPPER_BOW.get(),
-                MGItems.BRONZE_BOW.get(),
-                MGItems.STEEL_BOW.get(),
-                MGItems.RUBY_BOW.get(),
-                MGItems.TITANIUM_BOW.get(),
-                MGItems.ENDERITE_BOW.get()
+        this.builder(ItemTags.BOW_ENCHANTABLE).add(
+                MGItems.COPPER_BOW.key(),
+                MGItems.BRONZE_BOW.key(),
+                MGItems.STEEL_BOW.key(),
+                MGItems.RUBY_BOW.key(),
+                MGItems.TITANIUM_BOW.key(),
+                MGItems.ENDERITE_BOW.key()
         );
 
-        this.valueLookupBuilder(ItemTags.TRIM_MATERIALS).add(
-                MGItems.TIN_INGOT.get(),
-                MGItems.BRONZE_INGOT.get(),
-                MGItems.STEEL_INGOT.get(),
-                MGItems.RUBY_INGOT.get(),
-                MGItems.TITANIUM_INGOT.get(),
-                MGItems.ENDERITE_INGOT.get()
+        this.builder(ItemTags.TRIM_MATERIALS).add(
+                MGItems.TIN_INGOT.key(),
+                MGItems.BRONZE_INGOT.key(),
+                MGItems.STEEL_INGOT.key(),
+                MGItems.RUBY_INGOT.key(),
+                MGItems.TITANIUM_INGOT.key(),
+                MGItems.ENDERITE_INGOT.key()
         );
 
-        this.valueLookupBuilder(ItemTags.DURABILITY_ENCHANTABLE).add(
-                MGItems.COPPER_BOW.get(),
-                MGItems.BRONZE_BOW.get(),
-                MGItems.STEEL_BOW.get(),
-                MGItems.RUBY_BOW.get(),
-                MGItems.TITANIUM_BOW.get(),
-                MGItems.TITANIUM_MACE.get()
+        this.builder(ItemTags.DURABILITY_ENCHANTABLE).add(
+                MGItems.COPPER_BOW.key(),
+                MGItems.BRONZE_BOW.key(),
+                MGItems.STEEL_BOW.key(),
+                MGItems.RUBY_BOW.key(),
+                MGItems.TITANIUM_BOW.key(),
+                MGItems.TITANIUM_MACE.key()
         );
 
-        this.valueLookupBuilder(ItemTags.MACE_ENCHANTABLE).add(
-                MGItems.TITANIUM_MACE.get(),
-                MGItems.ENDERITE_MACE.get()
+        this.builder(ItemTags.MACE_ENCHANTABLE).add(
+                MGItems.TITANIUM_MACE.key(),
+                MGItems.ENDERITE_MACE.key()
         );
 
-        this.valueLookupBuilder(ItemTags.WEAPON_ENCHANTABLE).add(
-                MGItems.TITANIUM_MACE.get(),
-                MGItems.ENDERITE_MACE.get()
+        this.builder(ItemTags.WEAPON_ENCHANTABLE).add(
+                MGItems.TITANIUM_MACE.key(),
+                MGItems.ENDERITE_MACE.key()
         );
 
-        this.valueLookupBuilder(ItemTags.SPEARS).add(
-                MGItems.BRONZE_SPEAR.get(),
-                MGItems.STEEL_SPEAR.get(),
-                MGItems.RUBY_SPEAR.get(),
-                MGItems.TITANIUM_SPEAR.get(),
-                MGItems.ENDERITE_SPEAR.get()
+        this.builder(ItemTags.SPEARS).add(
+                MGItems.BRONZE_SPEAR.key(),
+                MGItems.STEEL_SPEAR.key(),
+                MGItems.RUBY_SPEAR.key(),
+                MGItems.TITANIUM_SPEAR.key(),
+                MGItems.ENDERITE_SPEAR.key()
         );
 
-        this.valueLookupBuilder(ItemTags.FIRE_ASPECT_ENCHANTABLE).add(
-                MGItems.TITANIUM_MACE.get(),
-                MGItems.ENDERITE_MACE.get()
+        this.builder(ItemTags.FIRE_ASPECT_ENCHANTABLE).add(
+                MGItems.TITANIUM_MACE.key(),
+                MGItems.ENDERITE_MACE.key()
         );
 
-        this.valueLookupBuilder(ConventionalItemTags.MACE_TOOLS).add(
-                MGItems.TITANIUM_MACE.get(),
-                MGItems.ENDERITE_MACE.get()
+        this.builder(ConventionalItemTags.MACE_TOOLS).add(
+                MGItems.TITANIUM_MACE.key(),
+                MGItems.ENDERITE_MACE.key()
         );
 
-        this.valueLookupBuilder(ConventionalItemTags.MELEE_WEAPON_TOOLS).add(
-                MGItems.BRONZE_SPEAR.get(),
-                MGItems.STEEL_SPEAR.get(),
-                MGItems.RUBY_SPEAR.get(),
-                MGItems.TITANIUM_SPEAR.get(),
-                MGItems.ENDERITE_SPEAR.get(),
-                MGItems.TITANIUM_MACE.get(),
-                MGItems.ENDERITE_MACE.get()
+        this.builder(ConventionalItemTags.MELEE_WEAPON_TOOLS).add(
+                MGItems.BRONZE_SPEAR.key(),
+                MGItems.STEEL_SPEAR.key(),
+                MGItems.RUBY_SPEAR.key(),
+                MGItems.TITANIUM_SPEAR.key(),
+                MGItems.ENDERITE_SPEAR.key(),
+                MGItems.TITANIUM_MACE.key(),
+                MGItems.ENDERITE_MACE.key()
         );
 
-        this.valueLookupBuilder(ItemTags.PIGLIN_SAFE_ARMOR).add(
-                MGItems.TITANIUM_BOOTS.get(),
-                MGItems.TITANIUM_CHESTPLATE.get(),
-                MGItems.TITANIUM_HELMET.get(),
-                MGItems.TITANIUM_LEGGINGS.get(),
-                MGItems.ENDERITE_BOOTS.get(),
-                MGItems.ENDERITE_CHESTPLATE.get(),
-                MGItems.ENDERITE_HELMET.get(),
-                MGItems.ENDERITE_LEGGINGS.get()
+        this.builder(ItemTags.PIGLIN_SAFE_ARMOR).add(
+                MGItems.TITANIUM_BOOTS.key(),
+                MGItems.TITANIUM_CHESTPLATE.key(),
+                MGItems.TITANIUM_HELMET.key(),
+                MGItems.TITANIUM_LEGGINGS.key(),
+                MGItems.ENDERITE_BOOTS.key(),
+                MGItems.ENDERITE_CHESTPLATE.key(),
+                MGItems.ENDERITE_HELMET.key(),
+                MGItems.ENDERITE_LEGGINGS.key()
         );
     }
 }
