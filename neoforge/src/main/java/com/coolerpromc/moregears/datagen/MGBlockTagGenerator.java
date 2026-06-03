@@ -19,13 +19,13 @@ public class MGBlockTagGenerator extends BlockTagsProvider {
     @Override
     protected void addTags(HolderLookup.Provider provider) {
         this.tag(BlockTags.MINEABLE_WITH_PICKAXE).add(
-                MGBlocks.TIN_ORE.get(),
-                MGBlocks.DEEPSLATE_TIN_ORE.get(),
-                MGBlocks.RUBY_ORE.get(),
-                MGBlocks.DEEPSLATE_RUBY_ORE.get(),
-                MGBlocks.NETHER_TITANIUM_ORE.get(),
-                MGBlocks.END_ENDERITE_ORE.get(),
-                MGBlocks.ALLOY_SMELTER.get()
+                MGBlocks.TIN_ORE.blockKey(),
+                MGBlocks.DEEPSLATE_TIN_ORE.blockKey(),
+                MGBlocks.RUBY_ORE.blockKey(),
+                MGBlocks.DEEPSLATE_RUBY_ORE.blockKey(),
+                MGBlocks.NETHER_TITANIUM_ORE.blockKey(),
+                MGBlocks.END_ENDERITE_ORE.blockKey(),
+                MGBlocks.ALLOY_SMELTER.blockKey()
         );
 
         this.tag(BlockTags.INCORRECT_FOR_WOODEN_TOOL)
@@ -67,9 +67,9 @@ public class MGBlockTagGenerator extends BlockTagsProvider {
                 .addTag(MGTags.Blocks.NEEDS_ENDERITE_TOOL);
 
         this.tag(MGTags.Blocks.NEEDS_COPPER_TOOL).add(
-                MGBlocks.TIN_ORE.get(),
-                MGBlocks.DEEPSLATE_TIN_ORE.get(),
-                MGBlocks.ALLOY_SMELTER.get()
+                MGBlocks.TIN_ORE.blockKey(),
+                MGBlocks.DEEPSLATE_TIN_ORE.blockKey(),
+                MGBlocks.ALLOY_SMELTER.blockKey()
         );
 
         this.tag(MGTags.Blocks.INCORRECT_FOR_COPPER_TOOL)
@@ -78,8 +78,8 @@ public class MGBlockTagGenerator extends BlockTagsProvider {
                 .remove(MGTags.Blocks.NEEDS_COPPER_TOOL);
 
         this.tag(MGTags.Blocks.NEEDS_BRONZE_TOOL).add(
-                MGBlocks.RUBY_ORE.get(),
-                MGBlocks.DEEPSLATE_RUBY_ORE.get()
+                MGBlocks.RUBY_ORE.blockKey(),
+                MGBlocks.DEEPSLATE_RUBY_ORE.blockKey()
         );
 
         this.tag(MGTags.Blocks.INCORRECT_FOR_BRONZE_TOOL)
@@ -93,7 +93,7 @@ public class MGBlockTagGenerator extends BlockTagsProvider {
                 .remove(MGTags.Blocks.NEEDS_STEEL_TOOL);
 
         this.tag(Tags.Blocks.NEEDS_NETHERITE_TOOL)
-                .add(MGBlocks.NETHER_TITANIUM_ORE.get());
+                .add(MGBlocks.NETHER_TITANIUM_ORE.blockKey());
 
         this.tag(MGTags.Blocks.NEEDS_RUBY_TOOL);
 
@@ -102,7 +102,7 @@ public class MGBlockTagGenerator extends BlockTagsProvider {
                 .remove(MGTags.Blocks.NEEDS_RUBY_TOOL);
 
         this.tag(MGTags.Blocks.NEEDS_TITANIUM_TOOL)
-            .add(MGBlocks.END_ENDERITE_ORE.get());
+            .add(MGBlocks.END_ENDERITE_ORE.blockKey());
 
         this.tag(MGTags.Blocks.INCORRECT_FOR_TITANIUM_TOOL)
                 .remove(MGTags.Blocks.NEEDS_TITANIUM_TOOL);
@@ -113,21 +113,21 @@ public class MGBlockTagGenerator extends BlockTagsProvider {
                 .remove(MGTags.Blocks.NEEDS_ENDERITE_TOOL);
 
         this.tag(MGTags.Blocks.ORES_TIN).add(
-                MGBlocks.TIN_ORE.get(),
-                MGBlocks.DEEPSLATE_TIN_ORE.get()
+                MGBlocks.TIN_ORE.blockKey(),
+                MGBlocks.DEEPSLATE_TIN_ORE.blockKey()
         );
 
         this.tag(MGTags.Blocks.ORES_RUBY).add(
-                MGBlocks.RUBY_ORE.get(),
-                MGBlocks.DEEPSLATE_RUBY_ORE.get()
+                MGBlocks.RUBY_ORE.blockKey(),
+                MGBlocks.DEEPSLATE_RUBY_ORE.blockKey()
         );
 
         this.tag(MGTags.Blocks.ORES_TITANIUM).add(
-                MGBlocks.NETHER_TITANIUM_ORE.get()
+                MGBlocks.NETHER_TITANIUM_ORE.blockKey()
         );
 
         this.tag(MGTags.Blocks.ORES_ENDERITE).add(
-                MGBlocks.END_ENDERITE_ORE.get()
+                MGBlocks.END_ENDERITE_ORE.blockKey()
         );
     }
 }
