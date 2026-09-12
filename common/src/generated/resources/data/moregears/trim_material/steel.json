@@ -1,7 +1,7 @@
 {
-  "asset_name": "steel",
   "description": {
     "color": "#6E6B6B",
     "translate": "trim_material.moregears.steel"
-  }
+  },
+  "palette_id": "moregears:trim/steel"
 }

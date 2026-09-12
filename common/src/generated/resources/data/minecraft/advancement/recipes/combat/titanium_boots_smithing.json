@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:titanium_boots_smithing"
+        "recipes": "minecraft:titanium_boots_smithing"
       },
       "trigger": "minecraft:recipe_unlocked"
     },

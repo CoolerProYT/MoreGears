@@ -12,8 +12,8 @@ import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.ShovelItem;
 import net.minecraft.world.item.ToolMaterial;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.component.TooltipDisplay;
@@ -21,11 +21,11 @@ import net.minecraft.world.item.component.TooltipDisplay;
 import org.jspecify.annotations.Nullable;
 import java.util.function.Consumer;
 
-public class SteelShovel extends ShovelItem {
+public class SteelShovel extends Item {
     private static final Identifier modifierId = Constants.id("steel_shovel_slow_speed");
 
     public SteelShovel(ToolMaterial material, float attackDamage, float attackSpeed, Properties properties) {
-        super(material, attackDamage, attackSpeed, properties);
+        super(properties.shovel(material, attackDamage, attackSpeed));
     }
 
     @Override

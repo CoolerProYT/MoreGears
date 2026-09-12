@@ -18,7 +18,7 @@ public class MoreGearsDataGenerator implements DataGeneratorEntrypoint {
 
 	@Override
 	public void buildRegistry(RegistrySetBuilder registryBuilder) {
-		registryBuilder.add(Registries.CONFIGURED_FEATURE, MGConfiguredFeatures::bootstrap);
+		registryBuilder.add(Registries.FEATURE, MGConfiguredFeatures::bootstrap);
 		registryBuilder.add(Registries.PLACED_FEATURE, MGPlacedFeatures::bootstrap);
 		registryBuilder.add(Registries.TRIM_MATERIAL, MGTrimMaterials::bootstrap);
 	}

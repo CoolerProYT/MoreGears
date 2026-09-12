@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "moregears:ruby_helmet"
+        "recipes": "moregears:ruby_helmet"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

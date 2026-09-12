@@ -3,43 +3,42 @@ package com.coolerpromc.moregears.datagen;
 import com.coolerpromc.moregears.Constants;
 import com.coolerpromc.moregears.MoreGears;
 import com.coolerpromc.moregears.datagen.bootstrap.MGBiomeModifiers;
-import net.minecraft.core.HolderLookup;
+import com.coolerpromc.moregears.trim.MGTrimMaterials;
+import com.coolerpromc.moregears.worldgen.MGConfiguredFeatures;
+import com.coolerpromc.moregears.worldgen.MGPlacedFeatures;
 import net.minecraft.core.RegistrySetBuilder;
-import net.minecraft.data.DataGenerator;
-import net.minecraft.data.PackOutput;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.data.recipes.RecipeProvider;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.neoforge.common.data.DatapackBuiltinEntriesProvider;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 import net.neoforged.neoforge.registries.NeoForgeRegistries;
 
 import java.util.Set;
-import java.util.concurrent.CompletableFuture;
 
 @EventBusSubscriber(modid = MoreGears.MODID)
 public class MGDataGenerators {
     @SubscribeEvent
-    public static void gatherData(GatherDataEvent.Client event){
-        DataGenerator generator = event.getGenerator();
-        PackOutput packOutput = generator.getPackOutput();
-        CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
-
-        event.addProvider(new MGRecipeProvider.Runner(packOutput, lookupProvider));
-        event.addProvider(new MGLootTableProvider(packOutput, lookupProvider));
-
-        event.addProvider(new MGModelProvider(packOutput));
-        event.addProvider(new MGEquipmentInfoProvider(packOutput));
-        event.addProvider(new MGDatapackProvider(packOutput, lookupProvider));
-        event.addProvider(new MGBlockTagGenerator(packOutput, lookupProvider));
+    public static void gatherData(GatherDataEvent.Client event) {
+        event.createReloadableRegistryObjects(new RegistrySetBuilder()
+                .add(RecipeProvider.asBootstrap(MGRecipeProvider::new))
+                .add(Registries.LOOT_TABLE, new MGLootTableProvider()),
+            Set.of("minecraft", Constants.MODID)
+        );
+        event.createProvider(MGModelProvider::new);
+        event.createProvider(MGEquipmentInfoProvider::new);
+        event.createWorldRegistryObjects(new RegistrySetBuilder()
+                .add(Registries.FEATURE, MGConfiguredFeatures::bootstrap)
+                .add(Registries.PLACED_FEATURE, MGPlacedFeatures::bootstrap)
+                .add(Registries.TRIM_MATERIAL, MGTrimMaterials::bootstrap)
+                .add(NeoForgeRegistries.Keys.BIOME_MODIFIERS, MGBiomeModifiers::bootstrap),
+            Set.of("minecraft", Constants.MODID)
+        );
+        event.createProvider(MGBlockTagGenerator::new);
     }
 
     @SubscribeEvent
     public static void onGatherData(GatherDataEvent.Server event) {
-        DataGenerator generator = event.getGenerator();
-        PackOutput packOutput = generator.getPackOutput();
-        CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
-
-        event.addProvider(new MGItemTagGenerator(packOutput, lookupProvider));
-        event.addProvider(new DatapackBuiltinEntriesProvider(packOutput, lookupProvider, new RegistrySetBuilder().add(NeoForgeRegistries.Keys.BIOME_MODIFIERS, MGBiomeModifiers::bootstrap), Set.of(Constants.MODID)));
+        event.createProvider(MGItemTagGenerator::new);
     }
 }

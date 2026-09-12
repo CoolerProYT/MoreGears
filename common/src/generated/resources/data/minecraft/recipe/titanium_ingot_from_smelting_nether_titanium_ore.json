@@ -1,5 +1,6 @@
 {
   "type": "minecraft:smelting",
+  "cookingtime": 200,
   "experience": 1.0,
   "group": "titanium_ingot",
   "ingredient": "moregears:nether_titanium_ore",

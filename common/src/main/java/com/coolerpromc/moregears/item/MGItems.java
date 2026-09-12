@@ -48,9 +48,9 @@ public class MGItems {
 
     public static final ItemLikeRegistryHandler<Item> BRONZE_SWORD = Services.REGISTRY.registerItem("bronze_sword", properties -> new Item(properties.sword(MGToolMaterials.BRONZE_TIER, 3, -2.4F)));
     public static final ItemLikeRegistryHandler<Item> BRONZE_PICKAXE = Services.REGISTRY.registerItem("bronze_pickaxe", properties -> new BronzePickaxe(MGToolMaterials.BRONZE_TIER, 1, -2.8f, properties));
-    public static final ItemLikeRegistryHandler<ShovelItem> BRONZE_SHOVEL = Services.REGISTRY.registerItem("bronze_shovel", properties -> new BronzeShovel(MGToolMaterials.BRONZE_TIER, 1.5f, -3f, properties));
-    public static final ItemLikeRegistryHandler<AxeItem> BRONZE_AXE = Services.REGISTRY.registerItem("bronze_axe", properties -> new BronzeAxe(MGToolMaterials.BRONZE_TIER,  5.5f, -3.0f, properties));
-    public static final ItemLikeRegistryHandler<HoeItem> BRONZE_HOE = Services.REGISTRY.registerItem("bronze_hoe", properties -> new BronzeHoe(MGToolMaterials.BRONZE_TIER,  -2.5f, -0.5f, properties));
+    public static final ItemLikeRegistryHandler<Item> BRONZE_SHOVEL = Services.REGISTRY.registerItem("bronze_shovel", properties -> new BronzeShovel(MGToolMaterials.BRONZE_TIER, 1.5f, -3f, properties));
+    public static final ItemLikeRegistryHandler<Item> BRONZE_AXE = Services.REGISTRY.registerItem("bronze_axe", properties -> new BronzeAxe(MGToolMaterials.BRONZE_TIER,  5.5f, -3.0f, properties));
+    public static final ItemLikeRegistryHandler<Item> BRONZE_HOE = Services.REGISTRY.registerItem("bronze_hoe", properties -> new BronzeHoe(MGToolMaterials.BRONZE_TIER,  -2.5f, -0.5f, properties));
     public static final ItemLikeRegistryHandler<Item> BRONZE_SPEAR = Services.REGISTRY.registerItem("bronze_spear", properties -> new Item(properties
             .spear(MGToolMaterials.BRONZE_TIER, 0.9F, 0.89F, 0.625F, 3.5F, 8.5F, 7.5F, 5.1F, 11.875F, 4.6F))
     );
@@ -62,9 +62,9 @@ public class MGItems {
 
     public static final ItemLikeRegistryHandler<Item> STEEL_SWORD = Services.REGISTRY.registerItem("steel_sword", properties -> new SteelSword(MGToolMaterials.STEEL_TIER, 3, -1.4F, properties));
     public static final ItemLikeRegistryHandler<Item> STEEL_PICKAXE = Services.REGISTRY.registerItem("steel_pickaxe", properties -> new SteelPickaxe(MGToolMaterials.STEEL_TIER, 1, -1.8f, properties));
-    public static final ItemLikeRegistryHandler<ShovelItem> STEEL_SHOVEL = Services.REGISTRY.registerItem("steel_shovel", properties -> new SteelShovel(MGToolMaterials.STEEL_TIER, 1.5f, -2f, properties));
-    public static final ItemLikeRegistryHandler<AxeItem> STEEL_AXE = Services.REGISTRY.registerItem("steel_axe", properties -> new SteelAxe(MGToolMaterials.STEEL_TIER, 6, -2f, properties));
-    public static final ItemLikeRegistryHandler<HoeItem> STEEL_HOE = Services.REGISTRY.registerItem("steel_hoe", properties -> new SteelHoe(MGToolMaterials.STEEL_TIER, -2f, 0.0f, properties));
+    public static final ItemLikeRegistryHandler<Item> STEEL_SHOVEL = Services.REGISTRY.registerItem("steel_shovel", properties -> new SteelShovel(MGToolMaterials.STEEL_TIER, 1.5f, -2f, properties));
+    public static final ItemLikeRegistryHandler<Item> STEEL_AXE = Services.REGISTRY.registerItem("steel_axe", properties -> new SteelAxe(MGToolMaterials.STEEL_TIER, 6, -2f, properties));
+    public static final ItemLikeRegistryHandler<Item> STEEL_HOE = Services.REGISTRY.registerItem("steel_hoe", properties -> new SteelHoe(MGToolMaterials.STEEL_TIER, -2f, 0.0f, properties));
     public static final ItemLikeRegistryHandler<Item> STEEL_SPEAR = Services.REGISTRY.registerItem("steel_spear", properties -> new Item(properties
             .spear(MGToolMaterials.STEEL_TIER, 0.98F, 1F, 0.57F, 2.65F, 7.85F, 6.67F, 5.1F, 10.8F, 4.6F))
     );
@@ -76,9 +76,9 @@ public class MGItems {
 
     public static final ItemLikeRegistryHandler<Item> RUBY_SWORD = Services.REGISTRY.registerItem("ruby_sword", properties -> new Item(properties.sword(MGToolMaterials.RUBY_TIER, 3, -2.4F)));
     public static final ItemLikeRegistryHandler<Item> RUBY_PICKAXE = Services.REGISTRY.registerItem("ruby_pickaxe", properties -> new Item(properties.pickaxe(MGToolMaterials.RUBY_TIER, 1f, -2.8f)));
-    public static final ItemLikeRegistryHandler<ShovelItem> RUBY_SHOVEL = Services.REGISTRY.registerItem("ruby_shovel", properties -> new ShovelItem(MGToolMaterials.RUBY_TIER, 1.5f, -3f, properties));
-    public static final ItemLikeRegistryHandler<AxeItem> RUBY_AXE = Services.REGISTRY.registerItem("ruby_axe", properties -> new AxeItem(MGToolMaterials.RUBY_TIER, 4, -3.2f, properties));
-    public static final ItemLikeRegistryHandler<HoeItem> RUBY_HOE = Services.REGISTRY.registerItem("ruby_hoe", properties -> new HoeItem(MGToolMaterials.RUBY_TIER, -3f, 0f, properties));
+    public static final ItemLikeRegistryHandler<Item> RUBY_SHOVEL = Services.REGISTRY.registerItem("ruby_shovel", properties -> new Item(properties.shovel(MGToolMaterials.RUBY_TIER, 1.5f, -3f)));
+    public static final ItemLikeRegistryHandler<Item> RUBY_AXE = Services.REGISTRY.registerItem("ruby_axe", properties -> new Item(properties.axe(MGToolMaterials.RUBY_TIER, 4, -3.2f)));
+    public static final ItemLikeRegistryHandler<Item> RUBY_HOE = Services.REGISTRY.registerItem("ruby_hoe", properties -> new Item(properties.hoe(MGToolMaterials.RUBY_TIER, -3f, 0f)));
     public static final ItemLikeRegistryHandler<Item> RUBY_SPEAR = Services.REGISTRY.registerItem("ruby_spear", properties -> new Item(properties
             .spear(MGToolMaterials.RUBY_TIER, 1.02F, 1.04F, 0.53F, 2.75F, 7.65F, 6.58F, 5.1F, 10.4F, 4.6F))
     );
@@ -90,9 +90,9 @@ public class MGItems {
 
     public static final ItemLikeRegistryHandler<Item> TITANIUM_SWORD = Services.REGISTRY.registerItem("titanium_sword", properties -> new Item(properties.sword(MGToolMaterials.TITANIUM_TIER, 5, -1.5F)));
     public static final ItemLikeRegistryHandler<Item> TITANIUM_PICKAXE = Services.REGISTRY.registerItem("titanium_pickaxe", properties -> new Item(properties.pickaxe(MGToolMaterials.TITANIUM_TIER, 2, -2f)));
-    public static final ItemLikeRegistryHandler<ShovelItem> TITANIUM_SHOVEL = Services.REGISTRY.registerItem("titanium_shovel", properties -> new ShovelItem(MGToolMaterials.TITANIUM_TIER, 2f, -2f, properties));
-    public static final ItemLikeRegistryHandler<AxeItem> TITANIUM_AXE = Services.REGISTRY.registerItem("titanium_axe", properties -> new AxeItem(MGToolMaterials.TITANIUM_TIER, 6, -2.2f, properties));
-    public static final ItemLikeRegistryHandler<HoeItem> TITANIUM_HOE = Services.REGISTRY.registerItem("titanium_hoe", properties -> new HoeItem(MGToolMaterials.TITANIUM_TIER, -2f, 0.0f, properties));
+    public static final ItemLikeRegistryHandler<Item> TITANIUM_SHOVEL = Services.REGISTRY.registerItem("titanium_shovel", properties -> new Item(properties.shovel(MGToolMaterials.TITANIUM_TIER, 2f, -2f)));
+    public static final ItemLikeRegistryHandler<Item> TITANIUM_AXE = Services.REGISTRY.registerItem("titanium_axe", properties -> new Item(properties.axe(MGToolMaterials.TITANIUM_TIER, 6, -2.2f)));
+    public static final ItemLikeRegistryHandler<Item> TITANIUM_HOE = Services.REGISTRY.registerItem("titanium_hoe", properties -> new Item(properties.hoe(MGToolMaterials.TITANIUM_TIER, -2f, 0.0f)));
     public static final ItemLikeRegistryHandler<Item> TITANIUM_SPEAR = Services.REGISTRY.registerItem("titanium_spear", properties -> new Item(properties
             .spear(MGToolMaterials.TITANIUM_TIER, 1.25F, 1.325F, 0.3F, 2F, 6.5F, 4.5F, 5.1F, 7.5F, 4.6F).fireResistant())
     );
@@ -115,12 +115,12 @@ public class MGItems {
             properties -> new Item(properties.sword(MGToolMaterials.ENDERITE_TIER, 8, -1F).fireResistant().component(DataComponents.UNBREAKABLE, Unit.INSTANCE)));
     public static final ItemLikeRegistryHandler<Item> ENDERITE_PICKAXE = Services.REGISTRY.registerItem("enderite_pickaxe",
             properties -> new Item(properties.pickaxe(MGToolMaterials.ENDERITE_TIER, 4, -1.3f).fireResistant().component(DataComponents.UNBREAKABLE, Unit.INSTANCE)));
-    public static final ItemLikeRegistryHandler<ShovelItem> ENDERITE_SHOVEL = Services.REGISTRY.registerItem("enderite_shovel",
-            properties -> new ShovelItem(MGToolMaterials.ENDERITE_TIER, 3.5f, -1.8f, properties.fireResistant().component(DataComponents.UNBREAKABLE, Unit.INSTANCE)));
-    public static final ItemLikeRegistryHandler<AxeItem> ENDERITE_AXE = Services.REGISTRY.registerItem("enderite_axe",
-            properties -> new AxeItem(MGToolMaterials.ENDERITE_TIER, 9, -1.5f, properties.fireResistant().component(DataComponents.UNBREAKABLE, Unit.INSTANCE)));
-    public static final ItemLikeRegistryHandler<HoeItem> ENDERITE_HOE = Services.REGISTRY.registerItem("enderite_hoe",
-            properties -> new HoeItem(MGToolMaterials.ENDERITE_TIER, -1f, 0.0f, properties.fireResistant().component(DataComponents.UNBREAKABLE, Unit.INSTANCE)));
+    public static final ItemLikeRegistryHandler<Item> ENDERITE_SHOVEL = Services.REGISTRY.registerItem("enderite_shovel",
+            properties -> new Item(properties.shovel(MGToolMaterials.ENDERITE_TIER, 3.5f, -1.8f).fireResistant().component(DataComponents.UNBREAKABLE, Unit.INSTANCE)));
+    public static final ItemLikeRegistryHandler<Item> ENDERITE_AXE = Services.REGISTRY.registerItem("enderite_axe",
+            properties -> new Item(properties.axe(MGToolMaterials.ENDERITE_TIER, 9, -1.5f).fireResistant().component(DataComponents.UNBREAKABLE, Unit.INSTANCE)));
+    public static final ItemLikeRegistryHandler<Item> ENDERITE_HOE = Services.REGISTRY.registerItem("enderite_hoe",
+            properties -> new Item(properties.hoe(MGToolMaterials.ENDERITE_TIER, -1f, 0.0f).fireResistant().component(DataComponents.UNBREAKABLE, Unit.INSTANCE)));
     public static final ItemLikeRegistryHandler<Item> ENDERITE_SPEAR = Services.REGISTRY.registerItem("enderite_spear", properties -> new Item(properties
             .spear(MGToolMaterials.ENDERITE_TIER, 1.35F, 1.45F, 0.2F, 1.5F, 6F, 3.5F, 5.1F, 6.25F, 4.6F).fireResistant().component(DataComponents.UNBREAKABLE, Unit.INSTANCE))
     );

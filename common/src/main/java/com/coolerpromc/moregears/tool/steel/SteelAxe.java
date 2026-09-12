@@ -12,7 +12,7 @@ import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.AxeItem;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ToolMaterial;
 import net.minecraft.world.item.TooltipFlag;
@@ -21,11 +21,11 @@ import org.jspecify.annotations.Nullable;
 
 import java.util.function.Consumer;
 
-public class SteelAxe extends AxeItem {
+public class SteelAxe extends Item {
     private static final Identifier modifierId = Constants.id("steel_axe_slow_speed");
 
     public SteelAxe(ToolMaterial material, float attackDamage, float attackSpeed, Properties properties) {
-        super(material, attackDamage, attackSpeed, properties);
+        super(properties.axe(material, attackDamage, attackSpeed));
     }
 
     @Override

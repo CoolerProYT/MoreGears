@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "moregears:steel_spear"
+        "recipes": "moregears:steel_spear"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

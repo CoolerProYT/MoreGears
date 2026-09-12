@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "moregears:bronze_chestplate"
+        "recipes": "moregears:bronze_chestplate"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

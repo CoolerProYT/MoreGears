@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "moregears:enderite_bow"
+        "recipes": "moregears:enderite_bow"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "moregears:bronze_helmet"
+        "recipes": "moregears:bronze_helmet"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

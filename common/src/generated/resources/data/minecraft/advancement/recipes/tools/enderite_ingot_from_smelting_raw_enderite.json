@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:enderite_ingot_from_smelting_raw_enderite"
+        "recipes": "minecraft:enderite_ingot_from_smelting_raw_enderite"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

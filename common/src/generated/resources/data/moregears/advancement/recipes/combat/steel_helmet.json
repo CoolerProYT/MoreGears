@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "moregears:steel_helmet"
+        "recipes": "moregears:steel_helmet"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

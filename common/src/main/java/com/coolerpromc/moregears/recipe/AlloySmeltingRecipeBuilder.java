@@ -6,6 +6,7 @@ import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementRequirements;
 import net.minecraft.advancements.triggers.Criterion;
 import net.minecraft.advancements.triggers.RecipeUnlockedTrigger;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.recipes.RecipeBuilder;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.resources.ResourceKey;
@@ -63,7 +64,7 @@ public class AlloySmeltingRecipeBuilder implements RecipeBuilder {
     @Override
     public void save(RecipeOutput exporter, ResourceKey<Recipe<?>> recipeKey) {
         Advancement.Builder advancement = exporter.advancement()
-                .addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(recipeKey))
+                .addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(exporter.lookup(Registries.RECIPE).getOrThrow(recipeKey)))
                 .requirements(AdvancementRequirements.Strategy.OR);
         this.criteria.forEach(advancement::addCriterion);
 

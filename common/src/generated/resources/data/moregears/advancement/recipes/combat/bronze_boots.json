@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "moregears:bronze_boots"
+        "recipes": "moregears:bronze_boots"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "moregears:bronze_pickaxe"
+        "recipes": "moregears:bronze_pickaxe"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

@@ -5,31 +5,24 @@ import com.coolerpromc.moregears.block.MGBlocks;
 import com.coolerpromc.moregears.item.MGItems;
 import com.coolerpromc.moregears.recipe.AlloySmeltingRecipeBuilder;
 import com.coolerpromc.moregears.recipe.custom.SizedIngredient;
+import net.minecraft.advancements.Advancement;
 import net.minecraft.core.HolderGetter;
-import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
+import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStackTemplate;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.crafting.BlastingRecipe;
-import net.minecraft.world.item.crafting.CookingBookCategory;
-import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.crafting.SmeltingRecipe;
+import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.ItemLike;
 
 import java.util.List;
-import java.util.concurrent.CompletableFuture;
 
 public class MGRecipeProvider extends RecipeProvider {
-    private final HolderGetter<Item> items;
-
-    public MGRecipeProvider(HolderLookup.Provider lookupProvider, RecipeOutput recipeOutput) {
-        super(lookupProvider, recipeOutput);
-        this.items = lookupProvider.lookupOrThrow(Registries.ITEM);
+    protected MGRecipeProvider(BootstrapContext<Recipe<?>> recipeOutput, BootstrapContext<Advancement> advancementOutput) {
+        super(recipeOutput, advancementOutput);
     }
 
     @Override
@@ -292,21 +285,5 @@ public class MGRecipeProvider extends RecipeProvider {
                 .pattern(" #X")
                 .unlockedBy(getHasName(ingot), this.has(ingot))
                 .save(this.output);
-    }
-
-    public static final class Runner extends RecipeProvider.Runner {
-        public Runner(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider) {
-            super(output, lookupProvider);
-        }
-
-        @Override
-        protected RecipeProvider createRecipeProvider(HolderLookup.Provider lookupProvider, RecipeOutput output) {
-            return new MGRecipeProvider(lookupProvider, output);
-        }
-
-        @Override
-        public String getName() {
-            return "ProductiveSlimes recipes";
-        }
     }
 }

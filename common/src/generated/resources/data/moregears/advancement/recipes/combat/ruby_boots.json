@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "moregears:ruby_boots"
+        "recipes": "moregears:ruby_boots"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

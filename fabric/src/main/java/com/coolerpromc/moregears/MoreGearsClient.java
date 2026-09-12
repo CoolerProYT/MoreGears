@@ -9,6 +9,7 @@ import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback;
 import net.fabricmc.fabric.api.client.recipe.v1.sync.ClientRecipeSynchronizedEvent;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
+import net.fabricmc.fabric.impl.recipe.sync.SynchronizedRecipesImpl;
 import net.minecraft.client.renderer.item.properties.select.SelectItemModelProperties;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Items;
@@ -30,7 +31,10 @@ public class MoreGearsClient implements ClientModInitializer {
 
         SelectItemModelProperties.ID_MAPPER.put(Constants.id("select_bow"), Arrow.TYPE);
 
-        ClientRecipeSynchronizedEvent.EVENT.register((client, recipes) -> CommonClientClass.recipeMap = RecipeMap.create(recipes.recipes()));
+        ClientRecipeSynchronizedEvent.EVENT.register((client, recipes) -> {
+            SynchronizedRecipesImpl impl = (SynchronizedRecipesImpl) recipes;
+            CommonClientClass.recipeMap = new RecipeMap(impl.byType(), impl.byKey());
+        });
 
         ItemTooltipCallback.EVENT.register((itemStack, tooltipContext, tooltipType, list) -> {
             if (itemStack.is(Items.COPPER_HELMET) || itemStack.is(Items.COPPER_CHESTPLATE) || itemStack.is(Items.COPPER_LEGGINGS) || itemStack.is(Items.COPPER_BOOTS)) {

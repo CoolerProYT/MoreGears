@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "moregears:steel_boots"
+        "recipes": "moregears:steel_boots"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

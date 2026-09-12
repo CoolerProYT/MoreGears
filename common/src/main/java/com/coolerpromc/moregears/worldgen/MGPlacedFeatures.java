@@ -6,7 +6,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
-import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
+import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.placement.HeightRangePlacement;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.minecraft.world.level.levelgen.placement.PlacementModifier;
@@ -20,19 +20,19 @@ public class MGPlacedFeatures {
     public static final ResourceKey<PlacedFeature> END_ENDERITE_ORE_PLACED_KEY = registerKey("end_enderite_ore_placed");
 
     public static void bootstrap(BootstrapContext<PlacedFeature> context) {
-        var configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);
+        var features = context.lookup(Registries.FEATURE);
 
-        register(context, TIN_ORE_PLACED_KEY, configuredFeatures.getOrThrow(MGConfiguredFeatures.TIN_ORE_KEY), MGOrePlacement.commonOrePlacement(12, HeightRangePlacement.triangle(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(64))));
-        register(context, RUBY_ORE_PLACED_KEY, configuredFeatures.getOrThrow(MGConfiguredFeatures.RUBY_ORE_KEY), MGOrePlacement.commonOrePlacement(12, HeightRangePlacement.triangle(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(64))));
-        register(context, NETHER_TITANIUM_ORE_PLACED_KEY, configuredFeatures.getOrThrow(MGConfiguredFeatures.NETHER_TITANIUM_ORE_KEY), MGOrePlacement.commonOrePlacement(4, HeightRangePlacement.uniform(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(25))));
-        register(context, END_ENDERITE_ORE_PLACED_KEY, configuredFeatures.getOrThrow(MGConfiguredFeatures.END_ENDERITE_ORE_KEY), MGOrePlacement.commonOrePlacement(12, HeightRangePlacement.triangle(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(128))));
+        register(context, TIN_ORE_PLACED_KEY, features.getOrThrow(MGConfiguredFeatures.TIN_ORE_KEY), MGOrePlacement.commonOrePlacement(12, HeightRangePlacement.triangle(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(64))));
+        register(context, RUBY_ORE_PLACED_KEY, features.getOrThrow(MGConfiguredFeatures.RUBY_ORE_KEY), MGOrePlacement.commonOrePlacement(12, HeightRangePlacement.triangle(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(64))));
+        register(context, NETHER_TITANIUM_ORE_PLACED_KEY, features.getOrThrow(MGConfiguredFeatures.NETHER_TITANIUM_ORE_KEY), MGOrePlacement.commonOrePlacement(4, HeightRangePlacement.uniform(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(25))));
+        register(context, END_ENDERITE_ORE_PLACED_KEY, features.getOrThrow(MGConfiguredFeatures.END_ENDERITE_ORE_KEY), MGOrePlacement.commonOrePlacement(12, HeightRangePlacement.triangle(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(128))));
     }
 
     private static ResourceKey<PlacedFeature> registerKey(String name) {
         return ResourceKey.create(Registries.PLACED_FEATURE, Constants.id(name));
     }
 
-    private static void register(BootstrapContext<PlacedFeature> context, ResourceKey<PlacedFeature> key, Holder<ConfiguredFeature<?, ?>> configuration, List<PlacementModifier> modifiers) {
-        context.register(key, new PlacedFeature(configuration, List.copyOf(modifiers)));
+    private static void register(BootstrapContext<PlacedFeature> context, ResourceKey<PlacedFeature> key, Holder<Feature> feature, List<PlacementModifier> modifiers) {
+        context.register(key, new PlacedFeature(feature, List.copyOf(modifiers)));
     }
 }

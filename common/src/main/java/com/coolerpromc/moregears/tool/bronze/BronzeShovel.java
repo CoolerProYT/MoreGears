@@ -7,8 +7,8 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.ShovelItem;
 import net.minecraft.world.item.ToolMaterial;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.component.TooltipDisplay;
@@ -17,9 +17,9 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.function.Consumer;
 
-public class BronzeShovel extends ShovelItem {
+public class BronzeShovel extends Item {
     public BronzeShovel(ToolMaterial material, float attackDamage, float attackSpeed, Properties properties) {
-        super(material, attackDamage, attackSpeed, properties);
+        super(properties.shovel(material, attackDamage, attackSpeed));
     }
 
     @Override

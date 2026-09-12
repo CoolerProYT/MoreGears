@@ -1,7 +1,7 @@
 {
-  "asset_name": "titanium",
   "description": {
     "color": "#9E6590",
     "translate": "trim_material.moregears.titanium"
-  }
+  },
+  "palette_id": "moregears:trim/titanium"
 }

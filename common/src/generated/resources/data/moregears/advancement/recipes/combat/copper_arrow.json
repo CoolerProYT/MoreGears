@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "moregears:copper_arrow"
+        "recipes": "moregears:copper_arrow"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

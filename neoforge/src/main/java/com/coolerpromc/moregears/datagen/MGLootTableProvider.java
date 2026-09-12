@@ -11,7 +11,7 @@ import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 
 public class MGLootTableProvider extends LootTableProvider {
-    public MGLootTableProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
-        super(output, Set.of(), List.of(new SubProviderEntry(MGBlockLootTables::new, LootContextParamSets.BLOCK)), registries);
+    public MGLootTableProvider() {
+        super(Set.of(), List.of(new SubProviderEntry(MGBlockLootTables::new, LootContextParamSets.BLOCK)));
     }
 }

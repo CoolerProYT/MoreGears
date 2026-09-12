@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:titanium_upgrade_smithing_template_from_netherite_smithing_template"
+        "recipes": "minecraft:titanium_upgrade_smithing_template_from_netherite_smithing_template"
       },
       "trigger": "minecraft:recipe_unlocked"
     },

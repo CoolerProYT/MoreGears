@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:titanium_ingot_from_smelting_nether_titanium_ore"
+        "recipes": "minecraft:titanium_ingot_from_smelting_nether_titanium_ore"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

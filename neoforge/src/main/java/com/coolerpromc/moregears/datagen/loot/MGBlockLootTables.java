@@ -3,7 +3,6 @@ package com.coolerpromc.moregears.datagen.loot;
 import com.coolerpromc.moregears.MoreGears;
 import com.coolerpromc.moregears.block.MGBlocks;
 import com.coolerpromc.moregears.item.MGItems;
-import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.flag.FeatureFlags;
@@ -14,8 +13,8 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public class MGBlockLootTables extends BlockLootSubProvider {
-    public MGBlockLootTables(HolderLookup.Provider registries) {
-        super(Set.of(), FeatureFlags.REGISTRY.allFlags(), registries);
+    public MGBlockLootTables(Context context) {
+        super(Set.of(), FeatureFlags.REGISTRY.allFlags(), context);
     }
 
     @Override

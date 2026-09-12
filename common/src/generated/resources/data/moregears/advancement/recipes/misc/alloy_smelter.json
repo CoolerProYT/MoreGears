@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "moregears:alloy_smelter"
+        "recipes": "moregears:alloy_smelter"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

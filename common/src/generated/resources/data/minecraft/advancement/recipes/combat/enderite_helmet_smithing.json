@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:enderite_helmet_smithing"
+        "recipes": "minecraft:enderite_helmet_smithing"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

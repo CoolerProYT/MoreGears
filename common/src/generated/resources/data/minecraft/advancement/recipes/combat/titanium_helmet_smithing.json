@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:titanium_helmet_smithing"
+        "recipes": "minecraft:titanium_helmet_smithing"
       },
       "trigger": "minecraft:recipe_unlocked"
     },

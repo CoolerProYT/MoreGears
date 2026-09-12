@@ -1,7 +1,7 @@
 {
-  "asset_name": "tin",
   "description": {
     "color": "#9DC6E0",
     "translate": "trim_material.moregears.tin"
-  }
+  },
+  "palette_id": "moregears:trim/tin"
 }

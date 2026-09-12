@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "moregears:titanium_bow"
+        "recipes": "moregears:titanium_bow"
       },
       "trigger": "minecraft:recipe_unlocked"
     },

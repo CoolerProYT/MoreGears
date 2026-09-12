@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "moregears:steel_sword"
+        "recipes": "moregears:steel_sword"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

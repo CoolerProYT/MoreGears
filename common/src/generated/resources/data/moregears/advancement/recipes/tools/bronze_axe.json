@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "moregears:bronze_axe"
+        "recipes": "moregears:bronze_axe"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

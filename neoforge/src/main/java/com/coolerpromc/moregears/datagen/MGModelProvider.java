@@ -30,7 +30,6 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.equipment.ArmorMaterial;
 import net.minecraft.world.item.equipment.EquipmentAsset;
 import net.minecraft.world.item.equipment.EquipmentAssets;
-import net.minecraft.world.item.equipment.trim.MaterialAssetGroup;
 import net.minecraft.world.item.equipment.trim.TrimMaterial;
 import net.minecraft.world.item.equipment.trim.TrimMaterials;
 import net.minecraft.world.level.block.Block;
@@ -38,6 +37,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Stream;
 
@@ -48,25 +48,35 @@ public class MGModelProvider extends ModelProvider {
     public final Identifier RAW_ORE = itemLocation("template_raw_ore");
     public final Identifier INGOT = itemLocation("template_ingot");
     public final Identifier GEM = itemLocation("template_gem");
-    public static final List<TrimMaterialData> TRIM_MATERIAL_MODELS = List.of(
-            new TrimMaterialData(MaterialAssetGroup.QUARTZ, TrimMaterials.QUARTZ),
-            new TrimMaterialData(MaterialAssetGroup.IRON, TrimMaterials.IRON),
-            new TrimMaterialData(MaterialAssetGroup.NETHERITE, TrimMaterials.NETHERITE),
-            new TrimMaterialData(MaterialAssetGroup.REDSTONE, TrimMaterials.REDSTONE),
-            new TrimMaterialData(MaterialAssetGroup.COPPER, TrimMaterials.COPPER),
-            new TrimMaterialData(MaterialAssetGroup.GOLD, TrimMaterials.GOLD),
-            new TrimMaterialData(MaterialAssetGroup.EMERALD, TrimMaterials.EMERALD),
-            new TrimMaterialData(MaterialAssetGroup.DIAMOND, TrimMaterials.DIAMOND),
-            new TrimMaterialData(MaterialAssetGroup.LAPIS, TrimMaterials.LAPIS),
-            new TrimMaterialData(MaterialAssetGroup.AMETHYST, TrimMaterials.AMETHYST),
-            new TrimMaterialData(MaterialAssetGroup.RESIN, TrimMaterials.RESIN),
-            new TrimMaterialData(MGTrimMaterials.TIN_ASSET_GROUP, MGTrimMaterials.TIN),
-            new TrimMaterialData(MGTrimMaterials.BRONZE_ASSET_GROUP, MGTrimMaterials.BRONZE),
-            new TrimMaterialData(MGTrimMaterials.STEEL_ASSET_GROUP, MGTrimMaterials.STEEL),
-            new TrimMaterialData(MGTrimMaterials.RUBY_ASSET_GROUP, MGTrimMaterials.RUBY),
-            new TrimMaterialData(MGTrimMaterials.TITANIUM_ASSET_GROUP, MGTrimMaterials.TITANIUM),
-            new TrimMaterialData(MGTrimMaterials.ENDERITE_ASSET_GROUP, MGTrimMaterials.ENDERITE)
+    public static final List<MGTrimMaterialData> TRIM_MATERIAL_MODELS = List.of(
+            new MGTrimMaterialData(TrimMaterials.Palette.QUARTZ.suffix(), TrimMaterials.QUARTZ),
+            new MGTrimMaterialData(TrimMaterials.Palette.IRON.suffix(), TrimMaterials.IRON, Map.of(EquipmentAssets.IRON, TrimMaterials.Palette.IRON_DARKER.suffix())),
+            new MGTrimMaterialData(TrimMaterials.Palette.NETHERITE.suffix(), TrimMaterials.NETHERITE, Map.of(EquipmentAssets.NETHERITE, TrimMaterials.Palette.NETHERITE_DARKER.suffix())),
+            new MGTrimMaterialData(TrimMaterials.Palette.REDSTONE.suffix(), TrimMaterials.REDSTONE),
+            new MGTrimMaterialData(TrimMaterials.Palette.COPPER.suffix(), TrimMaterials.COPPER, Map.of(EquipmentAssets.COPPER, TrimMaterials.Palette.COPPER_DARKER.suffix())),
+            new MGTrimMaterialData(TrimMaterials.Palette.GOLD.suffix(), TrimMaterials.GOLD, Map.of(EquipmentAssets.GOLD, TrimMaterials.Palette.GOLD_DARKER.suffix())),
+            new MGTrimMaterialData(TrimMaterials.Palette.EMERALD.suffix(), TrimMaterials.EMERALD),
+            new MGTrimMaterialData(TrimMaterials.Palette.DIAMOND.suffix(), TrimMaterials.DIAMOND, Map.of(EquipmentAssets.DIAMOND, TrimMaterials.Palette.DIAMOND_DARKER.suffix())),
+            new MGTrimMaterialData(TrimMaterials.Palette.LAPIS.suffix(), TrimMaterials.LAPIS),
+            new MGTrimMaterialData(TrimMaterials.Palette.AMETHYST.suffix(), TrimMaterials.AMETHYST),
+            new MGTrimMaterialData(TrimMaterials.Palette.RESIN.suffix(), TrimMaterials.RESIN),
+            new MGTrimMaterialData("tin", MGTrimMaterials.TIN),
+            new MGTrimMaterialData("bronze", MGTrimMaterials.BRONZE),
+            new MGTrimMaterialData("steel", MGTrimMaterials.STEEL),
+            new MGTrimMaterialData("ruby", MGTrimMaterials.RUBY),
+            new MGTrimMaterialData("titanium", MGTrimMaterials.TITANIUM),
+            new MGTrimMaterialData("enderite", MGTrimMaterials.ENDERITE)
     );
+
+    private record MGTrimMaterialData(String suffix, ResourceKey<TrimMaterial> materialKey, Map<ResourceKey<EquipmentAsset>, String> overrides) {
+        MGTrimMaterialData(String suffix, ResourceKey<TrimMaterial> materialKey) {
+            this(suffix, materialKey, Map.of());
+        }
+
+        String suffixFor(ResourceKey<EquipmentAsset> equipmentAsset) {
+            return overrides.getOrDefault(equipmentAsset, suffix);
+        }
+    }
 
     public static final Identifier MOD_TRIM_PREFIX_HELMET = Identifier.fromNamespaceAndPath(MoreGears.MODID, "item/helmet_trim");
     public static final Identifier MOD_TRIM_PREFIX_CHESTPLATE = Identifier.fromNamespaceAndPath(MoreGears.MODID, "item/chestplate_trim");
@@ -239,38 +249,37 @@ public class MGModelProvider extends ModelProvider {
     }
 
     public void generateTrimmableItem(ItemModelGenerators itemModels, Item armorItem, ResourceKey<EquipmentAsset> equipmentAsset, Identifier vanillaTrimLocation, Identifier modTrimLocation, boolean tint) {
-        Identifier Identifier = ModelLocationUtils.getModelLocation(armorItem);
-        Material Identifier1 = TextureMapping.getItemTexture(armorItem);
-        Material Identifier2 = TextureMapping.getItemTexture(armorItem, "_overlay");
+        Identifier modelLocation = ModelLocationUtils.getModelLocation(armorItem);
+        Material itemTexture = TextureMapping.getItemTexture(armorItem);
+        Material overlayLayerTexture = TextureMapping.getItemTexture(armorItem, "_overlay");
         List<SelectItemModel.SwitchCase<ResourceKey<TrimMaterial>>> list = new ArrayList<>(TRIM_MATERIAL_MODELS.size());
 
-        for (TrimMaterialData itemmodelgenerators$trimmaterialdata : TRIM_MATERIAL_MODELS) {
-            Identifier Identifier3 = Identifier.withSuffix("_" + itemmodelgenerators$trimmaterialdata.assets().base().suffix() + "_trim");
-            Material Identifier4 = new Material(MGTrimMaterials.MATERIAL_ASSET_GROUPS.contains(itemmodelgenerators$trimmaterialdata.assets())
-                    ? modTrimLocation.withSuffix("_" + itemmodelgenerators$trimmaterialdata.assets().assetId(equipmentAsset).suffix())
-                    : vanillaTrimLocation.withSuffix("_" + itemmodelgenerators$trimmaterialdata.assets().assetId(equipmentAsset).suffix()));
-            ItemModel.Unbaked itemmodel$unbaked;
+        for (MGTrimMaterialData trimMaterialData : TRIM_MATERIAL_MODELS) {
+            Identifier trimModelLocation = modelLocation.withSuffix("_" + trimMaterialData.suffix() + "_trim");
+            boolean isModTrim = trimMaterialData.materialKey().identifier().getNamespace().equals(MoreGears.MODID);
+            Material trimOverlayTexture = new Material((isModTrim ? modTrimLocation : vanillaTrimLocation).withSuffix("_" + trimMaterialData.suffixFor(equipmentAsset)));
+            ItemModel.Unbaked trimModel;
             if (tint) {
-                itemModels.generateLayeredItem(Identifier3, Identifier1, Identifier2, Identifier4);
-                itemmodel$unbaked = ItemModelUtils.tintedModel(Identifier3, new Dye(-6265536));
+                itemModels.generateLayeredItem(trimModelLocation, itemTexture, overlayLayerTexture, trimOverlayTexture);
+                trimModel = ItemModelUtils.tintedModel(trimModelLocation, new Dye(-6265536));
             } else {
-                itemModels.generateLayeredItem(Identifier3, Identifier1, Identifier4);
-                itemmodel$unbaked = ItemModelUtils.plainModel(Identifier3);
+                itemModels.generateLayeredItem(trimModelLocation, itemTexture, trimOverlayTexture);
+                trimModel = ItemModelUtils.plainModel(trimModelLocation);
             }
 
-            list.add(ItemModelUtils.when(itemmodelgenerators$trimmaterialdata.materialKey(), itemmodel$unbaked));
+            list.add(ItemModelUtils.when(trimMaterialData.materialKey(), trimModel));
         }
 
-        ItemModel.Unbaked itemmodel$unbaked1;
+        ItemModel.Unbaked untrimmedModel;
         if (tint) {
-            ModelTemplates.TWO_LAYERED_ITEM.create(Identifier, TextureMapping.layered(Identifier1, Identifier2), itemModels.modelOutput);
-            itemmodel$unbaked1 = ItemModelUtils.tintedModel(Identifier, new Dye(-6265536));
+            ModelTemplates.TWO_LAYERED_ITEM.create(modelLocation, TextureMapping.layered(itemTexture, overlayLayerTexture), itemModels.modelOutput);
+            untrimmedModel = ItemModelUtils.tintedModel(modelLocation, new Dye(-6265536));
         } else {
-            ModelTemplates.FLAT_ITEM.create(Identifier, TextureMapping.layer0(Identifier1), itemModels.modelOutput);
-            itemmodel$unbaked1 = ItemModelUtils.plainModel(Identifier);
+            ModelTemplates.FLAT_ITEM.create(modelLocation, TextureMapping.layer0(itemTexture), itemModels.modelOutput);
+            untrimmedModel = ItemModelUtils.plainModel(modelLocation);
         }
 
-        itemModels.itemModelOutput.accept(armorItem, ItemModelUtils.select(new TrimMaterialProperty(), itemmodel$unbaked1, list));
+        itemModels.itemModelOutput.accept(armorItem, ItemModelUtils.select(new TrimMaterialProperty(), untrimmedModel, list));
     }
 
     private <T extends Item> void basicItem(ItemModelGenerators itemModels, ItemLikeRegistryHandler<T> item){

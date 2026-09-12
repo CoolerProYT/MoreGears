@@ -3,7 +3,6 @@ package com.coolerpromc.moregears.block.custom;
 import com.coolerpromc.moregears.block.entity.AlloySmelterBlockEntity;
 import com.coolerpromc.moregears.block.entity.MGBlockEntities;
 import com.coolerpromc.moregears.platform.Services;
-import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerPlayer;
@@ -33,11 +32,6 @@ public class AlloySmelterBlock extends BaseEntityBlock {
 
     public AlloySmelterBlock(Properties properties) {
         super(properties);
-    }
-
-    @Override
-    protected MapCodec<? extends BaseEntityBlock> codec() {
-        return simpleCodec(AlloySmelterBlock::new);
     }
 
     @Override

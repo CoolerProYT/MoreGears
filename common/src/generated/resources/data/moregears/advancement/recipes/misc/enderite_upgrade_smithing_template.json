@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "moregears:enderite_upgrade_smithing_template"
+        "recipes": "moregears:enderite_upgrade_smithing_template"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

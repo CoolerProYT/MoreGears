@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "moregears:titanium_upgrade_smithing_template"
+        "recipes": "moregears:titanium_upgrade_smithing_template"
       },
       "trigger": "minecraft:recipe_unlocked"
     },

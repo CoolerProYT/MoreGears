@@ -10,6 +10,7 @@ import com.coolerpromc.moregears.util.MGEnergyStorage;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.Packet;
@@ -27,6 +28,7 @@ import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ItemStackTemplate;
+import net.minecraft.world.item.component.CookingFuel;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.RecipeManager;
 import net.minecraft.world.level.Level;
@@ -34,6 +36,11 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
+import net.minecraft.world.level.storage.loot.LootContext;
+import net.minecraft.world.level.storage.loot.LootParams;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
+import net.minecraft.world.phys.Vec3;
 import org.jspecify.annotations.Nullable;
 
 import java.util.ArrayList;
@@ -57,7 +64,7 @@ public class AlloySmelterBlockEntity extends BlockEntity implements MenuProvider
 
         @Override
         public boolean canPlaceItem(int slot, ItemStack itemStack) {
-            return level.fuelValues().isFuel(itemStack);
+            return itemStack.has(DataComponents.COOKING_FUEL);
         }
     };
 
@@ -210,7 +217,8 @@ public class AlloySmelterBlockEntity extends BlockEntity implements MenuProvider
 
     private void generateEnergy(){
         assert level != null;
-        int burnDuration = level.fuelValues().burnDuration(fuelHandler.getItem(0));
+        ServerLevel serverLevel = (ServerLevel) level;
+        int burnDuration = getBurnDuration(serverLevel, fuelHandler.getItem(0));
         if (burnDuration > 0 && !isBurning){
             maxBurnProgress = Math.max(burnDuration, 0);
         }
@@ -231,6 +239,22 @@ public class AlloySmelterBlockEntity extends BlockEntity implements MenuProvider
             energyStorage.addEnergy(100);
             burnProgress++;
         }
+    }
+
+    private int getBurnDuration(ServerLevel level, ItemStack fuelStack) {
+        CookingFuel fuel = fuelStack.get(DataComponents.COOKING_FUEL);
+        return fuel != null ? fuel.burnTime().get(getLootContext(level), 0) : 0;
+    }
+
+    private LootContext getLootContext(ServerLevel level) {
+        return new LootContext.Builder(
+                new LootParams.Builder(level)
+                        .withParameter(LootContextParams.BLOCK_STATE, this.getBlockState())
+                        .withParameter(LootContextParams.BLOCK_ENTITY, this)
+                        .withParameter(LootContextParams.ORIGIN, Vec3.atCenterOf(this.getBlockPos()))
+                        .withParameter(LootContextParams.CONTAINER, this.fuelHandler)
+                        .create(LootContextParamSets.CONTAINER_PROCESS)
+        ).create(Optional.empty());
     }
 
     private void resetProgress() {
