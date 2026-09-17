@@ -1,0 +1,148 @@
+/* Pixel font for GUI labels and tooltips, the one the old wiki shipped. */
+@font-face {
+  font-family: 'Minecraft';
+  src: url('/fonts/minecraft.otf') format('opentype');
+  font-display: swap;
+}
+
+:root {
+  --vp-c-brand-1: #5a45c9;
+  --vp-c-brand-2: #6a57d6;
+  --vp-c-brand-3: #7b6ae0;
+  --vp-c-brand-soft: rgba(90, 69, 201, 0.14);
+  --vp-home-hero-name-color: transparent;
+  --vp-home-hero-name-background: linear-gradient(115deg, #c46f47 5%, #c9a227 30%, #d4265a 60%, #5a45c9 95%);
+  --vp-home-hero-image-background-image: conic-gradient(from 200deg, #c46f47, #c9a227, #8a8f98, #d4265a, #a879b8, #5a45c9, #c46f47);
+  --vp-home-hero-image-filter: blur(56px) opacity(0.55);
+
+  --mg-font-pixel: 'Minecraft', var(--vp-font-family-mono);
+
+  --mg-slot-bg: #8b8b8b;
+  --mg-slot-dark: #373737;
+  --mg-slot-light: #ffffff;
+
+  --mg-gui-bg: #c6c6c6;
+  --mg-gui-light: #ffffff;
+  --mg-gui-dark: #555555;
+  --mg-gui-edge: #1e1e1e;
+  --mg-gui-text: #3f3f3f;
+  --mg-gui-arrow: #8b8b8b;
+}
+
+.dark {
+  --vp-c-brand-1: #a497f5;
+  --vp-c-brand-2: #8f80ee;
+  --vp-c-brand-3: #7462e3;
+  --vp-c-brand-soft: rgba(164, 151, 245, 0.16);
+
+  --mg-slot-bg: #3b3b44;
+  --mg-slot-dark: #17171c;
+  --mg-slot-light: #5d5d68;
+
+  --mg-gui-bg: #2a2a31;
+  --mg-gui-light: #45454f;
+  --mg-gui-dark: #141418;
+  --mg-gui-edge: #000000;
+  --mg-gui-text: #e4e4ea;
+  --mg-gui-arrow: #6c6c78;
+}
+
+/* Tier colours, taken from the gear itself. */
+.tier-copper { --tier: #c46f47; }
+.tier-bronze { --tier: #c9a227; }
+.tier-steel { --tier: #8a8f98; }
+.tier-ruby { --tier: #d4265a; }
+.tier-netherite { --tier: #4d494d; }
+.tier-titanium { --tier: #a879b8; }
+.tier-enderite { --tier: #5a45c9; }
+
+.dark .tier-netherite { --tier: #8c8490; }
+.dark .tier-enderite { --tier: #8f80ee; }
+
+/* Pixel art stays crisp at any size. */
+.VPHero .image-src,
+.pixelated {
+  image-rendering: pixelated;
+}
+
+.VPHero .image-src {
+  max-width: 300px;
+  max-height: 300px;
+  border-radius: 24px;
+  image-rendering: auto;
+  box-shadow: 0 20px 50px -20px rgba(0, 0, 0, 0.6);
+}
+
+.mg-muted {
+  color: var(--vp-c-text-2);
+  font-size: 0.875em;
+}
+
+/* Tier headings get a coloured marker. */
+.vp-doc h2.tier,
+.vp-doc h3.tier {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.vp-doc h2.tier::before,
+.vp-doc h3.tier::before {
+  content: '';
+  width: 14px;
+  height: 14px;
+  flex: none;
+  border-radius: 3px;
+  background: var(--tier);
+  box-shadow: inset -3px -3px 0 rgba(0, 0, 0, 0.25);
+}
+
+/* Screenshots in a responsive gallery. */
+.mg-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 300px));
+  gap: 12px;
+  margin: 16px 0;
+}
+
+.mg-gallery figure {
+  margin: 0;
+}
+
+.mg-gallery img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 6px 18px -10px rgba(0, 0, 0, 0.5);
+}
+
+.mg-gallery figcaption {
+  margin-top: 4px;
+  font-size: 13px;
+  color: var(--vp-c-text-2);
+  text-align: center;
+}
+
+/* Special effect callouts. */
+.mg-effects {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 10px;
+  margin: 16px 0;
+}
+
+.mg-effect {
+  padding: 12px 14px;
+  border: 1px solid var(--vp-c-divider);
+  border-left: 4px solid var(--tier, var(--vp-c-brand-1));
+  border-radius: 8px;
+  background: var(--vp-c-bg-soft);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.mg-effect strong {
+  display: block;
+  margin-bottom: 2px;
+}
