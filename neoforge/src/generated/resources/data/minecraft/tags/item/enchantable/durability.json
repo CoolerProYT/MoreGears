@@ -4,7 +4,19 @@
     "moregears:bronze_bow",
     "moregears:steel_bow",
     "moregears:ruby_bow",
+    "moregears:echoite_bow",
     "moregears:titanium_bow",
-    "moregears:titanium_mace"
+    "moregears:titanium_mace",
+    "moregears:bronze_shield",
+    "moregears:steel_shield",
+    "moregears:ruby_shield",
+    "moregears:echoite_shield",
+    "moregears:titanium_shield",
+    "moregears:copper_crossbow",
+    "moregears:bronze_crossbow",
+    "moregears:steel_crossbow",
+    "moregears:ruby_crossbow",
+    "moregears:echoite_crossbow",
+    "moregears:titanium_crossbow"
   ]
 }

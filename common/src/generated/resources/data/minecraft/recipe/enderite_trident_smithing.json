@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "moregears:enderite_ingot",
+  "base": "minecraft:trident",
+  "result": {
+    "id": "moregears:enderite_trident"
+  },
+  "template": "moregears:enderite_upgrade_smithing_template"
+}

@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:crafting_special_shielddecoration",
+  "banner": "#minecraft:banners",
+  "result": {
+    "id": "moregears:titanium_shield"
+  },
+  "target": "moregears:titanium_shield"
+}

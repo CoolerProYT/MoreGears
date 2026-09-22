@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:crafting_special_shielddecoration",
+  "banner": "#minecraft:banners",
+  "result": {
+    "id": "moregears:steel_shield"
+  },
+  "target": "moregears:steel_shield"
+}

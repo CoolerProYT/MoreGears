@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/crossbow",
+  "textures": {
+    "layer0": "moregears:item/titanium_crossbow_arrow"
+  }
+}
