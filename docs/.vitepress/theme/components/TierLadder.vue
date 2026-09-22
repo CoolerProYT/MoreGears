@@ -21,6 +21,13 @@ const STEPS = [
   { tier: 'steel', name: 'Steel', material: 'moregears:steel_ingot', how: 'Alloy iron with coal', link: '/gear/tiers#steel' },
   { tier: 'ruby', name: 'Ruby', material: 'moregears:ruby', how: 'Mined deep in the Overworld', link: '/gear/tiers#ruby' },
   {
+    tier: 'echoite',
+    name: 'Echoite',
+    material: 'moregears:echoite_ingot',
+    how: 'Alloy an echo shard with a diamond',
+    link: '/gear/tiers#echoite',
+  },
+  {
     tier: 'netherite',
     name: 'Netherite',
     material: 'minecraft:netherite_ingot',

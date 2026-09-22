@@ -39,6 +39,17 @@ Underwater mining is normally five times slower, so bronze gets you most of the 
 
 The steel spear and armor have neither effect.
 
+## Echoite <Badge type="tip" text="26.3+" /> {.tier .tier-echoite}
+
+<div class="mg-effects">
+  <div class="mg-effect tier-echoite">
+    <strong>Darkness wears off twice as fast</strong>
+    Wear all four echoite armor pieces and any Darkness effect you pick up lasts <b>half as long</b>.
+  </div>
+</div>
+
+Darkness is what a sculk shriek or a warden's sonic boom inflicts, and it normally blinds you for long enough to lose your bearings. A full echoite set halves it, so an ancient city stays dangerous but readable. All four pieces are needed — the tools and weapons have no effect.
+
 ## Titanium {.tier .tier-titanium}
 
 <div class="mg-effects">

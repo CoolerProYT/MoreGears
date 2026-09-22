@@ -13,7 +13,7 @@ More Gears adds six tiers of tools, weapons and armor to Minecraft, plus the ore
 
 <VersionTable />
 
-This wiki follows the latest version. Older versions may be missing newer items like spears and maces. Bows and arrows need Minecraft 1.21.4 or later.
+This wiki follows the latest version. Older versions may be missing newer items, and anything marked <Badge type="tip" text="26.3+" /> needs Minecraft 26.3: that's the whole [echoite tier](/gear/tiers#echoite), plus [shields](/gear/armor#shields), [crossbows](/gear/ranged#crossbows), the [enderite trident and elytra](/gear/tiers#enderite). Spears and maces need 26.1 or later, and bows and arrows need 1.21.4 or later.
 
 ::: info Copper gear
 Minecraft now has its own copper tools and armor, so More Gears no longer adds them. It keeps the copper bow and copper arrows, and makes a full set of vanilla copper armor block lightning.

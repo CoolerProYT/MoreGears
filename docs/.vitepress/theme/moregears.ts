@@ -35,7 +35,20 @@ export interface Ore {
   maxY: number | null
 }
 
-export type WeaponKind = 'sword' | 'pickaxe' | 'shovel' | 'axe' | 'hoe' | 'spear' | 'mace' | 'bow' | 'arrow'
+export type WeaponKind =
+  | 'sword'
+  | 'pickaxe'
+  | 'shovel'
+  | 'axe'
+  | 'hoe'
+  | 'spear'
+  | 'mace'
+  | 'trident'
+  | 'shield'
+  | 'bow'
+  | 'crossbow'
+  | 'arrow'
+  | 'elytra'
 export type ArmorSlot = 'helmet' | 'chestplate' | 'leggings' | 'boots'
 
 interface Gear {
@@ -72,21 +85,36 @@ export const data = raw as unknown as {
   armor: Armor[]
 }
 
-export type Tier = 'copper' | 'bronze' | 'steel' | 'ruby' | 'titanium' | 'enderite'
+export type Tier = 'copper' | 'bronze' | 'steel' | 'ruby' | 'echoite' | 'titanium' | 'enderite'
 
-/** Progression order. Netherite sits between ruby and titanium, which upgrades from it. */
+/** Progression order. Netherite sits between echoite and titanium, which upgrades from it. */
 export const TIERS: { id: Tier; name: string; material: string }[] = [
   { id: 'copper', name: 'Copper', material: 'minecraft:copper_ingot' },
   { id: 'bronze', name: 'Bronze', material: 'moregears:bronze_ingot' },
   { id: 'steel', name: 'Steel', material: 'moregears:steel_ingot' },
   { id: 'ruby', name: 'Ruby', material: 'moregears:ruby' },
+  { id: 'echoite', name: 'Echoite', material: 'moregears:echoite_ingot' },
   { id: 'titanium', name: 'Titanium', material: 'moregears:titanium_ingot' },
   { id: 'enderite', name: 'Enderite', material: 'moregears:enderite_ingot' },
 ]
 
 export const tierName = (tier: string) => TIERS.find((t) => t.id === tier)?.name ?? tier
 
-export const WEAPON_ORDER: WeaponKind[] = ['sword', 'axe', 'pickaxe', 'shovel', 'hoe', 'spear', 'mace', 'bow', 'arrow']
+export const WEAPON_ORDER: WeaponKind[] = [
+  'sword',
+  'axe',
+  'pickaxe',
+  'shovel',
+  'hoe',
+  'spear',
+  'mace',
+  'trident',
+  'shield',
+  'bow',
+  'crossbow',
+  'arrow',
+  'elytra',
+]
 export const ARMOR_ORDER: ArmorSlot[] = ['helmet', 'chestplate', 'leggings', 'boots']
 
 const byTier = (a: Gear, b: Gear) => TIERS.findIndex((t) => t.id === a.tier) - TIERS.findIndex((t) => t.id === b.tier)

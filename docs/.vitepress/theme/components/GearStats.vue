@@ -14,11 +14,12 @@ interface Column {
   hint?: string
 }
 
-const props = withDefaults(defineProps<{ group: 'tools' | 'armor' | 'ranged'; tier?: string }>(), { tier: '' })
+const props = withDefaults(defineProps<{ group: 'tools' | 'armor' | 'ranged' | 'shields'; tier?: string }>(), { tier: '' })
 
 const KINDS: Record<string, WeaponKind[]> = {
-  tools: ['sword', 'axe', 'pickaxe', 'shovel', 'hoe', 'spear', 'mace'],
-  ranged: ['bow', 'arrow'],
+  tools: ['sword', 'axe', 'pickaxe', 'shovel', 'hoe', 'spear', 'mace', 'trident'],
+  ranged: ['bow', 'crossbow', 'arrow'],
+  shields: ['shield'],
 }
 
 const COLUMNS: Record<string, Column[]> = {
@@ -48,8 +49,9 @@ const COLUMNS: Record<string, Column[]> = {
       bar: true,
       hint: 'Base damage before bow power and speed; a vanilla arrow is 2',
     },
-    { key: 'durability', label: 'Bow durability', short: 'Dur', bar: true, hint: 'A vanilla bow has 384' },
+    { key: 'durability', label: 'Durability', short: 'Dur', bar: true, hint: 'A vanilla bow has 384 and a crossbow 465' },
   ],
+  shields: [{ key: 'durability', label: 'Durability', short: 'Dur', bar: true, hint: 'A vanilla shield has 336' }],
 }
 
 const columns = computed(() => COLUMNS[props.group])

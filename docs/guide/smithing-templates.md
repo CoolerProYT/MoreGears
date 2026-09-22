@@ -8,7 +8,7 @@ Titanium and enderite gear isn't crafted from scratch. You upgrade it at a smith
   <div class="mg-effect tier-enderite"><strong>→ Enderite gear</strong>Enderite Upgrade + an enderite ingot.</div>
 </div>
 
-Both templates work on helmets, chestplates, leggings, boots, swords, pickaxes, axes, shovels, hoes, spears and maces. Titanium and enderite bows and arrows are crafted normally, see [Bows & arrows](/gear/ranged).
+Both templates work on helmets, chestplates, leggings, boots, swords, pickaxes, axes, shovels, hoes, spears and maces. The Enderite Upgrade also takes a vanilla **trident** and a vanilla **elytra** <Badge type="tip" text="26.3+" />. Bows, crossbows, arrows and shields are crafted normally, see [Bows & arrows](/gear/ranged) and [Armor](/gear/armor#shields).
 
 ## Titanium Upgrade
 
@@ -30,7 +30,7 @@ Make your first template from a vanilla Netherite Upgrade. After that, duplicate
 
 <ItemSlot id="moregears:enderite_upgrade_smithing_template" size="lg" label />
 
-Upgrades **titanium** gear to enderite.
+Upgrades **titanium** gear to enderite. The trident and elytra <Badge type="tip" text="26.3+" /> are the exceptions: they start from their **vanilla** versions, since there's no titanium one of either.
 
 ### Crafting
 
@@ -44,4 +44,4 @@ Crafting the first Enderite Upgrade uses up a Titanium Upgrade. Duplicate your t
 
 ### Upgrades
 
-<RecipeGrid :ids="['enderite_sword_smithing', 'enderite_pickaxe_smithing', 'enderite_axe_smithing', 'enderite_shovel_smithing', 'enderite_hoe_smithing', 'enderite_spear_smithing', 'enderite_mace_smithing', 'enderite_helmet_smithing', 'enderite_chestplate_smithing', 'enderite_leggings_smithing', 'enderite_boots_smithing']" />
+<RecipeGrid :ids="['enderite_sword_smithing', 'enderite_pickaxe_smithing', 'enderite_axe_smithing', 'enderite_shovel_smithing', 'enderite_hoe_smithing', 'enderite_spear_smithing', 'enderite_mace_smithing', 'enderite_trident_smithing', 'enderite_elytra_smithing', 'enderite_helmet_smithing', 'enderite_chestplate_smithing', 'enderite_leggings_smithing', 'enderite_boots_smithing']" />

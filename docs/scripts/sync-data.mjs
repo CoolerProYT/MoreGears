@@ -207,6 +207,13 @@ for (const chunk of java('item/MGItems.java').split('public static final').slice
   const bow = /new BowItem/.test(chunk) ? chunk.match(/durability\(([\w.]+)\)/) : null
   const arrow = chunk.match(/new MGArrowItem\(\s*properties,\s*([\d.]+)[dD]?/)
   const armorPiece = chunk.match(/new (\w+)Armor\(\s*ArmorType\.(\w+)/)
+  // Shields and crossbows take their durability from the shared property helpers.
+  const shield = chunk.match(/new MGShieldItem\(\s*shieldProperties\(properties,\s*([\w.]+)\)/)
+  const crossbow = chunk.match(/new CrossbowItem\(\s*crossbowProperties\(properties,\s*([\w.]+)\)/)
+  const trident = /new MGTridentItem\(/.test(chunk)
+    ? chunk.match(/BASE_ATTACK_DAMAGE_ID,\s*([\d.]+),[\s\S]*?BASE_ATTACK_SPEED_ID,\s*([-\d.]+)/)
+    : null
+  const elytra = /DataComponents\.GLIDER/.test(chunk)
 
   if (tool) {
     const material = toolMaterials[tool[3]]
@@ -240,10 +247,26 @@ for (const chunk of java('item/MGItems.java').split('public static final').slice
       speed: round(4 + parseFloat(mace[2])),
       enchantability: material.enchantability,
     })
+  } else if (trident) {
+    const material = toolMaterials.ENDERITE_TIER
+    weapons.push({
+      ...base,
+      kind: 'trident',
+      durability: base.unbreakable ? null : material.durability,
+      damage: round(1 + parseFloat(trident[1])),
+      speed: round(4 + parseFloat(trident[2])),
+      enchantability: material.enchantability,
+    })
+  } else if (shield) {
+    weapons.push({ ...base, kind: 'shield', durability: base.unbreakable ? null : javaNumber(shield[1]) })
+  } else if (crossbow) {
+    weapons.push({ ...base, kind: 'crossbow', durability: base.unbreakable ? null : javaNumber(crossbow[1]) })
   } else if (bow) {
     weapons.push({ ...base, kind: 'bow', durability: base.unbreakable ? null : javaNumber(bow[1]) })
   } else if (arrow) {
     weapons.push({ ...base, kind: 'arrow', damage: parseFloat(arrow[1]) })
+  } else if (elytra) {
+    weapons.push({ ...base, kind: 'elytra', durability: base.unbreakable ? null : javaNumber(chunk.match(/durability\(([\w.]+)\)/)?.[1] ?? '0') })
   } else if (armorPiece) {
     const source = java(`armor/custom/${armorPiece[1]}Armor.java`)
     const material = armorMaterials[tier]

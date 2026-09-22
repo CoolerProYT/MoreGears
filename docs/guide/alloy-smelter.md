@@ -50,7 +50,9 @@ On NeoForge, pipes and hoppers can't insert ingredients through the sides, so ad
 
 ## Recipes
 
-<RecipeGrid :ids="['alloy_smelting/bronze_ingot_from_alloy_smelting', 'alloy_smelting/steel_ingot_from_alloy_smelting']" />
+<RecipeGrid :ids="['alloy_smelting/bronze_ingot_from_alloy_smelting', 'alloy_smelting/steel_ingot_from_alloy_smelting', 'alloy_smelting/echoite_ingot_from_alloy_smelting']" />
+
+Echoite <Badge type="tip" text="26.3+" /> needs an echo shard, which only comes from ancient city loot chests, so it's the one alloy you have to go looking for.
 
 JEI and REI both show these under their own Alloy Smelting category.
 

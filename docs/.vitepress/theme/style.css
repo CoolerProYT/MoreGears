@@ -52,12 +52,14 @@
 .tier-bronze { --tier: #c9a227; }
 .tier-steel { --tier: #8a8f98; }
 .tier-ruby { --tier: #d4265a; }
+.tier-echoite { --tier: #1f8f88; }
 .tier-netherite { --tier: #4d494d; }
 .tier-titanium { --tier: #a879b8; }
 .tier-enderite { --tier: #5a45c9; }
 
 .dark .tier-netherite { --tier: #8c8490; }
 .dark .tier-enderite { --tier: #8f80ee; }
+.dark .tier-echoite { --tier: #3ec9bf; }
 
 /* Pixel art stays crisp at any size. */
 .VPHero .image-src,

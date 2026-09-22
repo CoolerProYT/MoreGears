@@ -22,6 +22,12 @@ Special effects, the version table (`.vitepress/theme/components/VersionTable.vu
 
 Item icons load from `https://storage.googleapis.com/coolerpromc/textures/`: `minecraft/<item>.png` for vanilla and `moregears/<item>.png` for the mod, 1024×1024 with nearest-neighbour scaling. Textures aren't copied into the site, so upload a new item's texture there before it shows up. Block items have no flat texture, so their icons are 3D renders committed in `public/icons/` and uploaded under the same names.
 
+Shields are in the same boat: the game draws them with a special renderer from the entity texture rather than a flat sprite. `scripts/render-shield-icons.py` renders one icon per `*_base_nopattern.png` in the mod's `textures/entity/shield/`, using the vanilla shield model, the item's `gui` display transform and the item shader's lighting, so they match the inventory. Run it after adding a tier, then upload the new icons under the same names.
+
+```bash
+python scripts/render-shield-icons.py   # needs pillow
+```
+
 ## Publishing
 
 `.github/workflows/docs.yml` builds the site and deploys it to GitHub Pages. See the comments in that file for setup.
