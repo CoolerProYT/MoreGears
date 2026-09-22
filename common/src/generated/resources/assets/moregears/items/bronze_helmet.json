@@ -110,6 +110,13 @@
       {
         "model": {
           "type": "minecraft:model",
+          "model": "moregears:item/bronze_helmet_echoite_trim"
+        },
+        "when": "moregears:echoite"
+      },
+      {
+        "model": {
+          "type": "minecraft:model",
           "model": "moregears:item/bronze_helmet_titanium_trim"
         },
         "when": "moregears:titanium"

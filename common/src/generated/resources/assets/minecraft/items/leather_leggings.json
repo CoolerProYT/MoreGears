@@ -110,6 +110,13 @@
       {
         "model": {
           "type": "minecraft:model",
+          "model": "minecraft:item/leather_leggings_echoite_trim"
+        },
+        "when": "moregears:echoite"
+      },
+      {
+        "model": {
+          "type": "minecraft:model",
           "model": "minecraft:item/leather_leggings_titanium_trim"
         },
         "when": "moregears:titanium"
