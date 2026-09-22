@@ -6,6 +6,8 @@ import com.coolerpromc.moregears.armor.custom.*;
 import com.coolerpromc.moregears.entity.MGEntities;
 import com.coolerpromc.moregears.item.custom.MGArrowItem;
 import com.coolerpromc.moregears.item.custom.MGMaceItem;
+import com.coolerpromc.moregears.item.custom.MGShieldItem;
+import com.coolerpromc.moregears.item.custom.MGTridentItem;
 import com.coolerpromc.moregears.platform.Services;
 import com.coolerpromc.moregears.platform.util.ItemLikeRegistryHandler;
 import com.coolerpromc.moregears.tool.MGToolMaterials;
@@ -15,16 +17,33 @@ import com.coolerpromc.moregears.tool.bronze.BronzePickaxe;
 import com.coolerpromc.moregears.tool.bronze.BronzeShovel;
 import com.coolerpromc.moregears.tool.steel.*;
 import com.coolerpromc.moregears.trim.MGTrimMaterials;
+import com.coolerpromc.moregears.util.MGTags;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.util.Unit;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.EquipmentSlotGroup;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.*;
+import net.minecraft.world.item.component.BlocksAttacks;
+import net.minecraft.world.item.component.ChargedProjectiles;
+import net.minecraft.world.item.component.ItemAttributeModifiers;
+import net.minecraft.world.item.component.Tool;
 import net.minecraft.world.item.component.Weapon;
 import net.minecraft.world.item.equipment.ArmorType;
+import net.minecraft.world.item.equipment.EquipmentAsset;
+import net.minecraft.world.item.equipment.EquipmentAssets;
+import net.minecraft.world.item.equipment.Equippable;
+import net.minecraft.world.level.block.entity.BannerPatternLayers;
 
 import java.util.List;
+import java.util.Optional;
 
 public class MGItems {
     public static final ItemLikeRegistryHandler<Item> RAW_TIN = Services.REGISTRY.registerItem("raw_tin", Item::new);
@@ -38,6 +57,7 @@ public class MGItems {
     public static final ItemLikeRegistryHandler<Item> BRONZE_INGOT = Services.REGISTRY.registerItem("bronze_ingot", properties -> new Item(properties.trimMaterial(MGTrimMaterials.BRONZE)));
     public static final ItemLikeRegistryHandler<Item> STEEL_INGOT = Services.REGISTRY.registerItem("steel_ingot", properties -> new Item(properties.trimMaterial(MGTrimMaterials.STEEL)));
     public static final ItemLikeRegistryHandler<Item> RUBY_INGOT = Services.REGISTRY.registerItem("ruby", properties -> new Item(properties.trimMaterial(MGTrimMaterials.RUBY)));
+    public static final ItemLikeRegistryHandler<Item> ECHOITE_INGOT = Services.REGISTRY.registerItem("echoite_ingot", properties -> new Item(properties.trimMaterial(MGTrimMaterials.ECHOITE)));
     public static final ItemLikeRegistryHandler<Item> TITANIUM_INGOT = Services.REGISTRY.registerItem("titanium_ingot", properties -> new Item(properties.trimMaterial(MGTrimMaterials.TITANIUM)));
     public static final ItemLikeRegistryHandler<Item> ENDERITE_INGOT = Services.REGISTRY.registerItem("enderite_ingot", properties -> new Item(properties.trimMaterial(MGTrimMaterials.ENDERITE)));
 
@@ -54,6 +74,7 @@ public class MGItems {
     public static final ItemLikeRegistryHandler<Item> BRONZE_SPEAR = Services.REGISTRY.registerItem("bronze_spear", properties -> new Item(properties
             .spear(MGToolMaterials.BRONZE_TIER, 0.9F, 0.89F, 0.625F, 3.5F, 8.5F, 7.5F, 5.1F, 11.875F, 4.6F))
     );
+    public static final ItemLikeRegistryHandler<ShieldItem> BRONZE_SHIELD = Services.REGISTRY.registerItem("bronze_shield", properties -> new MGShieldItem(shieldProperties(properties, 400).repairable(MGTags.Items.INGOTS_BRONZE)));
 
     public static final ItemLikeRegistryHandler<MGArmorItem> STEEL_HELMET = Services.REGISTRY.registerItem("steel_helmet", properties -> new SteelArmor(ArmorType.HELMET, properties));
     public static final ItemLikeRegistryHandler<MGArmorItem> STEEL_CHESTPLATE = Services.REGISTRY.registerItem("steel_chestplate", properties -> new SteelArmor(ArmorType.CHESTPLATE, properties));
@@ -68,6 +89,7 @@ public class MGItems {
     public static final ItemLikeRegistryHandler<Item> STEEL_SPEAR = Services.REGISTRY.registerItem("steel_spear", properties -> new Item(properties
             .spear(MGToolMaterials.STEEL_TIER, 0.98F, 1F, 0.57F, 2.65F, 7.85F, 6.67F, 5.1F, 10.8F, 4.6F))
     );
+    public static final ItemLikeRegistryHandler<ShieldItem> STEEL_SHIELD = Services.REGISTRY.registerItem("steel_shield", properties -> new MGShieldItem(shieldProperties(properties, 550).repairable(MGTags.Items.INGOTS_STEEL)));
 
     public static final ItemLikeRegistryHandler<MGArmorItem> RUBY_HELMET = Services.REGISTRY.registerItem("ruby_helmet", properties -> new RubyArmor(ArmorType.HELMET, properties));
     public static final ItemLikeRegistryHandler<MGArmorItem> RUBY_CHESTPLATE = Services.REGISTRY.registerItem("ruby_chestplate", properties -> new RubyArmor(ArmorType.CHESTPLATE, properties));
@@ -82,6 +104,22 @@ public class MGItems {
     public static final ItemLikeRegistryHandler<Item> RUBY_SPEAR = Services.REGISTRY.registerItem("ruby_spear", properties -> new Item(properties
             .spear(MGToolMaterials.RUBY_TIER, 1.02F, 1.04F, 0.53F, 2.75F, 7.65F, 6.58F, 5.1F, 10.4F, 4.6F))
     );
+    public static final ItemLikeRegistryHandler<ShieldItem> RUBY_SHIELD = Services.REGISTRY.registerItem("ruby_shield", properties -> new MGShieldItem(shieldProperties(properties, 700).repairable(MGTags.Items.GEMS_RUBY)));
+
+    public static final ItemLikeRegistryHandler<MGArmorItem> ECHOITE_HELMET = Services.REGISTRY.registerItem("echoite_helmet", properties -> new EchoiteArmor(ArmorType.HELMET, properties));
+    public static final ItemLikeRegistryHandler<MGArmorItem> ECHOITE_CHESTPLATE = Services.REGISTRY.registerItem("echoite_chestplate", properties -> new EchoiteArmor(ArmorType.CHESTPLATE, properties));
+    public static final ItemLikeRegistryHandler<MGArmorItem> ECHOITE_LEGGINGS = Services.REGISTRY.registerItem("echoite_leggings", properties -> new EchoiteArmor(ArmorType.LEGGINGS, properties));
+    public static final ItemLikeRegistryHandler<MGArmorItem> ECHOITE_BOOTS = Services.REGISTRY.registerItem("echoite_boots", properties -> new EchoiteArmor(ArmorType.BOOTS, properties));
+
+    public static final ItemLikeRegistryHandler<Item> ECHOITE_SWORD = Services.REGISTRY.registerItem("echoite_sword", properties -> new Item(properties.sword(MGToolMaterials.ECHOITE_TIER, 4, -1.95F)));
+    public static final ItemLikeRegistryHandler<Item> ECHOITE_PICKAXE = Services.REGISTRY.registerItem("echoite_pickaxe", properties -> new Item(properties.pickaxe(MGToolMaterials.ECHOITE_TIER, 1.5f, -2.4f)));
+    public static final ItemLikeRegistryHandler<Item> ECHOITE_SHOVEL = Services.REGISTRY.registerItem("echoite_shovel", properties -> new Item(properties.shovel(MGToolMaterials.ECHOITE_TIER, 1.75f, -2.5f)));
+    public static final ItemLikeRegistryHandler<Item> ECHOITE_AXE = Services.REGISTRY.registerItem("echoite_axe", properties -> new Item(properties.axe(MGToolMaterials.ECHOITE_TIER, 5, -2.7f)));
+    public static final ItemLikeRegistryHandler<Item> ECHOITE_HOE = Services.REGISTRY.registerItem("echoite_hoe", properties -> new Item(properties.hoe(MGToolMaterials.ECHOITE_TIER, -2.5f, 0f)));
+    public static final ItemLikeRegistryHandler<Item> ECHOITE_SPEAR = Services.REGISTRY.registerItem("echoite_spear", properties -> new Item(properties
+            .spear(MGToolMaterials.ECHOITE_TIER, 1.135F, 1.1825F, 0.415F, 2.375F, 7.075F, 5.54F, 5.1F, 8.95F, 4.6F))
+    );
+    public static final ItemLikeRegistryHandler<ShieldItem> ECHOITE_SHIELD = Services.REGISTRY.registerItem("echoite_shield", properties -> new MGShieldItem(shieldProperties(properties, 850).repairable(MGTags.Items.INGOTS_ECHOITE)));
 
     public static final ItemLikeRegistryHandler<MGArmorItem> TITANIUM_HELMET = Services.REGISTRY.registerItem("titanium_helmet", properties -> new TitaniumArmor(ArmorType.HELMET, properties));
     public static final ItemLikeRegistryHandler<MGArmorItem> TITANIUM_CHESTPLATE = Services.REGISTRY.registerItem("titanium_chestplate", properties -> new TitaniumArmor(ArmorType.CHESTPLATE, properties));
@@ -105,6 +143,7 @@ public class MGItems {
             .enchantable(MGToolMaterials.TITANIUM_TIER.enchantmentValue())
             .component(DataComponents.WEAPON, new Weapon(2))
     ));
+    public static final ItemLikeRegistryHandler<ShieldItem> TITANIUM_SHIELD = Services.REGISTRY.registerItem("titanium_shield", properties -> new MGShieldItem(shieldProperties(properties, 1000).repairable(MGTags.Items.INGOTS_TITANIUM).fireResistant()));
 
     public static final ItemLikeRegistryHandler<MGArmorItem> ENDERITE_HELMET = Services.REGISTRY.registerItem("enderite_helmet", properties -> new EnderiteArmor(ArmorType.HELMET, properties));
     public static final ItemLikeRegistryHandler<MGArmorItem> ENDERITE_CHESTPLATE = Services.REGISTRY.registerItem("enderite_chestplate", properties -> new EnderiteArmor(ArmorType.CHESTPLATE, properties));
@@ -132,6 +171,36 @@ public class MGItems {
             .attributes(MGMaceItem.createAttributes(MGToolMaterials.ENDERITE_TIER, -1.4f))
             .enchantable(MGToolMaterials.ENDERITE_TIER.enchantmentValue())
             .component(DataComponents.WEAPON, new Weapon(3))
+    ));
+    public static final ItemLikeRegistryHandler<ShieldItem> ENDERITE_SHIELD = Services.REGISTRY.registerItem("enderite_shield", properties -> new MGShieldItem(shieldProperties(properties, Integer.MAX_VALUE).repairable(MGTags.Items.INGOTS_ENDERITE).fireResistant().component(DataComponents.UNBREAKABLE, Unit.INSTANCE)));
+
+    public static final ItemLikeRegistryHandler<Item> ENDERITE_TRIDENT = Services.REGISTRY.registerItem("enderite_trident", properties -> new MGTridentItem(properties
+            .fireResistant()
+            .rarity(Rarity.EPIC)
+            .component(DataComponents.UNBREAKABLE, Unit.INSTANCE)
+            .attributes(ItemAttributeModifiers.builder()
+                    .add(Attributes.ATTACK_DAMAGE, new AttributeModifier(Item.BASE_ATTACK_DAMAGE_ID, 9.0, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND)
+                    .add(Attributes.ATTACK_SPEED, new AttributeModifier(Item.BASE_ATTACK_SPEED_ID, -2.6F, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND)
+                    .build())
+            .component(DataComponents.TOOL, new Tool(List.of(), 1.0F, 2, false))
+            .enchantable(MGToolMaterials.ENDERITE_TIER.enchantmentValue())
+            .component(DataComponents.WEAPON, new Weapon(1)),
+        MGEntities.ENDERITE_TRIDENT::get
+    ));
+
+    public static final ResourceKey<EquipmentAsset> ENDERITE_ELYTRA_ASSET = ResourceKey.create(EquipmentAssets.ROOT_ID, Constants.id("enderite_elytra"));
+
+    public static final ItemLikeRegistryHandler<Item> ENDERITE_ELYTRA = Services.REGISTRY.registerItem("enderite_elytra", properties -> new Item(properties
+            .durability(Integer.MAX_VALUE)
+            .fireResistant()
+            .rarity(Rarity.EPIC)
+            .component(DataComponents.UNBREAKABLE, Unit.INSTANCE)
+            .component(DataComponents.GLIDER, Unit.INSTANCE)
+            .component(DataComponents.EQUIPPABLE, Equippable.builder(EquipmentSlot.CHEST)
+                    .setEquipSound(SoundEvents.ARMOR_EQUIP_ELYTRA)
+                    .setAsset(ENDERITE_ELYTRA_ASSET)
+                    .setDamageOnHurt(false)
+                    .build())
     ));
 
     public static final ItemLikeRegistryHandler<SmithingTemplateItem> TITANIUM_UPGRADE_SMITHING_TEMPLATE = Services.REGISTRY.registerItem("titanium_upgrade_smithing_template", properties -> new SmithingTemplateItem(
@@ -170,7 +239,9 @@ public class MGItems {
                     Identifier.withDefaultNamespace("container/slot/sword"),
                     Identifier.withDefaultNamespace("container/slot/shovel"),
                     Identifier.withDefaultNamespace("container/slot/pickaxe"),
-                    Identifier.fromNamespaceAndPath(Constants.MODID, "container/slot/mace")
+                    Identifier.fromNamespaceAndPath(Constants.MODID, "container/slot/mace"),
+                    Identifier.fromNamespaceAndPath(Constants.MODID, "container/slot/elytra"),
+                    Identifier.fromNamespaceAndPath(Constants.MODID, "container/slot/trident")
             ),
             List.of(Identifier.withDefaultNamespace("container/slot/ingot")),
             properties
@@ -180,6 +251,7 @@ public class MGItems {
     public static final ItemLikeRegistryHandler<MGArrowItem> BRONZE_ARROW = Services.REGISTRY.registerItem("bronze_arrow", properties -> new MGArrowItem(properties, 2.5D, MGEntities.BRONZE_ARROW.get()));
     public static final ItemLikeRegistryHandler<MGArrowItem> STEEL_ARROW = Services.REGISTRY.registerItem("steel_arrow", properties -> new MGArrowItem(properties, 3.0D, MGEntities.STEEL_ARROW.get()));
     public static final ItemLikeRegistryHandler<MGArrowItem> RUBY_ARROW = Services.REGISTRY.registerItem("ruby_arrow", properties -> new MGArrowItem(properties, 3.5D, MGEntities.RUBY_ARROW.get()));
+    public static final ItemLikeRegistryHandler<MGArrowItem> ECHOITE_ARROW = Services.REGISTRY.registerItem("echoite_arrow", properties -> new MGArrowItem(properties, 4.0D, MGEntities.ECHOITE_ARROW.get()));
     public static final ItemLikeRegistryHandler<MGArrowItem> TITANIUM_ARROW = Services.REGISTRY.registerItem("titanium_arrow", properties -> new MGArrowItem(properties, 4.5D, MGEntities.TITANIUM_ARROW.get()));
     public static final ItemLikeRegistryHandler<MGArrowItem> ENDERITE_ARROW = Services.REGISTRY.registerItem("enderite_arrow", properties -> new MGArrowItem(properties, 5.0D, MGEntities.ENDERITE_ARROW.get()));
 
@@ -187,9 +259,43 @@ public class MGItems {
     public static final ItemLikeRegistryHandler<BowItem> BRONZE_BOW = Services.REGISTRY.registerItem("bronze_bow", properties -> new BowItem(properties.durability(789).enchantable(1)));
     public static final ItemLikeRegistryHandler<BowItem> STEEL_BOW = Services.REGISTRY.registerItem("steel_bow", properties -> new BowItem(properties.durability(1115).enchantable(1)));
     public static final ItemLikeRegistryHandler<BowItem> RUBY_BOW = Services.REGISTRY.registerItem("ruby_bow", properties -> new BowItem(properties.durability(1442).enchantable(1)));
+    public static final ItemLikeRegistryHandler<BowItem> ECHOITE_BOW = Services.REGISTRY.registerItem("echoite_bow", properties -> new BowItem(properties.durability(1600).enchantable(1)));
     public static final ItemLikeRegistryHandler<BowItem> TITANIUM_BOW = Services.REGISTRY.registerItem("titanium_bow", properties -> new BowItem(properties.durability(1763).enchantable(1)));
     public static final ItemLikeRegistryHandler<BowItem> ENDERITE_BOW = Services.REGISTRY.registerItem("enderite_bow", properties -> new BowItem(properties.fireResistant().durability(Integer.MAX_VALUE).enchantable(1).component(DataComponents.UNBREAKABLE, Unit.INSTANCE)));
-    
+
+    public static final ItemLikeRegistryHandler<CrossbowItem> COPPER_CROSSBOW = Services.REGISTRY.registerItem("copper_crossbow", properties -> new CrossbowItem(crossbowProperties(properties, 520)));
+    public static final ItemLikeRegistryHandler<CrossbowItem> BRONZE_CROSSBOW = Services.REGISTRY.registerItem("bronze_crossbow", properties -> new CrossbowItem(crossbowProperties(properties, 789)));
+    public static final ItemLikeRegistryHandler<CrossbowItem> STEEL_CROSSBOW = Services.REGISTRY.registerItem("steel_crossbow", properties -> new CrossbowItem(crossbowProperties(properties, 1115)));
+    public static final ItemLikeRegistryHandler<CrossbowItem> RUBY_CROSSBOW = Services.REGISTRY.registerItem("ruby_crossbow", properties -> new CrossbowItem(crossbowProperties(properties, 1442)));
+    public static final ItemLikeRegistryHandler<CrossbowItem> ECHOITE_CROSSBOW = Services.REGISTRY.registerItem("echoite_crossbow", properties -> new CrossbowItem(crossbowProperties(properties, 1600)));
+    public static final ItemLikeRegistryHandler<CrossbowItem> TITANIUM_CROSSBOW = Services.REGISTRY.registerItem("titanium_crossbow", properties -> new CrossbowItem(crossbowProperties(properties, 1763)));
+    public static final ItemLikeRegistryHandler<CrossbowItem> ENDERITE_CROSSBOW = Services.REGISTRY.registerItem("enderite_crossbow", properties -> new CrossbowItem(crossbowProperties(properties, Integer.MAX_VALUE).fireResistant().component(DataComponents.UNBREAKABLE, Unit.INSTANCE)));
+
+    private static Item.Properties shieldProperties(Item.Properties properties, int durability) {
+        return properties
+                .durability(durability)
+                .component(DataComponents.BANNER_PATTERNS, BannerPatternLayers.EMPTY)
+                .equippableUnswappable(EquipmentSlot.OFFHAND)
+                .delayedComponent(DataComponents.BLOCKS_ATTACKS, context -> new BlocksAttacks(
+                        0.25F,
+                        1.0F,
+                        List.of(new BlocksAttacks.DamageReduction(90.0F, Optional.empty(), 0.0F, 1.0F)),
+                        new BlocksAttacks.ItemDamageFunction(3.0F, 1.0F, 1.0F),
+                        Optional.of(context.getOrThrow(DamageTypeTags.BYPASSES_SHIELD)),
+                        Optional.of(SoundEvents.SHIELD_BLOCK),
+                        Optional.of(SoundEvents.SHIELD_BREAK)
+                ))
+                .component(DataComponents.BREAK_SOUND, SoundEvents.SHIELD_BREAK);
+    }
+
+    private static Item.Properties crossbowProperties(Item.Properties properties, int durability) {
+        return properties
+                .stacksTo(1)
+                .durability(durability)
+                .component(DataComponents.CHARGED_PROJECTILES, ChargedProjectiles.EMPTY)
+                .enchantable(1);
+    }
+
     public static void load() {
     }
 }

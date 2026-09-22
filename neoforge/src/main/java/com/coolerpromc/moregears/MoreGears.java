@@ -2,9 +2,12 @@ package com.coolerpromc.moregears;
 
 import com.coolerpromc.moregears.entity.MGEntities;
 import com.coolerpromc.moregears.entity.renderer.MGArrowRenderer;
+import com.coolerpromc.moregears.entity.renderer.MGThrownTridentRenderer;
 import com.coolerpromc.moregears.event.MGCopperArmorEvent;
 import com.coolerpromc.moregears.event.MGEnderiteArmorEvent;
 import com.coolerpromc.moregears.item.MGItems;
+import com.coolerpromc.moregears.item.special.MGShieldSpecialRenderer;
+import com.coolerpromc.moregears.item.special.MGTridentSpecialRenderer;
 import com.coolerpromc.moregears.platform.NeoForgeRegistryHelper;
 import com.coolerpromc.moregears.recipe.MGRecipes;
 import com.coolerpromc.moregears.util.Arrow;
@@ -18,6 +21,7 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.client.event.RegisterSelectItemModelPropertyEvent;
+import net.neoforged.neoforge.client.event.RegisterSpecialModelRendererEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.OnDatapackSyncEvent;
 import net.neoforged.neoforge.event.entity.EntityStruckByLightningEvent;
@@ -45,6 +49,7 @@ public class MoreGears
         DispenserBlock.registerProjectileBehavior(MGItems.BRONZE_ARROW);
         DispenserBlock.registerProjectileBehavior(MGItems.STEEL_ARROW);
         DispenserBlock.registerProjectileBehavior(MGItems.RUBY_ARROW);
+        DispenserBlock.registerProjectileBehavior(MGItems.ECHOITE_ARROW);
         DispenserBlock.registerProjectileBehavior(MGItems.TITANIUM_ARROW);
         DispenserBlock.registerProjectileBehavior(MGItems.ENDERITE_ARROW);
     }
@@ -84,13 +89,21 @@ public class MoreGears
             event.registerEntityRenderer(MGEntities.BRONZE_ARROW.get(), context -> new MGArrowRenderer(context, MGArrowRenderer.getTextureLocation("bronze_arrow")));
             event.registerEntityRenderer(MGEntities.STEEL_ARROW.get(), context -> new MGArrowRenderer(context, MGArrowRenderer.getTextureLocation("steel_arrow")));
             event.registerEntityRenderer(MGEntities.RUBY_ARROW.get(), context -> new MGArrowRenderer(context, MGArrowRenderer.getTextureLocation("ruby_arrow")));
+            event.registerEntityRenderer(MGEntities.ECHOITE_ARROW.get(), context -> new MGArrowRenderer(context, MGArrowRenderer.getTextureLocation("echoite_arrow")));
             event.registerEntityRenderer(MGEntities.TITANIUM_ARROW.get(), context -> new MGArrowRenderer(context, MGArrowRenderer.getTextureLocation("titanium_arrow")));
             event.registerEntityRenderer(MGEntities.ENDERITE_ARROW.get(), context -> new MGArrowRenderer(context, MGArrowRenderer.getTextureLocation("enderite_arrow")));
+            event.registerEntityRenderer(MGEntities.ENDERITE_TRIDENT.get(), context -> new MGThrownTridentRenderer(context, MGThrownTridentRenderer.getTextureLocation("enderite_trident")));
         }
 
         @SubscribeEvent
         public static void onRegisterSelectItemModelProperty(RegisterSelectItemModelPropertyEvent event) {
             event.register(Constants.id("select_bow"), Arrow.TYPE);
+        }
+
+        @SubscribeEvent
+        public static void onRegisterSpecialModelRenderer(RegisterSpecialModelRendererEvent event) {
+            event.register(MGShieldSpecialRenderer.TYPE_ID, MGShieldSpecialRenderer.Unbaked.MAP_CODEC);
+            event.register(MGTridentSpecialRenderer.TYPE_ID, MGTridentSpecialRenderer.Unbaked.MAP_CODEC);
         }
     }
 }

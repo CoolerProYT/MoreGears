@@ -30,6 +30,10 @@ public class MGItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
                 MGItems.RUBY_CHESTPLATE.key(),
                 MGItems.RUBY_HELMET.key(),
                 MGItems.RUBY_LEGGINGS.key(),
+                MGItems.ECHOITE_BOOTS.key(),
+                MGItems.ECHOITE_CHESTPLATE.key(),
+                MGItems.ECHOITE_HELMET.key(),
+                MGItems.ECHOITE_LEGGINGS.key(),
                 MGItems.TITANIUM_BOOTS.key(),
                 MGItems.TITANIUM_CHESTPLATE.key(),
                 MGItems.TITANIUM_HELMET.key(),
@@ -53,6 +57,10 @@ public class MGItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
                 MGItems.RUBY_CHESTPLATE.key(),
                 MGItems.RUBY_HELMET.key(),
                 MGItems.RUBY_LEGGINGS.key(),
+                MGItems.ECHOITE_BOOTS.key(),
+                MGItems.ECHOITE_CHESTPLATE.key(),
+                MGItems.ECHOITE_HELMET.key(),
+                MGItems.ECHOITE_LEGGINGS.key(),
                 MGItems.TITANIUM_BOOTS.key(),
                 MGItems.TITANIUM_CHESTPLATE.key(),
                 MGItems.TITANIUM_HELMET.key(),
@@ -76,6 +84,10 @@ public class MGItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
                 MGItems.RUBY_CHESTPLATE.key(),
                 MGItems.RUBY_HELMET.key(),
                 MGItems.RUBY_LEGGINGS.key(),
+                MGItems.ECHOITE_BOOTS.key(),
+                MGItems.ECHOITE_CHESTPLATE.key(),
+                MGItems.ECHOITE_HELMET.key(),
+                MGItems.ECHOITE_LEGGINGS.key(),
                 MGItems.TITANIUM_BOOTS.key(),
                 MGItems.TITANIUM_CHESTPLATE.key(),
                 MGItems.TITANIUM_HELMET.key(),
@@ -90,6 +102,7 @@ public class MGItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
                 MGItems.BRONZE_HELMET.key(),
                 MGItems.STEEL_HELMET.key(),
                 MGItems.RUBY_HELMET.key(),
+                MGItems.ECHOITE_HELMET.key(),
                 MGItems.TITANIUM_HELMET.key(),
                 MGItems.ENDERITE_HELMET.key()
         );
@@ -98,6 +111,7 @@ public class MGItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
                 MGItems.BRONZE_HELMET.key(),
                 MGItems.STEEL_HELMET.key(),
                 MGItems.RUBY_HELMET.key(),
+                MGItems.ECHOITE_HELMET.key(),
                 MGItems.TITANIUM_HELMET.key(),
                 MGItems.ENDERITE_HELMET.key()
         );
@@ -106,6 +120,7 @@ public class MGItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
                 MGItems.BRONZE_CHESTPLATE.key(),
                 MGItems.STEEL_CHESTPLATE.key(),
                 MGItems.RUBY_CHESTPLATE.key(),
+                MGItems.ECHOITE_CHESTPLATE.key(),
                 MGItems.TITANIUM_CHESTPLATE.key(),
                 MGItems.ENDERITE_CHESTPLATE.key()
         );
@@ -114,6 +129,7 @@ public class MGItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
                 MGItems.BRONZE_CHESTPLATE.key(),
                 MGItems.STEEL_CHESTPLATE.key(),
                 MGItems.RUBY_CHESTPLATE.key(),
+                MGItems.ECHOITE_CHESTPLATE.key(),
                 MGItems.TITANIUM_CHESTPLATE.key(),
                 MGItems.ENDERITE_CHESTPLATE.key()
         );
@@ -122,6 +138,7 @@ public class MGItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
                 MGItems.BRONZE_LEGGINGS.key(),
                 MGItems.STEEL_LEGGINGS.key(),
                 MGItems.RUBY_LEGGINGS.key(),
+                MGItems.ECHOITE_LEGGINGS.key(),
                 MGItems.TITANIUM_LEGGINGS.key(),
                 MGItems.ENDERITE_LEGGINGS.key()
         );
@@ -130,6 +147,7 @@ public class MGItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
                 MGItems.BRONZE_LEGGINGS.key(),
                 MGItems.STEEL_LEGGINGS.key(),
                 MGItems.RUBY_LEGGINGS.key(),
+                MGItems.ECHOITE_LEGGINGS.key(),
                 MGItems.TITANIUM_LEGGINGS.key(),
                 MGItems.ENDERITE_LEGGINGS.key()
         );
@@ -138,6 +156,7 @@ public class MGItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
                 MGItems.BRONZE_BOOTS.key(),
                 MGItems.STEEL_BOOTS.key(),
                 MGItems.RUBY_BOOTS.key(),
+                MGItems.ECHOITE_BOOTS.key(),
                 MGItems.TITANIUM_BOOTS.key(),
                 MGItems.ENDERITE_BOOTS.key()
         );
@@ -146,6 +165,7 @@ public class MGItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
                 MGItems.BRONZE_BOOTS.key(),
                 MGItems.STEEL_BOOTS.key(),
                 MGItems.RUBY_BOOTS.key(),
+                MGItems.ECHOITE_BOOTS.key(),
                 MGItems.TITANIUM_BOOTS.key(),
                 MGItems.ENDERITE_BOOTS.key()
         );
@@ -154,6 +174,7 @@ public class MGItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
                 MGItems.BRONZE_SWORD.key(),
                 MGItems.STEEL_SWORD.key(),
                 MGItems.RUBY_SWORD.key(),
+                MGItems.ECHOITE_SWORD.key(),
                 MGItems.TITANIUM_SWORD.key(),
                 MGItems.ENDERITE_SWORD.key()
         );
@@ -162,6 +183,7 @@ public class MGItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
                 MGItems.BRONZE_PICKAXE.key(),
                 MGItems.STEEL_PICKAXE.key(),
                 MGItems.RUBY_PICKAXE.key(),
+                MGItems.ECHOITE_PICKAXE.key(),
                 MGItems.TITANIUM_PICKAXE.key(),
                 MGItems.ENDERITE_PICKAXE.key()
         );
@@ -170,6 +192,7 @@ public class MGItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
                 MGItems.BRONZE_SHOVEL.key(),
                 MGItems.STEEL_SHOVEL.key(),
                 MGItems.RUBY_SHOVEL.key(),
+                MGItems.ECHOITE_SHOVEL.key(),
                 MGItems.TITANIUM_SHOVEL.key(),
                 MGItems.ENDERITE_SHOVEL.key()
         );
@@ -178,6 +201,7 @@ public class MGItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
                 MGItems.BRONZE_AXE.key(),
                 MGItems.STEEL_AXE.key(),
                 MGItems.RUBY_AXE.key(),
+                MGItems.ECHOITE_AXE.key(),
                 MGItems.TITANIUM_AXE.key(),
                 MGItems.ENDERITE_AXE.key()
         );
@@ -186,6 +210,7 @@ public class MGItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
                 MGItems.BRONZE_HOE.key(),
                 MGItems.STEEL_HOE.key(),
                 MGItems.RUBY_HOE.key(),
+                MGItems.ECHOITE_HOE.key(),
                 MGItems.TITANIUM_HOE.key(),
                 MGItems.ENDERITE_HOE.key()
         );
@@ -195,6 +220,9 @@ public class MGItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
 
         this.builder(MGTags.Items.INGOTS_STEEL)
                 .add(MGItems.STEEL_INGOT.key());
+
+        this.builder(MGTags.Items.INGOTS_ECHOITE)
+                .add(MGItems.ECHOITE_INGOT.key());
 
         this.builder(MGTags.Items.INGOTS_TITANIUM)
                 .add(MGItems.TITANIUM_INGOT.key());
@@ -210,6 +238,7 @@ public class MGItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
                 MGItems.BRONZE_ARROW.key(),
                 MGItems.STEEL_ARROW.key(),
                 MGItems.RUBY_ARROW.key(),
+                MGItems.ECHOITE_ARROW.key(),
                 MGItems.TITANIUM_ARROW.key(),
                 MGItems.ENDERITE_ARROW.key()
         );
@@ -219,6 +248,7 @@ public class MGItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
                 MGItems.BRONZE_BOW.key(),
                 MGItems.STEEL_BOW.key(),
                 MGItems.RUBY_BOW.key(),
+                MGItems.ECHOITE_BOW.key(),
                 MGItems.TITANIUM_BOW.key(),
                 MGItems.ENDERITE_BOW.key()
         );
@@ -228,6 +258,7 @@ public class MGItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
                 MGItems.BRONZE_INGOT.key(),
                 MGItems.STEEL_INGOT.key(),
                 MGItems.RUBY_INGOT.key(),
+                MGItems.ECHOITE_INGOT.key(),
                 MGItems.TITANIUM_INGOT.key(),
                 MGItems.ENDERITE_INGOT.key()
         );
@@ -237,9 +268,54 @@ public class MGItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
                 MGItems.BRONZE_BOW.key(),
                 MGItems.STEEL_BOW.key(),
                 MGItems.RUBY_BOW.key(),
+                MGItems.ECHOITE_BOW.key(),
                 MGItems.TITANIUM_BOW.key(),
-                MGItems.TITANIUM_MACE.key()
+                MGItems.TITANIUM_MACE.key(),
+                MGItems.BRONZE_SHIELD.key(),
+                MGItems.STEEL_SHIELD.key(),
+                MGItems.RUBY_SHIELD.key(),
+                MGItems.ECHOITE_SHIELD.key(),
+                MGItems.TITANIUM_SHIELD.key(),
+                MGItems.COPPER_CROSSBOW.key(),
+                MGItems.BRONZE_CROSSBOW.key(),
+                MGItems.STEEL_CROSSBOW.key(),
+                MGItems.RUBY_CROSSBOW.key(),
+                MGItems.ECHOITE_CROSSBOW.key(),
+                MGItems.TITANIUM_CROSSBOW.key()
         );
+
+        this.builder(ItemTags.CROSSBOW_ENCHANTABLE).add(
+                MGItems.COPPER_CROSSBOW.key(),
+                MGItems.BRONZE_CROSSBOW.key(),
+                MGItems.STEEL_CROSSBOW.key(),
+                MGItems.RUBY_CROSSBOW.key(),
+                MGItems.ECHOITE_CROSSBOW.key(),
+                MGItems.TITANIUM_CROSSBOW.key(),
+                MGItems.ENDERITE_CROSSBOW.key()
+        );
+
+        this.builder(ItemTags.TRIDENT_ENCHANTABLE).add(MGItems.ENDERITE_TRIDENT.key());
+
+        this.builder(ConventionalItemTags.SHIELD_TOOLS).add(
+                MGItems.BRONZE_SHIELD.key(),
+                MGItems.STEEL_SHIELD.key(),
+                MGItems.RUBY_SHIELD.key(),
+                MGItems.ECHOITE_SHIELD.key(),
+                MGItems.TITANIUM_SHIELD.key(),
+                MGItems.ENDERITE_SHIELD.key()
+        );
+
+        this.builder(ConventionalItemTags.CROSSBOW_TOOLS).add(
+                MGItems.COPPER_CROSSBOW.key(),
+                MGItems.BRONZE_CROSSBOW.key(),
+                MGItems.STEEL_CROSSBOW.key(),
+                MGItems.RUBY_CROSSBOW.key(),
+                MGItems.ECHOITE_CROSSBOW.key(),
+                MGItems.TITANIUM_CROSSBOW.key(),
+                MGItems.ENDERITE_CROSSBOW.key()
+        );
+
+        this.builder(ConventionalItemTags.TRIDENT_TOOLS).add(MGItems.ENDERITE_TRIDENT.key());
 
         this.builder(ItemTags.MACE_ENCHANTABLE).add(
                 MGItems.TITANIUM_MACE.key(),
@@ -255,6 +331,7 @@ public class MGItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
                 MGItems.BRONZE_SPEAR.key(),
                 MGItems.STEEL_SPEAR.key(),
                 MGItems.RUBY_SPEAR.key(),
+                MGItems.ECHOITE_SPEAR.key(),
                 MGItems.TITANIUM_SPEAR.key(),
                 MGItems.ENDERITE_SPEAR.key()
         );
@@ -273,10 +350,12 @@ public class MGItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
                 MGItems.BRONZE_SPEAR.key(),
                 MGItems.STEEL_SPEAR.key(),
                 MGItems.RUBY_SPEAR.key(),
+                MGItems.ECHOITE_SPEAR.key(),
                 MGItems.TITANIUM_SPEAR.key(),
                 MGItems.ENDERITE_SPEAR.key(),
                 MGItems.TITANIUM_MACE.key(),
-                MGItems.ENDERITE_MACE.key()
+                MGItems.ENDERITE_MACE.key(),
+                MGItems.ENDERITE_TRIDENT.key()
         );
 
         this.builder(ItemTags.PIGLIN_SAFE_ARMOR).add(

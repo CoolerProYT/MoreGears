@@ -66,6 +66,22 @@ public class MGArmorMaterials {
             0
     );
 
+    public static final ArmorMaterial ECHOITE_ARMOR_MATERIAL = register("echoite",
+            37,
+            Util.make(new EnumMap<>(ArmorType.class), map -> {
+                map.put(ArmorType.BOOTS, 4);
+                map.put(ArmorType.LEGGINGS, 7);
+                map.put(ArmorType.CHESTPLATE, 8);
+                map.put(ArmorType.HELMET, 4);
+                map.put(ArmorType.BODY, 11);
+            }),
+            14,
+            SoundEvents.ARMOR_EQUIP_NETHERITE,
+            MGTags.Items.INGOTS_ECHOITE,
+            2.5f,
+            0.25f
+    );
+
     public static final ArmorMaterial TITANIUM_ARMOR_MATERIAL = register("titanium",
             45,
             Util.make(new EnumMap<>(ArmorType.class), map -> {

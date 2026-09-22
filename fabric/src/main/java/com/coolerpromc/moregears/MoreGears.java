@@ -28,6 +28,7 @@ public class MoreGears implements ModInitializer {
 		DispenserBlock.registerProjectileBehavior(MGItems.BRONZE_ARROW);
 		DispenserBlock.registerProjectileBehavior(MGItems.STEEL_ARROW);
 		DispenserBlock.registerProjectileBehavior(MGItems.RUBY_ARROW);
+		DispenserBlock.registerProjectileBehavior(MGItems.ECHOITE_ARROW);
 		DispenserBlock.registerProjectileBehavior(MGItems.TITANIUM_ARROW);
 		DispenserBlock.registerProjectileBehavior(MGItems.ENDERITE_ARROW);
 

@@ -15,8 +15,16 @@ public class MGEntities {
     public static final RegistryHandler<EntityType<MGArrowEntity>> BRONZE_ARROW = registerArrow("bronze_arrow", () -> MGItems.BRONZE_ARROW);
     public static final RegistryHandler<EntityType<MGArrowEntity>> STEEL_ARROW = registerArrow("steel_arrow", () -> MGItems.STEEL_ARROW);
     public static final RegistryHandler<EntityType<MGArrowEntity>> RUBY_ARROW = registerArrow("ruby_arrow", () -> MGItems.RUBY_ARROW);
+    public static final RegistryHandler<EntityType<MGArrowEntity>> ECHOITE_ARROW = registerArrow("echoite_arrow", () -> MGItems.ECHOITE_ARROW);
     public static final RegistryHandler<EntityType<MGArrowEntity>> TITANIUM_ARROW = registerArrow("titanium_arrow", () -> MGItems.TITANIUM_ARROW);
     public static final RegistryHandler<EntityType<MGArrowEntity>> ENDERITE_ARROW = registerArrow("enderite_arrow", () -> MGItems.ENDERITE_ARROW);
+
+    public static final RegistryHandler<EntityType<MGThrownTridentEntity>> ENDERITE_TRIDENT = Services.REGISTRY.registerEntity(
+            "enderite_trident",
+            MGThrownTridentEntity::new,
+            MobCategory.MISC,
+            builder -> builder.sized(0.5f, 0.5f).clientTrackingRange(4).updateInterval(20)
+    );
 
     public static RegistryHandler<EntityType<MGArrowEntity>> registerArrow(String name, Supplier<ItemLikeRegistryHandler<MGArrowItem>> itemSupplier) {
         return Services.REGISTRY.registerEntity(name, (entityType, level) -> new MGArrowEntity(entityType, level, itemSupplier.get().get().getDefaultInstance()), MobCategory.MISC, builder -> builder.sized(0.5f, 0.5f).clientTrackingRange(4).updateInterval(20));

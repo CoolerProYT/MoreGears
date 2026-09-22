@@ -16,6 +16,7 @@ public class MGTrimMaterials {
     public static final ResourceKey<TrimMaterial> BRONZE = ResourceKey.create(Registries.TRIM_MATERIAL, Constants.id("bronze"));
     public static final ResourceKey<TrimMaterial> STEEL = ResourceKey.create(Registries.TRIM_MATERIAL, Constants.id("steel"));
     public static final ResourceKey<TrimMaterial> RUBY = ResourceKey.create(Registries.TRIM_MATERIAL, Constants.id("ruby"));
+    public static final ResourceKey<TrimMaterial> ECHOITE = ResourceKey.create(Registries.TRIM_MATERIAL, Constants.id("echoite"));
     public static final ResourceKey<TrimMaterial> TITANIUM = ResourceKey.create(Registries.TRIM_MATERIAL, Constants.id("titanium"));
     public static final ResourceKey<TrimMaterial> ENDERITE = ResourceKey.create(Registries.TRIM_MATERIAL, Constants.id("enderite"));
 
@@ -23,6 +24,7 @@ public class MGTrimMaterials {
     public static final Identifier BRONZE_PALETTE = Constants.id("trim/bronze");
     public static final Identifier STEEL_PALETTE = Constants.id("trim/steel");
     public static final Identifier RUBY_PALETTE = Constants.id("trim/ruby");
+    public static final Identifier ECHOITE_PALETTE = Constants.id("trim/echoite");
     public static final Identifier TITANIUM_PALETTE = Constants.id("trim/titanium");
     public static final Identifier ENDERITE_PALETTE = Constants.id("trim/enderite");
 
@@ -31,6 +33,7 @@ public class MGTrimMaterials {
         register(context, BRONZE, Style.EMPTY.withColor(TextColor.parseColor("#f1c232").getOrThrow()), BRONZE_PALETTE);
         register(context, STEEL, Style.EMPTY.withColor(TextColor.parseColor("#6e6b6b").getOrThrow()), STEEL_PALETTE);
         register(context, RUBY, Style.EMPTY.withColor(TextColor.parseColor("#E0115F").getOrThrow()), RUBY_PALETTE);
+        register(context, ECHOITE, Style.EMPTY.withColor(TextColor.parseColor("#3AAFA9").getOrThrow()), ECHOITE_PALETTE);
         register(context, TITANIUM, Style.EMPTY.withColor(TextColor.parseColor("#9e6590").getOrThrow()), TITANIUM_PALETTE);
         register(context, ENDERITE, Style.EMPTY.withColor(TextColor.parseColor("#5D3391").getOrThrow()), ENDERITE_PALETTE);
     }
