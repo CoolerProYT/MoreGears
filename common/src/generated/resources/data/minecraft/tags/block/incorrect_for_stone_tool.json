@@ -4,6 +4,7 @@
     "#moregears:needs_bronze_tool",
     "#moregears:needs_steel_tool",
     "#moregears:needs_ruby_tool",
+    "#moregears:needs_echoite_tool",
     "#moregears:needs_titanium_tool",
     "#moregears:needs_enderite_tool"
   ]

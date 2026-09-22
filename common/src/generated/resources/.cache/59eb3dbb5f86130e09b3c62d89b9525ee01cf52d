@@ -1,8 +1,8 @@
-// 26.2-pre-2	2026-06-03T14:46:51.8895832	Loot Tables
-9d9287848d2e9c6cfd90b899156a1fe895764828 data/moregears/loot_table/blocks/alloy_smelter.json
-8e89ce30e6d53c52ead1f89df52fc3900031ba50 data/moregears/loot_table/blocks/deepslate_ruby_ore.json
-07af11e03506726826845cc06a08888640ae0e44 data/moregears/loot_table/blocks/deepslate_tin_ore.json
-2c3d73405e883400d4577897786a6021c2c97091 data/moregears/loot_table/blocks/end_enderite_ore.json
-b9f694c650943f5f75f28b30a9f47d94473f9f4d data/moregears/loot_table/blocks/nether_titanium_ore.json
-c79cc2fdb5d117e9596f71b1dc0555f23b246362 data/moregears/loot_table/blocks/ruby_ore.json
-12ff2945f5ea5d3148ed87d84bc0208959f94e3c data/moregears/loot_table/blocks/tin_ore.json
+// 26.2	2026-09-22T20:35:20.0436918	Loot Tables
+2b37f7215f6dc46ca5158e01d849b357611d91cb data/moregears/loot_table/blocks/alloy_smelter.json
+1d1b9639ec7cec47643d9b5a2977b3117620384d data/moregears/loot_table/blocks/deepslate_ruby_ore.json
+8cb838b095e1966f153d3c1dde7514ec797f8a61 data/moregears/loot_table/blocks/deepslate_tin_ore.json
+c063add1a0f84abbd3f2f1d9cfbeb28c29ab711a data/moregears/loot_table/blocks/end_enderite_ore.json
+ef74ad7683a1502c3fd121178f501bba07db2f72 data/moregears/loot_table/blocks/nether_titanium_ore.json
+db1fec1a5bcde093d70bac3fa2b88305bfd5cd91 data/moregears/loot_table/blocks/ruby_ore.json
+d87c32f75d29f6320a8efc31c469b6b6bb2e9845 data/moregears/loot_table/blocks/tin_ore.json

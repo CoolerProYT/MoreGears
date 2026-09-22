@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "X": "moregears:echoite_ingot",
+    "s": "minecraft:stick"
+  },
+  "pattern": [
+    "XXX",
+    " s ",
+    " s "
+  ],
+  "result": {
+    "id": "moregears:echoite_pickaxe"
+  }
+}

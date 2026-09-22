@@ -110,6 +110,13 @@
       {
         "model": {
           "type": "minecraft:model",
+          "model": "moregears:item/enderite_boots_echoite_trim"
+        },
+        "when": "moregears:echoite"
+      },
+      {
+        "model": {
+          "type": "minecraft:model",
           "model": "moregears:item/enderite_boots_titanium_trim"
         },
         "when": "moregears:titanium"

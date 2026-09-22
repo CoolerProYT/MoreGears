@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": "minecraft:stick",
+    "$": "minecraft:tripwire_hook",
+    "&": "moregears:titanium_ingot",
+    "~": "minecraft:string"
+  },
+  "pattern": [
+    "#&#",
+    "~$~",
+    " # "
+  ],
+  "result": {
+    "id": "moregears:titanium_crossbow"
+  }
+}
