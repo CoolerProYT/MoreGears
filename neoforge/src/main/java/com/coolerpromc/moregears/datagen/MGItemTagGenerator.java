@@ -32,6 +32,10 @@ public class MGItemTagGenerator extends ItemTagsProvider {
                 MGItems.RUBY_CHESTPLATE.get(),
                 MGItems.RUBY_HELMET.get(),
                 MGItems.RUBY_LEGGINGS.get(),
+                MGItems.ECHOITE_BOOTS.get(),
+                MGItems.ECHOITE_CHESTPLATE.get(),
+                MGItems.ECHOITE_HELMET.get(),
+                MGItems.ECHOITE_LEGGINGS.get(),
                 MGItems.TITANIUM_BOOTS.get(),
                 MGItems.TITANIUM_CHESTPLATE.get(),
                 MGItems.TITANIUM_HELMET.get(),
@@ -55,6 +59,10 @@ public class MGItemTagGenerator extends ItemTagsProvider {
                 MGItems.RUBY_CHESTPLATE.get(),
                 MGItems.RUBY_HELMET.get(),
                 MGItems.RUBY_LEGGINGS.get(),
+                MGItems.ECHOITE_BOOTS.get(),
+                MGItems.ECHOITE_CHESTPLATE.get(),
+                MGItems.ECHOITE_HELMET.get(),
+                MGItems.ECHOITE_LEGGINGS.get(),
                 MGItems.TITANIUM_BOOTS.get(),
                 MGItems.TITANIUM_CHESTPLATE.get(),
                 MGItems.TITANIUM_HELMET.get(),
@@ -78,6 +86,10 @@ public class MGItemTagGenerator extends ItemTagsProvider {
                 MGItems.RUBY_CHESTPLATE.get(),
                 MGItems.RUBY_HELMET.get(),
                 MGItems.RUBY_LEGGINGS.get(),
+                MGItems.ECHOITE_BOOTS.get(),
+                MGItems.ECHOITE_CHESTPLATE.get(),
+                MGItems.ECHOITE_HELMET.get(),
+                MGItems.ECHOITE_LEGGINGS.get(),
                 MGItems.TITANIUM_BOOTS.get(),
                 MGItems.TITANIUM_CHESTPLATE.get(),
                 MGItems.TITANIUM_HELMET.get(),
@@ -92,6 +104,7 @@ public class MGItemTagGenerator extends ItemTagsProvider {
                 MGItems.BRONZE_HELMET.get(),
                 MGItems.STEEL_HELMET.get(),
                 MGItems.RUBY_HELMET.get(),
+                MGItems.ECHOITE_HELMET.get(),
                 MGItems.TITANIUM_HELMET.get(),
                 MGItems.ENDERITE_HELMET.get()
         );
@@ -100,6 +113,7 @@ public class MGItemTagGenerator extends ItemTagsProvider {
                 MGItems.BRONZE_HELMET.get(),
                 MGItems.STEEL_HELMET.get(),
                 MGItems.RUBY_HELMET.get(),
+                MGItems.ECHOITE_HELMET.get(),
                 MGItems.TITANIUM_HELMET.get(),
                 MGItems.ENDERITE_HELMET.get()
         );
@@ -108,6 +122,7 @@ public class MGItemTagGenerator extends ItemTagsProvider {
                 MGItems.BRONZE_CHESTPLATE.get(),
                 MGItems.STEEL_CHESTPLATE.get(),
                 MGItems.RUBY_CHESTPLATE.get(),
+                MGItems.ECHOITE_CHESTPLATE.get(),
                 MGItems.TITANIUM_CHESTPLATE.get(),
                 MGItems.ENDERITE_CHESTPLATE.get()
         );
@@ -116,6 +131,7 @@ public class MGItemTagGenerator extends ItemTagsProvider {
                 MGItems.BRONZE_CHESTPLATE.get(),
                 MGItems.STEEL_CHESTPLATE.get(),
                 MGItems.RUBY_CHESTPLATE.get(),
+                MGItems.ECHOITE_CHESTPLATE.get(),
                 MGItems.TITANIUM_CHESTPLATE.get(),
                 MGItems.ENDERITE_CHESTPLATE.get()
         );
@@ -124,6 +140,7 @@ public class MGItemTagGenerator extends ItemTagsProvider {
                 MGItems.BRONZE_LEGGINGS.get(),
                 MGItems.STEEL_LEGGINGS.get(),
                 MGItems.RUBY_LEGGINGS.get(),
+                MGItems.ECHOITE_LEGGINGS.get(),
                 MGItems.TITANIUM_LEGGINGS.get(),
                 MGItems.ENDERITE_LEGGINGS.get()
         );
@@ -132,6 +149,7 @@ public class MGItemTagGenerator extends ItemTagsProvider {
                 MGItems.BRONZE_LEGGINGS.get(),
                 MGItems.STEEL_LEGGINGS.get(),
                 MGItems.RUBY_LEGGINGS.get(),
+                MGItems.ECHOITE_LEGGINGS.get(),
                 MGItems.TITANIUM_LEGGINGS.get(),
                 MGItems.ENDERITE_LEGGINGS.get()
         );
@@ -140,6 +158,7 @@ public class MGItemTagGenerator extends ItemTagsProvider {
                 MGItems.BRONZE_BOOTS.get(),
                 MGItems.STEEL_BOOTS.get(),
                 MGItems.RUBY_BOOTS.get(),
+                MGItems.ECHOITE_BOOTS.get(),
                 MGItems.TITANIUM_BOOTS.get(),
                 MGItems.ENDERITE_BOOTS.get()
         );
@@ -148,6 +167,7 @@ public class MGItemTagGenerator extends ItemTagsProvider {
                 MGItems.BRONZE_BOOTS.get(),
                 MGItems.STEEL_BOOTS.get(),
                 MGItems.RUBY_BOOTS.get(),
+                MGItems.ECHOITE_BOOTS.get(),
                 MGItems.TITANIUM_BOOTS.get(),
                 MGItems.ENDERITE_BOOTS.get()
         );
@@ -156,6 +176,7 @@ public class MGItemTagGenerator extends ItemTagsProvider {
                 MGItems.BRONZE_SWORD.get(),
                 MGItems.STEEL_SWORD.get(),
                 MGItems.RUBY_SWORD.get(),
+                MGItems.ECHOITE_SWORD.get(),
                 MGItems.TITANIUM_SWORD.get(),
                 MGItems.ENDERITE_SWORD.get()
         );
@@ -164,6 +185,7 @@ public class MGItemTagGenerator extends ItemTagsProvider {
                 MGItems.BRONZE_PICKAXE.get(),
                 MGItems.STEEL_PICKAXE.get(),
                 MGItems.RUBY_PICKAXE.get(),
+                MGItems.ECHOITE_PICKAXE.get(),
                 MGItems.TITANIUM_PICKAXE.get(),
                 MGItems.ENDERITE_PICKAXE.get()
         );
@@ -172,6 +194,7 @@ public class MGItemTagGenerator extends ItemTagsProvider {
                 MGItems.BRONZE_SHOVEL.get(),
                 MGItems.STEEL_SHOVEL.get(),
                 MGItems.RUBY_SHOVEL.get(),
+                MGItems.ECHOITE_SHOVEL.get(),
                 MGItems.TITANIUM_SHOVEL.get(),
                 MGItems.ENDERITE_SHOVEL.get()
         );
@@ -180,6 +203,7 @@ public class MGItemTagGenerator extends ItemTagsProvider {
                 MGItems.BRONZE_AXE.get(),
                 MGItems.STEEL_AXE.get(),
                 MGItems.RUBY_AXE.get(),
+                MGItems.ECHOITE_AXE.get(),
                 MGItems.TITANIUM_AXE.get(),
                 MGItems.ENDERITE_AXE.get()
         );
@@ -188,6 +212,7 @@ public class MGItemTagGenerator extends ItemTagsProvider {
                 MGItems.BRONZE_HOE.get(),
                 MGItems.STEEL_HOE.get(),
                 MGItems.RUBY_HOE.get(),
+                MGItems.ECHOITE_HOE.get(),
                 MGItems.TITANIUM_HOE.get(),
                 MGItems.ENDERITE_HOE.get()
         );
@@ -197,6 +222,9 @@ public class MGItemTagGenerator extends ItemTagsProvider {
 
         this.tag(MGTags.Items.INGOTS_STEEL)
                 .add(MGItems.STEEL_INGOT.get());
+
+        this.tag(MGTags.Items.INGOTS_ECHOITE)
+                .add(MGItems.ECHOITE_INGOT.get());
 
         this.tag(MGTags.Items.INGOTS_TITANIUM)
                 .add(MGItems.TITANIUM_INGOT.get());
@@ -212,6 +240,7 @@ public class MGItemTagGenerator extends ItemTagsProvider {
                 MGItems.BRONZE_ARROW.get(),
                 MGItems.STEEL_ARROW.get(),
                 MGItems.RUBY_ARROW.get(),
+                MGItems.ECHOITE_ARROW.get(),
                 MGItems.TITANIUM_ARROW.get(),
                 MGItems.ENDERITE_ARROW.get()
         );
@@ -221,6 +250,7 @@ public class MGItemTagGenerator extends ItemTagsProvider {
                 MGItems.BRONZE_BOW.get(),
                 MGItems.STEEL_BOW.get(),
                 MGItems.RUBY_BOW.get(),
+                MGItems.ECHOITE_BOW.get(),
                 MGItems.TITANIUM_BOW.get(),
                 MGItems.ENDERITE_BOW.get()
         );
@@ -230,6 +260,7 @@ public class MGItemTagGenerator extends ItemTagsProvider {
                 MGItems.BRONZE_INGOT.get(),
                 MGItems.STEEL_INGOT.get(),
                 MGItems.RUBY_INGOT.get(),
+                MGItems.ECHOITE_INGOT.get(),
                 MGItems.TITANIUM_INGOT.get(),
                 MGItems.ENDERITE_INGOT.get()
         );
@@ -239,9 +270,54 @@ public class MGItemTagGenerator extends ItemTagsProvider {
                 MGItems.BRONZE_BOW.get(),
                 MGItems.STEEL_BOW.get(),
                 MGItems.RUBY_BOW.get(),
+                MGItems.ECHOITE_BOW.get(),
                 MGItems.TITANIUM_BOW.get(),
-                MGItems.TITANIUM_MACE.get()
+                MGItems.TITANIUM_MACE.get(),
+                MGItems.BRONZE_SHIELD.get(),
+                MGItems.STEEL_SHIELD.get(),
+                MGItems.RUBY_SHIELD.get(),
+                MGItems.ECHOITE_SHIELD.get(),
+                MGItems.TITANIUM_SHIELD.get(),
+                MGItems.COPPER_CROSSBOW.get(),
+                MGItems.BRONZE_CROSSBOW.get(),
+                MGItems.STEEL_CROSSBOW.get(),
+                MGItems.RUBY_CROSSBOW.get(),
+                MGItems.ECHOITE_CROSSBOW.get(),
+                MGItems.TITANIUM_CROSSBOW.get()
         );
+
+        this.tag(ItemTags.CROSSBOW_ENCHANTABLE).add(
+                MGItems.COPPER_CROSSBOW.get(),
+                MGItems.BRONZE_CROSSBOW.get(),
+                MGItems.STEEL_CROSSBOW.get(),
+                MGItems.RUBY_CROSSBOW.get(),
+                MGItems.ECHOITE_CROSSBOW.get(),
+                MGItems.TITANIUM_CROSSBOW.get(),
+                MGItems.ENDERITE_CROSSBOW.get()
+        );
+
+        this.tag(ItemTags.TRIDENT_ENCHANTABLE).add(MGItems.ENDERITE_TRIDENT.get());
+
+        this.tag(Tags.Items.TOOLS_SHIELD).add(
+                MGItems.BRONZE_SHIELD.get(),
+                MGItems.STEEL_SHIELD.get(),
+                MGItems.RUBY_SHIELD.get(),
+                MGItems.ECHOITE_SHIELD.get(),
+                MGItems.TITANIUM_SHIELD.get(),
+                MGItems.ENDERITE_SHIELD.get()
+        );
+
+        this.tag(Tags.Items.TOOLS_CROSSBOW).add(
+                MGItems.COPPER_CROSSBOW.get(),
+                MGItems.BRONZE_CROSSBOW.get(),
+                MGItems.STEEL_CROSSBOW.get(),
+                MGItems.RUBY_CROSSBOW.get(),
+                MGItems.ECHOITE_CROSSBOW.get(),
+                MGItems.TITANIUM_CROSSBOW.get(),
+                MGItems.ENDERITE_CROSSBOW.get()
+        );
+
+        this.tag(Tags.Items.TOOLS_TRIDENT).add(MGItems.ENDERITE_TRIDENT.get());
 
         this.tag(ItemTags.MACE_ENCHANTABLE).add(
                 MGItems.TITANIUM_MACE.get(),
@@ -257,6 +333,7 @@ public class MGItemTagGenerator extends ItemTagsProvider {
                 MGItems.BRONZE_SPEAR.get(),
                 MGItems.STEEL_SPEAR.get(),
                 MGItems.RUBY_SPEAR.get(),
+                MGItems.ECHOITE_SPEAR.get(),
                 MGItems.TITANIUM_SPEAR.get(),
                 MGItems.ENDERITE_SPEAR.get()
         );
@@ -275,10 +352,12 @@ public class MGItemTagGenerator extends ItemTagsProvider {
                 MGItems.BRONZE_SPEAR.get(),
                 MGItems.STEEL_SPEAR.get(),
                 MGItems.RUBY_SPEAR.get(),
+                MGItems.ECHOITE_SPEAR.get(),
                 MGItems.TITANIUM_SPEAR.get(),
                 MGItems.ENDERITE_SPEAR.get(),
                 MGItems.TITANIUM_MACE.get(),
-                MGItems.ENDERITE_MACE.get()
+                MGItems.ENDERITE_MACE.get(),
+                MGItems.ENDERITE_TRIDENT.get()
         );
     }
 }

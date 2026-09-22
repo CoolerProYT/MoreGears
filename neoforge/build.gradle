@@ -84,6 +84,8 @@ publishMods {
             start = "26.1"
             end = "26.1.2"
         }
+        client=true
+        server=true
     }
 
     modrinth {

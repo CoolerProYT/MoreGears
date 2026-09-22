@@ -56,6 +56,7 @@ public class MGArrowItem extends ArrowItem {
         BRONZE("bronze"),
         STEEL("steel"),
         RUBY("ruby"),
+        ECHOITE("echoite"),
         TITANIUM("titanium"),
         ENDERITE("enderite");
 

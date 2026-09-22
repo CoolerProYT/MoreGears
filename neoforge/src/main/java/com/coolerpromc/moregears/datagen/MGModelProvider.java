@@ -6,6 +6,8 @@ import com.coolerpromc.moregears.armor.MGArmorMaterials;
 import com.coolerpromc.moregears.block.MGBlocks;
 import com.coolerpromc.moregears.item.MGItems;
 import com.coolerpromc.moregears.item.custom.MGArrowItem;
+import com.coolerpromc.moregears.item.special.MGShieldSpecialRenderer;
+import com.coolerpromc.moregears.item.special.MGTridentSpecialRenderer;
 import com.coolerpromc.moregears.platform.util.ItemLikeRegistryHandler;
 import com.coolerpromc.moregears.trim.MGTrimMaterials;
 import com.coolerpromc.moregears.util.Arrow;
@@ -17,8 +19,11 @@ import net.minecraft.client.data.models.model.*;
 import net.minecraft.client.renderer.item.CuboidItemModelWrapper;
 import net.minecraft.client.renderer.item.ItemModel;
 import net.minecraft.client.renderer.item.SelectItemModel;
+import net.minecraft.client.renderer.item.properties.numeric.CrossbowPull;
 import net.minecraft.client.renderer.item.properties.numeric.UseDuration;
+import net.minecraft.client.renderer.item.properties.select.Charge;
 import net.minecraft.client.renderer.item.properties.select.TrimMaterialProperty;
+import net.minecraft.world.item.CrossbowItem;
 import net.minecraft.client.resources.model.sprite.Material;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -64,6 +69,7 @@ public class MGModelProvider extends ModelProvider {
             new TrimMaterialData(MGTrimMaterials.BRONZE_ASSET_GROUP, MGTrimMaterials.BRONZE),
             new TrimMaterialData(MGTrimMaterials.STEEL_ASSET_GROUP, MGTrimMaterials.STEEL),
             new TrimMaterialData(MGTrimMaterials.RUBY_ASSET_GROUP, MGTrimMaterials.RUBY),
+            new TrimMaterialData(MGTrimMaterials.ECHOITE_ASSET_GROUP, MGTrimMaterials.ECHOITE),
             new TrimMaterialData(MGTrimMaterials.TITANIUM_ASSET_GROUP, MGTrimMaterials.TITANIUM),
             new TrimMaterialData(MGTrimMaterials.ENDERITE_ASSET_GROUP, MGTrimMaterials.ENDERITE)
     );
@@ -83,7 +89,7 @@ public class MGModelProvider extends ModelProvider {
         registerItemModels(itemModels);
     }
 
-    private void registerBlockState(BlockModelGenerators blockModels){
+    private void registerBlockState(BlockModelGenerators blockModels) {
         simpleBlockWithItem(blockModels, MGBlocks.TIN_ORE);
         simpleBlockWithItem(blockModels, MGBlocks.DEEPSLATE_TIN_ORE);
         simpleBlockWithItem(blockModels, MGBlocks.RUBY_ORE);
@@ -94,7 +100,7 @@ public class MGModelProvider extends ModelProvider {
         horizontalRotationBlock(blockModels, MGBlocks.ALLOY_SMELTER);
     }
 
-    private void registerItemModels(ItemModelGenerators itemModels){
+    private void registerItemModels(ItemModelGenerators itemModels) {
         basicItem(itemModels, MGItems.RAW_TIN);
         basicItem(itemModels, MGItems.RAW_RUBY);
         basicItem(itemModels, MGItems.RAW_TITANIUM);
@@ -106,6 +112,7 @@ public class MGModelProvider extends ModelProvider {
         basicItem(itemModels, MGItems.BRONZE_INGOT);
         basicItem(itemModels, MGItems.STEEL_INGOT);
         basicItem(itemModels, MGItems.RUBY_INGOT);
+        basicItem(itemModels, MGItems.ECHOITE_INGOT);
         basicItem(itemModels, MGItems.TITANIUM_INGOT);
         basicItem(itemModels, MGItems.ENDERITE_INGOT);
 
@@ -154,6 +161,11 @@ public class MGModelProvider extends ModelProvider {
         trimmedArmorItem(itemModels, MGItems.RUBY_LEGGINGS, MGArmorMaterials.RUBY_ARMOR_MATERIAL);
         trimmedArmorItem(itemModels, MGItems.RUBY_BOOTS, MGArmorMaterials.RUBY_ARMOR_MATERIAL);
 
+        trimmedArmorItem(itemModels, MGItems.ECHOITE_HELMET, MGArmorMaterials.ECHOITE_ARMOR_MATERIAL);
+        trimmedArmorItem(itemModels, MGItems.ECHOITE_CHESTPLATE, MGArmorMaterials.ECHOITE_ARMOR_MATERIAL);
+        trimmedArmorItem(itemModels, MGItems.ECHOITE_LEGGINGS, MGArmorMaterials.ECHOITE_ARMOR_MATERIAL);
+        trimmedArmorItem(itemModels, MGItems.ECHOITE_BOOTS, MGArmorMaterials.ECHOITE_ARMOR_MATERIAL);
+
         trimmedArmorItem(itemModels, MGItems.TITANIUM_HELMET, MGArmorMaterials.TITANIUM_ARMOR_MATERIAL);
         trimmedArmorItem(itemModels, MGItems.TITANIUM_CHESTPLATE, MGArmorMaterials.TITANIUM_ARMOR_MATERIAL);
         trimmedArmorItem(itemModels, MGItems.TITANIUM_LEGGINGS, MGArmorMaterials.TITANIUM_ARMOR_MATERIAL);
@@ -166,6 +178,24 @@ public class MGModelProvider extends ModelProvider {
 
         basicItem(itemModels, MGItems.TITANIUM_UPGRADE_SMITHING_TEMPLATE);
         basicItem(itemModels, MGItems.ENDERITE_UPGRADE_SMITHING_TEMPLATE);
+
+        generateShield(itemModels, MGItems.BRONZE_SHIELD, "bronze");
+        generateShield(itemModels, MGItems.STEEL_SHIELD, "steel");
+        generateShield(itemModels, MGItems.RUBY_SHIELD, "ruby");
+        generateShield(itemModels, MGItems.ECHOITE_SHIELD, "echoite");
+        generateShield(itemModels, MGItems.TITANIUM_SHIELD, "titanium");
+        generateShield(itemModels, MGItems.ENDERITE_SHIELD, "enderite");
+
+        generateCrossbow(itemModels, MGItems.COPPER_CROSSBOW);
+        generateCrossbow(itemModels, MGItems.BRONZE_CROSSBOW);
+        generateCrossbow(itemModels, MGItems.STEEL_CROSSBOW);
+        generateCrossbow(itemModels, MGItems.RUBY_CROSSBOW);
+        generateCrossbow(itemModels, MGItems.ECHOITE_CROSSBOW);
+        generateCrossbow(itemModels, MGItems.TITANIUM_CROSSBOW);
+        generateCrossbow(itemModels, MGItems.ENDERITE_CROSSBOW);
+
+        generateTrident(itemModels, MGItems.ENDERITE_TRIDENT, "enderite_trident");
+        basicItem(itemModels, MGItems.ENDERITE_ELYTRA);
 
         handheldItem(itemModels, MGItems.BRONZE_SWORD);
         handheldItem(itemModels, MGItems.BRONZE_SHOVEL);
@@ -188,6 +218,13 @@ public class MGModelProvider extends ModelProvider {
         handheldItem(itemModels, MGItems.RUBY_HOE);
         itemModels.generateSpear(MGItems.RUBY_SPEAR.get());
 
+        handheldItem(itemModels, MGItems.ECHOITE_SWORD);
+        handheldItem(itemModels, MGItems.ECHOITE_SHOVEL);
+        handheldItem(itemModels, MGItems.ECHOITE_PICKAXE);
+        handheldItem(itemModels, MGItems.ECHOITE_AXE);
+        handheldItem(itemModels, MGItems.ECHOITE_HOE);
+        itemModels.generateSpear(MGItems.ECHOITE_SPEAR.get());
+
         handheldItem(itemModels, MGItems.TITANIUM_SWORD);
         handheldItem(itemModels, MGItems.TITANIUM_SHOVEL);
         handheldItem(itemModels, MGItems.TITANIUM_PICKAXE);
@@ -208,6 +245,7 @@ public class MGModelProvider extends ModelProvider {
         basicItem(itemModels, MGItems.BRONZE_ARROW);
         basicItem(itemModels, MGItems.STEEL_ARROW);
         basicItem(itemModels, MGItems.RUBY_ARROW);
+        basicItem(itemModels, MGItems.ECHOITE_ARROW);
         basicItem(itemModels, MGItems.TITANIUM_ARROW);
         basicItem(itemModels, MGItems.ENDERITE_ARROW);
 
@@ -216,12 +254,13 @@ public class MGModelProvider extends ModelProvider {
         generateBow(itemModels, MGItems.BRONZE_BOW.get());
         generateBow(itemModels, MGItems.STEEL_BOW.get());
         generateBow(itemModels, MGItems.RUBY_BOW.get());
+        generateBow(itemModels, MGItems.ECHOITE_BOW.get());
         generateBow(itemModels, MGItems.TITANIUM_BOW.get());
         generateBow(itemModels, MGItems.ENDERITE_BOW.get());
     }
 
     // Block model methods
-    private <T extends Block> void horizontalRotationBlock(BlockModelGenerators blockModels, ItemLikeRegistryHandler<T> block){
+    private <T extends Block> void horizontalRotationBlock(BlockModelGenerators blockModels, ItemLikeRegistryHandler<T> block) {
         blockModels.createNonTemplateHorizontalBlock(MGBlocks.ALLOY_SMELTER.get());
         blockModels.registerSimpleItemModel(block.get(), blockLocation(getBlockName(block.get())));
     }
@@ -230,7 +269,7 @@ public class MGModelProvider extends ModelProvider {
         blockModels.createTrivialCube(block.get());
     }
 
-    private void trimmedArmorItem(ItemModelGenerators itemModels, ItemLikeRegistryHandler<MGArmorItem> item, ArmorMaterial armorMaterial){
+    private void trimmedArmorItem(ItemModelGenerators itemModels, ItemLikeRegistryHandler<MGArmorItem> item, ArmorMaterial armorMaterial) {
         generateTrimmableItem(itemModels, item.get(), armorMaterial.assetId(), Identifier.parse("trims/items/" + item.get().getArmorType().getName() + "_trim"), Identifier.fromNamespaceAndPath(MoreGears.MODID, "item/" + item.get().getArmorType().getName() + "_trim"), false);
     }
 
@@ -273,11 +312,41 @@ public class MGModelProvider extends ModelProvider {
         itemModels.itemModelOutput.accept(armorItem, ItemModelUtils.select(new TrimMaterialProperty(), itemmodel$unbaked1, list));
     }
 
-    private <T extends Item> void basicItem(ItemModelGenerators itemModels, ItemLikeRegistryHandler<T> item){
+    private <T extends Item> void basicItem(ItemModelGenerators itemModels, ItemLikeRegistryHandler<T> item) {
         itemModels.generateFlatItem(item.get(), ModelTemplates.FLAT_ITEM);
     }
 
-    private <T extends Item> void handheldItem(ItemModelGenerators itemModels, ItemLikeRegistryHandler<T> item){
+    private <T extends Item> void generateCrossbow(ItemModelGenerators itemModels, ItemLikeRegistryHandler<T> item) {
+        Item crossbow = item.get();
+        ItemModel.Unbaked base = ItemModelUtils.plainModel(createFlatItemModel(itemModels, crossbow, "", ModelTemplates.CROSSBOW));
+        ItemModel.Unbaked pulling0 = ItemModelUtils.plainModel(createFlatItemModel(itemModels, crossbow, "_pulling_0", ModelTemplates.CROSSBOW));
+        ItemModel.Unbaked pulling1 = ItemModelUtils.plainModel(createFlatItemModel(itemModels, crossbow, "_pulling_1", ModelTemplates.CROSSBOW));
+        ItemModel.Unbaked pulling2 = ItemModelUtils.plainModel(createFlatItemModel(itemModels, crossbow, "_pulling_2", ModelTemplates.CROSSBOW));
+        ItemModel.Unbaked loadedArrow = ItemModelUtils.plainModel(createFlatItemModel(itemModels, crossbow, "_arrow", ModelTemplates.CROSSBOW));
+        ItemModel.Unbaked loadedFirework = ItemModelUtils.plainModel(createFlatItemModel(itemModels, crossbow, "_firework", ModelTemplates.CROSSBOW));
+
+        itemModels.itemModelOutput.accept(crossbow, ItemModelUtils.select(new Charge(), ItemModelUtils.conditional(ItemModelUtils.isUsingItem(), ItemModelUtils.rangeSelect(new CrossbowPull(), pulling0, ItemModelUtils.override(pulling1, 0.58F), ItemModelUtils.override(pulling2, 1.0F)), base), ItemModelUtils.when(CrossbowItem.ChargeType.ARROW, loadedArrow), ItemModelUtils.when(CrossbowItem.ChargeType.ROCKET, loadedFirework)));
+    }
+
+    private <T extends Item> void generateTrident(ItemModelGenerators itemModels, ItemLikeRegistryHandler<T> item, String textureName) {
+        Item trident = item.get();
+        Identifier texture = Identifier.fromNamespaceAndPath(MoreGears.MODID, textureName);
+        ItemModel.Unbaked flatModel = ItemModelUtils.plainModel(createFlatItemModel(itemModels, trident, "", ModelTemplates.FLAT_ITEM));
+        ItemModel.Unbaked inHandNormal = ItemModelUtils.specialModel(mcLoc("item/trident_in_hand"), new MGTridentSpecialRenderer.Unbaked(texture));
+        ItemModel.Unbaked inHandThrowing = ItemModelUtils.specialModel(mcLoc("item/trident_throwing"), new MGTridentSpecialRenderer.Unbaked(texture));
+        ItemModel.Unbaked inHandModel = ItemModelUtils.conditional(MGTridentSpecialRenderer.DEFAULT_TRANSFORMATION, ItemModelUtils.isUsingItem(), inHandThrowing, inHandNormal);
+        itemModels.itemModelOutput.accept(trident, createFlatModelDispatch(flatModel, inHandModel));
+    }
+
+    private <T extends net.minecraft.world.item.ShieldItem> void generateShield(ItemModelGenerators itemModels, ItemLikeRegistryHandler<T> item, String tier) {
+        Identifier texture = Identifier.fromNamespaceAndPath(MoreGears.MODID, tier + "_base_nopattern");
+        Identifier patternTexture = Identifier.fromNamespaceAndPath(MoreGears.MODID, tier + "_base");
+        ItemModel.Unbaked notBlocking = ItemModelUtils.specialModel(mcLoc("item/shield"), new MGShieldSpecialRenderer.Unbaked(texture, patternTexture));
+        ItemModel.Unbaked blocking = ItemModelUtils.specialModel(mcLoc("item/shield_blocking"), new MGShieldSpecialRenderer.Unbaked(texture, patternTexture));
+        itemModels.itemModelOutput.accept(item.get(), ItemModelUtils.conditional(MGShieldSpecialRenderer.DEFAULT_TRANSFORMATION, ItemModelUtils.isUsingItem(), blocking, notBlocking));
+    }
+
+    private <T extends Item> void handheldItem(ItemModelGenerators itemModels, ItemLikeRegistryHandler<T> item) {
         TextureMapping textureMapping = new TextureMapping();
         textureMapping.put(TextureSlot.LAYER0, new Material(itemLocation(getItemName(item.get()))));
 
@@ -289,8 +358,7 @@ public class MGModelProvider extends ModelProvider {
 
         if (bowItem == Items.BOW) {
             baseModel = ItemModelUtils.plainModel(ModelLocationUtils.getModelLocation(bowItem));
-        }
-        else{
+        } else {
             baseModel = ItemModelUtils.plainModel(createFlatItemModel(itemModels, bowItem, "", ModelTemplates.BOW));
         }
 
@@ -314,6 +382,10 @@ public class MGModelProvider extends ModelProvider {
         ItemModel.Unbaked rubyPulling1 = ItemModelUtils.plainModel(createFlatItemModel(itemModels, bowItem, "_ruby_arrow_pulling_1", ModelTemplates.BOW));
         ItemModel.Unbaked rubyPulling2 = ItemModelUtils.plainModel(createFlatItemModel(itemModels, bowItem, "_ruby_arrow_pulling_2", ModelTemplates.BOW));
 
+        ItemModel.Unbaked echoitePulling0 = ItemModelUtils.plainModel(createFlatItemModel(itemModels, bowItem, "_echoite_arrow_pulling_0", ModelTemplates.BOW));
+        ItemModel.Unbaked echoitePulling1 = ItemModelUtils.plainModel(createFlatItemModel(itemModels, bowItem, "_echoite_arrow_pulling_1", ModelTemplates.BOW));
+        ItemModel.Unbaked echoitePulling2 = ItemModelUtils.plainModel(createFlatItemModel(itemModels, bowItem, "_echoite_arrow_pulling_2", ModelTemplates.BOW));
+
         ItemModel.Unbaked steelPulling0 = ItemModelUtils.plainModel(createFlatItemModel(itemModels, bowItem, "_steel_arrow_pulling_0", ModelTemplates.BOW));
         ItemModel.Unbaked steelPulling1 = ItemModelUtils.plainModel(createFlatItemModel(itemModels, bowItem, "_steel_arrow_pulling_1", ModelTemplates.BOW));
         ItemModel.Unbaked steelPulling2 = ItemModelUtils.plainModel(createFlatItemModel(itemModels, bowItem, "_steel_arrow_pulling_2", ModelTemplates.BOW));
@@ -322,59 +394,29 @@ public class MGModelProvider extends ModelProvider {
         ItemModel.Unbaked titaniumPulling1 = ItemModelUtils.plainModel(createFlatItemModel(itemModels, bowItem, "_titanium_arrow_pulling_1", ModelTemplates.BOW));
         ItemModel.Unbaked titaniumPulling2 = ItemModelUtils.plainModel(createFlatItemModel(itemModels, bowItem, "_titanium_arrow_pulling_2", ModelTemplates.BOW));
 
-        itemModels.itemModelOutput.accept(
-                bowItem,
-                ItemModelUtils.select(
-                        new Arrow(),
-                        ItemModelUtils.conditional(ItemModelUtils.isUsingItem(), ItemModelUtils.rangeSelect(new UseDuration(false), 0.05F, basePulling0, ItemModelUtils.override(basePulling1, 0.65F), ItemModelUtils.override(basePulling2, 0.9F)), baseModel),
-                        ItemModelUtils.when(
-                                MGArrowItem.MGArrowType.BRONZE,
-                                ItemModelUtils.conditional(ItemModelUtils.isUsingItem(), ItemModelUtils.rangeSelect(new UseDuration(false), 0.05F, bronzePulling0, ItemModelUtils.override(bronzePulling1, 0.65F), ItemModelUtils.override(bronzePulling2, 0.9F)), baseModel)
-                        ),
-                        ItemModelUtils.when(
-                                MGArrowItem.MGArrowType.COPPER,
-                                ItemModelUtils.conditional(ItemModelUtils.isUsingItem(), ItemModelUtils.rangeSelect(new UseDuration(false), 0.05F, copperPulling0, ItemModelUtils.override(copperPulling1, 0.65F), ItemModelUtils.override(copperPulling2, 0.9F)), baseModel)
-                        ),
-                        ItemModelUtils.when(
-                                MGArrowItem.MGArrowType.ENDERITE,
-                                ItemModelUtils.conditional(ItemModelUtils.isUsingItem(), ItemModelUtils.rangeSelect(new UseDuration(false), 0.05F, enderitePulling0, ItemModelUtils.override(enderitePulling1, 0.65F), ItemModelUtils.override(enderitePulling2, 0.9F)), baseModel)
-                        ),
-                        ItemModelUtils.when(
-                                MGArrowItem.MGArrowType.RUBY,
-                                ItemModelUtils.conditional(ItemModelUtils.isUsingItem(), ItemModelUtils.rangeSelect(new UseDuration(false), 0.05F, rubyPulling0, ItemModelUtils.override(rubyPulling1, 0.65F), ItemModelUtils.override(rubyPulling2, 0.9F)), baseModel)
-                        ),
-                        ItemModelUtils.when(
-                                MGArrowItem.MGArrowType.STEEL,
-                                ItemModelUtils.conditional(ItemModelUtils.isUsingItem(), ItemModelUtils.rangeSelect(new UseDuration(false), 0.05F, steelPulling0, ItemModelUtils.override(steelPulling1, 0.65F), ItemModelUtils.override(steelPulling2, 0.9F)), baseModel)
-                        ),
-                        ItemModelUtils.when(
-                                MGArrowItem.MGArrowType.TITANIUM,
-                                ItemModelUtils.conditional(ItemModelUtils.isUsingItem(), ItemModelUtils.rangeSelect(new UseDuration(false), 0.05F, titaniumPulling0, ItemModelUtils.override(titaniumPulling1, 0.65F), ItemModelUtils.override(titaniumPulling2, 0.9F)), baseModel)
-                        )
-                )
-        );
+        itemModels.itemModelOutput.accept(bowItem, ItemModelUtils.select(new Arrow(), ItemModelUtils.conditional(ItemModelUtils.isUsingItem(), ItemModelUtils.rangeSelect(new UseDuration(false), 0.05F, basePulling0, ItemModelUtils.override(basePulling1, 0.65F), ItemModelUtils.override(basePulling2, 0.9F)), baseModel), ItemModelUtils.when(MGArrowItem.MGArrowType.BRONZE, ItemModelUtils.conditional(ItemModelUtils.isUsingItem(), ItemModelUtils.rangeSelect(new UseDuration(false), 0.05F, bronzePulling0, ItemModelUtils.override(bronzePulling1, 0.65F), ItemModelUtils.override(bronzePulling2, 0.9F)), baseModel)), ItemModelUtils.when(MGArrowItem.MGArrowType.COPPER, ItemModelUtils.conditional(ItemModelUtils.isUsingItem(), ItemModelUtils.rangeSelect(new UseDuration(false), 0.05F, copperPulling0, ItemModelUtils.override(copperPulling1, 0.65F), ItemModelUtils.override(copperPulling2, 0.9F)), baseModel)), ItemModelUtils.when(MGArrowItem.MGArrowType.ENDERITE, ItemModelUtils.conditional(ItemModelUtils.isUsingItem(), ItemModelUtils.rangeSelect(new UseDuration(false), 0.05F, enderitePulling0, ItemModelUtils.override(enderitePulling1, 0.65F), ItemModelUtils.override(enderitePulling2, 0.9F)), baseModel)), ItemModelUtils.when(MGArrowItem.MGArrowType.RUBY, ItemModelUtils.conditional(ItemModelUtils.isUsingItem(), ItemModelUtils.rangeSelect(new UseDuration(false), 0.05F, rubyPulling0, ItemModelUtils.override(rubyPulling1, 0.65F), ItemModelUtils.override(rubyPulling2, 0.9F)), baseModel)), ItemModelUtils.when(MGArrowItem.MGArrowType.STEEL, ItemModelUtils.conditional(ItemModelUtils.isUsingItem(), ItemModelUtils.rangeSelect(new UseDuration(false), 0.05F, steelPulling0, ItemModelUtils.override(steelPulling1, 0.65F), ItemModelUtils.override(steelPulling2, 0.9F)), baseModel)), ItemModelUtils.when(MGArrowItem.MGArrowType.TITANIUM, ItemModelUtils.conditional(ItemModelUtils.isUsingItem(), ItemModelUtils.rangeSelect(new UseDuration(false), 0.05F, titaniumPulling0, ItemModelUtils.override(titaniumPulling1, 0.65F), ItemModelUtils.override(titaniumPulling2, 0.9F)), baseModel)), ItemModelUtils.when(MGArrowItem.MGArrowType.ECHOITE, ItemModelUtils.conditional(ItemModelUtils.isUsingItem(), ItemModelUtils.rangeSelect(new UseDuration(false), 0.05F, echoitePulling0, ItemModelUtils.override(echoitePulling1, 0.65F), ItemModelUtils.override(echoitePulling2, 0.9F)), baseModel))));
     }
 
     // Helper methods
-    private Identifier mcLoc(String path){
+    private Identifier mcLoc(String path) {
         return Identifier.withDefaultNamespace(path);
     }
 
-    private String getBlockName(Block block){
+    private String getBlockName(Block block) {
         Identifier location = BuiltInRegistries.BLOCK.getKey(block);
         return location.getPath();
     }
 
-    private String getItemName(Item item){
+    private String getItemName(Item item) {
         Identifier location = BuiltInRegistries.ITEM.getKey(item);
         return location.getPath();
     }
 
-    private Identifier blockLocation(String modelName){
+    private Identifier blockLocation(String modelName) {
         return Identifier.fromNamespaceAndPath(MoreGears.MODID, "block/" + modelName);
     }
 
-    private Identifier itemLocation(String modelName){
+    private Identifier itemLocation(String modelName) {
         return Identifier.fromNamespaceAndPath(MoreGears.MODID, "item/" + modelName);
     }
 

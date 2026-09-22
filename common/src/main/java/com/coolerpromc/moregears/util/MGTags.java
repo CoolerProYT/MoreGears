@@ -21,6 +21,9 @@ public class MGTags {
         public static final TagKey<Block> NEEDS_RUBY_TOOL = modTag("needs_ruby_tool");
         public static final TagKey<Block> INCORRECT_FOR_RUBY_TOOL = modTag("incorrect_for_ruby_tool");
 
+        public static final TagKey<Block> NEEDS_ECHOITE_TOOL = modTag("needs_echoite_tool");
+        public static final TagKey<Block> INCORRECT_FOR_ECHOITE_TOOL = modTag("incorrect_for_echoite_tool");
+
         public static final TagKey<Block> NEEDS_TITANIUM_TOOL = modTag("needs_titanium_tool");
         public static final TagKey<Block> INCORRECT_FOR_TITANIUM_TOOL = modTag("incorrect_for_titanium_tool");
 
@@ -44,6 +47,7 @@ public class MGTags {
     public static class Items {
         public static final TagKey<Item> INGOTS_BRONZE = commonTag("ingots/bronze");
         public static final TagKey<Item> INGOTS_STEEL = commonTag("ingots/steel");
+        public static final TagKey<Item> INGOTS_ECHOITE = commonTag("ingots/echoite");
         public static final TagKey<Item> INGOTS_TITANIUM = commonTag("ingots/titanium");
         public static final TagKey<Item> INGOTS_ENDERITE = commonTag("ingots/enderite");
         public static final TagKey<Item> GEMS_RUBY = commonTag("gems/ruby");

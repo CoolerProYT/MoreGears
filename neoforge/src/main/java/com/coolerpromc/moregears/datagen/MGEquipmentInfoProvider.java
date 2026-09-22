@@ -23,8 +23,11 @@ public class MGEquipmentInfoProvider implements DataProvider {
         register(registrar, "bronze");
         register(registrar, "steel");
         register(registrar, "ruby");
+        register(registrar, "echoite");
         register(registrar, "titanium");
         register(registrar, "enderite");
+
+        registerWings(registrar, "enderite_elytra");
     }
 
     private void register(BiConsumer<Identifier, EquipmentClientInfo> registrar, String path){
@@ -33,6 +36,14 @@ public class MGEquipmentInfoProvider implements DataProvider {
         registrar.accept(identifier, EquipmentClientInfo.builder()
                 .addLayers(EquipmentClientInfo.LayerType.HUMANOID, new EquipmentClientInfo.Layer(identifier))
                 .addLayers(EquipmentClientInfo.LayerType.HUMANOID_LEGGINGS, new EquipmentClientInfo.Layer(identifier)).build()
+        );
+    }
+
+    private void registerWings(BiConsumer<Identifier, EquipmentClientInfo> registrar, String path){
+        Identifier identifier = Identifier.fromNamespaceAndPath(MoreGears.MODID, path);
+
+        registrar.accept(identifier, EquipmentClientInfo.builder()
+                .addLayers(EquipmentClientInfo.LayerType.WINGS, new EquipmentClientInfo.Layer(identifier)).build()
         );
     }
 

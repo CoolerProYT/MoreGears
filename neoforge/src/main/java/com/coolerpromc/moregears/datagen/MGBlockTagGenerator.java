@@ -33,6 +33,7 @@ public class MGBlockTagGenerator extends BlockTagsProvider {
                 .addTag(MGTags.Blocks.NEEDS_BRONZE_TOOL)
                 .addTag(MGTags.Blocks.NEEDS_STEEL_TOOL)
                 .addTag(MGTags.Blocks.NEEDS_RUBY_TOOL)
+                .addTag(MGTags.Blocks.NEEDS_ECHOITE_TOOL)
                 .addTag(MGTags.Blocks.NEEDS_TITANIUM_TOOL)
                 .addTag(MGTags.Blocks.NEEDS_ENDERITE_TOOL);
 
@@ -41,6 +42,7 @@ public class MGBlockTagGenerator extends BlockTagsProvider {
                 .addTag(MGTags.Blocks.NEEDS_BRONZE_TOOL)
                 .addTag(MGTags.Blocks.NEEDS_STEEL_TOOL)
                 .addTag(MGTags.Blocks.NEEDS_RUBY_TOOL)
+                .addTag(MGTags.Blocks.NEEDS_ECHOITE_TOOL)
                 .addTag(MGTags.Blocks.NEEDS_TITANIUM_TOOL)
                 .addTag(MGTags.Blocks.NEEDS_ENDERITE_TOOL);
 
@@ -48,6 +50,7 @@ public class MGBlockTagGenerator extends BlockTagsProvider {
                 .addTag(MGTags.Blocks.NEEDS_BRONZE_TOOL)
                 .addTag(MGTags.Blocks.NEEDS_STEEL_TOOL)
                 .addTag(MGTags.Blocks.NEEDS_RUBY_TOOL)
+                .addTag(MGTags.Blocks.NEEDS_ECHOITE_TOOL)
                 .addTag(MGTags.Blocks.NEEDS_TITANIUM_TOOL)
                 .addTag(MGTags.Blocks.NEEDS_ENDERITE_TOOL);
 
@@ -55,6 +58,7 @@ public class MGBlockTagGenerator extends BlockTagsProvider {
                 .addTag(MGTags.Blocks.NEEDS_BRONZE_TOOL)
                 .addTag(MGTags.Blocks.NEEDS_STEEL_TOOL)
                 .addTag(MGTags.Blocks.NEEDS_RUBY_TOOL)
+                .addTag(MGTags.Blocks.NEEDS_ECHOITE_TOOL)
                 .addTag(MGTags.Blocks.NEEDS_TITANIUM_TOOL)
                 .addTag(MGTags.Blocks.NEEDS_ENDERITE_TOOL);
 
@@ -100,6 +104,12 @@ public class MGBlockTagGenerator extends BlockTagsProvider {
         this.tag(MGTags.Blocks.INCORRECT_FOR_RUBY_TOOL)
                 .addTag(BlockTags.INCORRECT_FOR_DIAMOND_TOOL)
                 .remove(MGTags.Blocks.NEEDS_RUBY_TOOL);
+
+        this.tag(MGTags.Blocks.NEEDS_ECHOITE_TOOL);
+
+        this.tag(MGTags.Blocks.INCORRECT_FOR_ECHOITE_TOOL)
+                .addTag(BlockTags.INCORRECT_FOR_DIAMOND_TOOL)
+                .remove(MGTags.Blocks.NEEDS_ECHOITE_TOOL);
 
         this.tag(MGTags.Blocks.NEEDS_TITANIUM_TOOL)
             .add(MGBlocks.END_ENDERITE_ORE.get());

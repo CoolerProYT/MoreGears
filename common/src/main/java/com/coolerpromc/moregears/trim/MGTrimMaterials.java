@@ -6,7 +6,6 @@ import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
 import net.minecraft.network.chat.TextColor;
-import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.util.Util;
 import net.minecraft.world.item.equipment.trim.MaterialAssetGroup;
@@ -19,6 +18,7 @@ public class MGTrimMaterials {
     public static final ResourceKey<TrimMaterial> BRONZE = ResourceKey.create(Registries.TRIM_MATERIAL, Constants.id("bronze"));
     public static final ResourceKey<TrimMaterial> STEEL = ResourceKey.create(Registries.TRIM_MATERIAL, Constants.id("steel"));
     public static final ResourceKey<TrimMaterial> RUBY = ResourceKey.create(Registries.TRIM_MATERIAL, Constants.id("ruby"));
+    public static final ResourceKey<TrimMaterial> ECHOITE = ResourceKey.create(Registries.TRIM_MATERIAL, Constants.id("echoite"));
     public static final ResourceKey<TrimMaterial> TITANIUM = ResourceKey.create(Registries.TRIM_MATERIAL, Constants.id("titanium"));
     public static final ResourceKey<TrimMaterial> ENDERITE = ResourceKey.create(Registries.TRIM_MATERIAL, Constants.id("enderite"));
 
@@ -26,6 +26,7 @@ public class MGTrimMaterials {
     public static final MaterialAssetGroup BRONZE_ASSET_GROUP = MaterialAssetGroup.create("bronze");
     public static final MaterialAssetGroup STEEL_ASSET_GROUP = MaterialAssetGroup.create("steel");
     public static final MaterialAssetGroup RUBY_ASSET_GROUP = MaterialAssetGroup.create("ruby");
+    public static final MaterialAssetGroup ECHOITE_ASSET_GROUP = MaterialAssetGroup.create("echoite");
     public static final MaterialAssetGroup TITANIUM_ASSET_GROUP = MaterialAssetGroup.create("titanium");
     public static final MaterialAssetGroup ENDERITE_ASSET_GROUP = MaterialAssetGroup.create("enderite");
 
@@ -34,6 +35,7 @@ public class MGTrimMaterials {
             BRONZE_ASSET_GROUP,
             STEEL_ASSET_GROUP,
             RUBY_ASSET_GROUP,
+            ECHOITE_ASSET_GROUP,
             TITANIUM_ASSET_GROUP,
             ENDERITE_ASSET_GROUP
     );
@@ -43,6 +45,7 @@ public class MGTrimMaterials {
         register(context, BRONZE, Style.EMPTY.withColor(TextColor.parseColor("#f1c232").getOrThrow()), BRONZE_ASSET_GROUP);
         register(context, STEEL, Style.EMPTY.withColor(TextColor.parseColor("#6e6b6b").getOrThrow()), STEEL_ASSET_GROUP);
         register(context, RUBY, Style.EMPTY.withColor(TextColor.parseColor("#E0115F").getOrThrow()), RUBY_ASSET_GROUP);
+        register(context, ECHOITE, Style.EMPTY.withColor(TextColor.parseColor("#3AAFA9").getOrThrow()), ECHOITE_ASSET_GROUP);
         register(context, TITANIUM, Style.EMPTY.withColor(TextColor.parseColor("#9e6590").getOrThrow()), TITANIUM_ASSET_GROUP);
         register(context, ENDERITE, Style.EMPTY.withColor(TextColor.parseColor("#5D3391").getOrThrow()), ENDERITE_ASSET_GROUP);
     }

@@ -12,12 +12,14 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStackTemplate;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.BlastingRecipe;
 import net.minecraft.world.item.crafting.CookingBookCategory;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.ShieldDecorationRecipe;
 import net.minecraft.world.item.crafting.SmeltingRecipe;
 import net.minecraft.world.level.ItemLike;
 
@@ -36,6 +38,7 @@ public class MGRecipeProvider extends RecipeProvider {
     protected void buildRecipes() {
         alloySmeltingRecipe(output, SizedIngredient.of(Items.COPPER_INGOT, 1), SizedIngredient.of(MGItems.TIN_INGOT.get(), 1), MGItems.BRONZE_INGOT, 2);
         alloySmeltingRecipe(output, SizedIngredient.of(Items.IRON_INGOT, 1), SizedIngredient.of(Items.COAL, 1), MGItems.STEEL_INGOT, 2);
+        alloySmeltingRecipe(output, SizedIngredient.of(Items.ECHO_SHARD, 1), SizedIngredient.of(Items.DIAMOND, 1), MGItems.ECHOITE_INGOT, 2);
 
         oreCooking(List.of(MGBlocks.TIN_ORE, MGBlocks.DEEPSLATE_TIN_ORE, MGItems.RAW_TIN), RecipeCategory.TOOLS, MGItems.TIN_INGOT, 0.7F, 200, "tin_ingot");
         oreCooking(List.of(MGBlocks.RUBY_ORE, MGBlocks.DEEPSLATE_RUBY_ORE, MGItems.RAW_RUBY), RecipeCategory.TOOLS, MGItems.RUBY_INGOT, 0.7F, 200, "ruby");
@@ -48,6 +51,8 @@ public class MGRecipeProvider extends RecipeProvider {
         toolSetRecipe(output, items, MGItems.STEEL_INGOT, MGItems.STEEL_SWORD, MGItems.STEEL_PICKAXE, MGItems.STEEL_AXE, MGItems.STEEL_SHOVEL, MGItems.STEEL_HOE, MGItems.STEEL_SPEAR);
         armorSetRecipe(output, items, MGItems.RUBY_INGOT, MGItems.RUBY_HELMET, MGItems.RUBY_CHESTPLATE, MGItems.RUBY_LEGGINGS, MGItems.RUBY_BOOTS);
         toolSetRecipe(output, items, MGItems.RUBY_INGOT, MGItems.RUBY_SWORD, MGItems.RUBY_PICKAXE, MGItems.RUBY_AXE, MGItems.RUBY_SHOVEL, MGItems.RUBY_HOE, MGItems.RUBY_SPEAR);
+        armorSetRecipe(output, items, MGItems.ECHOITE_INGOT, MGItems.ECHOITE_HELMET, MGItems.ECHOITE_CHESTPLATE, MGItems.ECHOITE_LEGGINGS, MGItems.ECHOITE_BOOTS);
+        toolSetRecipe(output, items, MGItems.ECHOITE_INGOT, MGItems.ECHOITE_SWORD, MGItems.ECHOITE_PICKAXE, MGItems.ECHOITE_AXE, MGItems.ECHOITE_SHOVEL, MGItems.ECHOITE_HOE, MGItems.ECHOITE_SPEAR);
 
         titaniumSmithing(output, Items.NETHERITE_HELMET, RecipeCategory.COMBAT, MGItems.TITANIUM_HELMET);
         titaniumSmithing(output, Items.NETHERITE_CHESTPLATE, RecipeCategory.COMBAT, MGItems.TITANIUM_CHESTPLATE);
@@ -140,6 +145,7 @@ public class MGRecipeProvider extends RecipeProvider {
         arrowRecipe(output, MGItems.BRONZE_INGOT, MGItems.BRONZE_ARROW);
         arrowRecipe(output, MGItems.STEEL_INGOT, MGItems.STEEL_ARROW);
         arrowRecipe(output, MGItems.RUBY_INGOT, MGItems.RUBY_ARROW);
+        arrowRecipe(output, MGItems.ECHOITE_INGOT, MGItems.ECHOITE_ARROW);
         arrowRecipe(output, MGItems.TITANIUM_INGOT, MGItems.TITANIUM_ARROW);
         arrowRecipe(output, MGItems.ENDERITE_INGOT, MGItems.ENDERITE_ARROW);
 
@@ -147,8 +153,66 @@ public class MGRecipeProvider extends RecipeProvider {
         bowRecipe(output, MGItems.BRONZE_INGOT, MGItems.BRONZE_BOW);
         bowRecipe(output, MGItems.STEEL_INGOT, MGItems.STEEL_BOW);
         bowRecipe(output, MGItems.RUBY_INGOT, MGItems.RUBY_BOW);
+        bowRecipe(output, MGItems.ECHOITE_INGOT, MGItems.ECHOITE_BOW);
         bowRecipe(output, MGItems.TITANIUM_INGOT, MGItems.TITANIUM_BOW);
         bowRecipe(output, MGItems.ENDERITE_INGOT, MGItems.ENDERITE_BOW);
+
+        shieldRecipe(output, MGItems.BRONZE_INGOT, MGItems.BRONZE_SHIELD);
+        shieldRecipe(output, MGItems.STEEL_INGOT, MGItems.STEEL_SHIELD);
+        shieldRecipe(output, MGItems.RUBY_INGOT, MGItems.RUBY_SHIELD);
+        shieldRecipe(output, MGItems.ECHOITE_INGOT, MGItems.ECHOITE_SHIELD);
+        shieldRecipe(output, MGItems.TITANIUM_INGOT, MGItems.TITANIUM_SHIELD);
+        shieldRecipe(output, MGItems.ENDERITE_INGOT, MGItems.ENDERITE_SHIELD);
+
+        crossbowRecipe(output, Items.COPPER_INGOT, MGItems.COPPER_CROSSBOW);
+        crossbowRecipe(output, MGItems.BRONZE_INGOT, MGItems.BRONZE_CROSSBOW);
+        crossbowRecipe(output, MGItems.STEEL_INGOT, MGItems.STEEL_CROSSBOW);
+        crossbowRecipe(output, MGItems.RUBY_INGOT, MGItems.RUBY_CROSSBOW);
+        crossbowRecipe(output, MGItems.ECHOITE_INGOT, MGItems.ECHOITE_CROSSBOW);
+        crossbowRecipe(output, MGItems.TITANIUM_INGOT, MGItems.TITANIUM_CROSSBOW);
+        crossbowRecipe(output, MGItems.ENDERITE_INGOT, MGItems.ENDERITE_CROSSBOW);
+
+        enderiteSmithing(output, Items.TRIDENT, RecipeCategory.COMBAT, MGItems.ENDERITE_TRIDENT);
+        enderiteSmithing(output, Items.ELYTRA, RecipeCategory.COMBAT, MGItems.ENDERITE_ELYTRA);
+
+        shieldDecorationRecipe(output, MGItems.BRONZE_SHIELD);
+        shieldDecorationRecipe(output, MGItems.STEEL_SHIELD);
+        shieldDecorationRecipe(output, MGItems.RUBY_SHIELD);
+        shieldDecorationRecipe(output, MGItems.ECHOITE_SHIELD);
+        shieldDecorationRecipe(output, MGItems.TITANIUM_SHIELD);
+        shieldDecorationRecipe(output, MGItems.ENDERITE_SHIELD);
+    }
+
+    protected void shieldDecorationRecipe(RecipeOutput output, ItemLike shield) {
+        SpecialRecipeBuilder.special(() -> new ShieldDecorationRecipe(
+                Ingredient.of(this.items.getOrThrow(ItemTags.BANNERS)),
+                Ingredient.of(shield),
+                new ItemStackTemplate(shield.asItem())
+        )).save(output, MoreGears.MODID + ":" + getItemName(shield) + "_decoration");
+    }
+
+    protected void shieldRecipe(RecipeOutput output, ItemLike ingot, ItemLike outputItem) {
+        ShapedRecipeBuilder.shaped(this.items, RecipeCategory.COMBAT, outputItem)
+                .define('W', Items.OAK_PLANKS)
+                .define('o', ingot)
+                .pattern("WoW")
+                .pattern("WWW")
+                .pattern(" W ")
+                .unlockedBy(getHasName(ingot), this.has(ingot))
+                .save(this.output);
+    }
+
+    protected void crossbowRecipe(RecipeOutput output, ItemLike ingot, ItemLike outputItem) {
+        ShapedRecipeBuilder.shaped(this.items, RecipeCategory.COMBAT, outputItem)
+                .define('#', Items.STICK)
+                .define('&', ingot)
+                .define('~', Items.STRING)
+                .define('$', Items.TRIPWIRE_HOOK)
+                .pattern("#&#")
+                .pattern("~$~")
+                .pattern(" # ")
+                .unlockedBy(getHasName(ingot), this.has(ingot))
+                .save(this.output);
     }
 
     protected void armorSetRecipe(RecipeOutput output, HolderGetter<Item> items, ItemLike material, ItemLike helmet, ItemLike chestplate, ItemLike leggings, ItemLike boots){
