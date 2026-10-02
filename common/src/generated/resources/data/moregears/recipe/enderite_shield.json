@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
   "key": {
-    "W": "minecraft:oak_planks",
+    "W": "#minecraft:wooden_tool_materials",
     "o": "moregears:enderite_ingot"
   },
   "pattern": [
