@@ -148,6 +148,18 @@ export function itemName(id: string): string {
 
 export const isModItem = (id: string) => id.startsWith('moregears:')
 
+/** Vanilla item tags used in recipes, copied from the 26.3 jar since vanilla data isn't in the repo. Add a tag here when a recipe starts using it. */
+const PLANKS = ['oak', 'spruce', 'birch', 'jungle', 'acacia', 'dark_oak', 'pale_oak', 'crimson', 'warped', 'mangrove', 'bamboo', 'cherry', 'poplar']
+const TAGS: Record<string, string[]> = {
+  '#minecraft:wooden_tool_materials': PLANKS.map((wood) => `minecraft:${wood}_planks`),
+}
+
+/** The items an ingredient accepts: a tag's members, or just the item itself. */
+export function ingredientItems(id: string | null): string[] {
+  if (!id) return []
+  return TAGS[id] ?? [id]
+}
+
 /** Hosted renders of vanilla items, one PNG per item id. Mojang's textures are not bundled here. */
 const VANILLA_ICONS = 'https://storage.googleapis.com/coolerpromc/textures'
 

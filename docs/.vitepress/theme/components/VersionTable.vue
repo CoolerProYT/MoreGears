@@ -3,9 +3,9 @@ import { withBase } from 'vitepress'
 
 // Newest first. `fixes`: whether the version still gets bug fixes.
 const VERSIONS = [
-  { minecraft: '26.3', loaders: ['neoforge', 'fabric'], version: '26.3.0', fixes: true },
-  { minecraft: '26.2', loaders: ['neoforge', 'fabric'], version: '26.2.0', fixes: true },
-  { minecraft: '26.1.2', loaders: ['neoforge', 'fabric'], version: '26.1.2.0', fixes: true },
+  { minecraft: '26.3', loaders: ['neoforge', 'fabric'], version: '26.3.0.2', fixes: true },
+  { minecraft: '26.2', loaders: ['neoforge', 'fabric'], version: '26.2.0.2', fixes: true },
+  { minecraft: '26.1.2', loaders: ['neoforge', 'fabric'], version: '26.1.2.2', fixes: true },
   { minecraft: '1.21.11', loaders: ['neoforge', 'fabric'], version: '2.3.0', fixes: false },
   { minecraft: '1.21.10', loaders: ['neoforge', 'fabric'], version: '2.2.0', fixes: false },
   { minecraft: '1.21.8', loaders: ['neoforge', 'fabric'], version: '2.1.0', fixes: false },

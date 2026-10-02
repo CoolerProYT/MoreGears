@@ -53,7 +53,7 @@ Every tier from bronze up has a shield. They block exactly like a vanilla shield
 
 <GearStats group="shields" />
 
-Shields are crafted like the vanilla one, with the tier's ingot in place of the iron, and each can be repaired with its own material. A banner still works on any of them: combine a shield and a banner in a crafting table and the pattern shows up on the front, same as vanilla.
+Shields are crafted like the vanilla one, with the tier's ingot in place of the iron. Any type of planks works, and you can mix them. Each shield can be repaired with its own material. A banner still works on any of them: combine a shield and a banner in a crafting table and the pattern shows up on the front, same as vanilla.
 
 ### Recipes
 

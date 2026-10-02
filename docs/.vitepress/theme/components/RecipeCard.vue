@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { withBase } from 'vitepress'
-import { COOKING_TYPES, type Recipe, recipe as findRecipe, recipesFor, seconds } from '../moregears'
+import { COOKING_TYPES, ingredientItems, type Recipe, recipe as findRecipe, recipesFor, seconds } from '../moregears'
 import ItemSlot from './ItemSlot.vue'
 
 /**
@@ -83,7 +83,7 @@ const grid = computed<(string | null)[]>(() => {
 
     <div class="body">
       <div v-if="kind === 'crafting'" class="grid">
-        <ItemSlot v-for="(cell, i) in grid" :id="cell" :key="i" />
+        <ItemSlot v-for="(cell, i) in grid" :ids="ingredientItems(cell)" :key="i" />
       </div>
 
       <div v-else-if="kind === 'smithing'" class="row">
