@@ -193,7 +193,7 @@ public class MGRecipeProvider extends RecipeProvider {
 
     protected void shieldRecipe(RecipeOutput output, ItemLike ingot, ItemLike outputItem) {
         ShapedRecipeBuilder.shaped(this.items, RecipeCategory.COMBAT, outputItem)
-                .define('W', Items.OAK_PLANKS)
+                .define('W', ItemTags.WOODEN_TOOL_MATERIALS)
                 .define('o', ingot)
                 .pattern("WoW")
                 .pattern("WWW")
